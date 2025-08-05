@@ -24,7 +24,9 @@ trigger TestDriveTrigger on Test_Drive__c (before insert, after insert,after Upd
        TestDriveTriggerHandler.convertLeadIfStatusIsScheduled(Trigger.new,Trigger.oldMap);
        TestDriveTriggerHandler.sendLeadToDealerOnTestRideScheduled(Trigger.new,Trigger.oldMap);
        TestDriveTriggerHandler.onCreationOfTestDriveUpdateOppAndOnCompletionOfTestDrive(Trigger.new);
-       TestDriveTriggerHandler.convertLeadIfTheRideTypeIsStoreTestRideAndLeadInstoreTestdriveIsTrue (Trigger.new);
+       TestDriveTriggerHandler.convertLeadIfTheRideTypeIsStoreTestRideAndLeadInstoreTestdriveIsTrue(Trigger.new);
+       TestDriveTriggerHandler.deleteOldNotCompletedTestDrive(Trigger.new);
+       
        
     }
     if (Trigger.isAfter && Trigger.isUpdate) {

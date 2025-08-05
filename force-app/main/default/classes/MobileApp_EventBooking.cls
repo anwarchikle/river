@@ -58,7 +58,8 @@ global class MobileApp_EventBooking {
                         'LeadName'          => t.OpportunityId != null && t.Opportunity.Name != null ? t.Opportunity.Name : t.AccountId != null && t.Account.Name != null ? t.Account.Name : '',
                         'OrdId'             => t.Order_Id__c,
                         'PME_Drive'         => t.PME_Drive__c,
-                        'RegistrationDate'  => t.Registration_Date__c
+                        'RegistrationDate'  => t.Registration_Date__c,
+                        'Status'=> t.Status
                     });
                 }
             }

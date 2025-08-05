@@ -362,6 +362,19 @@ public class FollowUpTriggerController {
         }
     }
 
+    public static void deleteOldNotCompletedFollowUp(List<Follow_Up__c> newListFollowUp){
+        set<Id> setOfoppId = new set<Id>();
+        set<Id> setOfTestDriveId = new set<Id>();
+        for(Follow_Up__c followUpRec : newListFollowUp){
+            if(followUpRec.Opportunity__c != null){
+               setOfoppId.add(followUpRec.Opportunity__c);
+               setOfTestDriveId.add(followUpRec.Id);
+            }
+        }
+        List<Follow_Up__c> listOfOldFollowUpWhichIsNotCompeleted = [Select Id from Follow_Up__c Where Id NOT IN: setOfTestDriveId AND Opportunity__c IN: setOfoppId AND Status__c != 'Completed'];
+        delete listOfOldFollowUpWhichIsNotCompeleted;
+    }
+
     public static void assignSameOwnerOfLeadAndOppToTestDriveOwner(List<Follow_Up__c> newListFollowUp) {
         Set<Id> setOfLeadId = new Set<Id>();
         Set<Id> setOfOppId = new Set<Id>();

@@ -54,10 +54,10 @@ public class MobileApp_Wrapper {
         public String TestDriveStatus{get; set;}
         public String TestDriveDate{get; set;}
         public String TestDriveTime{get; set;}
-        
+        public string rideType{get; set;}
+        public string homeTestDriveAddress{get; set;}
+        public string pincode{get; set;}
         public boolean StartTestDrive{get; set;}
-        // public String customerLicense{get; set;}
-        // public String IndemnityBond{get; set;}
         public boolean CompleteTestDrive{get; set;}
         
     }

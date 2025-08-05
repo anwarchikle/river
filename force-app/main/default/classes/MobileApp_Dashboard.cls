@@ -105,9 +105,7 @@ global class MobileApp_Dashboard {
         Set<Id> followUpOppIds = new Set<Id>();
         
         for (Follow_Up__c f : followUpList) {
-            if (f.Opportunity__c != null) followUpLeadId.add(f.Opportunity__c);
-            if (f.Lead__c != null) followUpOppIds.add(f.Lead__c);
-        }
+            if (f.Opportunity__c != null) followUpLeadId.add(f.Opportunity__c);        }
         
         List<Follow_Up__c> followUpListOpp = [
             SELECT Id, Follow_Up_Date__c, Feedback__c, Opportunity__c, Lead__c, Status__c,

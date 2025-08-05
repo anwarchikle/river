@@ -697,6 +697,19 @@ public class TestDriveTriggerHandler {
         }
     }
 
+    public static void deleteOldNotCompletedTestDrive(List<Test_Drive__c> testDriveList){
+        set<Id> setOfoppId = new set<Id>();
+        set<Id> setOfTestDriveId = new set<Id>();
+        for(Test_Drive__c testDriveRec : testDriveList){
+            if(testDriveRec.Opportunity__c != null){
+               setOfoppId.add(testDriveRec.Opportunity__c);
+               setOfTestDriveId.add(testDriveRec.Id);
+            }
+        }
+        List<Test_Drive__c> listOfOldTestDriveWhichIsNotCompeleted = [Select Id from Test_Drive__c Where Id NOT IN: setOfTestDriveId AND Opportunity__c IN: setOfoppId AND Test_Drive_Status__c != 'Completed'];
+        delete listOfOldTestDriveWhichIsNotCompeleted;
+    }
+
     public class CustomException extends Exception {}
     
     public static void mytest(){

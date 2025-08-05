@@ -57,6 +57,14 @@ global class MobileAPP_UpdateTestDrive {
                 //     return;
                 // }
             }
+            if(wrp.rideType == 'HTR' && (String.isBlank(wrp.homeTestDriveAddress) || wrp.HomeTestDriveAddress == null)) {
+                MobileApp_Wrapper.setResponse(401, 'Please provide HomeTestDriveAddress', null);
+                return;
+            }
+            if(wrp.rideType == 'HTR' && (String.isBlank(wrp.pincode) || wrp.pincode == null)) {
+                MobileApp_Wrapper.setResponse(401, 'Please provide HomeTestDriveAddress', null);
+                return;
+            }
             
             String userId = wrp.UserId;
             String TestDriveId = wrp.TestDriveId;
@@ -64,14 +72,13 @@ global class MobileAPP_UpdateTestDrive {
             String TestDriveTime = wrp.TestDriveTime;
             String TestDriveStatus = wrp.TestDriveStatus;
             boolean StartTestDrive = wrp.StartTestDrive;
-            // String base64Data = wrp.customerLicense;
-            // String IndemnityBond = wrp.IndemnityBond;
             boolean CompleteTestDrive = wrp.CompleteTestDrive;
+            String rideType = wrp.rideType;
+            String homeTestDriveAddress = wrp.homeTestDriveAddress;
+            String pincode = wrp.pincode;
             
             system.debug('UserId ========>' + userId);
             system.debug('TestDriveId ========> ' + TestDriveId);
-            // system.debug('base64Data ========>' + base64Data);
-            // system.debug('IndemnityBond ========> ' + IndemnityBond);
             
             Datetime TestDriveDateTime;
             if(TestDriveStatus == 'Reschedule'){
@@ -94,15 +101,6 @@ global class MobileAPP_UpdateTestDrive {
                 MobileApp_Wrapper.setResponse(401, 'Test Drive not found', null);
                 return;
             }
-            // if(testDriveList.size() > 0){
-            //     Test_Drive__c testDrive = testDriveList[0];
-            //     if(TestDriveStatus == 'Scheduled' && testDrive.Opportunity__c == null && testDrive.Lead__c != null) {
-            //         testDrive.Test_Drive_Status__c = 'Scheduled';
-            //         update testDrive;
-            //         MobileApp_Wrapper.setResponse(200, 'Test Drive Updated', null);
-            //         return;
-            //     }
-            // }
 
             List<Opportunity> oppList = [SELECT Id,Name,StageName FROM Opportunity WHERE Id =:testDriveList[0].Opportunity__c LIMIT 1];
             if(oppList.size() == 0) {
@@ -116,77 +114,16 @@ global class MobileAPP_UpdateTestDrive {
             testDriveRec.Id = TestDriveId;
             if (StartTestDrive == true) {
                 testDriveRec.Test_Drive_Status__c = 'On-Going';
-                // List<ContentVersion> contentVersions = new List<ContentVersion>();
-                // String data;
-                // if (String.isNotBlank(IndemnityBond)) {
-                //     if(IndemnityBond.startswith('JVBERi0')){
-                //         data = 'IndemnityBond.pdf';
-                //     }else if(IndemnityBond.startsWith('/9j/')){
-                //         data = 'IndemnityBond.jpg';
-                //     }else if(IndemnityBond.startsWith('iVBORw0')){
-                //         data = 'IndemnityBond.PNG';
-                        
-                //     }
-                //     contentVersions.add(new ContentVersion(
-                //         Title = 'Indemnity Bond',
-                //         PathOnClient = 'IndemnityBond.jpg',
-                //         VersionData = EncodingUtil.base64Decode(IndemnityBond),
-                //         Origin = 'H'
-                //     ));
-                // }
-                
-                // if (String.isNotBlank(base64Data)) {
-                //     if(base64Data.startswith('JVBERi0')){
-                //         data = 'base64Data.pdf';
-                //     }else if(base64Data.startsWith('/9j/')){
-                //         data = 'base64Data.jpg';
-                //     }else if(base64Data.startsWith('iVBORw0')){
-                //         data = 'base64Data.PNG';
-                //     }
-                //     contentVersions.add(new ContentVersion(
-                //         Title = 'Customer License',
-                //         PathOnClient = data,
-                //         VersionData = EncodingUtil.base64Decode(base64Data),
-                //         Origin = 'H'
-                //     ));
-                // }
-                
-                // insert contentVersions;
-                
-                // List<ContentDocumentLink> contentLinks = new List<ContentDocumentLink>();
-                // for (ContentVersion cv : contentVersions) {
-                //     Id docId = [SELECT ContentDocumentId FROM ContentVersion WHERE Id = :cv.Id].ContentDocumentId;
-                    
-                //     contentLinks.add(new ContentDocumentLink(
-                //         LinkedEntityId = TestDriveId,
-                //         ContentDocumentId = docId,
-                //         ShareType = 'V',
-                //         Visibility = 'AllUsers'
-                //     ));
-                // }
-                
-                //insert contentLinks;
             } else if (CompleteTestDrive == true) {
                 testDriveRec.Test_Drive_Status__c = 'Completed';
-                // List<ContentDocumentLink> links = [
-                //     SELECT Id, ContentDocumentId
-                //     FROM ContentDocumentLink
-                //     WHERE LinkedEntityId = :TestDriveId
-                // ];
-                
-                // Set<Id> docIds = new Set<Id>();
-                // for (ContentDocumentLink link : links) {
-                //     docIds.add(link.ContentDocumentId);
-                // }
-                
-                // if (!docIds.isEmpty()) {
-                //     List<ContentDocument> docsToDelete = [SELECT Id FROM ContentDocument WHERE Id IN :docIds];
-                //     delete docsToDelete;
-                // }
             } else {
                 if (TestDriveStatus == 'Reschedule') {
                     testDriveRec.Test_Drive_Status__c = 'Reschedule';
                     testDriveRec.Test_Drive_Date__c = TestDriveDateTime != null ? TestDriveDateTime : null;
+                    testDriveRec.Ride_Type__c = rideType;
+                    testDriveRec.Address__Street__s = homeTestDriveAddress;
+                    testDriveRec.Address__PostalCode__s = pincode;
+
                 } else {
                     testDriveRec.Test_Drive_Status__c = TestDriveStatus;
                 }

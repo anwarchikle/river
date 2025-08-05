@@ -18,6 +18,6 @@ trigger TriggerOnOpportunity on Opportunity (before insert,after Insert, after u
     if(Trigger.isAfter && Trigger.isInsert){
         //OpportunityTriggerHandler.createTaskWhenOppAssignedToUser(Trigger.new,Trigger.oldMap);
         //OpportunityTriggerHandler.createTaskWhenOppIsInFollowup(Trigger.new,Trigger.oldMap);
-        OpportunityTriggerHandler.createFollowUpOnOppCreated(Trigger.new);
+        // OpportunityTriggerHandler.createFollowUpOnOppCreated(Trigger.new);
     }   
 }

@@ -59,6 +59,7 @@ global class MobileApp_EventOpenOpp {
                         'LeadName'        => t.OpportunityId != null && t.Opportunity.Name != null ? t.Opportunity.Name : t.AccountId != null && t.Account.Name != null ? t.Account.Name : '',
                         'RemainingAmount' => t.Remaining_Amount__c,
                         'OrdId'         => t.Order_Id__c,
+                        'Status'=> t.Status,
                         'comments'=> t.Comments__r
                     });
                 }

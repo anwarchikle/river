@@ -13,6 +13,7 @@ trigger FollowUpTrigger on Follow_Up__c (before insert,before update,after inser
     if(trigger.isafter && trigger.isinsert){
         //FollowUpTriggerController.updateleadstatus(trigger.new);
         FollowUpTriggerController.showFollowUpCount(trigger.new);
+        FollowUpTriggerController.deleteOldNotCompletedFollowUp(trigger.new);
     }
 
     if(trigger.isafter && trigger.isUpdate){
