@@ -1,0 +1,18 @@
+<apex:page standardController="Opportunity" standardStylesheets="true" showHeader="false">
+    <apex:includeLightning />
+    <script>
+        document.addEventListener('lightning__showtoast', event => {
+            sforce.one.showToast(event.toastAttributes);
+        });
+
+        $Lightning.use("c:dynamicUploadData", function() {
+            $Lightning.createComponent("c:enquiriesUpload",
+            {},
+            "lightningContainer",
+            function(cmp) {
+                console.log('LWC component loaded');
+            });
+        });
+    </script>
+    <div id="lightningContainer" />
+</apex:page>

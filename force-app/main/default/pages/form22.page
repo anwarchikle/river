@@ -1,0 +1,79 @@
+<apex:page showHeader="false" renderAs="pdf" showheader="false" applyHtmlTag="false" readOnly="true" standardController="Order" extensions="Form22pdfController">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style type="text/css">
+            @page {
+            size: A4 portrait;
+            margin: 20mm;
+            }
+            body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            color: #000;
+            }
+            .form-title {
+            font-size: 12pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            }
+            .sub-title {
+            font-size: 12pt;
+            text-align: center;
+            margin-bottom: 10px;
+            }
+            .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 12pt;
+            }
+            .note {
+            font-size: 11pt;
+            margin-top: 30px;
+            }
+            .center {
+            text-align: center;
+            }
+            
+        </style> 
+    </head>
+    <body>
+        <div class="form-title">
+            <div Style= 'margin-bottom:9px;'>
+                FORM 22<br/>
+            </div>
+            <div Style= 'margin-bottom:9px;'>
+                [See Rules 47(1)(g), 115, 124(2) and 127]<br/>
+            </div>
+            INITIAL CERTIFICATE OF COMPLIANCE WITH POLLUTION STANDARDS, SAFETY STANDARDS OF COMPONENTS AND ROAD-WORTHINESS
+        </div>
+        <div class="sub-title">
+            (To be issued by the manufacturer or registered E-rickshaw or E-cart Association<br/> (in case of E-rickshaw or E-cart))
+        </div>
+        <p>It is certified that the following vehicle complies with the emission values, including mass emission norms and noise standard including noise level under the provisions of the Motor Vehicles Act,1988, and the rules made thereunder as specified below:</p><br/>
+        <p>1. Brand name of the vehicle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : INDIE</p>
+        <p>2. Chassis number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {!IF(vehicle.VehicleIdentificationNumber != null, vehicle.VehicleIdentificationNumber, '')}</p>
+        <span style="line-height:1.5;">3. Engine number/ motor number<br/>
+            (in case of battery operated vehicles)&nbsp;&nbsp; : {!IF(vehicle.EngineNumber != null, vehicle.EngineNumber, '')}</span>
+        <p>4. CMVR certificate : AATB 0377 dated 04th November 2024</p><br/>
+        <p>5. The emission, sound level for horn and pass by noise values of the above vehicle model, obtained during Type Approval as per Central Motor Vehicle Rules, 1989 are given below:</p>
+        <span style="line-height:1.5;">&nbsp;(i) &nbsp;&nbsp;&nbsp;Noise level (refer rules 119 and 120)<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a) horn (for all vehicles other than agricultural tractors and construction equipment vehicles)  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;as installed on the vehicle.....  97 &nbsp;&nbsp;&nbsp;&nbsp;dB(A);<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(b) Bystander’s position (for all vehicles other than agricultural tractors and construction &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;equipment vehicles).....  65 &nbsp;&nbsp;&nbsp;&nbsp;dB(A);
+            
+        </span>
+        <div class="signature">
+            ___________________________<br/>
+            (Signature of Manufacturer or of authorised <br/> Signatory of registered E- rickshaw or<br/>
+            E- cart Association)
+        </div>
+        <br/>
+        <br/>
+        <div class="note">
+            <strong>Note 1:</strong> This form shall be issued with the signature of the manufacturer duly printed in the Form itself by affixing facsimile signature in ink under the hand and the seal of the manufacturer.<br/>
+            <br/>
+            <strong>Note 2:</strong> In the case of E-rickshaw or E-cart, this Form shall be issued with the signature of an authorized signatory of registered E-rickshaw or E-cart Association duly printed in the Form itself by affixing facsimile signature in ink under the hand and seal of such signatory.
+        </div>
+    </body>
+</apex:page>

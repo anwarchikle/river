@@ -1,0 +1,48 @@
+<template>
+    <lightning-quick-action-panel header="Create Test Ride">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                padding="horizontal-small">
+                <div class="custom-box">
+                    <lightning-input type="datetime" name="StartDate" label="Test Drive Date" onchange={handleChange}
+                        required class="startDate" min={minDateTime}>
+                    </lightning-input>
+                    <lightning-combobox name="Status" label="Status" placeholder="Select Status" class="Status"
+                        options={optionsCategory} required onchange={handleChange}></lightning-combobox>
+                </div>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                padding="horizontal-small">
+                <div class="custom-box">
+                    <!-- <lightning-input type="datetime" name="EndDate" label="End Date" onchange={handleChange}
+                        class="endDate">
+                    </lightning-input> -->
+
+                    <lightning-combobox name="rideType" label="Ride Type" placeholder="Select Ride Type"
+                        class="rideType" options={RideOptions} required onchange={handleChange}></lightning-combobox>
+
+                    <template if:true={showAddress}>
+                        <lightning-input-address address-label="address" street-label="Street" city-label="City"
+                            name="address" country-label="Country" postal-code-label="PostalCode" province-label="State"
+                            required field-level-help="Help Text for inputAddress field" onchange={handleChange}>
+                        </lightning-input-address>
+                    </template>
+
+
+                </div>
+            </lightning-layout-item>
+
+
+        </lightning-layout>
+
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <div slot="footer">
+            <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
+            <lightning-button variant="brand" label="Save" onclick={handleSave}
+                class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>
