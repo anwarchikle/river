@@ -40,7 +40,7 @@ global class MobileApp_EventBooking {
                 addQuery = ' AND CreatedDate >= :startDate AND CreatedDate < :endDate';
             }
             
-            String query = 'SELECT Id, OpportunityId,Opportunity.AccountId,Order_Id__c,Opportunity.Account.Phone,AccountId,Account.Phone,Account.Name,Opportunity.Name, Status, Grand_Total__c, Remaining_Amount__c, Name, PME_Drive__c, Registration_Date__c ' +
+            String query = 'SELECT Id, OpportunityId,Opportunity.AccountId,Order_Id__c,Delivery_Date__c,Opportunity.Account.Phone,AccountId,Account.Phone,Account.Name,Opportunity.Name, Status, Grand_Total__c, Remaining_Amount__c, Name, PME_Drive__c, Registration_Date__c ' +
                'FROM Order ' +
                'WHERE OwnerId = \'' + userId + '\' ' +
                'AND Status IN (\'Vehicle Delivered\') ' +
@@ -58,7 +58,8 @@ global class MobileApp_EventBooking {
                         'LeadName'          => t.OpportunityId != null && t.Opportunity.Name != null ? t.Opportunity.Name : t.AccountId != null && t.Account.Name != null ? t.Account.Name : '',
                         'OrdId'             => t.Order_Id__c,
                         'PME_Drive'         => t.PME_Drive__c,
-                        'RegistrationDate'  => t.Registration_Date__c,
+                        'RTORegistrationDate' => t.Registration_Date__c,
+                        'PurchaseDate'  => t.Delivery_Date__c,
                         'Status'=> t.Status
                     });
                 }

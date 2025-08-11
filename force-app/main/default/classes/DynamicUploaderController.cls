@@ -72,6 +72,9 @@ public class DynamicUploaderController {
 
     @AuraEnabled
     public static void uploadData(String objectName, Map<String, String> fieldMapping, List<String> csvRows) {
+        System.debug('objectName =====> ' + objectName);
+        System.debug('fieldMapping =====> ' + fieldMapping);
+        System.debug('csvRows =====> ' + csvRows);
         System.enqueueJob(new CSVUploadQueueable(UserInfo.getUserId(), objectName, fieldMapping, csvRows));
     }
 

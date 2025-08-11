@@ -2,24 +2,13 @@
 public class MobileAPP_UpdateLeadTest {
     @isTest
     static void testUpdate1() {
-        
-        Profile pro = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
-        
-        User userInstant = new User(Alias = 'standt', Email='sossfdc@cirrologix.com', 
-                                    EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                                    IsActive=true,Division='Rainmakers',
-                                    LocaleSidKey='en_US', ProfileId = pro.Id,
-                                    TimeZoneSidKey='America/Los_Angeles', UserName='standardVarsha@testorg.com');
-        insert userInstant;
-        
-        Lead ledRec = new Lead();
-        ledRec.Company = 'Testing';
-        ledRec.LastName = 'Testing';
-        Insert ledRec;
+       	User usr = UtilityTestClass.createSalesManagerUser();
+        Lead lead = UtilityTestClass.createTestLead('Test Lead', 'Test Company','New','8880899982','560076','Telephone', 'Telephone');
         
         MobileApp_Wrapper.MobileApp_UpdateLead wrapperObj = new MobileApp_Wrapper.MobileApp_UpdateLead();
-        wrapperObj.UserId = userInstant.Id;
-        wrapperObj.LeadId = ledRec.Id;
+        wrapperObj.UserId = usr.Id;
+        wrapperObj.LeadId = lead.Id;
+        wrapperObj.LeadStatus = lead.Status;
         
         String requestBody = JSON.serialize(wrapperObj);
         
@@ -36,26 +25,34 @@ public class MobileAPP_UpdateLeadTest {
     }
     
     @isTest
-    static void testUpdate3() {
-        
-        Profile pro = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
-        
-        User userInstant = new User(Alias = 'standt', Email='sossfdc@cirrologix.com', 
-                                    EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                                    IsActive=true,Division='Rainmakers',
-                                    LocaleSidKey='en_US', ProfileId = pro.Id,
-                                    TimeZoneSidKey='America/Los_Angeles', UserName='standardVarsha@testorg.com');
-        insert userInstant;
-        
-        Lead ledRec = new Lead();
-        ledRec.Company = 'Testing';
-        ledRec.LastName = 'Testing';
-        Insert ledRec;
+    static void testUpdate2() {
+       	User usr = UtilityTestClass.createSalesManagerUser();
+        Lead lead = UtilityTestClass.createTestLead('Test Lead', 'Test Company','New','8880899982','560076','Telephone', 'Telephone');
         
         MobileApp_Wrapper.MobileApp_UpdateLead wrapperObj = new MobileApp_Wrapper.MobileApp_UpdateLead();
-        wrapperObj.LeadId = ledRec.Id;
+        wrapperObj.UserId = usr.Id;
+        wrapperObj.LeadId = lead.Id;
+        wrapperObj.LeadStatus = null;
         
+        String requestBody = JSON.serialize(wrapperObj);
         
+        RestRequest req = new RestRequest();
+        req.requestUri = '/services/apexrest/UpdateLead';
+        req.httpMethod = 'POST';
+        req.requestBody = Blob.valueOf(requestBody);
+        RestContext.request = req;
+        
+        RestResponse res = new RestResponse();
+        RestContext.response = res;
+        
+        MobileAPP_UpdateLead.updateLead();
+    }
+    
+    @isTest
+    static void testUpdate3() {  		
+        MobileApp_Wrapper.MobileApp_UpdateLead wrapperObj = new MobileApp_Wrapper.MobileApp_UpdateLead();
+        wrapperObj.LeadId = null;
+
         String requestBody = JSON.serialize(wrapperObj);
         
         RestRequest req = new RestRequest();
@@ -71,7 +68,21 @@ public class MobileAPP_UpdateLeadTest {
     }
     
     @isTest
-    static void testUpdateFollowUp_EmptyBody() {
+    static void testUpdateException() {
+        RestRequest req = new RestRequest();
+        req.requestUri = '/services/apexrest/UpdateLead';
+        req.httpMethod = 'POST';
+        req.requestBody = Blob.valueOf('Invalid');
+        RestContext.request = req;
+        
+        RestResponse res = new RestResponse();
+        RestContext.response = res;
+        MobileAPP_UpdateLead.updateLead();
+    }
+
+    
+    @isTest
+    static void testUpdate4() {
         RestRequest req = new RestRequest();
         req.requestUri = '/services/apexrest/UpdateLead';
         req.httpMethod = 'POST';
@@ -81,7 +92,7 @@ public class MobileAPP_UpdateLeadTest {
         RestResponse res = new RestResponse();
         RestContext.response = res;
         
-        MobileAPP_BookOrder.createLead();
+        MobileAPP_UpdateLead.updateLead();
         
     }
 }

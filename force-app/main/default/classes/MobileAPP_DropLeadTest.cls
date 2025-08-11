@@ -2,26 +2,14 @@
 public class MobileAPP_DropLeadTest {
     @isTest
     static void testUpdate1() {
-        
-        Profile pro = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
-        
-        User userInstant = new User(Alias = 'standt', Email='sossfdc@cirrologix.com', 
-                                    EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                                    IsActive=true,Division='Rainmakers',
-                                    LocaleSidKey='en_US', ProfileId = pro.Id,
-                                    TimeZoneSidKey='America/Los_Angeles', UserName='standardVarsha@testorg.com');
-        insert userInstant;
-        
-        Lead ledRec = new Lead();
-        ledRec.Company = 'Testing';
-        ledRec.LastName = 'Testing';
-        Insert ledRec;
+        User usr = UtilityTestClass.createSalesManagerUser();
+        Lead lead = UtilityTestClass.createTestLead('Test Lead', 'Test Company','New','8880899982','560076','Telephone', 'Telephone');
         
         MobileApp_Wrapper.MobileApp_DropLead wrapperObj = new MobileApp_Wrapper.MobileApp_DropLead();
-        wrapperObj.UserId = userInstant.Id;
-        wrapperObj.LeadId = ledRec.Id;
-        wrapperObj.DropOutReason = 'Test';
-        wrapperObj.Comments = 'Testing';
+        wrapperObj.UserId = usr.Id;
+        wrapperObj.LeadId = lead.Id;
+        wrapperObj.DropOutReason = 'Considering Later / Unable to Proceed';
+        wrapperObj.DropOutSubReason = 'Out of delivery area';
         
         String requestBody = JSON.serialize(wrapperObj);
         
@@ -39,35 +27,14 @@ public class MobileAPP_DropLeadTest {
     
     @isTest
     static void testUpdate2() {
-        
-        Profile pro = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
-        
-        User userInstant = new User(Alias = 'standt', Email='sossfdc@cirrologix.com', 
-                                    EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                                    IsActive=true,Division='Rainmakers',
-                                    LocaleSidKey='en_US', ProfileId = pro.Id,
-                                    TimeZoneSidKey='America/Los_Angeles', UserName='standardVarsha@testorg.com');
-        insert userInstant;
-        
-        Account acc = new Account();
-        acc.Name = 'River Testing';
-        acc.Center_Code__c = '291008';
-        acc.Store_Type__c = 'COCO';
-        acc.Type = 'Dealer';
-        Insert acc;
-        
-        Opportunity opp = new Opportunity();
-        opp.Name = acc.Name;
-        opp.CloseDate = System.today();
-        opp.AccountId = acc.Id;
-        opp.StageName = 'Test Ride Scheduled';
-        insert opp;
-        
+        User usr = UtilityTestClass.createSalesManagerUser();
+        Account acc = UtilityTestClass.createTestAccount('Demo Store', 'D002', 'Demo Store', '560076', 'Dealer');
+        Opportunity opp = UtilityTestClass.createTestOpportunity('Opp One', acc.Id, 'Prospecting', Date.today().addDays(10), 10000);    
         MobileApp_Wrapper.MobileApp_DropLead wrapperObj = new MobileApp_Wrapper.MobileApp_DropLead();
-        wrapperObj.UserId = userInstant.Id;
+        wrapperObj.UserId = usr.Id;
         wrapperObj.LeadId = opp.Id;
-        wrapperObj.DropOutReason = 'Test';
-        wrapperObj.Comments = 'Testing';
+        wrapperObj.DropOutReason = 'Considering Later / Unable to Proceed';
+        wrapperObj.DropOutSubReason = 'Out of delivery area';
         
         String requestBody = JSON.serialize(wrapperObj);
         
@@ -83,27 +50,15 @@ public class MobileAPP_DropLeadTest {
     }
     
     @isTest
-    static void testUpdate3() {
-        
-        Profile pro = [SELECT Id FROM Profile WHERE Name = 'System Administrator']; 
-        
-        User userInstant = new User(Alias = 'standt', Email='sossfdc@cirrologix.com', 
-                                    EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-                                    IsActive=true,Division='Rainmakers',
-                                    LocaleSidKey='en_US', ProfileId = pro.Id,
-                                    TimeZoneSidKey='America/Los_Angeles', UserName='standardVarsha@testorg.com');
-        insert userInstant;
-        
-        Lead ledRec = new Lead();
-        ledRec.Company = 'Testing';
-        ledRec.LastName = 'Testing';
-        Insert ledRec;
-        
+    static void testUpdate3() {  
+        User usr = UtilityTestClass.createSalesManagerUser();
+        Account acc = UtilityTestClass.createTestAccount('Demo Store', 'D002', 'Demo Store', '560076', 'Dealer');
+        Opportunity opp = UtilityTestClass.createTestOpportunity('Opp One', acc.Id, 'Prospecting', Date.today().addDays(10), 10000);    
         MobileApp_Wrapper.MobileApp_DropLead wrapperObj = new MobileApp_Wrapper.MobileApp_DropLead();
-        wrapperObj.LeadId = ledRec.Id;
-        wrapperObj.DropOutReason = 'Test';
-        wrapperObj.Comments = 'Testing';
-        
+        wrapperObj.UserId = usr.Id;
+        wrapperObj.LeadId = opp.Id;
+        wrapperObj.DropOutReason = 'Considering Later / Unable to Proceed';
+        wrapperObj.DropOutSubReason = 'Others – need reason';
         String requestBody = JSON.serialize(wrapperObj);
         
         RestRequest req = new RestRequest();
@@ -131,5 +86,17 @@ public class MobileAPP_DropLeadTest {
         
         MobileAPP_DropLead.DropLead();
         
+    }
+    @isTest
+    static void testUpdateException() {
+        RestRequest req = new RestRequest();
+        req.requestUri = '/services/apexrest/UpdateLead';
+        req.httpMethod = 'POST';
+        req.requestBody = Blob.valueOf('Invalid');
+        RestContext.request = req;
+        
+        RestResponse res = new RestResponse();
+        RestContext.response = res;
+        MobileAPP_DropLead.DropLead();
     }
 }

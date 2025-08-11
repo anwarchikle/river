@@ -45,9 +45,10 @@ global class MobileApp_Dashboard {
             System.debug('totalOpenOpp ====>'+ totalOpenOpp);
 
             Integer totalClosedWon = Database.countQuery(
-                'SELECT COUNT() FROM Opportunity WHERE OwnerId = :userId AND StageName IN (\'Closed Won\')' + addQuery
+                'SELECT COUNT() FROM Order WHERE OwnerId = \'' + userId + '\' AND Status IN (\'New\', \'Draft\', \'Activated\', \'Processing\', ' +
+                '\'Payment Pending\', \'Allotment in Process\', \'Pre Invoice\', \'RTO Registration\', \'Ready For Delivery\')'
             );
-            System.debug('totalClosedWon ====>'+ totalClosedWon);
+            System.debug('totalClosedWon ====> ' + totalClosedWon);
 
             Integer totalDelivered = Database.countQuery(
                 'SELECT COUNT() FROM Order WHERE OwnerId = :userId AND Status IN (\'Vehicle Delivered\')' + addQuery
@@ -68,12 +69,10 @@ global class MobileApp_Dashboard {
             );
             System.debug('totalOldFollowUp ====>'+ totalOldFollowUp);
 
-            String OldfollowUp = 'SELECT Id,Follow_Up_Date__c,Feedback__c,Opportunity__c,Lead__r.Name,Lead__c,Lead__r.Phone,Status__c,Opportunity__r.Name,Opportunity__r.Account.Phone,Opportunity__r.CreatedDate,Lead__r.CreatedDate FROM Follow_Up__c ' + ' WHERE OwnerId = \'' + userId + '\' ' + 'AND Status__c NOT IN (\'Completed\') AND Follow_Up_Date__c < today';
+            String OldfollowUp = 'SELECT Id,FollowUpType__c,Follow_Up_Date__c,Feedback__c,Opportunity__c,Lead__r.Name,Lead__c,Lead__r.Phone,Status__c,Opportunity__r.Name,Opportunity__r.Account.Phone,Opportunity__r.CreatedDate,Lead__r.CreatedDate FROM Follow_Up__c ' + ' WHERE OwnerId = \'' + userId + '\' ' + 'AND Status__c NOT IN (\'Completed\') AND Follow_Up_Date__c < today';
 
             List<Follow_Up__c> OldfollowUpList = Database.query(OldfollowUp);
             system.debug('OldfollowUpList size ===> ' + OldfollowUpList.size());
-
-
 
             Map<String, Object> responseData = new Map<String, Object>{
                 'OpportunitySources' => TaskLeadController.getFieldDependencies('Opportunity','Enquiry_Primary_Source__c','Secondary_Sources__c'),
@@ -109,7 +108,7 @@ global class MobileApp_Dashboard {
         
         List<Follow_Up__c> followUpListOpp = [
             SELECT Id, Follow_Up_Date__c, Feedback__c, Opportunity__c, Lead__c, Status__c,
-            Opportunity__r.Name, Opportunity__r.Account.Phone, Opportunity__r.CreatedDate,
+            Opportunity__r.Name, Opportunity__r.Account.Phone, Opportunity__r.CreatedDate,FollowUpType__c,
             Lead__r.Name, Lead__r.Phone, Lead__r.CreatedDate
             FROM Follow_Up__c
             WHERE (Opportunity__c IN :followUpLeadId)
@@ -135,7 +134,10 @@ global class MobileApp_Dashboard {
                     'LeadPhone'  => f.Opportunity__r.Account.Phone,
                     'LeadName'   => f.Opportunity__r.Name,
                     'LeadId'     => f.Opportunity__c,
-                    'Status'     => f.Status__c
+                    'Status'     => f.Status__c,
+                    'FollowUpDate'   => f.Follow_Up_Date__c,
+                    'Feedback'       => f.Feedback__c,
+                    'FollowUpType' => f.FollowUpType__c
                 };                    
                 Id key = f.Opportunity__c;
                 if (followUpMap.containsKey(key)) {
@@ -145,7 +147,8 @@ global class MobileApp_Dashboard {
                             'FollowUpId'     => old.Id,
                                 'FollowUpDate'   => old.Follow_Up_Date__c,
                                 'Feedback'       => old.Feedback__c,
-                                'Status'         => old.Status__c
+                                'Status'         => old.Status__c,
+                                'FollowUpType' => old.FollowUpType__c
                                 });
                     }
                     mapEntry.put('OldFollowUps', oldFollowUps);

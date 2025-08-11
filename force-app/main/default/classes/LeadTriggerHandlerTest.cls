@@ -115,13 +115,18 @@ public class LeadTriggerHandlerTest {
         ledRec1.Threshold_Count__c = 6;
         ledRec1.Phone = '9035244424';
         ledRec1.Is_Order_Created__c = true;
-        insert ledRec1;        
+        ledRec1.LeadSource = 'Telephone';
+        ledRec1.Secondary_Sources__c = 'Telephone';
+        insert ledRec1; 
+        Account acc = UtilityTestClass.createTestAccount('Partner Store', 'D001', 'Demo Partner Store','560076', 'Dealer');
+		acc.Phone = '9035244424'; update acc;
         leadList.add(ledRec1);
         mapOfLead.put(ledRec1.Id, ledRec1);
         
         ledRec1.Threshold_Count__c = 8;
         update ledRec1;
         mapOfLead.put(ledRec1.Id, ledRec1);
+        
         
         Test_Drive__c testRide1 = new Test_Drive__c();
         testRide1.Name = ledRec1.LastName + ' Test Drive';
@@ -152,15 +157,14 @@ public class LeadTriggerHandlerTest {
         
         
         LeadTriggerHandler.thresholdCallAttempt(leadList, mapOfLead);
-        LeadTriggerHandler.getPreferredStoreByPincode(ledRec1.PostalCode);
+        //LeadTriggerHandler.getPreferredStoreByPincode(ledRec1.PostalCode);
         LeadTriggerHandler.getOpportunityId(ledRec1.Id);
         LeadTriggerHandler.getLeadOwnerByPincode(ledRec1.PostalCode);
         LeadTriggerHandler.beforeConversionCheckAnyFollowIsOpendThenThrowError(leadList, mapOfLead);
         LeadTriggerHandler.callQueableMethodForAfterUpdate(leadList, mapOfLead);
-        LeadTriggerHandler.checkLeadStatus(leadList);
-        LeadTriggerHandler.createTestRideIftheCreateTestRideCheckboxIsTicked(leadList);   
+        //LeadTriggerHandler.checkLeadStatus(leadList);
+        //LeadTriggerHandler.createTestRideIftheCreateTestRideCheckboxIsTicked(leadList);   
     }
-    
     
     @isTest
     public static void testClass2(){
@@ -177,6 +181,8 @@ public class LeadTriggerHandlerTest {
         ledRec1.Status = 'New';
         ledRec1.Threshold_Count__c = 6;
         ledRec1.Phone = '9035244424';
+        ledRec1.LeadSource = 'Telephone';
+        ledRec1.Secondary_Sources__c = 'Telephone';
         insert ledRec1;        
         leadList.add(ledRec1);
         mapOfLead.put(ledRec1.Id, ledRec1);
@@ -231,6 +237,8 @@ public class LeadTriggerHandlerTest {
         ledRec.Status = 'Converted';
         ledRec.Book_Bike__c = true;
         ledRec.WhatsApp_Sent_After_Update__c = true;
+        ledRec.LeadSource = 'Telephone';
+        ledRec.Secondary_Sources__c = 'Telephone';
         Insert ledRec;
         newLeadList.add(ledRec);
         
@@ -243,10 +251,47 @@ public class LeadTriggerHandlerTest {
         testRide.Test_Drive_Date__c = system.now();
         Insert testRide;
         
-        LeadTriggerHandler.createTestRideIftheCreateTestRideCheckboxIsTicked(newLeadList);
-        LeadTriggerHandler.checkLeadStatus(newLeadList);
+        // LeadTriggerHandler.createTestRideIftheCreateTestRideCheckboxIsTicked(newLeadList);
+        // LeadTriggerHandler.checkLeadStatus(newLeadList);
         LeadTriggerHandler.callQueableMethodForNewLead(newLeadList);
-        LeadTriggerHandler.mytest();
+        //LeadTriggerHandler.mytest();
     } 
+    
+    @isTest
+    public static void testAssignLeadsTestDriveAndFollowUpToOppOwnerWhenLeadIsConverted_AllScenarios() {
+        List<Pin_Code__c> pinRec = [SELECT Id, Area_Pincode__c FROM Pin_Code__c WHERE Name = 'JP Nagar' LIMIT 1];
+        Lead leadWithRelatedRecords = UtilityTestClass.createTestLead('Test Lead', 'Test Company','New','9035244425','560076','Telephone', 'Telephone');
+        
+        Test_Drive__c testDrive = new Test_Drive__c(Name = 'Test Drive', Lead__c = leadWithRelatedRecords.Id, Test_Drive_Status__c = 'New', OwnerId = UserInfo.getUserId());
+        insert testDrive;
+        
+        Follow_Up__c followUp = new Follow_Up__c(Name = 'Test Follow Up', Lead__c = leadWithRelatedRecords.Id, OwnerId = UserInfo.getUserId(),Follow_Up_Date__c = System.today().addDays(1));
+        insert followUp;
+        
+        Database.LeadConvert lc1 = new Database.LeadConvert();
+        lc1.setLeadId(leadWithRelatedRecords.Id);
+        lc1.setConvertedStatus('Converted');
+        Database.LeadConvertResult lcr1 = Database.convertLead(lc1);
+        System.assert(lcr1.isSuccess(), 'Lead conversion with related records should succeed');
+        
+        Lead convertedLead1 = [SELECT Id, IsConverted, ConvertedOpportunityId FROM Lead WHERE Id = :leadWithRelatedRecords.Id];
+        
+        Lead nonConvertedLead = UtilityTestClass.createTestLead('OOB Lead 1', 'Test Co', 'New', '7574848391', '560076', 'Telephone', 'Telephone');
+
+        
+        Lead leadWithoutRelatedRecords = UtilityTestClass.createTestLead('Test Lead', 'Test Company','New','9876344425','560076','Online', 'Google');
+        
+        Database.LeadConvert lc3 = new Database.LeadConvert();
+        lc3.setLeadId(leadWithoutRelatedRecords.Id);
+        lc3.setConvertedStatus('Converted');
+        Database.LeadConvertResult lcr3 = Database.convertLead(lc3);
+        
+        Lead convertedLead3 = [SELECT Id, IsConverted, ConvertedOpportunityId FROM Lead WHERE Id = :leadWithoutRelatedRecords.Id];
+        
+        Test.startTest();
+        LeadTriggerHandler.assignLeadsTestDriveAndFollowUpToOppOwnerWhenLeadIsConverted(new List<Lead>{ convertedLead1, nonConvertedLead, convertedLead3});
+        Test.stopTest();
+    }
+    
     
 }

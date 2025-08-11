@@ -49,7 +49,7 @@ global class LeadCreationFromRiverWebsite {
 
         // Query for existing lead based on phone number  
         List<Lead> leads = [SELECT Id, LastName, Company, Email, Phone, City,   
-                            Test_ride_Start_date__c, Test_ride_end_date__c,   
+                            Test_ride_Start_date__c, Test_ride_end_date__c,Isconverted,ConvertedOpportunityId,
                             Dealer_Code__c, Home_Test_Ride__c, Instore_Test_drive__c,Utm_Source__c,Verified__c,Status
                             FROM Lead WHERE Phone = :phone LIMIT 1];  
 

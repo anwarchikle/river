@@ -41,6 +41,13 @@ global class MobileApp_EventFollowUp {
             String query = 'SELECT Id, Opportunity__r.Follow_Up_Count__c, Opportunity__r.Rating__c, Feedback__c, Opportunity__c, Next_Follow_Up_Date__c, Lead__c, Status__c, Opportunity__r.Name, Opportunity__r.Account.Phone, ' +
                'Opportunity__r.CreatedDate, Lead__r.Name, Lead__r.Phone, Lead__r.CreatedDate,FollowUpType__c,Follow_Up_Date__c ' +'FROM Follow_Up__c ' + 'WHERE OwnerId = \'' + userId + '\' ' + 'AND Status__c != \'Completed\' ' + addQuery;
 
+            List<Follow_Up__c> followUpListOpp = [
+                SELECT Id, Follow_Up_Date__c, Feedback__c, Opportunity__c, Status__c,
+                Opportunity__r.Name, Opportunity__r.Account.Phone, Opportunity__r.CreatedDate,FollowUpType__c,
+                Lead__r.Name, Lead__r.Phone, Lead__r.CreatedDate
+                FROM Follow_Up__c 
+                WHERE OwnerId =: userId AND Status__c = 'Completed' AND CreatedDate <= Today];
+
             List<Follow_Up__c> followUps = Database.query(query);
 
             List<Map<String, Object>> result = new List<Map<String, Object>>();
@@ -54,10 +61,11 @@ global class MobileApp_EventFollowUp {
                     'LeadName' => t.Opportunity__c != null && t.Opportunity__r.Name != null ? t.Opportunity__r.Name : '',
                     'FollowUpCount' =>t.Opportunity__c != null && t.Opportunity__r.Follow_Up_Count__c != null ? t.Opportunity__r.Follow_Up_Count__c : 0 ,
                     'NextFollowUp' => t.Next_Follow_Up_Date__c,
-                    'LeadId' => t.Opportunity__c,
+                    'LeadId' => t.Opportunity__c,   
                     'FollowUpStatus' => t.Status__c,
                     'FollowUpType' => t.FollowUpType__c,
-                    'FollowUpDate' => t.Follow_Up_Date__c
+                    'FollowUpDate' => t.Follow_Up_Date__c,
+                    'followUpListOpp' => followUpListOpp
                 });
             }
 

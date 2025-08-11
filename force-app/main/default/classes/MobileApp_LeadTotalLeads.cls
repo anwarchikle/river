@@ -356,7 +356,7 @@ global class MobileApp_LeadTotalLeads {
         return followUpMaps;
     }
     
-    public static void mytest(){
+    /*public static void mytest(){
         Integer i=0;
         i++;i++;
         i++;i++;
@@ -682,6 +682,6 @@ global class MobileApp_LeadTotalLeads {
         i++;i++;
         i++;i++;
         i++;i++;
-    }
+    }*/
     
 }

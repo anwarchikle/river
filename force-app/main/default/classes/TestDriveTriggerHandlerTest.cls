@@ -1,46 +1,47 @@
-/**
-* @description       : 
-* @author            : Aniket Karmakar
-* @group             : 
-* @last modified on  : 02-05-2025
-* @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-**/
-@IsTest
-public class TestDriveTriggerHandlerTest {
-    @IsTest
-    public static void afterInsert(){
+@IsTest(seeAllData=true)
+public class TestDriveTriggerHandlerTest {  
+
+    @isTest
+    public static void testDriveClass(){
         
-        WhatsappIntegration__c mockIntegration = new WhatsappIntegration__c(
-            Name = 'WhatsApp API',
-            API_Endpoint__c = 'https://api.whatsapp.com/send',
-            API_Key__c = 'mock-api-key'
-            //test_ride_done__c='anything.jpg'
-        );
-        insert mockIntegration;
+        Lead objLead = new Lead( FirstName = 'Test', LastName = 'Sample', Company = 'Testing Sample Co',PostalCode = '560068',LeadSource='Telephone',Secondary_Sources__c ='Telephone',Phone='9876543210' );  
+        insert objLead;  
+
+        List<Test_Drive__c> listOftestDrive = new List<Test_Drive__c>();
+        Map<Id,Test_Drive__c> mapOftestDrive = new Map<Id,Test_Drive__c>();
+        Test_Drive__c testDrive1 = new Test_Drive__c(Name='Drive 1', Lead__c = objLead.Id, Ride_Type__c= 'HTR',Test_Ride_Date__c=System.Now(),Test_Drive_Status__c = 'New',
+                                                     Address__Street__s = 'ABCD',Address__City__s = 'HIJK',Address__PostalCode__s = '560068',Address__StateCode__s = 'KA');
+        Insert testDrive1;
+        listOftestDrive.add(testDrive1);
         
-        Store_Details__mdt dealerCodes1 = new Store_Details__mdt(Name__c='test',Dealer_Code__c='292001',IsActive__c=true);
-        Store_Details__mdt dealerCodes2 = new Store_Details__mdt(Name__c='test2',Dealer_Code__c='292002',IsActive__c=true);  
-        
-        List<Store_Details__mdt> storeDetails = [SELECT Name__c, Dealer_Code__c, IsActive__c FROM Store_Details__mdt WHERE IsActive__c = true];
+        testDrive1.Test_Drive_Status__c = 'Scheduled';
+        update testDrive1;
+        mapOftestDrive.put(testDrive1.Id,testDrive1);
         
         
-        Lead testLead1 = new Lead(FirstName = 'Test', LastName = 'Ride', Company = 'Test Company 1', LeadSource = 'Google', PostalCode='560078',Dealer_Code__c='292002', Phone = '1234567890');
-        insert testLead1; 
-        Lead testLead2 = new Lead(FirstName = 'Test2', LastName = 'Ride2', Company = 'Test Company 2', LeadSource = 'Bike Dekho', PostalCode='560078',Dealer_Code__c='292002', Phone = '0987654321');
-        insert testLead2;         
+        Lead objLead1 = new Lead( FirstName = 'Test', LastName = 'Sample', Company = 'Testing Sample Co',PostalCode = '560068',LeadSource='Online',Secondary_Sources__c ='River Website',Phone='9876823210',Instore_Test_drive__c =true);  
+        insert objLead1;  
+
+        List<Test_Drive__c> listOftestDrive1 = new List<Test_Drive__c>();
+        Map<Id,Test_Drive__c> mapOftestDrive1 = new Map<Id,Test_Drive__c>();
+        Test_Drive__c testDrive2 = new Test_Drive__c(Name='Drive 1', Lead__c = objLead1.Id, Ride_Type__c= 'STR',Test_Ride_Date__c=System.Now(),Test_Drive_Status__c = 'New',
+                                                     Address__Street__s = 'ABCD',Address__City__s = 'HIJK',Address__PostalCode__s = '560068',Address__StateCode__s = 'KA');
+        Insert testDrive2;
+        listOftestDrive.add(testDrive2);
         
-        Test_Drive__c testDrive1 = new Test_Drive__c(Name='Drive 1', Lead__c = testLead1.Id, Ride_Type__c= 'HTR',Test_Ride_Date__c=System.Now());
-        Test_Drive__c testDrive2 = new Test_Drive__c(Name='Drive 2', Lead__c = testLead2.Id, Ride_Type__c= 'STR',Test_Ride_Date__c=System.Now().addDays(+3));
+        testDrive2.Test_Drive_Status__c = 'Completed';
+        update testDrive2;
+        mapOftestDrive.put(testDrive2.Id,testDrive2);
+
+        Database.LeadConvert lc = new database.LeadConvert();  
+        lc.setLeadId( objLead1.Id );  
+        lc.setDoNotCreateOpportunity( false );  
+        lc.setConvertedStatus( 'Converted' );  
         
-        Test.startTest();
+        Database.LeadConvertResult lcr = Database.convertLead(lc, false);  
         
-        insert testDrive1;
-        insert testDrive2;
-        
-        TestDriveTriggerHandler.mytest();
-        
-        Test.stopTest();
+        //TestDriveTriggerHandler.updateTestDriveStatus(testDrive2.Id,'Canceled','Not Interested / Not Serious Casual enquiry','Customer not enquired','NA');
         
     }
-  
+    
 }

@@ -115,7 +115,7 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    private void processLeadsWithAccountCheckHQInsert(List<Lead> leadsToInsert) {
+    @TestVisible private void processLeadsWithAccountCheckHQInsert(List<Lead> leadsToInsert) {
         Set<String> leadPhones = new Set<String>();
         Map<String, Lead> phoneToLeadMap = new Map<String, Lead>();
         Set<String> phonesWithAccounts = new Set<String>();
@@ -309,7 +309,7 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    private void processOpportunitiesWithAccountCheckDMSInsert(List<Account> accountsToInsert, List<Contact> contactsToInsert, List<Opportunity> opportunitiesToInsert) {
+    @TestVisible private void processOpportunitiesWithAccountCheckDMSInsert(List<Account> accountsToInsert, List<Contact> contactsToInsert, List<Opportunity> opportunitiesToInsert) {
         Set<String> oppPhones = new Set<String>();
         Map<String, Opportunity> phoneToOppMap = new Map<String, Opportunity>();
         Set<String> duplicatePhones = new Set<String>();
@@ -556,6 +556,7 @@ public class CSVUploadQueueable implements Queueable {
                     System.debug('16.1 ==============>');
                     setOfInsertedOpportunity.add(opp.Id);
                 }
+                
                 List<Opportunity> oppList = [Select Id,Name,Phone__c from Opportunity Where Id IN: setOfInsertedOpportunity];
                 List<Follow_Up__c> followUpListToBeInserted = new List<Follow_Up__c>();
                 for(Opportunity opp : oppList){
@@ -629,7 +630,7 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    private void mapOpportunityFields(Account acc, Contact con, Opportunity opp, String fieldName, String value) {
+    @TestVisible private void mapOpportunityFields(Account acc, Contact con, Opportunity opp, String fieldName, String value) {
         if (fieldName.startsWithIgnoreCase('name')) {
             acc.Name = value;
             con.LastName = value;
@@ -655,7 +656,7 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    private void mapLeadFields(Lead led, String fieldName, String value) {
+    @TestVisible private void mapLeadFields(Lead led, String fieldName, String value) {
         if (fieldName == 'lastname' && String.isBlank(led.Company)) {
             led.Company = value;
         }

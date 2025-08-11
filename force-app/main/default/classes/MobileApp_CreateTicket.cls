@@ -76,6 +76,7 @@ global class MobileApp_CreateTicket {
             ];
 
             String baseUrl = 'https://' + System.Url.getOrgDomainUrl().getHost();
+            //String baseUrl = 'https://rivermobilityprivatelimited2--riverlms.sandbox.file.force.com';
             System.debug('baseUrl ====>'+baseUrl);
 
             for (ContentVersion cv : insertedVersions) {
@@ -88,7 +89,7 @@ global class MobileApp_CreateTicket {
 
                 imageHtml += '<img style="height:100px;width:100px;" src="' + baseUrl +
                     '/servlet/rtaImage?eid=' + ticket.Id +
-                    '&amp;feoid=' + cv.ContentDocumentId +
+                    '&feoid=' + cv.ContentDocumentId +
                     '" alt="' + cv.Title + '"/>';
             }
 

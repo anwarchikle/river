@@ -1,4 +1,3 @@
-
 @RestResource(urlMapping='/EventClosedOppAndOrder')
 global class MobileApp_EventOpenOpp {
     @Httppost
@@ -41,8 +40,8 @@ global class MobileApp_EventOpenOpp {
                 addQuery = ' AND CreatedDate >= :startDate AND CreatedDate < :endDate';
             }
             //\'Drop Out\',
-           String query = 'SELECT Id, OpportunityId,Opportunity.AccountId,Order_Id__c,Opportunity.Account.Phone,AccountId,Account.Phone,'+
-            'Account.Name,Opportunity.Name, Status, Grand_Total__c, Remaining_Amount__c, Name,(Select Id,Description__c from Comments__r  Order by CreatedDate DESC )'+
+           String query = 'SELECT Id, OrderNumber,OpportunityId,Opportunity.AccountId,Order_Id__c,Opportunity.Account.Phone,AccountId,Account.Phone,PME_Drive__c,Registration_Date__c,Delivery_Date__c,'+
+            'Account.Name,Opportunity.Name, Status, Grand_Total__c, Remaining_Amount__c, Name,(Select Id,Description__c,CreatedDate from Comments__r  Order by CreatedDate DESC )'+
                ' FROM Order ' + 'WHERE OwnerId = \'' + userId + '\' ' + 'AND Status IN (\'New\', \'Draft\', \'Activated\', \'Processing\', ' +
                '\'Payment Pending\', \'Allotment in Process\', \'Pre Invoice\', ' + '\'RTO Registration\', \'Ready For Delivery\') ' + addQuery;
 
@@ -58,9 +57,12 @@ global class MobileApp_EventOpenOpp {
                         'LeadPhone'       => t.OpportunityId != null && t.Opportunity.AccountId != null && t.Opportunity.Account.Phone != null ? t.Opportunity.Account.Phone : t.AccountId != null && t.Account.Phone != null ? t.Account.Phone : '' ,
                         'LeadName'        => t.OpportunityId != null && t.Opportunity.Name != null ? t.Opportunity.Name : t.AccountId != null && t.Account.Name != null ? t.Account.Name : '',
                         'RemainingAmount' => t.Remaining_Amount__c,
-                        'OrdId'         => t.Order_Id__c,
-                        'Status'=> t.Status,
-                        'comments'=> t.Comments__r
+                        'OrdId'           => t.OrderNumber,
+                        'Status'          => t.Status,
+                        'PMEDrive'        => t.PME_Drive__c,
+                        'RTORegistrationDate' => t.Registration_Date__c,
+                        'PurchaseDate'  => t.Delivery_Date__c,
+                        'comments'        => t.Comments__r
                     });
                 }
             }

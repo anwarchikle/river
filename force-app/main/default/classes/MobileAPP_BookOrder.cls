@@ -115,6 +115,7 @@ global class MobileAPP_BookOrder {
                     }
                     
                     Pricebook2 pb;
+                    system.debug('pincode.City__r.Price_Book__c ====>'+ pincode.City__r.Price_Book__c);
                     if(pincode != null){
                         pb = [SELECT Id, Name, IsActive, IsStandard FROM Pricebook2 WHERE IsActive = true AND Id = :pincode.City__r.Price_Book__c LIMIT 1];
                         system.debug('4=================>');
