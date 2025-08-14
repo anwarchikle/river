@@ -28,20 +28,20 @@ global class MobileApp_EventTestDrive {
 
             String addQuery = '';
             if (filterDate == 'THIS_WEEK') {
-                addQuery = ' AND CreatedDate = THIS_WEEK';
+                addQuery = ' AND Test_Drive_Date__c = THIS_WEEK';
             } else if (filterDate == 'THIS_MONTH') {
-                addQuery = ' AND CreatedDate = THIS_MONTH';
+                addQuery = ' AND Test_Drive_Date__c = THIS_MONTH';
             }else if(filterDate == 'TODAY') {
-                addQuery = ' AND CreatedDate = TODAY';
+                addQuery = ' AND Test_Drive_Date__c = TODAY';
             }  
             else if (filterDate != null) {
                 Date startDate = Date.valueOf(filterDate);
                 Date endDate = (filterEndRange != null) ? Date.valueOf(filterEndRange) : startDate.addDays(1);
-                addQuery = ' AND CreatedDate >= :startDate AND CreatedDate < :endDate';
+                addQuery = ' AND Test_Drive_Date__c >= :startDate AND Test_Drive_Date__c < :endDate';
             }
 
             String query = 'SELECT Id, Test_Drive_Status__c, Opportunity__r.Name,Opportunity__r.AccountId ,Opportunity__r.Account.Email__c, Opportunity__r.Account.Phone, Opportunity__r.CreatedDate, Start_Date__c, End_Date__c, '+ 
-            'Opportunity__c,Test_Drive_Date__c,Address__c,Ride_Type__c FROM Test_Drive__c WHERE OwnerId = :userId AND Test_Drive_Status__c NOT IN (\'Completed\', \'Canceled\') ' + addQuery;
+            'Opportunity__c,Test_Drive_Date__c,Address__c,Ride_Type__c FROM Test_Drive__c WHERE OwnerId = :userId AND Test_Drive_Status__c NOT IN (\'New\',\'Completed\',\'No Show\',\'Canceled\') ' + addQuery;
             List<Test_Drive__c> testDrives = Database.query(query);
             List<Map<String, Object>> result = new List<Map<String, Object>>();
 
@@ -60,7 +60,6 @@ global class MobileApp_EventTestDrive {
                     });
                 }
             }
-            
 
             Set<String> TestDriveStatuses = TaskLeadController.statusPicklistValues('Test_Drive__c','Test_Drive_Status__c');
             Set<String> TestDriveRideType = TaskLeadController.statusPicklistValues('Test_Drive__c','Ride_Type__c');

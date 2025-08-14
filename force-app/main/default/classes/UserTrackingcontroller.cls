@@ -97,7 +97,7 @@ public class UserTrackingcontroller {
                     }
                     update agmList;
                     if(userTrackRec.Checkin_Datetime__c != null){
-                        SobjectLoadAssignment.ExecuteLoadAssignment(5);
+                        SobjectLoadAssignment.ExecuteLoadAssignment(1000);
                     }
                 }
                 eventStatus = 'Checkin successful';

@@ -62,8 +62,7 @@ global class MobileApp_CreateTicket {
                     ));
                 }
             }
-
-
+            
             insert versionList;
 
             List<ContentDocumentLink> linksToInsert = new List<ContentDocumentLink>();

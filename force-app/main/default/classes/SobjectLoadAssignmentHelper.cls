@@ -12,84 +12,122 @@
 **/
 
 public class SobjectLoadAssignmentHelper {
-    Public Static Map<Id,Assignment_Group__c> rv_MapOfAGIdByAG = new Map<Id,Assignment_Group__c>();
-    Public Static Map<Id,List<Assignment_Group_Member__c>> rv_MapOfAGIDByASMList = new Map<Id,List<Assignment_Group_Member__c>>();
-    
+    public static Map<Id, Assignment_Group__c> rv_MapOfAGIdByAG = new Map<Id, Assignment_Group__c>();
+    public static Map<Id, List<Assignment_Group_Member__c>> rv_MapOfAGIDByASMList = new Map<Id, List<Assignment_Group_Member__c>>();
+
     public static void ExecuteSobjectOwnerAssignment(List<Sobject> sObjectList, String GroupId, Id queueId) {
         system.debug('sObjectList=========>' + sObjectList);
         system.debug('GroupId=========>' + GroupId);
         system.debug('queueId=========>' + queueId);
-        try{
+        try {
             Integer lastAllocatedId = 0;
             rv_MapOfAGIdByAG = SobjectLoadAssignmentUtility.GetassigmentGroup();
-            
-            List<Assignment_Group_Member__c> rv_AssignmentGroupMember = [SELECT Id, Assignment_Group__c, Active__c, Last_Allocated_RRID__c, 
-                                                                         Max_Case_Per_Day__c, Out_Of_Office__c, Group_Member__c, 
-                                                                         Max_Sobject_Assignment_Count__c, Assignment_Id__c
-                                                                         FROM Assignment_Group_Member__c 
-                                                                         WHERE Assignment_Group__r.isActive__c = true 
-                                                                         AND Active__c = true 
-                                                                         AND Assignment_Group__c = :GroupId];
-            
-            Map<Decimal, Id> mapofUserRRIDByUserId = new Map<Decimal, Id>();
+
+            List<Assignment_Group_Member__c> rv_AssignmentGroupMember = [
+                SELECT Id, Assignment_Group__c, Active__c, Last_Allocated_RRID__c,
+                       Max_Case_Per_Day__c, Out_Of_Office__c, Group_Member__c, Known_languages__c,
+                       Max_Sobject_Assignment_Count__c, Assignment_Id__c
+                FROM Assignment_Group_Member__c
+                WHERE Assignment_Group__r.isActive__c = true
+                AND Active__c = true
+                AND Assignment_Group__c = :GroupId
+            ];
+
             Map<Decimal, Id> mapofAvailableUserRRIDByUserId = new Map<Decimal, Id>();
-            Map<Id, Integer> userAssignedCount = new Map<Id, Integer>();
-            
+            Map<Id, Set<String>> userLanguagesMap = new Map<Id, Set<String>>();
             for (Assignment_Group_Member__c agmRec : rv_AssignmentGroupMember) {
-                mapofUserRRIDByUserId.put(agmRec.Assignment_Id__c, agmRec.Group_Member__c);
                 if (!agmRec.Out_Of_Office__c) {
                     mapofAvailableUserRRIDByUserId.put(agmRec.Assignment_Id__c, agmRec.Group_Member__c);
-                    userAssignedCount.put(agmRec.Group_Member__c, 0);
                 }
+                Set<String> langs = new Set<String>();
+                if (agmRec.Known_languages__c != null) {
+                    langs.addAll(agmRec.Known_languages__c.split(';'));
+                }
+                userLanguagesMap.put(agmRec.Group_Member__c, langs);
             }
-            
-            // Get today's assigned leads count for each user
+
             Map<Id, Integer> assignedLeadsToday = new Map<Id, Integer>();
-            List<AggregateResult> assignedCounts = [SELECT OwnerId, COUNT(Id) recordCount 
-                                                    FROM Lead 
-                                                    WHERE OwnerId IN :userAssignedCount.keySet() 
-                                                    AND CreatedDate = TODAY 
-                                                    GROUP BY OwnerId];
-            for (AggregateResult ar : assignedCounts) {
+            for (AggregateResult ar : [
+                SELECT OwnerId, COUNT(Id) recordCount
+                FROM Lead
+                WHERE OwnerId IN :userLanguagesMap.keySet()
+                AND CreatedDate = TODAY
+                GROUP BY OwnerId
+            ]) {
                 assignedLeadsToday.put((Id) ar.get('OwnerId'), (Integer) ar.get('recordCount'));
             }
-            
+
+            Set<String> postalCodes = new Set<String>();
+            for (SObject obj : sObjectList) {
+                if (obj.getSObjectType() == Lead.sObjectType) {
+                    String postalCode = (String) obj.get('PostalCode');
+                    if (postalCode != null) postalCodes.add(postalCode);
+                }
+            }
+            Map<String, Set<String>> pincodeLanguagesMap = new Map<String, Set<String>>();
+            if (!postalCodes.isEmpty()) {
+                for (Pin_Code__c pc : [
+                    SELECT Area_Pincode__c, Languages__c
+                    FROM Pin_Code__c
+                    WHERE Area_Pincode__c IN :postalCodes
+                ]) {
+                    Set<String> langs = new Set<String>();
+                    if (pc.Languages__c != null) langs.addAll(pc.Languages__c.split(';'));
+                    pincodeLanguagesMap.put(pc.Area_Pincode__c, langs);
+                }
+            }
+
             if (rv_AssignmentGroupMember.size() == rv_MapOfAGIdByAG.get(GroupId).Last_Allocated_RRid__c) {
                 lastAllocatedId = 1;
             } else {
                 lastAllocatedId = (Integer) rv_MapOfAGIdByAG.get(GroupId).Last_Allocated_RRid__c + 1;
             }
-            
+
             Boolean isUserAssigned;
             for (Sobject objectRec : sObjectList) {
                 String sObjectType = String.valueOf(objectRec.getSObjectType());
                 isUserAssigned = true;
+
                 if (!mapofAvailableUserRRIDByUserId.isEmpty()) {
                     while (isUserAssigned) {
                         if (mapofAvailableUserRRIDByUserId.containsKey(lastAllocatedId)) {
                             Id userId = mapofAvailableUserRRIDByUserId.get(lastAllocatedId);
                             Integer assignedCount = assignedLeadsToday.containsKey(userId) ? assignedLeadsToday.get(userId) : 0;
-                            decimal maxCases = 0;
-                            
+                            Decimal maxCases = 0;
                             for (Assignment_Group_Member__c agm : rv_AssignmentGroupMember) {
                                 if (agm.Group_Member__c == userId) {
-                                    system.debug('1=========>');
                                     maxCases = agm.Max_Case_Per_Day__c;
                                     break;
                                 }
                             }
-                            
-                            if (assignedCount < maxCases) {
-                                system.debug('2=========>');
-                                objectRec.put('OwnerId', userId);
-                                system.debug('userId=========>' + userId);
 
-                                if (sObjectType == 'Opportunity'){
+                            Boolean assignThisUser = false;
+                            if (assignedCount < maxCases) {
+                                if (sObjectType == 'Lead') {
+                                    String postalCode = (String) objectRec.get('PostalCode');
+                                    Set<String> requiredLanguages = pincodeLanguagesMap.get(postalCode);
+                                    if (requiredLanguages != null && !requiredLanguages.isEmpty()) {
+                                        Set<String> userLangs = userLanguagesMap.get(userId);
+                                        if (userLangs != null) {
+                                            Set<String> temp = new Set<String>(userLangs);
+                                            temp.retainAll(requiredLanguages);
+                                            assignThisUser = !temp.isEmpty();
+                                        }
+                                    } else {
+                                        assignThisUser = true;
+                                    }
+                                } else {
+                                    assignThisUser = true;
+                                }
+                            }
+
+                            if (assignThisUser) {
+                                objectRec.put('OwnerId', userId);
+                                if (sObjectType == 'Opportunity') {
                                     objectRec.put('StageName', 'Test Ride Scheduled');
                                 }
                                 objectRec.put('Is_Assigned_to_User__c', true);
                                 objectRec.put('AG_Related_to__c', GroupId);
-                                system.debug('AG_Related_to__c=========>' + GroupId);
                                 objectRec.put('Sobject_Load_Balancing_Executed__c', true);
                                 assignedLeadsToday.put(userId, assignedCount + 1);
                                 isUserAssigned = false;
@@ -103,61 +141,15 @@ public class SobjectLoadAssignmentHelper {
                     }
                 }
             }
-            
-            Assignment_Group__c ov_AGTobeUpdated = new Assignment_Group__c();
-            ov_AGTobeUpdated.Id = GroupId;
-            ov_AGTobeUpdated.Last_Allocated_RRid__c = lastAllocatedId - 1;
+
+            Assignment_Group__c ov_AGTobeUpdated = new Assignment_Group__c(
+                Id = GroupId,
+                Last_Allocated_RRid__c = lastAllocatedId - 1
+            );
             update ov_AGTobeUpdated;
             update sObjectList;
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.debug('Error Message =======> ' + e.getMessage() + ' at line number =======> ' + e.getLineNumber());
         }
     }
-    public static void testCodeCoverage(){
-        Integer j=0;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-        j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;j++;
-
-    }
-    
 }

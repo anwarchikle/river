@@ -27,26 +27,36 @@ global class MobileApp_Dashboard {
             String filterEndRange = wrp.FilterEndRange;
 
             String addQuery = '';
+            String testRideDate = '';
+            String followUpDate = '';
             if (filterDate == 'THIS_WEEK') {
                 addQuery = ' AND CreatedDate = THIS_WEEK';
+                testRideDate = ' AND Test_Drive_Date__c = THIS_WEEK';
+                followUpDate = ' AND Follow_Up_Date__c = THIS_WEEK';
             } else if (filterDate == 'THIS_MONTH') {
                 addQuery = ' AND CreatedDate = THIS_MONTH';
+                testRideDate = ' AND Test_Drive_Date__c = THIS_MONTH';
+                followUpDate = ' AND Follow_Up_Date__c = THIS_MONTH';
             }else if(filterDate == 'TODAY') {
                 addQuery = ' AND CreatedDate = Today';
+                testRideDate = ' AND Test_Drive_Date__c = Today';
+                followUpDate = ' AND Follow_Up_Date__c = Today';
             }  else if (filterDate != null) {
                 Date startDate = Date.valueOf(filterDate);
                 Date endDate = (filterEndRange != null) ? Date.valueOf(filterEndRange) : startDate.addDays(1);
                 addQuery = ' AND CreatedDate >= :startDate AND CreatedDate < :endDate';
+                testRideDate = ' AND Test_Drive_Date__c >= :startDate AND Test_Drive_Date__c < :endDate';
+                followUpDate = ' AND Follow_Up_Date__c >= :startDate AND Follow_Up_Date__c < :endDate';
             }
 
             Integer totalOpenOpp = Database.countQuery(
-                'SELECT COUNT() FROM Opportunity WHERE OwnerId = :userId AND StageName NOT IN (\'Drop Out\', \'Closed Won\')' + addQuery
+                'SELECT COUNT() FROM Opportunity WHERE OwnerId = :userId AND StageName NOT IN (\'Drop Out\', \'Closed Won\',\'No Show\')' + addQuery
             );
             System.debug('totalOpenOpp ====>'+ totalOpenOpp);
 
             Integer totalClosedWon = Database.countQuery(
                 'SELECT COUNT() FROM Order WHERE OwnerId = \'' + userId + '\' AND Status IN (\'New\', \'Draft\', \'Activated\', \'Processing\', ' +
-                '\'Payment Pending\', \'Allotment in Process\', \'Pre Invoice\', \'RTO Registration\', \'Ready For Delivery\')'
+                '\'Payment Pending\', \'Allotment in Process\', \'Pre Invoice\', \'RTO Registration\', \'Ready For Delivery\')' + addQuery
             );
             System.debug('totalClosedWon ====> ' + totalClosedWon);
 
@@ -56,12 +66,14 @@ global class MobileApp_Dashboard {
             System.debug('totalDelivered ====>'+ totalDelivered);
 
             Integer totalTestDrive = Database.countQuery(
-                'SELECT COUNT() FROM Test_Drive__c WHERE OwnerId = :userId AND Test_Drive_Status__c NOT IN (\'Completed\', \'Canceled\')' + addQuery
+                'SELECT COUNT() FROM Test_Drive__c WHERE OwnerId = :userId AND Test_Drive_Status__c NOT IN (\'New\',\'Completed\',\'No Show\', \'Canceled\')' + testRideDate
             );
 
             System.debug('totalTestDrive ====>'+ totalTestDrive);
+
+            
             Integer totalFollowUp = Database.countQuery(
-                'SELECT COUNT() FROM Follow_Up__c WHERE OwnerId = :userId AND Status__c NOT IN (\'Completed\')' + addQuery
+                'SELECT COUNT() FROM Follow_Up__c WHERE OwnerId = :userId AND Status__c NOT IN (\'Completed\')  AND Status__c != null  AND Lead__c = null ' + followUpDate
             );
             System.debug('totalFollowUp ====>'+ totalFollowUp);
             Integer totalOldFollowUp = Database.countQuery(

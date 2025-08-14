@@ -112,9 +112,9 @@ global class MobileAPP_CreateFollowUp {
             }
             followUp.Follow_Up_Date__c = followUpDateTime;
             //followUp.Feedback__c = followUpFeedback;
-            followUp.Status__c = 'New';
+            //followUp.Status__c = 'New';
             followUp.followUpType__c = followUpType;
-            followUp.Status__c = followUpReason;
+            followUp.Status__c = followUpReason != null ? followUpReason : 'New';
             followUp.Follow_Up_Remarks__c = followUpSubReason;
             followUp.Feedback__c = followUpOther;
             insert followUp;

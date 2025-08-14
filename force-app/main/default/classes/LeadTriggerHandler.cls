@@ -852,15 +852,15 @@ public class LeadTriggerHandler {
         
     }
     
-    // public static String getPreferredStoreByPincode(String postalCode) {
-    //     List<Pin_Code__c> pincodeList = [SELECT Id, Dealer_Service_Center__r.Center_Code__c FROM Pin_Code__c WHERE Area_Pincode__c = :postalCode LIMIT 1];
+    public static String getPreferredStoreByPincode(String postalCode) {
+        List<Pin_Code__c> pincodeList = [SELECT Id, Dealer_Service_Center__r.Center_Code__c FROM Pin_Code__c WHERE Area_Pincode__c = :postalCode LIMIT 1];
     
-    //     if (!pincodeList.isEmpty() && pincodeList[0].Dealer_Service_Center__c != null) {
-    //         return pincodeList[0].Dealer_Service_Center__r.Center_Code__c;
-    //     }else{
-    //         return '123456';
-    //     }
-    // }
+        if (!pincodeList.isEmpty() && pincodeList[0].Dealer_Service_Center__c != null) {
+            return pincodeList[0].Dealer_Service_Center__r.Center_Code__c;
+        }else{
+            return 'Out Of Coverage ';
+        }
+    }
     
     @AuraEnabled public static String getOpportunityId(String recordId) {
         try {

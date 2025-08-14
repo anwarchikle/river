@@ -27,20 +27,21 @@ global class MobileApp_EventFollowUp {
 
             String addQuery = '';
             if (filterDate == 'THIS_WEEK') {
-                addQuery = ' AND CreatedDate = THIS_WEEK';
+                addQuery = ' AND Follow_Up_Date__c = THIS_WEEK';
             } else if (filterDate == 'THIS_MONTH') {
-                addQuery = ' AND CreatedDate = THIS_MONTH';
+                addQuery = ' AND Follow_Up_Date__c = THIS_MONTH';
             }else if(filterDate == 'TODAY') {
-                addQuery = ' AND CreatedDate = TODAY';
+                addQuery = ' AND Follow_Up_Date__c = TODAY';
             }else if (filterDate != null) {
                 Date startDate = Date.valueOf(filterDate);
                 Date endDate = (filterEndRange != null) ? Date.valueOf(filterEndRange) : startDate.addDays(1);
-                addQuery = ' AND CreatedDate >= :startDate AND CreatedDate < :endDate';
+                addQuery = ' AND Follow_Up_Date__c >= :startDate AND Follow_Up_Date__c < :endDate';
             }
 
             String query = 'SELECT Id, Opportunity__r.Follow_Up_Count__c, Opportunity__r.Rating__c, Feedback__c, Opportunity__c, Next_Follow_Up_Date__c, Lead__c, Status__c, Opportunity__r.Name, Opportunity__r.Account.Phone, ' +
-               'Opportunity__r.CreatedDate, Lead__r.Name, Lead__r.Phone, Lead__r.CreatedDate,FollowUpType__c,Follow_Up_Date__c ' +'FROM Follow_Up__c ' + 'WHERE OwnerId = \'' + userId + '\' ' + 'AND Status__c != \'Completed\' ' + addQuery;
+                           'Opportunity__r.CreatedDate, Lead__r.Name, Lead__r.Phone, Lead__r.CreatedDate,FollowUpType__c,Follow_Up_Date__c ' +'FROM Follow_Up__c ' + 'WHERE OwnerId = \'' + userId + '\' ' + ' AND Lead__c = null AND Status__c != null AND Status__c != \'Completed\' ' + addQuery;
 
+            System.debug('query ======>' + query);
             List<Follow_Up__c> followUpListOpp = [
                 SELECT Id, Follow_Up_Date__c, Feedback__c, Opportunity__c, Status__c,
                 Opportunity__r.Name, Opportunity__r.Account.Phone, Opportunity__r.CreatedDate,FollowUpType__c,
