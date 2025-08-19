@@ -107,6 +107,7 @@ public class MobileApp_Wrapper {
         public String FollowUpId{get; set;}
         public boolean FollowUpStatusCompleted{get; set;}
         public String followUprating{get; set;}
+        public String followUpfeedBack{get; set;}
     }
     
     //Book Order

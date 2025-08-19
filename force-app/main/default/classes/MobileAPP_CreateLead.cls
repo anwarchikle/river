@@ -215,6 +215,7 @@ global class MobileAPP_CreateLead {
                     acc.Center_Code__c = DealerCode;
                     acc.Store_Name__c = StoreName;
                     acc.BillingCity = CityName;
+                    acc.Type = 'Customer';
                     insert acc;
                     
                     Contact con = new Contact();

@@ -500,35 +500,41 @@ public class TestDriveTriggerHandler {
     }
 
     public static void updateOpportunityStatusOnTestRideStatusUpdate(List<Test_Drive__c> newList,Map<Id, Test_Drive__c> oldMapTestDrive){
-        List<Opportunity> oppListToBeUpdated = new List<Opportunity>();
+        Map<Id, Opportunity> oppMapToBeUpdated = new Map<Id, Opportunity>();
+
         for(Test_Drive__c testDriveRec : newList){
-            if(testDriveRec.Opportunity__c != null && oldMapTestDrive.containsKey(testDriveRec.Id) && oldMapTestDrive.get(testDriveRec.Id).Test_Drive_Status__c !=  testDriveRec.Test_Drive_Status__c
-                && (testDriveRec.Test_Drive_Status__c == 'Scheduled' || testDriveRec.Test_Drive_Status__c == 'Completed' || testDriveRec.Test_Drive_Status__c == 'Canceled' 
-                || testDriveRec.Test_Drive_Status__c == 'Reschedule' || testDriveRec.Test_Drive_Status__c == 'Test Ride Confirmed')){
-                    Opportunity opp = new Opportunity();
-                    opp.Id = testDriveRec.Opportunity__c;
-                    if(testDriveRec.Test_Drive_Status__c == 'Scheduled'){
-                        opp.StageName = 'Test Ride Scheduled';
-                    }
-                    if(testDriveRec.Test_Drive_Status__c == 'Reschedule'){
-                        opp.StageName = 'Test Ride Re-Scheduled';
-                    }
-                    if(testDriveRec.Test_Drive_Status__c == 'Completed'){
-                        opp.StageName = 'Test Ride Completed';
-                    }
-                    if(testDriveRec.Test_Drive_Status__c == 'No Show'){
-                        opp.StageName = 'No Show' ;
-                    }
-                    if(testDriveRec.Test_Drive_Status__c == 'Canceled'){
-                       opp.StageName = 'Drop Out' ;
-                    }
-                oppListToBeUpdated.add(opp);
+            if(testDriveRec.Opportunity__c != null && oldMapTestDrive.containsKey(testDriveRec.Id) && 
+                oldMapTestDrive.get(testDriveRec.Id).Test_Drive_Status__c != testDriveRec.Test_Drive_Status__c && (testDriveRec.Test_Drive_Status__c == 'Scheduled' || 
+                testDriveRec.Test_Drive_Status__c == 'Completed' || testDriveRec.Test_Drive_Status__c == 'Canceled' || testDriveRec.Test_Drive_Status__c == 'Reschedule' ||
+                testDriveRec.Test_Drive_Status__c == 'Test Ride Confirmed' || testDriveRec.Test_Drive_Status__c == 'No Show')) {
+
+                Opportunity opp = new Opportunity();
+                opp.Id = testDriveRec.Opportunity__c;
+
+                if(testDriveRec.Test_Drive_Status__c == 'Scheduled'){
+                    opp.StageName = 'Test Ride Scheduled';
+                }
+                if(testDriveRec.Test_Drive_Status__c == 'Reschedule'){
+                    opp.StageName = 'Test Ride Re-Scheduled';
+                }
+                if(testDriveRec.Test_Drive_Status__c == 'Completed'){
+                    opp.StageName = 'Test Ride Completed';
+                }
+                if(testDriveRec.Test_Drive_Status__c == 'No Show'){
+                    opp.StageName = 'No Show';
+                }
+                if(testDriveRec.Test_Drive_Status__c == 'Canceled'){
+                    opp.StageName = 'Drop Out';
+                }
+                oppMapToBeUpdated.put(opp.Id, opp);
             }
         }
-        if(!oppListToBeUpdated.isEmpty()){
-            update oppListToBeUpdated;
+
+        if(!oppMapToBeUpdated.isEmpty()){
+            update oppMapToBeUpdated.values();
         }
     }
+
 
     public static void convertLeadIfTheRideTypeIsStoreTestRideAndLeadInstoreTestdriveIsTrue(List<Test_Drive__c> newList){
         try {

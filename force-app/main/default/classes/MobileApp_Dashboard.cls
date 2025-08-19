@@ -73,11 +73,11 @@ global class MobileApp_Dashboard {
 
             
             Integer totalFollowUp = Database.countQuery(
-                'SELECT COUNT() FROM Follow_Up__c WHERE OwnerId = :userId AND Status__c NOT IN (\'Completed\')  AND Status__c != null  AND Lead__c = null ' + followUpDate
+                'SELECT COUNT() FROM Follow_Up__c WHERE OwnerId = :userId AND Status__c NOT IN (\'Completed\')  AND Status__c != null  AND Lead__c = null AND Opportunity__c != null' + followUpDate
             );
             System.debug('totalFollowUp ====>'+ totalFollowUp);
             Integer totalOldFollowUp = Database.countQuery(
-                'SELECT COUNT() FROM Follow_Up__c WHERE OwnerId = :userId AND Status__c NOT IN (\'Completed\') AND Follow_Up_Date__c < TODAY'
+                'SELECT COUNT() FROM Follow_Up__c WHERE OwnerId = :userId AND Status__c NOT IN (\'Completed\') AND Lead__c = null AND Opportunity__c != null AND Follow_Up_Date__c < TODAY'
             );
             System.debug('totalOldFollowUp ====>'+ totalOldFollowUp);
 

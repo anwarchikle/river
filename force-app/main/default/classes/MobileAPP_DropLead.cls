@@ -78,10 +78,12 @@ global class MobileAPP_DropLead {
             if(LeadId.startsWith('006')){
                 Opportunity oppRec = new Opportunity();
                 oppRec.Id = LeadId;
-                oppRec.StageName = 'Drop Out';
                 oppRec.Drop_Out_Reasons__c = DropOutReason;
                 oppRec.Drop_Out_Sub_Reasons__c = DropOutSubReason;
                 oppRec.Others__c = Others;
+                update oppRec;
+
+                oppRec.StageName = 'Drop Out';
                 update oppRec;
 
                 Integration_Log__c logObj = new Integration_Log__c(

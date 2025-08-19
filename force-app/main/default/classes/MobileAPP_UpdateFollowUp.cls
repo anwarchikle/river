@@ -38,6 +38,7 @@ global class MobileAPP_UpdateFollowUp {
             String FollowUpId = wrp.FollowUpId;
             boolean FollowUpStatus = wrp.FollowUpStatusCompleted;
             String followUprating = wrp.followUprating;
+            String followUpfeedBack = wrp.followUpfeedBack;
             
             if(followUprating != null ){
                 List<Follow_Up__c> followUpRec = [Select Id,Opportunity__c from Follow_Up__c Where Id =: FollowUpId AND Opportunity__c != null];
@@ -54,6 +55,7 @@ global class MobileAPP_UpdateFollowUp {
                 Follow_Up__c followUpRec = new Follow_Up__c();
                 followUpRec.Id = FollowUpId;
                 followUpRec.Status__c = 'Completed';
+                followUpRec.Feedback__c = followUpfeedBack;
                 update followUpRec;
                 system.debug('FollowUpId ========> ' + FollowUpId);
 

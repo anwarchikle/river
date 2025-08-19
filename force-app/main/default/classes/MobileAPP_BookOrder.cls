@@ -96,7 +96,7 @@ global class MobileAPP_BookOrder {
             
             List<Opportunity> oppList = [SELECT Id, Name, AccountId,Order__c,StageName,Booking_Amount__c FROM Opportunity WHERE Id = :opportunityId LIMIT 1];
             if(oppList.size() > 0){
-                if(paymentStatus){
+                if(paymentStatus){  
                     List<Contact> contact;
                     if(oppList[0].AccountId != null){
                         system.debug('AccountId is not null');
