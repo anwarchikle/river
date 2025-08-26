@@ -11,7 +11,7 @@ global class MobileApp_EventProfile {
             User currentUser = [
                 SELECT Id, Name, Email, ContactId,
                        Contact.Phone, Contact.Designation__c,
-                       Contact.Account.Name, Contact.Account.Phone
+                       Contact.Account.Name, Contact.Account.Phone,Contact.Account.Center_Code__c
                 FROM User
                 WHERE Id = :UserInfo.getUserId()
                 LIMIT 1
@@ -25,7 +25,7 @@ global class MobileApp_EventProfile {
             dataMap.put('StorePhone', currentUser.Contact != null && currentUser.Contact.Account != null ? currentUser.Contact.Account.Phone : null);
             dataMap.put('UserPhone', currentUser.Contact != null ? currentUser.Contact.Phone : null);
             dataMap.put('UserEmail', currentUser.Email);
-
+            dataMap.put('DealerCode', currentUser.Contact != null && currentUser.Contact.Account != null && currentUser.Contact.Account.Center_Code__c != null ? currentUser.Contact.Account.Center_Code__c : null);
             result.add(dataMap);
 
             MobileApp_Wrapper.setResponses(200, 'Success', result);

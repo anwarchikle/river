@@ -26,28 +26,32 @@ public class OpportunityTriggerHandler {
     // }
     
     public static void createOrderIfOppIsClosedWon(List<Opportunity> listOfOpp, Map<Id, Opportunity> oldMap) {
-        Map<Id, Opportunity> oppsToCreateOrders = new Map<Id, Opportunity>();
-        List<Order> listOfOrder = new List<Order>();
-        
-        for (Opportunity opp : listOfOpp) {
-            if (opp.StageName == 'Closed Won' && oldMap.containsKey(opp.Id) && opp.StageName != oldMap.get(opp.Id).StageName && opp.Order__c == null) {
-                oppsToCreateOrders.put(opp.Id, opp);
-            }
-        }
-        
-        if (!oppsToCreateOrders.isEmpty()) {
-            for (Opportunity opp : oppsToCreateOrders.values()) {
-                Order newOrd = new Order();
-                newOrd.AccountId = opp.AccountId;
-                newOrd.OpportunityId = opp.Id;
-                newOrd.EffectiveDate = System.today();
-                newOrd.Status = 'Draft';
-                listOfOrder.add(newOrd);
+        try{
+            Map<Id, Opportunity> oppsToCreateOrders = new Map<Id, Opportunity>();
+            List<Order> listOfOrder = new List<Order>();
+            
+            for (Opportunity opp : listOfOpp) {
+                if (opp.StageName == 'Closed Won' && oldMap.containsKey(opp.Id) && opp.StageName != oldMap.get(opp.Id).StageName && opp.Order__c == null) {
+                    oppsToCreateOrders.put(opp.Id, opp);
+                }
             }
             
-            if (!listOfOrder.isEmpty()) {
-                insert listOfOrder;
+            if (!oppsToCreateOrders.isEmpty()) {
+                for (Opportunity opp : oppsToCreateOrders.values()) {
+                    Order newOrd = new Order();
+                    newOrd.AccountId = opp.AccountId;
+                    newOrd.OpportunityId = opp.Id;
+                    newOrd.EffectiveDate = System.today();
+                    newOrd.Status = 'Draft';
+                    listOfOrder.add(newOrd);
+                }
+                
+                if (!listOfOrder.isEmpty()) {
+                    insert listOfOrder;
+                }
             }
+        }catch(Exception e){
+            System.debug('Error message ======> ' + e.getMessage() + ' at line number =====> ' + e.getLineNumber());
         }
     }
     
@@ -106,12 +110,13 @@ public class OpportunityTriggerHandler {
             
             String Query = 'SELECT Id, Opportunity__c, Test_Drive_Status__c FROM Test_Drive__c';
             List<Test_Drive__c> listOfTestDrive = new List<Test_Drive__c>();
-            
+            System.debug( '1==== ======>' + whatId);
             if (whatId != null && whatId.startsWithIgnoreCase('00Q')) {
                 leadrec = [SELECT Id, Name FROM Lead WHERE Id = :whatId LIMIT 1];
                 Query += ' WHERE Lead__c = \'' + String.escapeSingleQuotes(whatId) + '\'';
                 Query += ' AND Test_Drive_Status__c NOT IN (\'Completed\', \'Canceled\',\'Reschedule\') ORDER BY CreatedDate DESC';
                 listOfTestDrive = Database.query(Query);
+                
             } else if (whatId != null && whatId.startsWithIgnoreCase('006')) {
                 opprec = [SELECT Id, Name FROM Opportunity WHERE Id = :whatId LIMIT 1];
                 Query += ' WHERE Opportunity__c = \'' + String.escapeSingleQuotes(whatId) + '\'';
@@ -405,63 +410,115 @@ public class OpportunityTriggerHandler {
     }
     
     public static void onClosedWonShowErrorIfOppLineItemsAreNotThere(List<Opportunity> newListOfOpp){
-        Set<Id> setOfOppIdWhichAreClosedWon = new Set<Id>();
-        Map<Id, List<OpportunityLineItem>> mapOfOppAndLineItems = new Map<Id, List<OpportunityLineItem>>();
-        for (Opportunity opp : newListOfOpp) {
-            if (opp.StageName == 'Closed Won') {
-                setOfOppIdWhichAreClosedWon.add(opp.Id);
-                mapOfOppAndLineItems.put(opp.Id, new List<OpportunityLineItem>());
-            }
-        }
-
-        List<OpportunityLineItem> oppLineItems = [
-            SELECT Id, OpportunityId 
-            FROM OpportunityLineItem 
-            WHERE OpportunityId IN :setOfOppIdWhichAreClosedWon
-        ];
-
-        for (OpportunityLineItem oli : oppLineItems) {
-            if (!mapOfOppAndLineItems.containsKey(oli.OpportunityId)) {
-                mapOfOppAndLineItems.put(oli.OpportunityId, new List<OpportunityLineItem>());
-            }
-            mapOfOppAndLineItems.get(oli.OpportunityId).add(oli);
-        }
-
-        for (Opportunity opp : newListOfOpp) {
-            if (setOfOppIdWhichAreClosedWon.contains(opp.Id)) {
-                List<OpportunityLineItem> oppLineItemList = mapOfOppAndLineItems.get(opp.Id);
-                if (oppLineItemList == null || oppLineItemList.isEmpty()) {
-                    opp.addError('Please Add the Enquiry Products First');
+        try{
+            Set<Id> setOfOppIdWhichAreClosedWon = new Set<Id>();
+            Map<Id, List<OpportunityLineItem>> mapOfOppAndLineItems = new Map<Id, List<OpportunityLineItem>>();
+            for (Opportunity opp : newListOfOpp) {
+                if (opp.StageName == 'Closed Won') {
+                    setOfOppIdWhichAreClosedWon.add(opp.Id);
+                    mapOfOppAndLineItems.put(opp.Id, new List<OpportunityLineItem>());
                 }
             }
+            List<OpportunityLineItem> oppLineItems = new List<OpportunityLineItem>();
+            if(!oppLineItems.isEmpty()){
+                oppLineItems = [SELECT Id, OpportunityId FROM OpportunityLineItem WHERE OpportunityId IN :setOfOppIdWhichAreClosedWon];
+
+                for (OpportunityLineItem oli : oppLineItems) {
+                    if (!mapOfOppAndLineItems.containsKey(oli.OpportunityId)) {
+                        mapOfOppAndLineItems.put(oli.OpportunityId, new List<OpportunityLineItem>());
+                    }
+                    mapOfOppAndLineItems.get(oli.OpportunityId).add(oli);
+                }
+
+                for (Opportunity opp : newListOfOpp) {
+                    if (setOfOppIdWhichAreClosedWon.contains(opp.Id)) {
+                        List<OpportunityLineItem> oppLineItemList = mapOfOppAndLineItems.get(opp.Id);
+                        if (oppLineItemList == null || oppLineItemList.isEmpty()) {
+                            opp.addError('Please Add the Enquiry Products First');
+                        }
+                    }
+                }
+            }            
+        } catch (Exception e) {
+            System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
+        
     }
 
     public static void onClosedWonShowErrorIfBookingAmountIsNull(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap) {
-        for (Opportunity newOpp : newListOfOpp) {
-            Opportunity oldOpp = oldMap.get(newOpp.Id);
+        try{
+            for(Opportunity newOpp : newListOfOpp) {
+                Opportunity oldOpp = oldMap.get(newOpp.Id);
 
-            if (newOpp.StageName == 'Closed Won' && oldOpp.StageName != 'Closed Won') {
-                if (newOpp.Booking_Amount__c == null) {
-                    newOpp.addError('Please Add the Enquiry Booking Amount');   
+                if (newOpp.StageName == 'Closed Won' && oldOpp.StageName != 'Closed Won') {
+                    if (newOpp.Booking_Amount__c == null) {
+                        newOpp.addError('Please Add the Enquiry Booking Amount');   
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
+        
     }
 
     public static void createFollowUpOnOppCreated(List<Opportunity> newListOfOpp){
-        List<Follow_Up__c> followUpListToBeInserted = new List<Follow_Up__c>();
-        for (Opportunity opp : newListOfOpp) {
-            Follow_Up__c newFollowUp = new Follow_Up__c();
-            newFollowUp.Follow_Up_Date__c = system.today().addDays(1);
-            newFollowUp.Opportunity__c = opp.Id;
-            newFollowUp.Name = opp.Name + ' - Follow Up';
-            newFollowUp.FollowUpType__c = 'Schedule TR Call';
-            followUpListToBeInserted.add(newFollowUp);
-        }
-        if(!followUpListToBeInserted.isEmpty()){
-            insert followUpListToBeInserted;
+        try{
+            List<Follow_Up__c> followUpListToBeInserted = new List<Follow_Up__c>();
+            for (Opportunity opp : newListOfOpp) {
+                Follow_Up__c newFollowUp = new Follow_Up__c();
+                newFollowUp.Follow_Up_Date__c = system.today().addDays(1);
+                newFollowUp.Opportunity__c = opp.Id;
+                newFollowUp.Name = opp.Name + ' - Follow Up';
+                newFollowUp.FollowUpType__c = 'Schedule TR Call';
+                followUpListToBeInserted.add(newFollowUp);
+            }
+            if(!followUpListToBeInserted.isEmpty()){
+                insert followUpListToBeInserted;
+            }
+        } catch (Exception e) {
+            System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
     }
 
+    public static void changeOwnerOfTestDriveAndFollowUpIsOppOwnerIsChanged(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap){
+        try{
+            set<Id> setOfOppId = new Set<Id>();
+            List<Test_Drive__c> testDriveToBeUpdated = new List<Test_Drive__c>();
+            List<Follow_Up__c> followUpToBeUpdated = new List<Follow_Up__c>();
+            for(Opportunity opp : newListOfOpp){
+                if(opp.OwnerId != oldMap.get(opp.Id).OwnerId ){
+                    setOfOppId.add(opp.Id);
+                }
+            }
+
+            if(!setOfOppId.isEmpty()){
+                Map<Id,Opportunity> mapOfOpp = new Map<Id,Opportunity>([Select Id,OwnerId from Opportunity where Id IN : setOfOppId]);
+                List<Test_Drive__c> testDriveList = [Select Id,Opportunity__c,OwnerId from Test_Drive__c where Opportunity__c IN : setOfOppId];
+                if(!testDriveList.isEmpty()){
+                    for(Test_Drive__c testDrive : testDriveList){
+                        testDrive.OwnerId = mapOfOpp.get(testDrive.Opportunity__c).OwnerId;
+                        testDriveToBeUpdated.add(testDrive);
+                    }
+                }
+                List<Follow_Up__c> followUpList = [Select Id,Opportunity__c,OwnerId from Follow_Up__c where Opportunity__c IN : setOfOppId];
+
+                if(!followUpList.isEmpty()){
+                    for(Follow_Up__c followUp : followUpList){
+                        followUp.OwnerId = mapOfOpp.get(followUp.Opportunity__c).OwnerId;
+                        followUpToBeUpdated.add(followUp);
+                    }
+                }
+                
+                if(!testDriveToBeUpdated.isEmpty()){
+                    update testDriveToBeUpdated;
+                }
+                if(!followUpToBeUpdated.isEmpty()){
+                    update followUpToBeUpdated;
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
+        }
+    }
 }

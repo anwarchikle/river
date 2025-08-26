@@ -126,6 +126,8 @@ public class CSVUploadQueueable implements Queueable {
         List<Lead> insertLeadsIfNoExistingAccountAndLeadsAreThereInSystem = new List<Lead>();
         List<Lead> leadsToUpdate = new List<Lead>();
         List<Follow_Up__c> followUpsToCreate = new List<Follow_Up__c>();
+        Map<String, Lead> duplicatePhone = new Map<String, Lead>();
+        
         
         for (Lead led : leadsToInsert) {
             if (led.Phone != null) {
@@ -146,6 +148,7 @@ public class CSVUploadQueueable implements Queueable {
                 System.debug('1 ==============>');
                 for (Account acc : existingAccounts) {
                     accountIds.add(acc.Id);
+                    duplicatePhone.put(acc.phone,null);
                 }
                 
                 Map<Id, Opportunity> accountOpportunities = new Map<Id, Opportunity>();
@@ -232,7 +235,15 @@ public class CSVUploadQueueable implements Queueable {
                         Phone__c = led.Phone,
                         Object_Type__c = 'Lead'
                     ));
+                    duplicatePhone.put(led.phone,led);
                     phonesWithAccounts.add(led.Phone);
+                }
+                
+            }
+
+            for(lead led : leadsToInsert){
+                if(!duplicatePhone.containskey(led.phone)){
+                    insertLeadsIfNoExistingAccountAndLeadsAreThereInSystem.add(led);
                 }
             }
             

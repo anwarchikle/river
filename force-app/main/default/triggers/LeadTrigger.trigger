@@ -13,7 +13,7 @@ trigger LeadTrigger on Lead (before Insert, after insert,after update,before upd
     if(Trigger.isAfter && Trigger.isUpdate){
         LeadTriggerHandler.callQueableMethodForAfterUpdate(Trigger.new,Trigger.oldMap);
         LeadTriggerHandler.callQueueableAfterRNR(Trigger.new,Trigger.oldMap);
-        //LeadTriggerHandler.assignLeadsTestDriveAndFollowUpToOppOwnerWhenLeadIsConverted(Trigger.new);    
+        LeadTriggerHandler.assignLeadsTestDriveAndFollowUpToOppOwnerWhenLeadIsConverted(Trigger.new);    
     }
     
     if(Trigger.isBefore && Trigger.isUpdate){

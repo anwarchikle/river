@@ -29,41 +29,40 @@ public class LeadTriggerHandler {
         }
         
         Map<String, Account> phoneToAccountMap = new Map<String, Account>();
-        for (Account acc : [SELECT Id, Phone FROM Account WHERE Phone IN :setOfPhoneNumbers]) {
-            if (!String.isBlank(acc.Phone)) {
-                phoneToAccountMap.put(acc.Phone, acc);
-            }
-        }
-        
-        Map<String, List<Lead>> phoneToLeadMap = new Map<String, List<Lead>>();
-        for (Lead existingLead : [SELECT Id, Phone FROM Lead WHERE Phone IN :setOfPhoneNumbers]) {
-            if (!String.isBlank(existingLead.Phone)) {
-                if (!phoneToLeadMap.containsKey(existingLead.Phone)) {
-                    phoneToLeadMap.put(existingLead.Phone, new List<Lead>());
+        if(!setOfPhoneNumbers.isEmpty()){
+            for (Account acc : [SELECT Id, Phone FROM Account WHERE Phone IN :setOfPhoneNumbers]) {
+                if (!String.isBlank(acc.Phone)) {
+                    phoneToAccountMap.put(acc.Phone, acc);
                 }
-                phoneToLeadMap.get(existingLead.Phone).add(existingLead);
             }
-        }
-        
-        for (Lead ledRec : newLeads) {
-            if (String.isBlank(ledRec.Phone)) continue;
-            
-            if (phoneToAccountMap.containsKey(ledRec.Phone)) {
-                ledRec.addError('Account already exists with this phone number');
-                continue;
+            Map<String, List<Lead>> phoneToLeadMap = new Map<String, List<Lead>>();
+            for (Lead existingLead : [SELECT Id, Phone FROM Lead WHERE Phone IN :setOfPhoneNumbers]) {
+                if (!String.isBlank(existingLead.Phone)) {
+                    if (!phoneToLeadMap.containsKey(existingLead.Phone)) {
+                        phoneToLeadMap.put(existingLead.Phone, new List<Lead>());
+                    }
+                    phoneToLeadMap.get(existingLead.Phone).add(existingLead);
+                }
             }
-            
-            if (phoneToLeadMap.containsKey(ledRec.Phone)) {
-                for (Lead dupLead : phoneToLeadMap.get(ledRec.Phone)) {
-                    if (dupLead.Id != ledRec.Id) {
-                        ledRec.addError('Lead already exists with this phone number');
-                        break;
+            for (Lead ledRec : newLeads) {
+                if (String.isBlank(ledRec.Phone)) continue;
+                
+                if (phoneToAccountMap.containsKey(ledRec.Phone)) {
+                    ledRec.addError('Account already exists with this phone number');
+                    continue;
+                }
+                
+                if (phoneToLeadMap.containsKey(ledRec.Phone)) {
+                    for (Lead dupLead : phoneToLeadMap.get(ledRec.Phone)) {
+                        if (dupLead.Id != ledRec.Id) {
+                            ledRec.addError('Lead already exists with this phone number');
+                            break;
+                        }
                     }
                 }
             }
         }
     }
-    
     
     public static void OthersIsMandatoryIsSourceIsOther(List<Lead> newLeads){
         try{
@@ -901,55 +900,86 @@ public class LeadTriggerHandler {
     }
     
     public static void assignLeadsTestDriveAndFollowUpToOppOwnerWhenLeadIsConverted(List<Lead> leadList) {
+        System.debug('===== Method Start assignLeadsTestDriveAndFollowUpToOppOwnerWhenLeadIsConverted =====');
+        System.debug('Input leadList ====> ' + leadList);
+
         Set<Id> convertedLeadIds = new Set<Id>();
         Map<Id, Id> leadToOppOwnerMap = new Map<Id, Id>();
-        
+
         for (Lead lead : leadList) {
             if (lead.IsConverted && lead.ConvertedOpportunityId != null) {
                 convertedLeadIds.add(lead.Id);
                 leadToOppOwnerMap.put(lead.Id, lead.ConvertedOpportunityId);
             }
         }
+
+        System.debug('convertedLeadIds ====> ' + convertedLeadIds);
+        System.debug('leadToOppOwnerMap ====> ' + leadToOppOwnerMap);
+
+        if (convertedLeadIds.isEmpty()) {
+            System.debug('No converted leads found. Exiting method.');
+            return;
+        }
+
+        Map<Id, Opportunity> oppMap = new Map<Id, Opportunity>();
+        if(leadToOppOwnerMap.values().size() > 0){
+            oppMap = new Map<Id, Opportunity>([SELECT Id, OwnerId FROM Opportunity WHERE Id IN :leadToOppOwnerMap.values()]);
+        }
         
-        if (convertedLeadIds.isEmpty()) return;
-        
-        Map<Id, Opportunity> oppMap = new Map<Id, Opportunity>(
-            [SELECT Id, OwnerId FROM Opportunity WHERE Id IN :leadToOppOwnerMap.values()]
-        );
-        
+        System.debug('oppMap ====> ' + oppMap);
+
         Map<Id, Id> leadToOppOwnerIdMap = new Map<Id, Id>();
         for (Id leadId : leadToOppOwnerMap.keySet()) {
             Id oppId = leadToOppOwnerMap.get(leadId);
             if (oppMap.containsKey(oppId)) {
-                leadToOppOwnerIdMap.put(leadId, oppMap.get(oppId).OwnerId);
+                Id oppOwnerId = oppMap.get(oppId).OwnerId;
+                System.debug(' ' + oppOwnerId);
+                leadToOppOwnerIdMap.put(leadId, oppOwnerId);
             }
         }
-        
-        List<Follow_Up__c> followUpList = [
-            SELECT Id, Lead__c, OwnerId FROM Follow_Up__c WHERE Lead__c IN :convertedLeadIds
-        ];
-        for (Follow_Up__c followUp : followUpList) {
-            if (leadToOppOwnerIdMap.containsKey(followUp.Lead__c)) {
-                followUp.OwnerId = leadToOppOwnerIdMap.get(followUp.Lead__c);
+        System.debug('leadToOppOwnerIdMap ====> ' + leadToOppOwnerIdMap);
+
+        if (!convertedLeadIds.isEmpty()) {
+                List<Follow_Up__c> followUpList = [
+                SELECT Id, Lead__c, OwnerId FROM Follow_Up__c WHERE Lead__c IN :convertedLeadIds
+            ];
+            System.debug('Queried followUpList ====> ' + followUpList);
+
+            List<Follow_Up__c> listOfFollowUpToBeUpdated = new List<Follow_Up__c>();
+            List<Follow_Up__c> listOfTestDriveToBeUpdated = new List<Follow_Up__c>();
+            for (Follow_Up__c followUp : followUpList) {
+                if (leadToOppOwnerIdMap.containsKey(followUp.Lead__c)) {
+                    followUp.OwnerId = leadToOppOwnerIdMap.get(followUp.Lead__c);
+                }
             }
-        }
-        
-        List<Test_Drive__c> testDriveList = [
-            SELECT Id, Lead__c, OwnerId FROM Test_Drive__c WHERE Lead__c IN :convertedLeadIds
-        ];
-        for (Test_Drive__c testDrive : testDriveList) {
-            if (leadToOppOwnerIdMap.containsKey(testDrive.Lead__c)) {
-                testDrive.OwnerId = leadToOppOwnerIdMap.get(testDrive.Lead__c);
+
+            List<Test_Drive__c> testDriveList = [
+                SELECT Id, Lead__c, OwnerId FROM Test_Drive__c WHERE Lead__c IN :convertedLeadIds
+            ];
+            System.debug('Queried testDriveList ====> ' + testDriveList);
+
+            for (Test_Drive__c testDrive : testDriveList) {
+                if (leadToOppOwnerIdMap.containsKey(testDrive.Lead__c)) {
+                    testDrive.OwnerId = leadToOppOwnerIdMap.get(testDrive.Lead__c);
+                }
             }
-        }
-        
-        if (!followUpList.isEmpty()) {
-            update followUpList;
-        }
-        if (!testDriveList.isEmpty()) {
-            update testDriveList;
+
+            if (!followUpList.isEmpty()) {
+                update followUpList;
+                System.debug('Final Updated followUpList =====> ' + followUpList);
+            } else {
+                System.debug('No FollowUp records to update.');
+            }
+
+            if (!testDriveList.isEmpty()) {
+                update testDriveList;
+                System.debug('Final Updated testDriveList =====> ' + testDriveList);
+            } else {
+                System.debug('No TestDrive records to update.');
+            }
         }
     }
+
     
     public class CustomException extends Exception {}
 }

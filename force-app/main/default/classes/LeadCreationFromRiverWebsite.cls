@@ -21,138 +21,214 @@ global class LeadCreationFromRiverWebsite {
         Boolean instoreTestdrive = (Boolean) requestBodyMap.get('InstoreTestdrive');
         String utm_source = (String) requestBodyMap.get('utm_source'); 
         Boolean verified = (Boolean) requestBodyMap.get('verified');  
- 
-        // Retrieve date/time values from the request body  
         String startDateTimeStr = (String) requestBodyMap.get('startDateTimeStr');  
         String endDateTimeStr = (String) requestBodyMap.get('endDateTimeStr');  
-
-        // Initialize Datetime variables  
         Datetime startDateTime;  
         Datetime endDateTime;  
-
-        // Convert to Datetime if values are provided  
+        
         if (startDateTimeStr != null) {  
             startDateTime = Datetime.valueOf(startDateTimeStr);  
         } else {  
             startDateTime = null; 
         }  
-
+        
         if (endDateTimeStr != null) {  
             endDateTime = Datetime.valueOf(endDateTimeStr);  
         } else {  
             endDateTime = null; 
         }  
-
+        
         String dealerCode = (String) requestBodyMap.get('DealerCode');  
-        
-        
-
-        // Query for existing lead based on phone number  
-        List<Lead> leads = [SELECT Id, LastName, Company, Email, Phone, City,   
-                            Test_ride_Start_date__c, Test_ride_end_date__c,Isconverted,ConvertedOpportunityId,
+        List<Lead> leads = [SELECT Id, LastName, Company, Email, Phone, City,ConvertedOpportunityId,ConvertedOpportunity.AccountId,
+                            Test_ride_Start_date__c, Test_ride_end_date__c,isConverted,
                             Dealer_Code__c, Home_Test_Ride__c, Instore_Test_drive__c,Utm_Source__c,Verified__c,Status
-                            FROM Lead WHERE Phone = :phone LIMIT 1];  
+                            FROM Lead WHERE Phone = :phone LIMIT 1];
 
-        Lead leadToUpdate;  
-        // Map<String, Id> queueMap = new Map<String, Id>();
-        // for (Group grp : [SELECT Id, DeveloperName FROM Group WHERE Type = 'Queue']) {
-        //         queueMap.put(grp.DeveloperName, grp.Id);
-        //     }
-        //     System.debug('queueMap populated =========>' + queueMap);
-
+        List<Account> accList = [Select Id from Account Where Phone =: phone];
+        
+        Lead leadToUpdate;
+        Boolean isNewLead = false;
         try {
-            if (!leads.isEmpty()) {  
-                leadToUpdate = leads[0];
-                if(leadToUpdate.Isconverted != false){
-                    leadToUpdate.Secondary_Source__c = 'River Website';
-                }else if(leadToUpdate.ConvertedOpportunityId != null && leadToUpdate.Isconverted == true){
-                    Opportunity opp = [Select Id,Name,Secondary_Source__c from Opportunity where Id =: leadToUpdate.ConvertedOpportunityId];
-                    opp.Secondary_Source__c = 'River Website';
-                    update opp;
-                }
-                leadToUpdate = leads[0];  
-            } else {  
-                // If no lead is found, create a new one  
-                leadToUpdate = new Lead();  
-               // leadToUpdate.Status = 'Test Ride';
-                leadToUpdate.LeadSource = 'River Website';
-            }  
-
-            // Update the lead fields  
-            leadToUpdate.LastName = fullName;  
-            leadToUpdate.Company = fullName;  
-            leadToUpdate.Email = email;  
-            leadToUpdate.Phone = phone;  
-            leadToUpdate.City = city;  
-            leadToUpdate.PostalCode = postalCode;  
-            leadToUpdate.Test_ride_Start_date__c = startDateTime;  
-            leadToUpdate.Test_ride_end_date__c = endDateTime;    
-            Account dealerCodeAccount;
-            if (String.isNotBlank(dealerCode)) {
-                List<Account> dealerAccounts = [SELECT Id, Name FROM Account WHERE Type = 'Dealer' AND Center_Code__c = :dealerCode LIMIT 1
-                ];
-                if (!dealerAccounts.isEmpty()) {
-                    dealerCodeAccount = dealerAccounts[0];
-                }
-            }
+            Map<String,String> mapOfPincodeAndCenterName = new Map<String,String>();
+            Map<String, String> mapOfPincodeAndDealerCode = new Map<String, String>();
+            Map<String, String> mapOfPincodeAndCityName = new Map<String, String>();
+            Map<String, String> mapOfDealerCodeAndCityName = new Map<String, String>();
             
-            // Fallback to "No Service Available" if no dealer account found
-            // if (dealerCodeAccount == null) {
-            //     List<Account> fallback = [SELECT Id, Name,Center_Code__c FROM Account WHERE Name = 'No Service Available' LIMIT 1
-            //     ];
-            //     if (!fallback.isEmpty()) {
-            //         dealerCodeAccount = fallback[0];
-            //         dealerCode = fallback[0].Center_Code__c;
-            //     }
-            // }
-            //Account dealerCodeAccount = [Select Id,Name from Account where type = 'Dealer' AND Center_Code__c =:dealerCode LIMIT 1];
-            //leadToUpdate.Stores_Name__c = dealerCodeAccount != null ? dealerCodeAccount.Name : '';
-            leadToUpdate.Dealer_Code__c = dealerCode;
-            //leadToUpdate.ownerId = queueMap.get('Head_Quarter'); 
-            leadToUpdate.Utm_Source__c = utm_source;
-            Boolean isValue;
-           
-            leadToUpdate.Verified__c = verified;
-            leadToUpdate.Home_Test_Ride__c = homeTestRide != null ? homeTestRide : false;  
-            leadToUpdate.Instore_Test_drive__c = instoreTestdrive != null ? instoreTestdrive : false;  
-
-            if (leadToUpdate.Id != null) {  
-                // Update existing lead  
-                update leadToUpdate;  
-            } else {  
-                // Insert new lead  
-                insert leadToUpdate;  
-            }
-            System.debug('leadToUpdate ===> ' + leadToUpdate);
-			
-            // Log success
+            for (Pin_Code__c grp : [SELECT Id, Dealer_Service_Center__c,Dealer_Service_Center__r.Name,Dealer_Service_Center__r.Center_Code__c,
+                                    Dealer_Service_Center__r.Store_Name__c,City__r.Name,Area_Pincode__c FROM Pin_Code__c]) {
+                                        mapOfPincodeAndCenterName.put(grp.Area_Pincode__c, grp.Dealer_Service_Center__r.Store_Name__c);
+                                        mapOfPincodeAndDealerCode.put(grp.Area_Pincode__c, grp.Dealer_Service_Center__r.Center_Code__c);
+                                        mapOfPincodeAndCityName.put(grp.Area_Pincode__c, grp.City__r.Name);
+                                        mapOfDealerCodeAndCityName.put(grp.Dealer_Service_Center__r.Center_Code__c, grp.City__r.Name);
+                                    }
+            
+            User usrObj = [select Id,firstname,Contact.Account.Name,Profile.Name,Contact.Account.Center_Code__c,Contact.Account.BillingPostalCode,Contact.Account.Store_Name__c from user where contact.Account.Center_Code__c =: mapOfDealerCodeAndCityName.get(DealerCode) LIMIT 1];
             Integration_Log__c logObj = new Integration_Log__c(
-               Integration_Type__c = ' Lead Creation',
-                //Integration_Type__c = 'Lead Creation from River Website',
-                Request_Payload__c = JSON.serializePretty(requestBodyMap),
-                Response_Payload__c = 'Lead processed successfully: ' + leadToUpdate.Id,
-                Status__c = 'Success'
+                    Integration_Type__c = 'Lead Creation',
+                    Duplicate_Lead_Phone__c = leads[0].Phone,
+                    Request_Payload__c = JSON.serializePretty(requestBodyMap)
             );
-            Insert logObj;
+            if(!accList.isEmpty()){
+                List<Opportunity> oppList = [Select Id,OwnerId,AccountId from Opportunity where AccountId =: accList[0].Id AND StageName NOT IN('Closed Won','Drop Out') LIMIT 1];
+                if(!oppList.isEmpty()){
+                    Opportunity opp = new Opportunity();
+                    opp.Id = oppList[0].Id;
+                    opp.Name = fullName;
+                    opp.CloseDate = System.today() + 7;
+                    opp.OwnerId = usrObj.Id; 
+                    opp.AccountId = oppList[0].AccountId;
+                    opp.StageName = 'New';
+                    opp.Phone__c = Phone;
+                    opp.LeadSource = 'Online';
+                    opp.Lead_Secondary_Source__c = 'River Website';
+                    opp.OwnerId = usrObj.Id;
+                    Insert opp;
+                    logObj.Response_Payload__c = 'Duplicate Lead Found: ' + opp.Id;
+                }else{
+                    Opportunity opp = new Opportunity();
+                    opp.Name = fullName;
+                    opp.CloseDate = System.today() + 7; 
+                    opp.AccountId = oppList[0].AccountId;
+                    opp.AccountId = oppList[0].AccountId;
+                    opp.StageName = 'New';
+                    opp.Phone__c = Phone;
+                    opp.LeadSource = 'Online';
+                    opp.Lead_Secondary_Source__c = 'River Website';
+                    opp.OwnerId = usrObj.Id;
+                    Insert opp;
+                    logObj.Response_Payload__c = 'Duplicate Lead Found: ' + opp.Id;
+                }
+            }else if (!leads.isEmpty()) {
+                leadToUpdate = leads[0];
+                if(leadToUpdate.isConverted == false){
+                    leadToUpdate.LastName = fullName;  
+                    leadToUpdate.Company = fullName;  
+                    leadToUpdate.Email = email;  
+                    leadToUpdate.Phone = phone;  
+                    leadToUpdate.City = city;  
+                    leadToUpdate.PostalCode = postalCode;  
+                    leadToUpdate.Test_ride_Start_date__c = startDateTime;  
+                    leadToUpdate.Test_ride_end_date__c = endDateTime;    
+                    leadToUpdate.Utm_Source__c = utm_source;
+                    leadToUpdate.Verified__c = verified;
+                    leadToUpdate.Home_Test_Ride__c = homeTestRide != null ? homeTestRide : false;  
+                    leadToUpdate.Instore_Test_drive__c = instoreTestdrive != null ? instoreTestdrive : false; 
+                    if (leadToUpdate != null && leadToUpdate.Id != null) {
+                        update leadToUpdate;
+                    } 
 
+                    logObj.Response_Payload__c = 'Duplicate Lead Found: ' + leadToUpdate.Id;
+                    logObj.Lead__c = leadToUpdate.Id;
+                }else if(leadToUpdate.isConverted == true && leadToUpdate.ConvertedOpportunityId != null){
+                    Opportunity opp = new Opportunity();
+                    opp.Name = fullName;
+                    opp.Id = leadToUpdate.ConvertedOpportunityId;
+                    opp.CloseDate = System.today() + 7;
+                    opp.Phone__c = phone; 
+                    opp.LeadSource = 'Online';
+                    opp.Lead_Secondary_Source__c = 'River Website';
+                    update opp;
 
+                    logObj.Response_Payload__c = 'Duplicate Lead Found: ' + opp.Id;
+                }else if(leadToUpdate.isConverted == true && leadToUpdate.ConvertedOpportunityId == null && leadToUpdate.ConvertedOpportunity.AccountId != null){
+                    Opportunity opp = new Opportunity();
+                    opp.Name = fullName;
+                    opp.CloseDate = System.today() + 7;
+                    opp.AccountId = leadToUpdate.ConvertedOpportunity.AccountId;
+                    opp.StageName = 'New';
+                    opp.Phone__c = Phone;
+                    opp.LeadSource = 'Online';
+                    opp.Lead_Secondary_Source__c = 'River Website';
+                    opp.OwnerId = usrObj.Id;
+                    Insert opp;
+                    logObj.Response_Payload__c = 'Duplicate Lead Found: ' + opp.Id;
+                }else if(leadToUpdate.isConverted == true && leadToUpdate.ConvertedOpportunityId == null && leadToUpdate.ConvertedOpportunity.AccountId == null){
+ 
+                    String StoreName = usrObj.Contact.Account.Store_Name__c;
+                    String CityName = mapOfDealerCodeAndCityName.get(DealerCode);
+
+                    Account acc = new Account();
+                    acc.Name = fullName;
+                    acc.Phone = phone;
+                    acc.BillingPostalCode = postalCode;
+                    acc.ownerId = UserInfo.getUserId();
+                    acc.Center_Code__c = DealerCode;
+                    acc.Store_Name__c = StoreName;
+                    acc.BillingCity = CityName;
+                    acc.Type = 'Customer';
+                    acc.OwnerId = usrObj.Id;
+                    insert acc;
+                    
+                    Contact con = new Contact();
+                    con.LastName = fullName;
+                    con.Phone = phone;
+                    con.AccountId = acc.Id;
+                    con.OwnerId = usrObj.Id;
+                    insert con;
+                    
+                    Opportunity newOpp = new Opportunity(); 
+                    newOpp.Name = fullName;
+                    newOpp.AccountId = acc.Id;
+                    newOpp.StageName = 'New';
+                    newOpp.LeadSource = 'Online';
+                    newOpp.Lead_Secondary_Source__c = 'River Website';
+                    newOpp.CloseDate = System.today().addDays(7);
+                    newOpp.OwnerId = usrObj.Id;
+                    newOpp.Phone__c = phone;
+                    insert newOpp;
+
+                    logObj.Response_Payload__c = 'Duplicate Lead Found: ' + newOpp.Id;
+                    
+                    OpportunityContactRole ocr = new OpportunityContactRole();
+                    ocr.OpportunityId = newOpp.Id;
+                    ocr.ContactId = con.Id;
+                    ocr.Role = 'Decision Maker';
+                    ocr.IsPrimary = true;
+                    insert ocr;
+                }
+
+                insert logObj;  
+            } else {  
+                leadToUpdate = new Lead();  
+                isNewLead = true;
+                leadToUpdate.LastName = fullName;  
+                leadToUpdate.Company = fullName;  
+                leadToUpdate.Email = email;  
+                leadToUpdate.Phone = phone;  
+                leadToUpdate.City = city;  
+                leadToUpdate.PostalCode = postalCode;  
+                leadToUpdate.Test_ride_Start_date__c = startDateTime;  
+                leadToUpdate.Test_ride_end_date__c = endDateTime;    
+                leadToUpdate.Utm_Source__c = utm_source;
+                leadToUpdate.Verified__c = verified;
+                leadToUpdate.Home_Test_Ride__c = homeTestRide != null ? homeTestRide : false;  
+                leadToUpdate.Instore_Test_drive__c = instoreTestdrive != null ? instoreTestdrive : false; 
+                leadToUpdate.LeadSource = 'River Website';
+                insert leadToUpdate;
+                Integration_Log__c successLog = new Integration_Log__c(  
+                    Integration_Type__c = 'Lead Creation',  
+                    Request_Payload__c = JSON.serializePretty(requestBodyMap),  
+                    Response_Payload__c = 'Lead processed successfully: ' + leadToUpdate.Id,  
+                    Status__c = 'Success',
+                    Lead__c = leadToUpdate.Id
+                );  
+                insert successLog;
+            }
+
+            System.debug('leadToUpdate ===> ' + leadToUpdate);
             return 'Lead processed successfully: ' + leadToUpdate.Id;
-
+            
         } catch(Exception e) {
-            // Log failure
             Integration_Log__c logObj = new Integration_Log__c(
-                
-               
                 Integration_Type__c = ' Lead Creation',
-                //Integration_Type__c = 'Lead Creation from River Website',
                 Request_Payload__c = JSON.serializePretty(requestBodyMap),
                 Response_Payload__c = 'Error: ' + e.getMessage(),
-                Error_Message__c = 'Exception: ' + e.getMessage(),
+                Error_Messages__c = 'Exception: ' + e.getMessage() + ' at line number ====>' + e.getLineNumber() + ' /createLeadRiverWebsite',
                 Status__c = 'Failed'
             );
             Insert logObj;
             System.debug('Log created for failed lead creation: ' + logObj);
-
+            System.debug('Error =====>' +  + e.getMessage() + ' at line number ====>' + e.getLineNumber());
             return 'Error: ' + e.getMessage();
         }
     }

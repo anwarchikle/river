@@ -6,8 +6,8 @@ public class NotificationScheduler {
         System.schedule('Follow-up Morning Notifications', morningCron, new FollowUpNotificationBatch(true));
         
         // Hourly notifications for 1-hour prior
-        String hourlyCron = '0 0 * * * ?';
-        System.schedule('Test Drive Hourly Notifications', hourlyCron, new TestDriveNotificationBatch(false));
-        System.schedule('Follow-up Hourly Notifications', hourlyCron, new FollowUpNotificationBatch(false));
+        // String hourlyCron = '0 0 * * * ?';
+        // System.schedule('Test Drive Hourly Notifications', hourlyCron, new TestDriveNotificationBatch(false));
+        // System.schedule('Follow-up Hourly Notifications', hourlyCron, new FollowUpNotificationBatch(false));
     }
 }

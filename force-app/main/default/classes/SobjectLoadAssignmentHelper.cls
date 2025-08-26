@@ -64,6 +64,7 @@ public class SobjectLoadAssignmentHelper {
                     if (postalCode != null) postalCodes.add(postalCode);
                 }
             }
+            
             Map<String, Set<String>> pincodeLanguagesMap = new Map<String, Set<String>>();
             if (!postalCodes.isEmpty()) {
                 for (Pin_Code__c pc : [
@@ -87,6 +88,18 @@ public class SobjectLoadAssignmentHelper {
             for (Sobject objectRec : sObjectList) {
                 String sObjectType = String.valueOf(objectRec.getSObjectType());
                 isUserAssigned = true;
+
+                if (sObjectType == 'Lead') {
+                    String leadPostalCode = (String) objectRec.get('PostalCode');
+                    
+                    if (leadPostalCode == null || !pincodeLanguagesMap.containsKey(leadPostalCode)) {
+                        objectRec.put('OwnerId', queueId);
+                        objectRec.put('Is_Assigned_to_User__c', false);
+                        objectRec.put('AG_Related_to__c', GroupId);
+                        objectRec.put('Sobject_Load_Balancing_Executed__c', true);
+                        continue;
+                    }
+                }
 
                 if (!mapofAvailableUserRRIDByUserId.isEmpty()) {
                     while (isUserAssigned) {

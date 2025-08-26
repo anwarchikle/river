@@ -1,7 +1,5 @@
 public class FollowUpTriggerController {
 
-    
-
     public static void updateFollowUpName(List<Follow_Up__c> newListFollowUp){
         
         Set<Id> leadIds = new Set<Id>();
@@ -79,8 +77,14 @@ public class FollowUpTriggerController {
         for(Follow_Up__c newfollowup:newListFollowUp){
             idss.add(newfollowup.Lead__c);
         }
-        list<Lead> getlead=[select Id,Status from Lead where Id IN :idss ];
-        list<lead> upleadlst=new list<lead>();
+
+        list<Lead> getlead = new list<Lead>();
+
+        if(idss.isEmpty()){
+            getlead = [select Id,Status from Lead where Id IN :idss ];
+        }
+
+        list<lead> upleadlst = new list<lead>();
         for(lead l:getlead){
             l.Status='Follow Up';
             upleadlst.add(l);
@@ -95,14 +99,19 @@ public class FollowUpTriggerController {
         for(Follow_Up__c objFollow : newListFollowUp){
             setLeadId.add(objFollow.Lead__c);
         }
-        List<Follow_Up__c> lstFollow = [SELECT Id,Feedback__c,Follow_Up_Date__c,CreatedDate, Lead__c,Previous_Feedback__c,Previous_Followup_date__c  FROM Follow_Up__c WHERE Lead__c IN: setLeadId ORDER BY CreatedDate DESC limit 1];
-        for(Follow_Up__c objFollow : newListFollowUp){
-            for(Follow_Up__c oldfolowup : lstFollow){
-                system.debug('ggggg'+oldfolowup.Follow_Up_Date__c);
-                objFollow.Previous_Followup_date__c=oldfolowup.Follow_Up_Date__c;
-                // objFollow.Previous_Feedback__c=oldfolowup.Feedback__c;
+        List<Follow_Up__c> lstFollow = new List<Follow_Up__c>();
+        if(!setLeadId.isEmpty()){
+            lstFollow = [SELECT Id,Feedback__c,Follow_Up_Date__c,CreatedDate, Lead__c,Previous_Feedback__c,Previous_Followup_date__c  FROM Follow_Up__c WHERE Lead__c IN: setLeadId ORDER BY CreatedDate DESC limit 1];
+        }
+
+        if(!lstFollow.isEmpty()){
+            for(Follow_Up__c objFollow : newListFollowUp){
+                for(Follow_Up__c oldfolowup : lstFollow){
+                    system.debug('ggggg'+oldfolowup.Follow_Up_Date__c);
+                    objFollow.Previous_Followup_date__c=oldfolowup.Follow_Up_Date__c;
+                    // objFollow.Previous_Feedback__c=oldfolowup.Feedback__c;
+                }
             }
-            
         }
     }   
 
@@ -111,39 +120,46 @@ public class FollowUpTriggerController {
         system.debug('enter'+newListFollowUp);
         for(Follow_Up__c f:newListFollowUp){
             if(f.Lead__c != null){
-                leadids=f.Lead__c;
+                leadids = f.Lead__c;
             }
-            
         }
         system.debug('id'+leadids);
-        List<Lead> leadlst=[select id,(select Id from Follow_Ups__r) from Lead where Id =:leadids];
-        for(Lead L:leadlst){
-            for(Follow_Up__c fl:newListFollowUp){
-                if(l.Follow_Ups__r.size()==0){
-                    fl.Follow_Up__c='Follow up 1';
-                }else if(l.Follow_Ups__r.size()==1){
-                    fl.Follow_Up__c='Follow up 2';
-                }else if(l.Follow_Ups__r.size()==2){
-                    fl.Follow_Up__c='Follow up 3';
-                }else if(l.Follow_Ups__r.size()==3){
-                    fl.Follow_Up__c='Follow up 4';
-                }else if(l.Follow_Ups__r.size()==4){
-                    fl.Follow_Up__c='Follow up 5';
-                }else if(l.Follow_Ups__r.size()==5){
-                    fl.Follow_Up__c='Follow up 6';
-                }else if(l.Follow_Ups__r.size()==6){
-                    fl.Follow_Up__c='Follow up 7';
-                }else if(l.Follow_Ups__r.size()==7){
-                    fl.Follow_Up__c='Follow up 8';
-                }else if(l.Follow_Ups__r.size()==8){
-                    fl.Follow_Up__c='Follow up 9';
-                }else if(l.Follow_Ups__r.size()==9){
-                    fl.Follow_Up__c='Follow up 10';
-                }else{
-                    fl.Follow_Up__c=null;
+
+        List<Lead> leadlst = new List<Lead>();
+        if(leadids == null){
+            leadlst = [select id,(select Id from Follow_Ups__r) from Lead where Id =:leadids];
+        }
+        
+        if(!leadlst.isEmpty()){
+            for(Lead L:leadlst){
+                for(Follow_Up__c fl:newListFollowUp){
+                    if(l.Follow_Ups__r.size()==0){
+                        fl.Follow_Up__c='Follow up 1';
+                    }else if(l.Follow_Ups__r.size()==1){
+                        fl.Follow_Up__c='Follow up 2';
+                    }else if(l.Follow_Ups__r.size()==2){
+                        fl.Follow_Up__c='Follow up 3';
+                    }else if(l.Follow_Ups__r.size()==3){
+                        fl.Follow_Up__c='Follow up 4';
+                    }else if(l.Follow_Ups__r.size()==4){
+                        fl.Follow_Up__c='Follow up 5';
+                    }else if(l.Follow_Ups__r.size()==5){
+                        fl.Follow_Up__c='Follow up 6';
+                    }else if(l.Follow_Ups__r.size()==6){
+                        fl.Follow_Up__c='Follow up 7';
+                    }else if(l.Follow_Ups__r.size()==7){
+                        fl.Follow_Up__c='Follow up 8';
+                    }else if(l.Follow_Ups__r.size()==8){
+                        fl.Follow_Up__c='Follow up 9';
+                    }else if(l.Follow_Ups__r.size()==9){
+                        fl.Follow_Up__c='Follow up 10';
+                    }else{
+                        fl.Follow_Up__c=null;
+                    }
                 }
             }
         }
+        
     }
 
     ////////////// This Code Added By Anwar //////////////
@@ -158,11 +174,11 @@ public class FollowUpTriggerController {
                 }
             }
             System.debug('setOfOppId ====>'+ setOfOppId);
-
-            
-
-            List<AggregateResult> groupedResults = [SELECT COUNT(Id) totalRecord, Opportunity__c FROM Follow_Up__c WHERE Opportunity__c IN :setOfOppId GROUP BY Opportunity__c];
-            System.debug('groupedResults ====>'+ groupedResults);
+            List<AggregateResult> groupedResults = new List<AggregateResult>();
+            if(!setOfOppId.isEmpty()){
+                groupedResults = [SELECT COUNT(Id) totalRecord, Opportunity__c FROM Follow_Up__c WHERE Opportunity__c IN :setOfOppId GROUP BY Opportunity__c];
+                System.debug('groupedResults ====>'+ groupedResults);
+            }
 
             Map<Id,Integer> mapOfOppAndFollowUpCount = new Map<Id,Integer>();
             for(AggregateResult ar : groupedResults){
@@ -175,7 +191,11 @@ public class FollowUpTriggerController {
             
             List<Opportunity> oppListToBeUpdate = new List<Opportunity>();
             List<Opportunity> zeroOppList = new List<Opportunity>();
-            List<Opportunity> oppList = [SELECT Id,Follow_Up_Count__c FROM Opportunity WHERE Id IN :setOfOppId];
+            List<Opportunity> oppList = new List<Opportunity>();
+            if(!setOfOppId.isEmpty()){
+                oppList = [SELECT Id,Follow_Up_Count__c FROM Opportunity WHERE Id IN :setOfOppId];
+            }
+            
             for(Opportunity opp : oppList){
                 if(!setOfZeroValue.contains(opp.Id)){
                     Opportunity opps = new Opportunity();
@@ -363,16 +383,23 @@ public class FollowUpTriggerController {
     }
 
     public static void deleteOldNotCompletedFollowUp(List<Follow_Up__c> newListFollowUp){
-        set<Id> setOfoppId = new set<Id>();
-        set<Id> setOfTestDriveId = new set<Id>();
-        for(Follow_Up__c followUpRec : newListFollowUp){
-            if(followUpRec.Opportunity__c != null){
-               setOfoppId.add(followUpRec.Opportunity__c);
-               setOfTestDriveId.add(followUpRec.Id);
+        try{
+            set<Id> setOfoppId = new set<Id>();
+            set<Id> setOfTestDriveId = new set<Id>();
+            for(Follow_Up__c followUpRec : newListFollowUp){
+                if(followUpRec.Opportunity__c != null){
+                    setOfoppId.add(followUpRec.Opportunity__c);
+                    setOfTestDriveId.add(followUpRec.Id);
+                }
             }
+            if(!setOfoppId.isEmpty()){
+                List<Follow_Up__c> listOfOldFollowUpWhichIsNotCompeleted = [Select Id from Follow_Up__c Where Id NOT IN: setOfTestDriveId AND Opportunity__c IN: setOfoppId AND Status__c != 'Completed'];
+                delete listOfOldFollowUpWhichIsNotCompeleted;
+            }
+        }catch(Exception e){
+            System.debug('Error ============> ' + e.getMessage() + ' at line number ============>' + e.getLineNumber() + ' Cause ============> ' + e.getCause() );
         }
-        List<Follow_Up__c> listOfOldFollowUpWhichIsNotCompeleted = [Select Id from Follow_Up__c Where Id NOT IN: setOfTestDriveId AND Opportunity__c IN: setOfoppId AND Status__c != 'Completed'];
-        delete listOfOldFollowUpWhichIsNotCompeleted;
+        
     }
 
     public static void assignSameOwnerOfLeadAndOppToTestDriveOwner(List<Follow_Up__c> newListFollowUp) {
