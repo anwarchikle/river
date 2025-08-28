@@ -442,7 +442,6 @@ public class OpportunityTriggerHandler {
         } catch (Exception e) {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
-        
     }
 
     public static void onClosedWonShowErrorIfBookingAmountIsNull(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap) {
@@ -459,7 +458,6 @@ public class OpportunityTriggerHandler {
         } catch (Exception e) {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
-        
     }
 
     public static void createFollowUpOnOppCreated(List<Opportunity> newListOfOpp){
