@@ -67,7 +67,8 @@ public class UtilityTestClass {
         system.debug('dealerId ====>'+ dealerId);
         system.debug('pincode ==>'+ pincode);
         system.debug('cityName ====>'+ cityName);
-        City__c city = new City__c(Name = cityName);
+        List<Pricebook2> pb = [SELECT Id, Name, IsActive, IsStandard FROM Pricebook2 WHERE IsActive = true AND Name = 'Bengaluru PB' LIMIT 1];
+        City__c city = new City__c(Name = cityName, Price_Book__c =pb[0].Id );
         insert city;
         system.debug('city ====>'+ city);
         Pin_Code__c pin = new Pin_Code__c(Area_Pincode__c = pincode, Dealer_Service_Center__c = dealerId, City__c = city.Id);

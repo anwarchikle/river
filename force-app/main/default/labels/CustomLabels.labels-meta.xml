@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Admin_Home_Engl_Desc</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Admin Home Engl Desc</shortDescription>
+        <value>Set up and configure foundational basics, including objects, Sales Agreements, Advanced Account Forecasting, and more.</value>
+    </labels>
+    <labels>
+        <fullName>ApexClass</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ApexClass</shortDescription>
+        <value>true</value>
+    </labels>
+    <labels>
+        <fullName>Business_Hours</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Business Hours</shortDescription>
+        <value>10,12</value>
+    </labels>
+    <labels>
+        <fullName>COCOCIN</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COCOCIN</shortDescription>
+        <value>U34100KA2022PTC158972</value>
+    </labels>
+    <labels>
+        <fullName>COCOEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COCOEmail</shortDescription>
+        <value>info@rideriver.com</value>
+    </labels>
+    <labels>
+        <fullName>COCOPhone</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COCOPhone</shortDescription>
+        <value>9731158443</value>
+    </labels>
+    <labels>
+        <fullName>CQA_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CQA_Profile</shortDescription>
+        <value>CQA Profile</value>
+    </labels>
+    <labels>
+        <fullName>CanViewApprovalActions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>CanViewApprovalActions</shortDescription>
+        <value>Area Service Manager</value>
+    </labels>
+    <labels>
+        <fullName>DPE_Data_Count</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DPE Data Count</shortDescription>
+        <value>mfcdpe2022__Record_Count__c</value>
+    </labels>
+    <labels>
+        <fullName>DPE_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>DPE Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>Debug_DPE_Object</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Debug DPE Object</shortDescription>
+        <value>mfcdpe2022__Data_Processing_Engine_Node_Metric__c</value>
+    </labels>
+    <labels>
+        <fullName>Default_River_Warehouse</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default River Warehouse</shortDescription>
+        <value>131J40000010wEyIAI</value>
+    </labels>
+    <labels>
+        <fullName>EasyDPEEditappcheckhelptext</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Easy DPE Edit app help text</shortDescription>
+        <value>Select whether you want the Data Processing Engine definition to apply the eligibility criteria for rebate types and the Included or Excluded product filters for aggregation.</value>
+    </labels>
+    <labels>
+        <fullName>Easy_DPE_Edit_App_Aggr_SubHeader</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Easy DPE Edit App Aggreate SubHeader</shortDescription>
+        <value>Select a source custom field from the Transaction Journal object and map it to the target field on the aggregate object to group data such as category and region.</value>
+    </labels>
+    <labels>
+        <fullName>Easy_DPE_Edit_App_SubHeahder</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Easy DPE Edit App SubHeahder</shortDescription>
+        <value>Select a source custom field from the Transaction Journal object and map it to the target field on the aggregate object.</value>
+    </labels>
+    <labels>
+        <fullName>Enable_ASM_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Enable ASM Email</shortDescription>
+        <value>False</value>
+    </labels>
+    <labels>
+        <fullName>Enable_HQ_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Enable HQ Email</shortDescription>
+        <value>True</value>
+    </labels>
+    <labels>
+        <fullName>Enable_Store_Email</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Enable Store Email</shortDescription>
+        <value>False</value>
+    </labels>
+    <labels>
+        <fullName>OrgWideEmail</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrgWideEmail</shortDescription>
+        <value>River Mobility</value>
+    </labels>
+    <labels>
+        <fullName>OrgWideEmailAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrgWideEmailAddress</shortDescription>
+        <value>support@rideriver.com</value>
+    </labels>
+    <labels>
+        <fullName>QRCodeBaseURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>QRCodeBaseURL</shortDescription>
+        <value>http://api.qrserver.com/v1/create-qr-code/?data=</value>
+    </labels>
+    <labels>
+        <fullName>RSAClientID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSAClientID</shortDescription>
+        <value>9f600062-b3d5-4207-8039-c92d04f888c8</value>
+    </labels>
+    <labels>
+        <fullName>RSAclientscret</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSAclientscret</shortDescription>
+        <value>RAD494NL5HV63</value>
+    </labels>
+    <labels>
+        <fullName>RSApurchaseThrough</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSApurchaseThrough</shortDescription>
+        <value>credit</value>
+    </labels>
+    <labels>
+        <fullName>RSAsellerId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSAsellerId</shortDescription>
+        <value>2298</value>
+    </labels>
+    <labels>
+        <fullName>RSAvehicleMake</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSAvehicleMake</shortDescription>
+        <value>River</value>
+    </labels>
+    <labels>
+        <fullName>RSAvehicleModel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSAvehicleModel</shortDescription>
+        <value>Indie</value>
+    </labels>
+    <labels>
+        <fullName>RSAvehicleType</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RSAvehicleType</shortDescription>
+        <value>BIKE</value>
+    </labels>
+    <labels>
+        <fullName>RsaUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RsaUrl</shortDescription>
+        <value>https://vms.readyassist.net/api</value>
+    </labels>
+    <labels>
+        <fullName>Threshold_Count</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Threshold_Count</shortDescription>
+        <value>2</value>
+    </labels>
+    <labels>
+        <fullName>Upload_Format_Lead</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Upload_Format_Lead</shortDescription>
+        <value>FirstName,LastName,Phone,PostalCode,LeadSource,Secondary_Sources__c,Event_Name__c,Event_Loaction__c</value>
+    </labels>
+    <labels>
+        <fullName>Upload_Format_Opportunity</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Upload_Format_Opportunity</shortDescription>
+        <value>Name,Phone__c,Enquiry_Primary_Source__c,Secondary_Sources__c,StageName,CloseDate</value>
+    </labels>
+    <labels>
+        <fullName>Vehicle_RecordTypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Vehicle RecordTypeId</shortDescription>
+        <value>012J4000001108bIAA</value>
+    </labels>
+    <labels>
+        <fullName>Vehicle_Record_TypeId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Vehicle Record TypeId</shortDescription>
+        <value>012J4000001108bIAA</value>
+    </labels>
+    <labels>
+        <fullName>Warehouse_UserId</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Warehouse UserId</shortDescription>
+        <value>005J4000000hz6HIAQ</value>
+    </labels>
+    <labels>
+        <fullName>easyDPEEditHeader</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>easy DPE Edit app Header</shortDescription>
+        <value>Easily map custom fields between Transaction Journal and an aggregate object such as the Rebate Member Product Aggregate object.</value>
+    </labels>
+    <labels>
+        <fullName>milestoneTypesToBeSkip</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>milestoneTypesToBeSkip</shortDescription>
+        <value>1st Service,2nd Service,3rd Service,4th Service,5th Service,6th Service,7th Service,8th Service,9th Service,10th Service,11th Service,12th Service,13th Service,14th Service,15th Service,16th Service,17th Service,18th Service</value>
+    </labels>
+    <labels>
+        <fullName>navigateToCasesURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>navigateToCasesURL</shortDescription>
+        <value>https://rivermobilityprivatelimited2.my.site.com/autocloudSite/s/case/Case/Default</value>
+    </labels>
+    <labels>
+        <fullName>navigateToJobCardsURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>navigateToJobCardsURL</shortDescription>
+        <value>https://rivermobilityprivatelimited2.my.site.com/autocloudSite/s/job-card</value>
+    </labels>
+</CustomLabels>

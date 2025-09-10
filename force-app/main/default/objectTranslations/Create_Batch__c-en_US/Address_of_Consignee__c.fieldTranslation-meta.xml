@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Address of Consignee --></label>
+    <name>Address_of_Consignee__c</name>
+    <picklistValues>
+        <masterLabel>River Factory</masterLabel>
+        <translation><!-- River Factory --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>River HQ</masterLabel>
+        <translation><!-- River HQ --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

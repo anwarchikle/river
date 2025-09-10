@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Lead Secondary DropOut  Reasons --></label>
+    <name>Lead_Secondary_DropOut_Reasons__c</name>
+    <picklistValues>
+        <masterLabel>Chose Another Brand / Store</masterLabel>
+        <translation><!-- Chose Another Brand / Store --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer not enquired</masterLabel>
+        <translation><!-- Customer not enquired --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>High expectations on product (not met)</masterLabel>
+        <translation><!-- High expectations on product (not met) --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Out of delivery area</masterLabel>
+        <translation><!-- Out of delivery area --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price is high</masterLabel>
+        <translation><!-- Price is high --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RNR</masterLabel>
+        <translation><!-- RNR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Retail finance issues</masterLabel>
+        <translation><!-- Retail finance issues --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

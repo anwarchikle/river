@@ -110,7 +110,7 @@ public class LeadProcessingQueueable implements Queueable, Database.AllowsCallou
                     ));
                     continue;
                 }
-                if (isPartnerUser) {
+                if (isPartnerUser && ld.Instore_Test_drive__c == true) {
                     dmsLeads.add(new Lead(
                         Id = ld.Id,
                         OwnerId = currentUser.Id,

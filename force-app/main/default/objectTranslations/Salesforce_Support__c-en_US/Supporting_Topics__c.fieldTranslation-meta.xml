@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Supporting Topics --></label>
+    <name>Supporting_Topics__c</name>
+    <picklistValues>
+        <masterLabel>Account Details Related</masterLabel>
+        <translation><!-- Account Details Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Account Visibility</masterLabel>
+        <translation><!-- Account Visibility --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow-up Related</masterLabel>
+        <translation><!-- Follow-up Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Invoice Related Issue</masterLabel>
+        <translation><!-- Invoice Related Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Job Card Not Opening Or Closing</masterLabel>
+        <translation><!-- Job Card Not Opening Or Closing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead Transfer</masterLabel>
+        <translation><!-- Lead Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead Visibility</masterLabel>
+        <translation><!-- Lead Visibility --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Need New Credentials</masterLabel>
+        <translation><!-- Need New Credentials --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Need to Block Credentials</masterLabel>
+        <translation><!-- Need to Block Credentials --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New Lead Creation</masterLabel>
+        <translation><!-- New Lead Creation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Amount Related</masterLabel>
+        <translation><!-- Order Amount Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Invoice Related</masterLabel>
+        <translation><!-- Order Invoice Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Products Related</masterLabel>
+        <translation><!-- Order Products Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDI Access Not Available</masterLabel>
+        <translation><!-- PDI Access Not Available --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDI Checklist Not Reflecting</masterLabel>
+        <translation><!-- PDI Checklist Not Reflecting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDI PDF Related Issue</masterLabel>
+        <translation><!-- PDI PDF Related Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parts/Labour Assignment Issue</masterLabel>
+        <translation><!-- Parts/Labour Assignment Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parts/Labour Deletion Issue</masterLabel>
+        <translation><!-- Parts/Labour Deletion Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phone Number Change</masterLabel>
+        <translation><!-- Phone Number Change --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product Price Related Issue</masterLabel>
+        <translation><!-- Product Price Related Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Test Ride Related</masterLabel>
+        <translation><!-- Test Ride Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unable to Login</masterLabel>
+        <translation><!-- Unable to Login --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Details Missing</masterLabel>
+        <translation><!-- Vehicle Details Missing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Not Found</masterLabel>
+        <translation><!-- Vehicle Not Found --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Not Uploaded in Salesforce</masterLabel>
+        <translation><!-- Vehicle Not Uploaded in Salesforce --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Not Visible Under Store Account</masterLabel>
+        <translation><!-- Vehicle Not Visible Under Store Account --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

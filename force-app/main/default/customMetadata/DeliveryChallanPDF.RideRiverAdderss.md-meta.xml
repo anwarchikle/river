@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>RideRiverAdderss</label>
+    <protected>false</protected>
+    <values>
+        <field>Bill_From__c</field>
+        <value xsi:type="xsd:string">Name and Address of the Consignor (Bill From)</value>
+    </values>
+    <values>
+        <field>Bill_To__c</field>
+        <value xsi:type="xsd:string">Name and Address of the Consignee (Bill To / Ship To)</value>
+    </values>
+    <values>
+        <field>CIN__c</field>
+        <value xsi:type="xsd:string">U34100KA2022PTC158972</value>
+    </values>
+    <values>
+        <field>CompanyName__c</field>
+        <value xsi:type="xsd:string">RIVER MOBILITY PRIVATE LIMITED</value>
+    </values>
+    <values>
+        <field>Company_Email__c</field>
+        <value xsi:type="xsd:string">info@rideriver.com</value>
+    </values>
+    <values>
+        <field>Company_Phone__c</field>
+        <value xsi:type="xsd:string">+919731158443</value>
+    </values>
+    <values>
+        <field>Company_Website__c</field>
+        <value xsi:type="xsd:string">http://www.rideriver.com</value>
+    </values>
+    <values>
+        <field>Factory_Address__c</field>
+        <value xsi:type="xsd:string">Sy No. 113,123-128, River Mobility Private Limited, Vagata Village, Jadigenahalli, Hoskote Taluk, Bengaluru, Karnataka, India.</value>
+    </values>
+    <values>
+        <field>Former_Address__c</field>
+        <value xsi:type="xsd:string">(Formerly: World of River Private Limited)</value>
+    </values>
+    <values>
+        <field>GST__c</field>
+        <value xsi:type="xsd:string">29AALCR7167F1ZU</value>
+    </values>
+    <values>
+        <field>PartA__c</field>
+        <value xsi:type="xsd:string">DELIVERY CHALLAN PART-A</value>
+    </values>
+    <values>
+        <field>Registered_Office__c</field>
+        <value xsi:type="xsd:string">No. 25/3, KIADB Export Promotion Industrial Area, Whitefield, Bengaluru Urban, Karnataka, India.</value>
+    </values>
+    <values>
+        <field>Small_CName__c</field>
+        <value xsi:type="xsd:string">River Mobility Private Limited</value>
+    </values>
+</CustomMetadata>

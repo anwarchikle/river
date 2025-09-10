@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Account/allocation contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Delivery specialist Contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Home test ride ex contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PDI ex Contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product specialist contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Store Manager Contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Tele/CRE contact</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Role Type and Location are Mandatory --></errorMessage>
+        <name>Role_Type_and_Location_is_must</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter 10 Digit Phone Number --></errorMessage>
+        <name>phone_validation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SendGmail --></label>
+        <name>SendGmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooWeather --></label>
+        <name>YahooWeather</name>
+    </webLinks>
+    <webLinks>
+        <label>Volver a suscribirse a Marketing Cloud</label>
+        <name>et4ae5__ExactTarget_Resubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label>Anular suscripción de Marketing Cloud</label>
+        <name>et4ae5__ExactTarget_Unsubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label>Enviar correo electrónico de Marketing Cloud</label>
+        <name>et4ae5__Send_ExactTarget_Email</name>
+    </webLinks>
+    <webLinks>
+        <label>Enviar SMS de Marketing Cloud</label>
+        <name>et4ae5__Send_ExactTarget_SMS</name>
+    </webLinks>
+    <webLinks>
+        <label>Ver Marketing Cloud Analytics</label>
+        <name>et4ae5__View_ExactTarget_Analytics</name>
+    </webLinks>
+</CustomObjectTranslation>

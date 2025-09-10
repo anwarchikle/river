@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Assignment Log</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Assignment Logs</value>
+    </caseValues>
+    <layouts>
+        <layout>Assignment log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Vehicle Returning --></label>
+            <section>Vehicle Returning</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Associated Service Appointment is already Completed. --></errorMessage>
+        <name>Before_Completed_Service_Appointment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Spare Vehicle Delivery Time and Spare Vehicle Returning Time must not be the same. --></errorMessage>
+        <name>Delivery_date_and_Return_date_not_same</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Spare Vehicle Returning Time should not be earlier than the Spare Vehicle Delivery Time --></errorMessage>
+        <name>Delivery_date_and_Returning_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Returned Spare Vehicle Odo Reading must be greater than the Delivered Spare Vehicle  Odo Readings --></errorMessage>
+        <name>Spare_Vehicel_Odo_Meter_Reading</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- If the Spare Vehicle Returning Time is selected, please fill in the Spare Vehicle Odo Reading. --></errorMessage>
+        <name>Spare_Vehicel_Odo_Meter_Reading_error</name>
+    </validationRules>
+</CustomObjectTranslation>

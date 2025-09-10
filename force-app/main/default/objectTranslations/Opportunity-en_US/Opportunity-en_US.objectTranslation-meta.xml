@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Enquiry</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Enquiries</value>
+    </caseValues>
+    <quickActions>
+        <label><!-- Create Follow-Up --></label>
+        <name>Create_Follow_Up</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Order --></label>
+        <name>Create_Order</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Test Ride --></label>
+        <name>Create_Test_Ride</name>
+    </quickActions>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Drop Out Reason and Sub Reason are required when Stage is &apos;Drop Out&apos;. If Sub Reason is &apos;Others – need reason&apos;, you must provide a value in the &apos;Others&apos; field. --></errorMessage>
+        <name>DropOutReasonAndSubReasonsAreMandatory</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Upload_Enquiries --></label>
+        <name>Upload_Enquiries</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Upload_Enquiry --></label>
+        <name>Upload_Enquiry</name>
+    </webLinks>
+</CustomObjectTranslation>

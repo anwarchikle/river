@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Work Order Payment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Work Order Payments</value>
+    </caseValues>
+    <layouts>
+        <layout>Work Order Payment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Amount Should not be greater than Grand Total --></errorMessage>
+        <name>Amount</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Work Order Payment can&apos;t be created after full payment --></errorMessage>
+        <name>Full_Payment</name>
+    </validationRules>
+</CustomObjectTranslation>

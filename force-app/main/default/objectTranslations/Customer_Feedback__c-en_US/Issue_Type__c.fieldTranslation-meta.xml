@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Issue Type --></label>
+    <name>Issue_Type__c</name>
+    <picklistValues>
+        <masterLabel>Accessories</masterLabel>
+        <translation><!-- Accessories --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Amenities/Facilities</masterLabel>
+        <translation><!-- Amenities/Facilities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Handling</masterLabel>
+        <translation><!-- Customer Handling --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parts</masterLabel>
+        <translation><!-- Parts --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Price</masterLabel>
+        <translation><!-- Price --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Product</masterLabel>
+        <translation><!-- Product --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Quality</masterLabel>
+        <translation><!-- Service Quality --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

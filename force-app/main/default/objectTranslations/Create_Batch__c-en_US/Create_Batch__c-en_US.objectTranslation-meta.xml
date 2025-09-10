@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Batch</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Batches</value>
+    </caseValues>
+    <layouts>
+        <layout>Create Batch Dms Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Shipping Details --></label>
+            <section>Shipping Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Create Batch Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Shipping Details --></label>
+            <section>Shipping Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Approve Claims --></label>
+        <name>Approve_Claims</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Batch --></label>
+        <name>Create_Batch</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Batch --></label>
+        <name>Create_Batch1</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- DC PDF --></label>
+        <name>DC_Pdf</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Generate Receipt --></label>
+        <name>Generate_Receipt</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Receive GRN --></label>
+        <name>Receive_GRN</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Credit Note --></label>
+        <name>Update_Credit_Note</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Update Batch Dispatch Date to current date. --></errorMessage>
+        <name>Future_Batch_Dispatch_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Before moving to Readdy for Dispatche, you must have to enter all Shipping Details --></errorMessage>
+        <name>Status_Changes_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- status moves only in sequence --></errorMessage>
+        <name>Transition_to_next_stage</name>
+    </validationRules>
+</CustomObjectTranslation>

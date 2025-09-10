@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Assign to PS</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <assignedTo>JP_Nagar_Sales_Team</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Dealer_Code__c</field>
+                <operation>equals</operation>
+                <value>291001</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>YELAHANKA_SALES_TEAM</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Dealer_Code__c</field>
+                <operation>equals</operation>
+                <value>292001</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

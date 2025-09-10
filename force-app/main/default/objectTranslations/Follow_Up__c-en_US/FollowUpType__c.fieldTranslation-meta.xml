@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- FollowUpType --></label>
+    <name>FollowUpType__c</name>
+    <picklistValues>
+        <masterLabel>Reschedule TR Call</masterLabel>
+        <translation><!-- Reschedule TR Call --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Schedule TR Call</masterLabel>
+        <translation><!-- Schedule TR Call --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>booking call</masterLabel>
+        <translation><!-- booking call --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

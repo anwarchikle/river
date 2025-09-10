@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Subject --></label>
+    <name>Subject__c</name>
+    <picklistValues>
+        <masterLabel>Case Management</masterLabel>
+        <translation><!-- Case Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Credential Related Issues</masterLabel>
+        <translation><!-- Credential Related Issues --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inventory Management</masterLabel>
+        <translation><!-- Inventory Management --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Job Card Process</masterLabel>
+        <translation><!-- Job Card Process --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead Management System</masterLabel>
+        <translation><!-- Lead Management System --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Management System</masterLabel>
+        <translation><!-- Order Management System --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDI</masterLabel>
+        <translation><!-- PDI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Report Related</masterLabel>
+        <translation><!-- Report Related --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Related Issue</masterLabel>
+        <translation><!-- Vehicle Related Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warranty Management Issue</masterLabel>
+        <translation><!-- Warranty Management Issue --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

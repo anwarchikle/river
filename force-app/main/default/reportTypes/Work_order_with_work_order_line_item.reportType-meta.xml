@@ -1,0 +1,1400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>WorkOrder</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Work order with work order line item</description>
+    <join>
+        <outerJoin>true</outerJoin>
+        <relationship>WorkOrderLineItems</relationship>
+    </join>
+    <label>Work order with work order line item</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Work Order ID</displayNameOverride>
+            <field>Id</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Work Order Number</displayNameOverride>
+            <field>Name</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case</displayNameOverride>
+            <field>Case</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Entitlement</displayNameOverride>
+            <field>Entitlement</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Contract</displayNameOverride>
+            <field>ServiceContract</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset</displayNameOverride>
+            <field>Asset</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address</displayNameOverride>
+            <field>Address</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street</displayNameOverride>
+            <field>Street</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
+            <field>City</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/Province (text only)</displayNameOverride>
+            <field>State</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Zip/Postal Code</displayNameOverride>
+            <field>PostalCode</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country (text only)</displayNameOverride>
+            <field>Country</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latitude</displayNameOverride>
+            <field>Latitude</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Longitude</displayNameOverride>
+            <field>Longitude</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Geocode Accuracy</displayNameOverride>
+            <field>GeocodeAccuracy</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Date</displayNameOverride>
+            <field>StartDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Date</displayNameOverride>
+            <field>EndDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subject</displayNameOverride>
+            <field>Subject</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Root Work Order</displayNameOverride>
+            <field>RootWorkOrder</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Priority</displayNameOverride>
+            <field>Priority</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tax</displayNameOverride>
+            <field>Tax</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Identification Number</displayNameOverride>
+            <field>Vehicle_Identification_Number__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Registration Number</displayNameOverride>
+            <field>Vehicle_Registration_Number__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Odometer Reading</displayNameOverride>
+            <field>Odometer_Reading__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
+            <field>City__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subtotal</displayNameOverride>
+            <field>Subtotal</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Price</displayNameOverride>
+            <field>TotalPrice</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Line Items</displayNameOverride>
+            <field>LineItemCount</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Price Book</displayNameOverride>
+            <field>Pricebook2</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discount</displayNameOverride>
+            <field>Discount</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grand Total</displayNameOverride>
+            <field>GrandTotal</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Work Order</displayNameOverride>
+            <field>ParentWorkOrder</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Closed</displayNameOverride>
+            <field>IsClosed</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stopped</displayNameOverride>
+            <field>IsStopped</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stopped Since</displayNameOverride>
+            <field>StopStartDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Entitlement Process Start Time</displayNameOverride>
+            <field>SlaStartDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Entitlement Process End Time</displayNameOverride>
+            <field>SlaExitDate</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Business Hours</displayNameOverride>
+            <field>BusinessHours</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration</displayNameOverride>
+            <field>Duration</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration Type</displayNameOverride>
+            <field>DurationType</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration in Minutes</displayNameOverride>
+            <field>DurationInMinutes</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Work Type</displayNameOverride>
+            <field>WorkType</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Territory</displayNameOverride>
+            <field>ServiceTerritory</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status Category</displayNameOverride>
+            <field>StatusCategory</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location</displayNameOverride>
+            <field>Location</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Insurance Amount</displayNameOverride>
+            <field>Insurance_Amount__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Labour Charge</displayNameOverride>
+            <field>Labour_Charge__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Returned</displayNameOverride>
+            <field>Spare_Vehicle_Returned__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle</displayNameOverride>
+            <field>Vehicle__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subtotal (Parts)</displayNameOverride>
+            <field>Subtotal__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Amount Paid</displayNameOverride>
+            <field>Total_Amount_Paid__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grand Total</displayNameOverride>
+            <field>Estimation_Bill__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total price</displayNameOverride>
+            <field>Total_price__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>On Hold Reason</displayNameOverride>
+            <field>On_Hold_Reason__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancellation Approval Status</displayNameOverride>
+            <field>Approval_Status__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Bay Allocation</displayNameOverride>
+            <field>Bay_Allocation__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancellation Reason</displayNameOverride>
+            <field>Cancellation_Reason__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Checklist Approved</displayNameOverride>
+            <field>Checklist_Approved__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Checklist</displayNameOverride>
+            <field>Checklist__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Claim Id</displayNameOverride>
+            <field>Claim_Id__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Software Version</displayNameOverride>
+            <field>Current_Software_Versions__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Insurance Applied</displayNameOverride>
+            <field>Insurance_Applied__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latest Software Version</displayNameOverride>
+            <field>Latest_Software_Version__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Policy Number</displayNameOverride>
+            <field>Policy_Number__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Re-Work Details</displayNameOverride>
+            <field>Re_Work_Details__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Appointment</displayNameOverride>
+            <field>Service_Appointment__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Center</displayNameOverride>
+            <field>Service_Center__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Software Update Required</displayNameOverride>
+            <field>Software_Update_Required__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Duration(Hour)</displayNameOverride>
+            <field>Total_Duration_Hour__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Duration (Min)</displayNameOverride>
+            <field>Total_Duration_Min__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Warehouse</displayNameOverride>
+            <field>Warehouse__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>feedback mail</displayNameOverride>
+            <field>feedback_mail__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Labour Charges</displayNameOverride>
+            <field>Labour_Charges__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Insurance Type</displayNameOverride>
+            <field>Insurance_Type__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Work Order Approved</displayNameOverride>
+            <field>Work_Order_Approved__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Inventory Lot</displayNameOverride>
+            <field>Inventory_Lot__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Backlight</displayNameOverride>
+            <field>RR_Backlight__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Battery Number</displayNameOverride>
+            <field>RR_Battery_Number__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brake Bedding &amp; Operation</displayNameOverride>
+            <field>RR_Brake_Bedding_Operation__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brake Oil Level</displayNameOverride>
+            <field>RR_Brake_Oil_Level__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brake Pads</displayNameOverride>
+            <field>RR_Brake_Pads__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brake Play</displayNameOverride>
+            <field>RR_Brake_Play__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Brake Sponginess</displayNameOverride>
+            <field>RR_Brake_Sponginess__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Charger</displayNameOverride>
+            <field>RR_Charger__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Charging Status bar indication check</displayNameOverride>
+            <field>RR_Charging_Status_bar_indication_check__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Check all requested work completed</displayNameOverride>
+            <field>RR_Check_all_requested_work_completed__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Check for outstanding Fault Codes</displayNameOverride>
+            <field>RR_Check_for_outstanding_Fault_Codes__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Check for steering wobble</displayNameOverride>
+            <field>RR_Check_for_steering_wobble__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Rating</displayNameOverride>
+            <field>RR_Customer_Rating__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Customer Suggestions</displayNameOverride>
+            <field>RR_Customer_Suggestions__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Electrical Component Functioning</displayNameOverride>
+            <field>RR_Electrical_Component_Functioning__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ensure latest Firmware is flashed</displayNameOverride>
+            <field>RR_Ensure_latest_Firmware_is_flashed__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Estimated Cost</displayNameOverride>
+            <field>RR_Estimated_Cost__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Estimated Delivery Time</displayNameOverride>
+            <field>RR_Estimated_Delivery_Time__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>First Aid Kit</displayNameOverride>
+            <field>RR_First_Aid_Kit__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Fork Seal</displayNameOverride>
+            <field>RR_Fork_Seal__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Axle Nut</displayNameOverride>
+            <field>RR_Front_Axle_Nut__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Fender</displayNameOverride>
+            <field>RR_Front_Fender__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Forks</displayNameOverride>
+            <field>RR_Front_Forks__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Panel</displayNameOverride>
+            <field>RR_Front_Panel__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Seat</displayNameOverride>
+            <field>RR_Front_Seat__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Wheel</displayNameOverride>
+            <field>RR_Front_Wheel__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>GUI Checks</displayNameOverride>
+            <field>RR_GUI_Checks__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Headlight</displayNameOverride>
+            <field>RR_Headlight__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Job Type</displayNameOverride>
+            <field>RR_Job_Type__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Key Code</displayNameOverride>
+            <field>RR_Key_Code__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Mirrors</displayNameOverride>
+            <field>RR_Mirrors__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service revenue Total</displayNameOverride>
+            <field>Service_revenue_Total__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Non OE Acc. Fitted</displayNameOverride>
+            <field>RR_Non_OE_Acc_Fitted__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Non OE Acc. Fitted?</displayNameOverride>
+            <field>RR_Non_OE_Acc_Fitted_checkbox__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Other Observations</displayNameOverride>
+            <field>RR_Other_Observations__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Pending Field Fix</displayNameOverride>
+            <field>RR_Pending_Field_Fix__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Personal Belongings</displayNameOverride>
+            <field>RR_Personal_Belongings__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Axle Nut</displayNameOverride>
+            <field>RR_Rear_Axle_Nut__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Fender</displayNameOverride>
+            <field>RR_Rear_Fender__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Panel</displayNameOverride>
+            <field>RR_Rear_Panel__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Seat</displayNameOverride>
+            <field>RR_Rear_Seat__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Shock Absorber</displayNameOverride>
+            <field>RR_Rear_Shock_Absorber__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear View Mirror</displayNameOverride>
+            <field>RR_Rear_View_Mirror__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Wheel</displayNameOverride>
+            <field>RR_Rear_Wheel__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SOC Drop</displayNameOverride>
+            <field>RR_SOC_Drop__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SOC Level</displayNameOverride>
+            <field>RR_SOC_Level__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SOC</displayNameOverride>
+            <field>RR_SOC__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Scratches/Damages</displayNameOverride>
+            <field>RR_Scratches_Damages__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Advisor</displayNameOverride>
+            <field>RR_Service_Advisor__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Side Panels</displayNameOverride>
+            <field>RR_Side_Panels__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Socket Cover Opening</displayNameOverride>
+            <field>RR_Socket_Cover_Opening__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Speedometer Function</displayNameOverride>
+            <field>RR_Speedometer_Function__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status (Prior)</displayNameOverride>
+            <field>RR_Status_Prior__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status of Side Stand switch in parked co</displayNameOverride>
+            <field>RR_Status_of_Side_Stand_switch_in_parked__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Steering, Suspension &amp; NVH levels</displayNameOverride>
+            <field>RR_Steering_Suspension_NVH_levels__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Steering Top Nut</displayNameOverride>
+            <field>RR_Steering_Top_Nut__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Suspension Play</displayNameOverride>
+            <field>RR_Suspnsion_Play__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tank Badge</displayNameOverride>
+            <field>RR_Tank_Badge__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Technician</displayNameOverride>
+            <field>RR_Technician__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tool Kit</displayNameOverride>
+            <field>RR_Tool_Kit__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tyre Condition</displayNameOverride>
+            <field>RR_Tyre_Condition__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tyre Pressure</displayNameOverride>
+            <field>RR_Tyre_Pressure__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle  Document</displayNameOverride>
+            <field>RR_Vehicle_Document__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Washing &amp; Polishing</displayNameOverride>
+            <field>RR_Washing_Polishing__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Periodic Maintenance Type</displayNameOverride>
+            <field>RR_Periodic_Maintenance_Type__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Estimate No.</displayNameOverride>
+            <field>Estimate_No__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice Date</displayNameOverride>
+            <field>Invoice_Date__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice No</displayNameOverride>
+            <field>Invoice_No__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice Type</displayNameOverride>
+            <field>Invoice_Type__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <masterLabel>Work Orders</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Part ID</displayNameOverride>
+            <field>Id</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Part Number</displayNameOverride>
+            <field>Name</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Part</displayNameOverride>
+            <field>ParentWorkOrderLineItem</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product</displayNameOverride>
+            <field>Product2</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset</displayNameOverride>
+            <field>Asset</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Order</displayNameOverride>
+            <field>Order</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Root Part</displayNameOverride>
+            <field>RootWorkOrderLineItem</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Start Date</displayNameOverride>
+            <field>StartDate</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>End Date</displayNameOverride>
+            <field>EndDate</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product</displayNameOverride>
+            <field>PricebookEntry</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity</displayNameOverride>
+            <field>Quantity</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unit Price</displayNameOverride>
+            <field>UnitPrice</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Discount</displayNameOverride>
+            <field>Discount</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Price</displayNameOverride>
+            <field>TotalPrice</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration</displayNameOverride>
+            <field>Duration</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration Type</displayNameOverride>
+            <field>DurationType</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration in Minutes</displayNameOverride>
+            <field>DurationInMinutes</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Work Type</displayNameOverride>
+            <field>WorkType</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address</displayNameOverride>
+            <field>Address</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street</displayNameOverride>
+            <field>Street</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
+            <field>City</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/Province (text only)</displayNameOverride>
+            <field>State</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Zip/Postal Code</displayNameOverride>
+            <field>PostalCode</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country (text only)</displayNameOverride>
+            <field>Country</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latitude</displayNameOverride>
+            <field>Latitude</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Longitude</displayNameOverride>
+            <field>Longitude</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Geocode Accuracy</displayNameOverride>
+            <field>GeocodeAccuracy</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Territory</displayNameOverride>
+            <field>ServiceTerritory</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subject</displayNameOverride>
+            <field>Subject</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status Category</displayNameOverride>
+            <field>StatusCategory</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Closed</displayNameOverride>
+            <field>IsClosed</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Priority</displayNameOverride>
+            <field>Priority</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location</displayNameOverride>
+            <field>Location</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Amount</displayNameOverride>
+            <field>Total_Amount__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Inventory Lot</displayNameOverride>
+            <field>Inventory_Lot__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Labour Charge</displayNameOverride>
+            <field>Labour_Charge__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Available</displayNameOverride>
+            <field>Product_Available__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Fault Code</displayNameOverride>
+            <field>Product_Fault_Code__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Parts Available</displayNameOverride>
+            <field>Spare_Parts_Available__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stage</displayNameOverride>
+            <field>Stage__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parts Category</displayNameOverride>
+            <field>RR_Parts_Category__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product</displayNameOverride>
+            <field>RR_Product__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CGST Percentage</displayNameOverride>
+            <field>CGST_Percentage__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>HSN Code</displayNameOverride>
+            <field>HSN_Code__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IGST Percentage</displayNameOverride>
+            <field>IGST_Percentage__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SGST Percentage</displayNameOverride>
+            <field>SGST_Percentage__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unit of Measurement</displayNameOverride>
+            <field>Unit_of_Measurement__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Amount</displayNameOverride>
+            <field>Amount__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CGST Amount</displayNameOverride>
+            <field>CGST_Amount__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IGST Amount</displayNameOverride>
+            <field>IGST_Amount__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SGST Amount</displayNameOverride>
+            <field>SGST_Amount__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Part : Product : Product Code</displayNameOverride>
+            <field>Product2.ProductCode</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Replacement Type</displayNameOverride>
+            <field>Replacement_Type__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>NDP</displayNameOverride>
+            <field>NDP__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <masterLabel>Work Order Line Items</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Phone</displayNameOverride>
+            <field>Account_Phone__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Invoice number</displayNameOverride>
+            <field>Invoice_number__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Company</displayNameOverride>
+            <field>Company__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ageing</displayNameOverride>
+            <field>Ageing__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Gen Version</displayNameOverride>
+            <field>Gen_Version__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dealer Contact</displayNameOverride>
+            <field>Dealer_Contact__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dealer Observation</displayNameOverride>
+            <field>Dealer_Observation__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Insurance provider name</displayNameOverride>
+            <field>Insurance_provider_name__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>GSTIN No</displayNameOverride>
+            <field>GSTIN_No__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>B2B GSTIN No</displayNameOverride>
+            <field>B2B_GSTIN_No__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Part_Count__c</field>
+            <table>WorkOrder</table>
+        </columns>
+        <masterLabel>Job Cards</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product Code</displayNameOverride>
+            <field>Product_Code__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EW Allowed?</displayNameOverride>
+            <field>EW_Allowed__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.Name</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.Type__c</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product2.Type</field>
+            <table>WorkOrder.WorkOrderLineItems</table>
+        </columns>
+        <masterLabel>Parts</masterLabel>
+    </sections>
+</ReportType>

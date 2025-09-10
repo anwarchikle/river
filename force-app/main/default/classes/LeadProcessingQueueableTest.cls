@@ -36,14 +36,21 @@ private class LeadProcessingQueueableTest {
         Group hqQueue = new Group(DeveloperName = 'Head_Quarter1', Name = 'HQ Queue', Type = 'Queue');
         Group oobQueue = new Group(DeveloperName = 'Out_of_Business_Hours1', Name = 'OOB Queue', Type = 'Queue');
         insert new List<Group>{ hqQueue, oobQueue };
-                
+            
+            
+            List<Group> hqQueueExact = [Select DeveloperName, Name ,Type from Group Limit 1 ];
+        
+        Lead nonServiceableLead = UtilityTestClass.createTestLead('Non Serviceable Lead', 'Test Co', 'New', '9876555210', '999999', 'Telephone', 'Telephone');
+        
+        leadIds.add(nonServiceableLead.Id);
+        
         Account acc = UtilityTestClass.createTestAccount('Partner Store', 'D001', 'Demo Partner Store','560076', 'Dealer');
         
         City__c city = new City__c(Name = 'Test City');
         insert city;
         
         Pin_Code__c pincode = new Pin_Code__c(
-            Area_Pincode__c = '560076',
+            Area_Pincode__c = '100001',
             Dealer_Service_Center__c = acc.Id,
             City__c = city.Id
         );
@@ -53,7 +60,7 @@ private class LeadProcessingQueueableTest {
         ld1.Dealer_Allocation__c = true;
         update ld1;
         
-        Lead ld2 = UtilityTestClass.createTestLead('OOB Lead 2', 'Test Co', 'New', '9999999998', '560076', 'Telephone', 'Telephone');
+        Lead ld2 = UtilityTestClass.createTestLead('OOB Lead 2', 'Test Co', 'New', '9985745437', '560076', 'Telephone', 'Telephone');
         ld2.Dealer_Allocation__c = false;
         update ld2;
         
@@ -63,13 +70,31 @@ private class LeadProcessingQueueableTest {
         
         LeadProcessingQueueable job1 = new LeadProcessingQueueable(leadIds, userList[0].Id);
         LeadProcessingQueueable job2 = new LeadProcessingQueueable(leadIds, userList[0].Id);
-        LeadProcessingQueueable job3 = new LeadProcessingQueueable(new List<Id>{ld1.Id, ld2.Id}, userList[0].Id);
+        LeadProcessingQueueable job3 = new LeadProcessingQueueable(new List<Id>{ld1.Id, ld2.Id}, userList[0].Id);        
         
         System.runAs(userList[0]) {
             System.enqueueJob(job1);
             System.enqueueJob(job2);
             System.enqueueJob(job3);
         }
+        
+        AssiGroup.Business_Hours_Morning__c = Time.newInstance(8, 0, 0, 0);
+        AssiGroup.Business_Hours_End_Time__c = Time.newInstance(20, 0, 0, 0);
+        update AssiGroup;
+        
+        update new Assignment_Group_Member__c(
+            Id = member.Id,
+            Known_languages__c = 'Bengali'
+        );
+        
+        update new Pin_Code__c(
+            Id = pincode.Id,
+            Languages__c = 'English'
+        );
+        
+        Lead noLanguageMatchLead = UtilityTestClass.createTestLead('No Lang Match', 'Test Co', 'New', '9123400789', '100001', 'Telephone', 'Telephone');
+        
+        System.enqueueJob(new LeadProcessingQueueable(new List<Id>{ noLanguageMatchLead.Id }, userList[0].Id));
         
     }
 }

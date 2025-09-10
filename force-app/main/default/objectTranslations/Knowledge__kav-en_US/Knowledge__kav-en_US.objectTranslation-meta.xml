@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Knowledge</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Knowledge</value>
+    </caseValues>
+    <layouts>
+        <layout>Knowledge Layout</layout>
+        <sections>
+            <label><!-- 기사 세부 사항 --></label>
+            <section>기사 세부 사항</section>
+        </sections>
+        <sections>
+            <label><!-- 디지털 참여 응답 --></label>
+            <section>디지털 참여 응답</section>
+        </sections>
+        <sections>
+            <label><!-- 속성 --></label>
+            <section>속성</section>
+        </sections>
+        <sections>
+            <label><!-- 정보 --></label>
+            <section>정보</section>
+        </sections>
+        <sections>
+            <label><!-- 표시: --></label>
+            <section>표시:</section>
+        </sections>
+        <sections>
+            <label><!-- 할당 --></label>
+            <section>할당</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

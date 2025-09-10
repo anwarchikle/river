@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Salesforce Support</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Salesforce Support</value>
+    </caseValues>
+    <layouts>
+        <layout>DMS User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Salesforce Support Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Ticket Info --></label>
+            <section>Ticket Info</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please Fill Additional Details --></errorMessage>
+        <name>Fill_Add_Details_For_Other</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A Closed Ticket Cannot Be Edited --></errorMessage>
+        <name>Removing_Edit_Access_Once_Ticket_Closed</name>
+    </validationRules>
+</CustomObjectTranslation>

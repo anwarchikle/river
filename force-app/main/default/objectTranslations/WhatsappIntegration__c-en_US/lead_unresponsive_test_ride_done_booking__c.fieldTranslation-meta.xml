@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- lead_unresponsive_test_ride_done_booking --></label>
+    <name>lead_unresponsive_test_ride_done_booking__c</name>
+</CustomFieldTranslation>

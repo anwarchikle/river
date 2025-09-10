@@ -1,4 +1,4 @@
-@isTest
+@isTest(seeAllData = true)
 public class OpportunityTriggerHandlerTest {
     
     @isTest
@@ -63,7 +63,7 @@ public class OpportunityTriggerHandlerTest {
     
     @isTest
     static void testCreateEvent_FallbackBranch() {
-        Lead testLead = UtilityTestClass.createTestLead('Test Lead 2', 'Test Company', 'New', '9876543210', '660087', 'Online', 'Google' );
+        Lead testLead = UtilityTestClass.createTestLead('Test Lead 2', 'Test Company', 'New', '9870003210', '660087', 'Online', 'Google' );
         
         Map<String, Object> testData = new Map<String, Object>{ 'StartDate' => System.now().addDays(2),'EndDate' => System.now().addDays(2).addHours(1),'Status' => 'Planned',
                 'rideType' => 'HTR', 'recordId' => testLead.Id, 'street' => '456 Test Rd', 'city' => 'New City', 'country' => 'US', 'province' => 'NY', 'postalCode' => '54321' };
@@ -113,7 +113,7 @@ public class OpportunityTriggerHandlerTest {
         List<User> userList = [SELECT Id FROM User Where UserRoleId =: UserRoleType[0].Id AND isActive = true AND contactId != null];
         Id UserId = userList[0].Id;
         Account testAccount = UtilityTestClass.createTestAccount('Demo Store', 'D001', 'Demo Store', '560076', 'Dealer');
-        UtilityTestClass.createTestPinCode(testAccount.Id, '560076', 'Bangalore');
+        UtilityTestClass.createTestPinCode(testAccount.Id, '100003', 'Bangalore');
         
         System.runAs(userList[0]) {
             Map<String, Object> testData = new Map<String, Object>{'fName' => 'Test', 'lName' => 'User',  'phone' => '9876543210', 'pincode' => '560076', 
@@ -143,16 +143,33 @@ public class OpportunityTriggerHandlerTest {
         Lead testLead = UtilityTestClass.createTestLead( 'Test Lead', 'Test Company', 'New', '9035244425', '123456', 'Online', 'Google' );
         
         Account testAccount = UtilityTestClass.createTestAccount('Test Account', 'C001', 'Test Store', '560076', 'Customer');
-        Opportunity testOpp = UtilityTestClass.createTestOpportunity(
-            'Test Opportunity',
-            testAccount.Id,
-            'Prospecting',
-            System.today().addDays(30),
-            10000
-        );
+        Opportunity testOpp = UtilityTestClass.createTestOpportunity( 'Test Opportunity',    testAccount.Id, 'Prospecting', System.today().addDays(30),  10000 );
         Follow_Up__c followUpWithLead = UtilityTestClass.createFollowUp('Test Follow Up', testLead.Id, null);
 
         Follow_Up__c followUpWithOpp = UtilityTestClass.createFollowUp('Test Follow Up', null, testOpp.Id);
+        
+        List<Opportunity> oppList = new List<Opportunity>();
+        Map<Id, Opportunity> oldOpp = new Map<Id, Opportunity>();
+        for(Integer i = 0; i<6 ; i++){
+            User salesManager = UtilityTestClass.createSalesManagerUser();
+            
+            if(i<3){
+                Opportunity testOpp1 = new Opportunity(  Name ='Test Opportunity'+i, AccountId = testAccount.Id,StageName = 'Prospecting',CloseDate = System.today().addDays(30),Amount =  1000+i );
+                testOpp1.OwnerId = salesManager.Id;
+                insert testOpp1;
+                oppList.add(testOpp1);
+            }else{
+                Opportunity testOpp1 = new Opportunity(  Name ='Test Opportunity'+i, AccountId = testAccount.Id,StageName = 'Prospecting',CloseDate = System.today().addDays(30),Amount =  1000+i );
+                insert testOpp1;
+                oldOpp.put(testOpp1.Id, testOpp1);
+            }
+            
+            
+        }
+        
+        OpportunityTriggerHandler.createFollowUpOnOppCreated(oppList);
+        
+        OpportunityTriggerHandler.changeOwnerOfTestDriveAndFollowUpIsOppOwnerIsChanged(oppList, oldOpp);
     }    
     
 }

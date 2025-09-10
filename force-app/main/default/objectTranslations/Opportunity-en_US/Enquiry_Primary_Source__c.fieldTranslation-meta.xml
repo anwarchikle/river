@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Enquiry Primary Source --></label>
+    <name>Enquiry_Primary_Source__c</name>
+    <picklistValues>
+        <masterLabel>Outdoor activity</masterLabel>
+        <translation><!-- Outdoor activity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Telephone</masterLabel>
+        <translation><!-- Telephone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Walk-In</masterLabel>
+        <translation><!-- Walk-In --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

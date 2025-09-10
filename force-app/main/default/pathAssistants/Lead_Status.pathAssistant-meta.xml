@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Lead</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>Lead Status</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Lost_Reason__c</fieldNames>
+        <fieldNames>Lead_Secondary_DropOut_Reasons__c</fieldNames>
+        <fieldNames>Lost_Feedback__c</fieldNames>
+        <info>&lt;p&gt;Lost reason And Feedback it Mandatory&lt;/p&gt;</info>
+        <picklistValueName>Drop Out</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

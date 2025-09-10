@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Term &amp; Condition10</label>
+    <protected>false</protected>
+    <values>
+        <field>SI_No__c</field>
+        <value xsi:type="xsd:double">10.0</value>
+    </values>
+    <values>
+        <field>Term_Condition__c</field>
+        <value xsi:type="xsd:string">River Mobility Pvt. Ltd. has the right to reject warranty in case, if the motorcycle component, systems or assembly has been modified and or replaced 
+with other non-genuine River Mobility Pvt. Ltd. components or is serviced at non authorized service centre.</value>
+    </values>
+</CustomMetadata>

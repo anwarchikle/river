@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Average Time to Fulfill Requests (Days) --></label>
+    <name>Average_Time_to_Fulfill_Requests_Days__c</name>
+</CustomFieldTranslation>

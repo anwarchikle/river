@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-WorkOrder</tabs>
+    <tabs>standard-Case</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-Order</tabs>
+    <tabs>standard-ProductRequest</tabs>
+    <tabs>Warranty_Prior__c</tabs>
+    <tabs>Create_Batch__c</tabs>
+    <tabs>Salesforce_Support__c</tabs>
+    <tabs>Duplicate_Record__c</tabs>
+    <tabs>Comment__c</tabs>
+    <uiType>Aloha</uiType>
+</CustomApplication>

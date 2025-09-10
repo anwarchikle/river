@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assignment_1</name>
+        <label>Assignment 1</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Duration_Min__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>minutes</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Duration_Hour__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>hours</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Labour_Charge__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Labourcharge</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Update_Zero_Labour_Charge</name>
+        <label>Update Zero Labour Charge</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Labour_Charge__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Duration_Min__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>minutes</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Duration_Hour__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>hours</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Zero and Not to reflect in invoice</description>
+        <name>Zero_Invoice_Check</name>
+        <label>Zero Invoice Check</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Assignment_1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>is_Zero_Invoice_type</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RR_Labour_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EW(Extended Warranty)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RR_Labour_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Goodwill Warranty</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RR_Labour_Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>River Warranty</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Zero_Labour_Charge</targetReference>
+            </connector>
+            <label>is Zero Invoice type</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>hours</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISBLANK({!$Record.RR_Labour_Code__r.RR_Efforts_Hours__c}), 0, {!$Record.RR_Labour_Code__r.RR_Efforts_Hours__c})</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>Labourcharge</name>
+        <dataType>Currency</dataType>
+        <expression>{!hours}*{!$Record.RR_Labour_Code__r.RR_Labour_Charge__c} + {!minutes}/60* {!$Record.RR_Labour_Code__r.RR_Labour_Charge__c}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>minutes</name>
+        <dataType>Number</dataType>
+        <expression>IF(ISBLANK({!$Record.RR_Labour_Code__r.RR_Efforts_Minutes__c}), 0, {!$Record.RR_Labour_Code__r.RR_Efforts_Minutes__c})</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Work Plan Labour Charge Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Work Plan Labour Charge Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Zero_Invoice_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RR_Labour_Code__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>WorkPlan</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

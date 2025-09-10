@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Locale --></label>
+    <name>Locale__c</name>
+    <picklistValues>
+        <masterLabel>AE</masterLabel>
+        <translation><!-- AE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>AU</masterLabel>
+        <translation><!-- AU --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>BR</masterLabel>
+        <translation><!-- BR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CA</masterLabel>
+        <translation><!-- CA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CN</masterLabel>
+        <translation><!-- CN --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>DE</masterLabel>
+        <translation><!-- DE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>EG</masterLabel>
+        <translation><!-- EG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FR</masterLabel>
+        <translation><!-- FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>IN</masterLabel>
+        <translation><!-- IN --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>JP</masterLabel>
+        <translation><!-- JP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>KE</masterLabel>
+        <translation><!-- KE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>KR</masterLabel>
+        <translation><!-- KR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MX</masterLabel>
+        <translation><!-- MX --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MY</masterLabel>
+        <translation><!-- MY --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NG</masterLabel>
+        <translation><!-- NG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NZ</masterLabel>
+        <translation><!-- NZ --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PH</masterLabel>
+        <translation><!-- PH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RU</masterLabel>
+        <translation><!-- RU --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SA</masterLabel>
+        <translation><!-- SA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SG</masterLabel>
+        <translation><!-- SG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TH</masterLabel>
+        <translation><!-- TH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>UK</masterLabel>
+        <translation><!-- UK --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>US</masterLabel>
+        <translation><!-- US --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ZA</masterLabel>
+        <translation><!-- ZA --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

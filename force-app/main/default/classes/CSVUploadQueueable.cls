@@ -1,9 +1,20 @@
 public class CSVUploadQueueable implements Queueable {
+    @TestVisible
     private String userId;
+    
+    @TestVisible
     private String objectName;
+    
+    @TestVisible
     private Map<String, String> fieldMapping;
+    
+    @TestVisible
     private List<String> csvRows;
+
+    @TestVisible
     private Integer recordsProcessed;
+    
+    @TestVisible
     private static final Integer CHUNK_SIZE = 80;
     
     public CSVUploadQueueable(String userId, String objectName, Map<String, String> fieldMapping, List<String> csvRows) {
@@ -50,6 +61,7 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
+    @TestVisible
     private void processChunk(List<String> chunkRows) {
         List<Account> accountsToInsert = new List<Account>();
         List<Contact> contactsToInsert = new List<Contact>();
@@ -115,7 +127,8 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    @TestVisible private void processLeadsWithAccountCheckHQInsert(List<Lead> leadsToInsert) {
+    @TestVisible 
+    private void processLeadsWithAccountCheckHQInsert(List<Lead> leadsToInsert) {
         Set<String> leadPhones = new Set<String>();
         Map<String, Lead> phoneToLeadMap = new Map<String, Lead>();
         Set<String> phonesWithAccounts = new Set<String>();
@@ -254,32 +267,32 @@ public class CSVUploadQueueable implements Queueable {
         
         if (!insertLeadsIfNoExistingAccountAndLeadsAreThereInSystem.isEmpty()) {
             Database.SaveResult[] srList = Database.insert(insertLeadsIfNoExistingAccountAndLeadsAreThereInSystem, false);
-            errorMessages(srList);
+            errorMessages(srList, insertLeadsIfNoExistingAccountAndLeadsAreThereInSystem);
         }
         
         if (!leadsToInsertWithoutAccounts.isEmpty()) {
             System.debug('3 ==============>');
             Database.SaveResult[] srList = Database.insert(leadsToInsertWithoutAccounts, false);
-            errorMessages(srList);
+            errorMessages(srList, leadsToInsertWithoutAccounts);
             recordsProcessed += leadsToInsertWithoutAccounts.size();
         }
         
         if (!leadsToUpdate.isEmpty()) {
             System.debug('4 ==============>');
             Database.SaveResult[] srList = Database.update(leadsToUpdate, false);
-            errorMessages(srList);
+            errorMessages(srList, leadsToUpdate);
         }
         
         if (!opportunitiesToUpdate.isEmpty()) {
             System.debug('5 ==============>');
             Database.SaveResult[] srList = Database.update(opportunitiesToUpdate, false);
-            errorMessages(srList);
+            errorMessages(srList, opportunitiesToUpdate);
         }
         
         if (!opportunitiesToCreate.isEmpty()) {
             System.debug('6 ==============>');
             Database.SaveResult[] srList = Database.Insert(opportunitiesToCreate, false);
-            errorMessages(srList);
+            errorMessages(srList, opportunitiesToCreate);
             recordsProcessed += opportunitiesToCreate.size();
             set<Id> setOfInsertedOpportunity = new set<Id>();
             for(Opportunity opp : opportunitiesToCreate){
@@ -302,7 +315,7 @@ public class CSVUploadQueueable implements Queueable {
             if(!followUpListToBeInserted.isEmpty()){
                 System.debug('6.3 ==============>');
                 Database.SaveResult[] srLists = Database.Insert(followUpListToBeInserted, false);
-                errorMessages(srLists);
+                errorMessages(srList, followUpListToBeInserted);
             }
         }
         
@@ -310,17 +323,18 @@ public class CSVUploadQueueable implements Queueable {
             System.debug('7 ==============>');
             //insert followUpsToCreate;
             Database.SaveResult[] srList = Database.Insert(followUpsToCreate, false);
-            errorMessages(srList);
+            errorMessages(srList, followUpsToCreate);
         }
         
         if (!duplicateToCreate.isEmpty()) {
             System.debug('8 ==============>');
             Database.SaveResult[] srList = Database.Insert(duplicateToCreate, false);
-            errorMessages(srList);
+            errorMessages(srList, duplicateToCreate);
         }
     }
     
-    @TestVisible private void processOpportunitiesWithAccountCheckDMSInsert(List<Account> accountsToInsert, List<Contact> contactsToInsert, List<Opportunity> opportunitiesToInsert) {
+    @TestVisible 
+    private void processOpportunitiesWithAccountCheckDMSInsert(List<Account> accountsToInsert, List<Contact> contactsToInsert, List<Opportunity> opportunitiesToInsert) {
         Set<String> oppPhones = new Set<String>();
         Map<String, Opportunity> phoneToOppMap = new Map<String, Opportunity>();
         Set<String> duplicatePhones = new Set<String>();
@@ -530,7 +544,7 @@ public class CSVUploadQueueable implements Queueable {
                 System.debug('13 ==============>');
                 
                 Database.SaveResult[] srList = Database.Insert(filteredAccounts, false);
-                errorMessages(srList);
+                errorMessages(srList,filteredAccounts);
                 recordsProcessed += filteredAccounts.size();
             }
             
@@ -541,7 +555,7 @@ public class CSVUploadQueueable implements Queueable {
             if (!filteredContacts.isEmpty()) {
                 System.debug('14 ==============>');
                 Database.SaveResult[] srList = Database.Insert(filteredContacts, false);
-                errorMessages(srList);
+                errorMessages(srList,filteredContacts);
                 recordsProcessed += filteredContacts.size();
             }
             
@@ -552,14 +566,14 @@ public class CSVUploadQueueable implements Queueable {
             if (!filteredOpportunities.isEmpty()) {
                 System.debug('15 ==============>');
                 Database.SaveResult[] srList = Database.Insert(filteredOpportunities, false);
-                errorMessages(srList);
+                errorMessages(srList,filteredOpportunities);
                 recordsProcessed += filteredOpportunities.size();
             }
             
             if (!opportunitiesToCreateForExistingAccounts.isEmpty()) {
                 System.debug('16 ==============>');
                 Database.SaveResult[] srList = Database.Insert(opportunitiesToCreateForExistingAccounts, false);
-                errorMessages(srList);
+                errorMessages(srList,opportunitiesToCreateForExistingAccounts);
                 recordsProcessed += opportunitiesToCreateForExistingAccounts.size();
                 
                 set<Id> setOfInsertedOpportunity = new set<Id>();
@@ -584,20 +598,20 @@ public class CSVUploadQueueable implements Queueable {
                 if(!followUpListToBeInserted.isEmpty()){
                     System.debug('16.3 ==============>');
                     Database.SaveResult[] srLists = Database.Insert(followUpListToBeInserted, false);
-                    errorMessages(srLists);
+                    errorMessages(srList,followUpListToBeInserted);
                 }
             }
             
             if (!accountsToUpdate.isEmpty()) {
                 System.debug('17 ==============>');
                 Database.SaveResult[] srList = Database.update(accountsToUpdate.values(), false);
-                errorMessages(srList);
+                errorMessages(srList,accountsToUpdate.values());
             }
             
             if (!opportunitiesToUpdate.isEmpty()) {
                 System.debug('18 ==============>');
                 Database.SaveResult[] srList = Database.update(opportunitiesToUpdate, false);
-                errorMessages(srList);
+                errorMessages(srList,opportunitiesToUpdate);
                 
                 set<Id> setOfInsertedOpportunity = new set<Id>();
                 for(Opportunity opp : opportunitiesToUpdate){
@@ -620,20 +634,20 @@ public class CSVUploadQueueable implements Queueable {
                 if(!followUpListToBeInserted.isEmpty()){
                     System.debug('18.3 ==============>');
                     Database.SaveResult[] srLists = Database.Insert(followUpListToBeInserted, false);
-                    errorMessages(srLists);
+                    errorMessages(srList,followUpListToBeInserted);
                 }
             }
             
             if (!followUpsToCreate.isEmpty()) {
                 System.debug('19 ==============>');
                 Database.SaveResult[] srList = Database.Insert(followUpsToCreate, false);
-                errorMessages(srList);
+                errorMessages(srList,followUpsToCreate);
             }
             
             if (!duplicateToCreate.isEmpty()) {
                 System.debug('20 ==============>');
                 Database.SaveResult[] srList = Database.Insert(duplicateToCreate, false);
-                errorMessages(srList);
+                errorMessages(srList,duplicateToCreate);
             }
         } catch (Exception e) {
             Database.rollback(sp);
@@ -641,7 +655,8 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    @TestVisible private void mapOpportunityFields(Account acc, Contact con, Opportunity opp, String fieldName, String value) {
+    @TestVisible 
+    private void mapOpportunityFields(Account acc, Contact con, Opportunity opp, String fieldName, String value) {
         if (fieldName.startsWithIgnoreCase('name')) {
             acc.Name = value;
             con.LastName = value;
@@ -667,36 +682,74 @@ public class CSVUploadQueueable implements Queueable {
         }
     }
     
-    @TestVisible private void mapLeadFields(Lead led, String fieldName, String value) {
+    @TestVisible 
+    private void mapLeadFields(Lead led, String fieldName, String value) {
         if (fieldName == 'lastname' && String.isBlank(led.Company)) {
             led.Company = value;
         }
         led.put(fieldName, value);
     }
     
+    @TestVisible
     private static void sendUserNotification(String userId, String status, String message) {
         System.debug('Notification: ' + status + ' - ' + message);
     }
     
-    private static void errorMessages(List<Database.SaveResult> srList){
+    @TestVisible
+    private static void errorMessages(List<Database.SaveResult> srList, List<SObject> originalRecords){
         List<Exception_Log__c> exceptionsList = new List<Exception_Log__c>();
-        for (Database.SaveResult sr : srList) {
+        
+        for (Integer i = 0; i < srList.size(); i++) {
+            Database.SaveResult sr = srList[i];
+            SObject failedRecord = originalRecords[i];
+            
             if (sr.isSuccess()) {
-                System.debug('sr =======>'+ sr);
-                System.debug('Successfully inserted Lead. Lead ID: ' + sr.getId());
+                System.debug('Successfully inserted record. Id: ' + sr.getId());
             } else {
                 for (Database.Error err : sr.getErrors()) {
-                    System.debug('err =======>'+ err);
                     Exception_Log__c exceptionsRec = new Exception_Log__c();
                     exceptionsRec.Error_Message__c = err.getMessage();
-                    exceptionsRec.Error_Stack_Trace__c = string.valueOf(err.getStatusCode());
+                    exceptionsRec.Error_Stack_Trace__c = String.valueOf(err.getStatusCode());
+
+                    if (failedRecord instanceof Lead) {
+                        exceptionsRec.Phone__c = ((Lead)failedRecord).Phone;
+                        exceptionsRec.Last_Name__c = ((Lead)failedRecord).LastName;
+                        exceptionsRec.Rec_Name__c = ((Lead)failedRecord).FirstName;
+                        exceptionsRec.Event_Name__c = ((Lead)failedRecord).Event_Name__c;
+                        exceptionsRec.Event_Location__c = ((Lead)failedRecord).Event_Loaction__c;
+                    }
+                    else if (failedRecord instanceof Contact) {
+                        exceptionsRec.Phone__c = ((Contact)failedRecord).Phone;
+                        exceptionsRec.Last_Name__c = ((Contact)failedRecord).LastName;
+                        exceptionsRec.Rec_Name__c = ((Contact)failedRecord).FirstName;
+                    }
+                    else if (failedRecord instanceof Follow_Up__c) {
+                        exceptionsRec.Phone__c = ((Follow_Up__c)failedRecord).Phone__c;
+                        exceptionsRec.Rec_Name__c = ((Follow_Up__c)failedRecord).Name;
+                    }
+                    else if (failedRecord instanceof Account) {
+                        exceptionsRec.Phone__c = ((Account)failedRecord).Phone;
+                        exceptionsRec.Rec_Name__c = ((Account)failedRecord).Name;
+                    }
+                    else if (failedRecord instanceof Opportunity) {
+                        exceptionsRec.Phone__c = ((Opportunity)failedRecord).Phone__c;
+                        exceptionsRec.Rec_Name__c = ((Opportunity)failedRecord).Name;
+                    }
+                    else if (failedRecord instanceof Test_Drive__c) {
+                        exceptionsRec.Phone__c = ((Test_Drive__c)failedRecord).Phone__c;
+                        exceptionsRec.Rec_Name__c = ((Test_Drive__c)failedRecord).Name;
+                    }
+
                     exceptionsList.add(exceptionsRec);
+                    
+                    System.debug('Error for record with Mobile: ' + exceptionsRec.Response_Body__c + ' => ' + err.getMessage());
                 }
             }
         }
         
         if (!exceptionsList.isEmpty()) {
-            Insert exceptionsList;
+            insert exceptionsList;
         }
     }
+
 }

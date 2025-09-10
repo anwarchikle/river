@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Status of Side Stand switch in parked condition. --></help>
+    <label><!-- Status of Side Stand switch in parked co --></label>
+    <name>RR_Status_of_Side_Stand_switch_in_parked__c</name>
+</CustomFieldTranslation>

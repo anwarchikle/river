@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Lead Secondary Source --></label>
+    <name>Lead_Secondary_Source__c</name>
+    <picklistValues>
+        <masterLabel>91 wheels</masterLabel>
+        <translation><!-- 91 wheels --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Auto Expo</masterLabel>
+        <translation><!-- Auto Expo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bikedekho</masterLabel>
+        <translation><!-- Bikedekho --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bikewale</masterLabel>
+        <translation><!-- Bikewale --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>College activities</masterLabel>
+        <translation><!-- College activities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Google</masterLabel>
+        <translation><!-- Google --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta</masterLabel>
+        <translation><!-- Meta --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>River Website</masterLabel>
+        <translation><!-- River Website --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tech Park activities</masterLabel>
+        <translation><!-- Tech Park activities --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Telephone</masterLabel>
+        <translation><!-- Telephone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Theater campaigns</masterLabel>
+        <translation><!-- Theater campaigns --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WhatsApp</masterLabel>
+        <translation><!-- WhatsApp --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

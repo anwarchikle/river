@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- How likely are you to recommend our service to others? --></help>
+    <label><!-- Recommend Our Service --></label>
+    <name>Recommend_Our_Service__c</name>
+    <picklistValues>
+        <masterLabel>Likely</masterLabel>
+        <translation><!-- Likely --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Neutral</masterLabel>
+        <translation><!-- Neutral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unlikely</masterLabel>
+        <translation><!-- Unlikely --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Very Likely</masterLabel>
+        <translation><!-- Very Likely --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Very Unlikely</masterLabel>
+        <translation><!-- Very Unlikely --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

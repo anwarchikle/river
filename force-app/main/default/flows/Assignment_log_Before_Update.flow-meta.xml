@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Error1</name>
+        <label>Error1</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <customErrorMessages>
+            <errorMessage>The selected vehicle is not a spare vehicle. Please select a Spare Vehicle.</errorMessage>
+            <fieldSelection>Vehicle__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Spare_vehicle_assigned</name>
+        <label>Spare vehicle assigned</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <customErrorMessages>
+            <errorMessage>{!$Record.Vehicle__r.Name} vehicle is already assigned to other Customer. Please select an unassigned vehicle</errorMessage>
+            <fieldSelection>Vehicle__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>vehicle_assigned</name>
+        <label>vehicle assigned</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_a_spare_vehicle</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Vehicle__r.Spare_Vehicle__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error1</targetReference>
+            </connector>
+            <label>Not a spare vehicle</label>
+        </rules>
+        <rules>
+            <name>spare_vehicle_assign</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Vehicle__r.Spare_Vehicle_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Assigned</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Spare_Vehicle_Returning_Time__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Vehicle__r.Spare_Vehicle__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Spare_vehicle_assigned</targetReference>
+            </connector>
+            <label>spare vehicle assign</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Assignment log - Before Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Assignment log - Before Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>vehicle_assigned</targetReference>
+        </connector>
+        <object>Assignment_Log__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

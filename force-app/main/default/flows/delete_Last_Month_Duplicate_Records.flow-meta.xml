@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>found_records</name>
+        <label>found records</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_all_duplicate_records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>delete_all_the_old_records</targetReference>
+            </connector>
+            <label>found</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>LastMonth</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() - 30</expression>
+    </formulas>
+    <interviewLabel>delete_Last_Month_Duplicate_Records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>delete_Last_Month_Duplicate_Records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>delete_all_the_old_records</name>
+        <label>delete all the old records</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>get_all_duplicate_records</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <name>get_all_duplicate_records</name>
+        <label>get all duplicate records</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>found_records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>LastMonth</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Duplicate_Record__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>get_all_duplicate_records</targetReference>
+        </connector>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-07-09</startDate>
+            <startTime>00:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sub Category --></label>
+    <name>RR_Sub_Category__c</name>
+    <picklistValues>
+        <masterLabel>Activated</masterLabel>
+        <translation><!-- Activated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Air Leak</masterLabel>
+        <translation><!-- Air Leak --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Alignment</masterLabel>
+        <translation><!-- Alignment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Assembly Replacement</masterLabel>
+        <translation><!-- Assembly Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Backlight Fault</masterLabel>
+        <translation><!-- Backlight Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bearing Noise</masterLabel>
+        <translation><!-- Bearing Noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bite</masterLabel>
+        <translation><!-- Bite --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Blank</masterLabel>
+        <translation><!-- Blank --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Blank during ride</masterLabel>
+        <translation><!-- Blank during ride --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bouncing</masterLabel>
+        <translation><!-- Bouncing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bracket Bend</masterLabel>
+        <translation><!-- Bracket Bend --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brake getting jam</masterLabel>
+        <translation><!-- Brake getting jam --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brake pad wornout</masterLabel>
+        <translation><!-- Brake pad wornout --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Buttons Hard</masterLabel>
+        <translation><!-- Buttons Hard --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caliper Front Damage</masterLabel>
+        <translation><!-- Caliper Front Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caliper Front noise</masterLabel>
+        <translation><!-- Caliper Front noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caliper Rear Damage</masterLabel>
+        <translation><!-- Caliper Rear Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caliper Rear noise</masterLabel>
+        <translation><!-- Caliper Rear noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Caliper oil leak</masterLabel>
+        <translation><!-- Caliper oil leak --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Centre Stand Damaged</masterLabel>
+        <translation><!-- Centre Stand Damaged --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charging time</masterLabel>
+        <translation><!-- Charging time --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Column bent</masterLabel>
+        <translation><!-- Column bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Continous Glowing</masterLabel>
+        <translation><!-- Continous Glowing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cover Damage</masterLabel>
+        <translation><!-- Cover Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crack</masterLabel>
+        <translation><!-- Crack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crash Guard Fitment</masterLabel>
+        <translation><!-- Crash Guard Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crash Guard Loose</masterLabel>
+        <translation><!-- Crash Guard Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crash Guard Replacement</masterLabel>
+        <translation><!-- Crash Guard Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crash Guard Rusting</masterLabel>
+        <translation><!-- Crash Guard Rusting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Damage</masterLabel>
+        <translation><!-- Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Damaged</masterLabel>
+        <translation><!-- Damaged --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Delay RTC</masterLabel>
+        <translation><!-- Delay RTC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Delay Turn OFF</masterLabel>
+        <translation><!-- Delay Turn OFF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Difficulty in Plugging Out</masterLabel>
+        <translation><!-- Difficulty in Plugging Out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dim</masterLabel>
+        <translation><!-- Dim --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disc bent</masterLabel>
+        <translation><!-- Disc bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disc bent FR</masterLabel>
+        <translation><!-- Disc bent FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Disc bent RR</masterLabel>
+        <translation><!-- Disc bent RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dustseal/Bearings</masterLabel>
+        <translation><!-- Dustseal/Bearings --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Extended Warranty Purchase</masterLabel>
+        <translation><!-- Extended Warranty Purchase --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FR Disc Rusting</masterLabel>
+        <translation><!-- FR Disc Rusting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FR Disc Worn out</masterLabel>
+        <translation><!-- FR Disc Worn out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>FR Pad Worn out</masterLabel>
+        <translation><!-- FR Pad Worn out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fault</masterLabel>
+        <translation><!-- Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flickering/Blank</masterLabel>
+        <translation><!-- Flickering/Blank --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Floor Mat Fitment</masterLabel>
+        <translation><!-- Floor Mat Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Floor Mat Replace</masterLabel>
+        <translation><!-- Floor Mat Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Focus Adjusment</masterLabel>
+        <translation><!-- Focus Adjusment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fog formation</masterLabel>
+        <translation><!-- Fog formation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foot Peg LH Broken</masterLabel>
+        <translation><!-- Foot Peg LH Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foot Peg LH Loose</masterLabel>
+        <translation><!-- Foot Peg LH Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foot Peg RH Broken</masterLabel>
+        <translation><!-- Foot Peg RH Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foot Peg RH Loose</masterLabel>
+        <translation><!-- Foot Peg RH Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fork Oil Leakage</masterLabel>
+        <translation><!-- Fork Oil Leakage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Freeze</masterLabel>
+        <translation><!-- Freeze --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Front Fault</masterLabel>
+        <translation><!-- Front Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Front noise</masterLabel>
+        <translation><!-- Front noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General</masterLabel>
+        <translation><!-- General --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Getting Heated</masterLabel>
+        <translation><!-- Getting Heated --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Glovebox Fault</masterLabel>
+        <translation><!-- Glovebox Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Guard Damaged</masterLabel>
+        <translation><!-- Guard Damaged --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gun Wire Detached</masterLabel>
+        <translation><!-- Gun Wire Detached --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Handlebar Bent</masterLabel>
+        <translation><!-- Handlebar Bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Handlebar Crack</masterLabel>
+        <translation><!-- Handlebar Crack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Handlebar Knocking</masterLabel>
+        <translation><!-- Handlebar Knocking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Handlebar Rust</masterLabel>
+        <translation><!-- Handlebar Rust --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Handlebar Vibration</masterLabel>
+        <translation><!-- Handlebar Vibration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hard</masterLabel>
+        <translation><!-- Hard --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Broken</masterLabel>
+        <translation><!-- HeadLamp Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Crack</masterLabel>
+        <translation><!-- HeadLamp Crack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Flickering</masterLabel>
+        <translation><!-- HeadLamp Flickering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Led Fuse</masterLabel>
+        <translation><!-- HeadLamp Led Fuse --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Moisture Formation</masterLabel>
+        <translation><!-- HeadLamp Moisture Formation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Rattling Noise</masterLabel>
+        <translation><!-- HeadLamp Rattling Noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp Water entry</masterLabel>
+        <translation><!-- HeadLamp Water entry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Height Adjustment</masterLabel>
+        <translation><!-- Height Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Hopping</masterLabel>
+        <translation><!-- Hopping --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Horn Switch Stuck</masterLabel>
+        <translation><!-- Horn Switch Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Improper</masterLabel>
+        <translation><!-- Improper --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Improper display</masterLabel>
+        <translation><!-- Improper display --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Improper routing</masterLabel>
+        <translation><!-- Improper routing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Improper sound</masterLabel>
+        <translation><!-- Improper sound --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Incorrect Charging Estimation</masterLabel>
+        <translation><!-- Incorrect Charging Estimation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indicator Front Not Working</masterLabel>
+        <translation><!-- Indicator Front Not Working --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indicator Front replace</masterLabel>
+        <translation><!-- Indicator Front replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indicator Rear Not Working</masterLabel>
+        <translation><!-- Indicator Rear Not Working --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indicator Rear Replace</masterLabel>
+        <translation><!-- Indicator Rear Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indicator Switch Jam</masterLabel>
+        <translation><!-- Indicator Switch Jam --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ineffective</masterLabel>
+        <translation><!-- Ineffective --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inlet Mechanism Fault</masterLabel>
+        <translation><!-- Inlet Mechanism Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inlet Rubber Cap Damage</masterLabel>
+        <translation><!-- Inlet Rubber Cap Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inlet Rubber Cap Replace</masterLabel>
+        <translation><!-- Inlet Rubber Cap Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inner tube dent</masterLabel>
+        <translation><!-- Inner tube dent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Insertion Issue</masterLabel>
+        <translation><!-- Insertion Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Insufficient</masterLabel>
+        <translation><!-- Insufficient --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Jam</masterLabel>
+        <translation><!-- Jam --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Jerking</masterLabel>
+        <translation><!-- Jerking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Key bent</masterLabel>
+        <translation><!-- Key bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Key loose</masterLabel>
+        <translation><!-- Key loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Key lost</masterLabel>
+        <translation><!-- Key lost --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kill Switch Fault</masterLabel>
+        <translation><!-- Kill Switch Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kill Switch Stuck</masterLabel>
+        <translation><!-- Kill Switch Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LH Mirror Fitment</masterLabel>
+        <translation><!-- LH Mirror Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LH Mirror Replacement</masterLabel>
+        <translation><!-- LH Mirror Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ladies Footrest Fitment</masterLabel>
+        <translation><!-- Ladies Footrest Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ladies Footrest Replacement</masterLabel>
+        <translation><!-- Ladies Footrest Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lever Damage LH</masterLabel>
+        <translation><!-- Lever Damage LH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lever Damage RH</masterLabel>
+        <translation><!-- Lever Damage RH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lever Replace LH</masterLabel>
+        <translation><!-- Lever Replace LH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lever Replace RH</masterLabel>
+        <translation><!-- Lever Replace RH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lid Broken</masterLabel>
+        <translation><!-- Lid Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lid Stuck</masterLabel>
+        <translation><!-- Lid Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Light Dim</masterLabel>
+        <translation><!-- Light Dim --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Line damage</masterLabel>
+        <translation><!-- Line damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lock Hard</masterLabel>
+        <translation><!-- Lock Hard --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lock Issue</masterLabel>
+        <translation><!-- Lock Issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lock Not Opening</masterLabel>
+        <translation><!-- Lock Not Opening --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lockset Key struck</masterLabel>
+        <translation><!-- Lockset Key struck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lockset Water Entry</masterLabel>
+        <translation><!-- Lockset Water Entry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Low Ground Clearance</masterLabel>
+        <translation><!-- Low Ground Clearance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Low Luminousity</masterLabel>
+        <translation><!-- Low Luminousity --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Low brightness</masterLabel>
+        <translation><!-- Low brightness --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lubrication</masterLabel>
+        <translation><!-- Lubrication --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MC Damage</masterLabel>
+        <translation><!-- MC Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MC oil leak</masterLabel>
+        <translation><!-- MC oil leak --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mirror LH Low Visibility</masterLabel>
+        <translation><!-- Mirror LH Low Visibility --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mirror RH Low Visibility</masterLabel>
+        <translation><!-- Mirror RH Low Visibility --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Misalignment</masterLabel>
+        <translation><!-- Misalignment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mobile Mount Fitment</masterLabel>
+        <translation><!-- Mobile Mount Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mobile mount Loose</masterLabel>
+        <translation><!-- Mobile mount Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mobile mount Replace</masterLabel>
+        <translation><!-- Mobile mount Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mode Switch Stuck</masterLabel>
+        <translation><!-- Mode Switch Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mode Unable to change</masterLabel>
+        <translation><!-- Mode Unable to change --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mode switch Fault</masterLabel>
+        <translation><!-- Mode switch Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Noise</masterLabel>
+        <translation><!-- Noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Applicable</masterLabel>
+        <translation><!-- Not Applicable --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Rebounding</masterLabel>
+        <translation><!-- Not Rebounding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Turning OFF</masterLabel>
+        <translation><!-- Not Turning OFF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Turning ON</masterLabel>
+        <translation><!-- Not Turning ON --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not working</masterLabel>
+        <translation><!-- Not working --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Oil Top Up</masterLabel>
+        <translation><!-- Oil Top Up --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Oil leak</masterLabel>
+        <translation><!-- Oil leak --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>One Side Pull</masterLabel>
+        <translation><!-- One Side Pull --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>One Side working</masterLabel>
+        <translation><!-- One Side working --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Outer tube damage</masterLabel>
+        <translation><!-- Outer tube damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PRCD Broken</masterLabel>
+        <translation><!-- PRCD Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paint Chip-Off</masterLabel>
+        <translation><!-- Paint Chip-Off --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Panel Fade</masterLabel>
+        <translation><!-- Panel Fade --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Panier Mount LH Fitment</masterLabel>
+        <translation><!-- Panier Mount LH Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Panier Mount LH Replace</masterLabel>
+        <translation><!-- Panier Mount LH Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Panier Mount RH Fitment</masterLabel>
+        <translation><!-- Panier Mount RH Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Panier Mount RH Replace</masterLabel>
+        <translation><!-- Panier Mount RH Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Broken</masterLabel>
+        <translation><!-- Pannel Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Damaged</masterLabel>
+        <translation><!-- Pannel Damaged --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Gap</masterLabel>
+        <translation><!-- Pannel Gap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Paint peel off</masterLabel>
+        <translation><!-- Pannel Paint peel off --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Rattling Noise</masterLabel>
+        <translation><!-- Pannel Rattling Noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Replacement</masterLabel>
+        <translation><!-- Pannel Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel Scratch</masterLabel>
+        <translation><!-- Pannel Scratch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Performance Pickup Low</masterLabel>
+        <translation><!-- Performance Pickup Low --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Performance Unable to reach top speed</masterLabel>
+        <translation><!-- Performance Unable to reach top speed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pinback out</masterLabel>
+        <translation><!-- Pinback out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pinched</masterLabel>
+        <translation><!-- Pinched --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Play Adjust</masterLabel>
+        <translation><!-- Play Adjust --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pre-Load</masterLabel>
+        <translation><!-- Pre-Load --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Primary Snap</masterLabel>
+        <translation><!-- Primary Snap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RH Mirror Fitment</masterLabel>
+        <translation><!-- RH Mirror Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RH Mirror Replacement</masterLabel>
+        <translation><!-- RH Mirror Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RR Disc Rusting</masterLabel>
+        <translation><!-- RR Disc Rusting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RR Disc Worn out</masterLabel>
+        <translation><!-- RR Disc Worn out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RR Pad Worn out</masterLabel>
+        <translation><!-- RR Pad Worn out --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RSA</masterLabel>
+        <translation><!-- RSA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RTD Not Showing</masterLabel>
+        <translation><!-- RTD Not Showing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Range Hyb. mode SOC drop</masterLabel>
+        <translation><!-- Range Hyb. mode SOC drop --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Range Sudden SOC drop</masterLabel>
+        <translation><!-- Range Sudden SOC drop --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rapid Blinking</masterLabel>
+        <translation><!-- Rapid Blinking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rear Fault</masterLabel>
+        <translation><!-- Rear Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rear noise</masterLabel>
+        <translation><!-- Rear noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Regen Fault</masterLabel>
+        <translation><!-- Regen Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Replacement</masterLabel>
+        <translation><!-- Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Response delay</masterLabel>
+        <translation><!-- Response delay --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rim bent</masterLabel>
+        <translation><!-- Rim bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rusting</masterLabel>
+        <translation><!-- Rusting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SOC Drop</masterLabel>
+        <translation><!-- SOC Drop --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Screw Loose</masterLabel>
+        <translation><!-- Screw Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Screw Missing</masterLabel>
+        <translation><!-- Screw Missing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Seat Cover Fitment</masterLabel>
+        <translation><!-- Seat Cover Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Seat Cover Replace</masterLabel>
+        <translation><!-- Seat Cover Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Seat Fault</masterLabel>
+        <translation><!-- Seat Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Seat Replacement</masterLabel>
+        <translation><!-- Seat Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Secondary Snap</masterLabel>
+        <translation><!-- Secondary Snap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sensor Damage</masterLabel>
+        <translation><!-- Sensor Damage --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sensor Detached</masterLabel>
+        <translation><!-- Sensor Detached --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side Stand sensor Replacement</masterLabel>
+        <translation><!-- Side Stand sensor Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side stand Bent</masterLabel>
+        <translation><!-- Side stand Bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side stand Broken</masterLabel>
+        <translation><!-- Side stand Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side stand Rusting</masterLabel>
+        <translation><!-- Side stand Rusting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side stand Sensor Error</masterLabel>
+        <translation><!-- Side stand Sensor Error --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side stand Stuck</masterLabel>
+        <translation><!-- Side stand Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Slit gap</masterLabel>
+        <translation><!-- Slit gap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Snap</masterLabel>
+        <translation><!-- Snap --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Software Update</masterLabel>
+        <translation><!-- Software Update --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Solenoid Latching</masterLabel>
+        <translation><!-- Solenoid Latching --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sponginess</masterLabel>
+        <translation><!-- Sponginess --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spot/Airbubble</masterLabel>
+        <translation><!-- Spot/Airbubble --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spring Dislocation</masterLabel>
+        <translation><!-- Spring Dislocation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spring failure</masterLabel>
+        <translation><!-- Spring failure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stand Bent</masterLabel>
+        <translation><!-- Stand Bent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stand Fitment</masterLabel>
+        <translation><!-- Stand Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stand Loose</masterLabel>
+        <translation><!-- Stand Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stand Stuck</masterLabel>
+        <translation><!-- Stand Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Standard Service</masterLabel>
+        <translation><!-- Standard Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Steering Fault</masterLabel>
+        <translation><!-- Steering Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Steering Loose</masterLabel>
+        <translation><!-- Steering Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Steering Noise</masterLabel>
+        <translation><!-- Steering Noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Steering Tight/Notching</masterLabel>
+        <translation><!-- Steering Tight/Notching --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Steering lock fault</masterLabel>
+        <translation><!-- Steering lock fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Step</masterLabel>
+        <translation><!-- Step --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sticky Throttle</masterLabel>
+        <translation><!-- Sticky Throttle --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Stuck</masterLabel>
+        <translation><!-- Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Bent FR</masterLabel>
+        <translation><!-- Suspension Bent FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Bent RR</masterLabel>
+        <translation><!-- Suspension Bent RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Hard FR</masterLabel>
+        <translation><!-- Suspension Hard FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Hard RR</masterLabel>
+        <translation><!-- Suspension Hard RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Inner tube dent</masterLabel>
+        <translation><!-- Suspension Inner tube dent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Noise FR</masterLabel>
+        <translation><!-- Suspension Noise FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Noise RR</masterLabel>
+        <translation><!-- Suspension Noise RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Oil leak FR</masterLabel>
+        <translation><!-- Suspension Oil leak FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Oil leak RR</masterLabel>
+        <translation><!-- Suspension Oil leak RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Outer tube dent</masterLabel>
+        <translation><!-- Suspension Outer tube dent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension Pre-Load</masterLabel>
+        <translation><!-- Suspension Pre-Load --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear LH Broken</masterLabel>
+        <translation><!-- Switch Gear LH Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear LH Fault</masterLabel>
+        <translation><!-- Switch Gear LH Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear LH Loose</masterLabel>
+        <translation><!-- Switch Gear LH Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear LH Not woking</masterLabel>
+        <translation><!-- Switch Gear LH Not woking --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear LH Stuck</masterLabel>
+        <translation><!-- Switch Gear LH Stuck --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH Broken</masterLabel>
+        <translation><!-- Switch Gear RH Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH Kill Switch Not working</masterLabel>
+        <translation><!-- Switch Gear RH Kill Switch Not working --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH Loose</masterLabel>
+        <translation><!-- Switch Gear RH Loose --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH Mode switch Fault</masterLabel>
+        <translation><!-- Switch Gear RH Mode switch Fault --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH Sticky Throttle</masterLabel>
+        <translation><!-- Switch Gear RH Sticky Throttle --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH Throttle cutoff</masterLabel>
+        <translation><!-- Switch Gear RH Throttle cutoff --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Adjustment</masterLabel>
+        <translation><!-- Tailamp Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Broken</masterLabel>
+        <translation><!-- Tailamp Broken --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Crack</masterLabel>
+        <translation><!-- Tailamp Crack --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Flickering</masterLabel>
+        <translation><!-- Tailamp Flickering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Led Fuse</masterLabel>
+        <translation><!-- Tailamp Led Fuse --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Moisture Formation</masterLabel>
+        <translation><!-- Tailamp Moisture Formation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Rattling Noise</masterLabel>
+        <translation><!-- Tailamp Rattling Noise --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tailamp Water entry</masterLabel>
+        <translation><!-- Tailamp Water entry --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Teeth wornout</masterLabel>
+        <translation><!-- Teeth wornout --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Throttle cutoff</masterLabel>
+        <translation><!-- Throttle cutoff --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Time issue</masterLabel>
+        <translation><!-- Time issue --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Total</masterLabel>
+        <translation><!-- Total --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trip 1</masterLabel>
+        <translation><!-- Trip 1 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Trip 2</masterLabel>
+        <translation><!-- Trip 2 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tyre Puncture</masterLabel>
+        <translation><!-- Tyre Puncture --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tyre Replacement</masterLabel>
+        <translation><!-- Tyre Replacement --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Not Starting</masterLabel>
+        <translation><!-- Vehicle Not Starting --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Power Cut OFF During Ride</masterLabel>
+        <translation><!-- Vehicle Power Cut OFF During Ride --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Starting without Brakes Application</masterLabel>
+        <translation><!-- Vehicle Starting without Brakes Application --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vibrating while applying brakes</masterLabel>
+        <translation><!-- Vibrating while applying brakes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vibration</masterLabel>
+        <translation><!-- Vibration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visor Adjustment</masterLabel>
+        <translation><!-- Visor Adjustment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visor Fitment</masterLabel>
+        <translation><!-- Visor Fitment --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visor Grommet Missing</masterLabel>
+        <translation><!-- Visor Grommet Missing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visor Replace</masterLabel>
+        <translation><!-- Visor Replace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warning Symbol</masterLabel>
+        <translation><!-- Warning Symbol --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Dustseal/Bearings FR</masterLabel>
+        <translation><!-- Wheels Dustseal/Bearings FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Dustseal/Bearings RR</masterLabel>
+        <translation><!-- Wheels Dustseal/Bearings RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Noise FR</masterLabel>
+        <translation><!-- Wheels Noise FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Noise RR</masterLabel>
+        <translation><!-- Wheels Noise RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Rim bent FR</masterLabel>
+        <translation><!-- Wheels Rim bent FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Rim bent RR</masterLabel>
+        <translation><!-- Wheels Rim bent RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Wobbling FR</masterLabel>
+        <translation><!-- Wheels Wobbling FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Wobbling RR</masterLabel>
+        <translation><!-- Wheels Wobbling RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wobbling</masterLabel>
+        <translation><!-- Wobbling --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>not charging</masterLabel>
+        <translation><!-- not charging --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

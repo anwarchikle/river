@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Is_Duplicate_Error</name>
+        <label>Is Duplicate Error</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>With this Work order, Check list already created. {!Getting_Record_Types_Records.Id}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Is_Null_Error</name>
+        <label>Is Null Error</label>
+        <locationX>2426</locationX>
+        <locationY>935</locationY>
+        <customErrorMessages>
+            <errorMessage>Test 3 records are not there</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Null_Records</name>
+        <label>Null Records</label>
+        <locationX>314</locationX>
+        <locationY>935</locationY>
+        <customErrorMessages>
+            <errorMessage>There is no Test 1 Records</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Test_1_fail_Error</name>
+        <label>Test 1 fail Error</label>
+        <locationX>842</locationX>
+        <locationY>935</locationY>
+        <customErrorMessages>
+            <errorMessage>T1 Test - Functionality Check &amp; FA2 Check is Failed</errorMessage>
+            <fieldSelection>Test_Result__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Test_2_FailError</name>
+        <label>Test 2 Fail</label>
+        <locationX>1898</locationX>
+        <locationY>935</locationY>
+        <customErrorMessages>
+            <errorMessage>T2 Test - Dyno Test is Failed</errorMessage>
+            <fieldSelection>Test_Result__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Test_2_Null</name>
+        <label>Test 2 Null</label>
+        <locationX>1370</locationX>
+        <locationY>935</locationY>
+        <customErrorMessages>
+            <errorMessage>Test 2 Records are not there</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Test_3_FailError</name>
+        <label>Test 3 Fail</label>
+        <locationX>2954</locationX>
+        <locationY>935</locationY>
+        <customErrorMessages>
+            <errorMessage>T3 Test - On Road Test is Failed</errorMessage>
+            <fieldSelection>Test_Result__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Checking_Test_Results</name>
+        <label>Checking Test Results</label>
+        <locationX>1766</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Duplicate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>get_Checklist_Records_based_on_work_order</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>get_Checklist_Records_based_on_work_order.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pass</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Duplicate_Error</targetReference>
+            </connector>
+            <label>Is Duplicate</label>
+        </rules>
+        <rules>
+            <name>Test_2_records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Getting_Record_Types_Records.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>T2 Test - Dyno Test</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_1_Record_Type</targetReference>
+            </connector>
+            <label>Test 2 records</label>
+        </rules>
+        <rules>
+            <name>Test_3_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Getting_Record_Types_Records.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>T3 Test - On Road Test</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_2_Record_Type</targetReference>
+            </connector>
+            <label>Test 3 Records</label>
+        </rules>
+        <rules>
+            <name>PDI_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Getting_Record_Types_Records.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>T4 Test - Pre Delivery Inspection (PDI)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_3_Record_Type</targetReference>
+            </connector>
+            <label>PDI Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Test_1_Result_Checking</name>
+        <label>Test 1 Result Checking</label>
+        <locationX>710</locationX>
+        <locationY>827</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsNull</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_1_Records.RecordType.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Null_Records</targetReference>
+            </connector>
+            <label>IsNull</label>
+        </rules>
+        <rules>
+            <name>Test_1_Pass</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_1_Records.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pass</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Test 1 Pass</label>
+        </rules>
+        <rules>
+            <name>Test_1_Fail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_1_Records.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_1_fail_Error</targetReference>
+            </connector>
+            <label>Test 1 Fail</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Test_2_result</name>
+        <label>Test 2 result</label>
+        <locationX>1766</locationX>
+        <locationY>827</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IsNull_Test_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_2_Record.RecordType.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_2_Null</targetReference>
+            </connector>
+            <label>IsNull Test 2</label>
+        </rules>
+        <rules>
+            <name>Test_2_Pass</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_2_Record.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pass</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Test 2 Pass</label>
+        </rules>
+        <rules>
+            <name>Test_2_Fail</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_2_Record.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_2_FailError</targetReference>
+            </connector>
+            <label>Test 2 Fail</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Test_3_Result</name>
+        <label>Test 3 Result</label>
+        <locationX>2822</locationX>
+        <locationY>827</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Null_Test_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_3_Record.RecordType.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Null_Error</targetReference>
+            </connector>
+            <label>Is Null Test 3</label>
+        </rules>
+        <rules>
+            <name>test_3_Pass</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_3_Record.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pass</stringValue>
+                </rightValue>
+            </conditions>
+            <label>test 3 Pass</label>
+        </rules>
+        <rules>
+            <name>Test_3_Fail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Test_3_Record.Test_Result__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fail</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Test_3_FailError</targetReference>
+            </connector>
+            <label>Test 3 Fail</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Checklist {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Checklist - Result Checking</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>get_Checklist_Records_based_on_work_order</name>
+        <label>get Checklist Records based on work order</label>
+        <locationX>1766</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Checking_Test_Results</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Work_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Work_Order__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Getting_Record_Types_Records.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Checklist__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Getting_Record_Types_Records</name>
+        <label>Getting Record Types Records</label>
+        <locationX>1766</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>get_Checklist_Records_based_on_work_order</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RecordType.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Test_1_Record_Type</name>
+        <label>Test 1 Record Type</label>
+        <locationX>710</locationX>
+        <locationY>611</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Test_1_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>T1 Test - Functionality Check &amp; FA2 Check</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Test_1_Records</name>
+        <label>Test 1 Records</label>
+        <locationX>710</locationX>
+        <locationY>719</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Test_1_Result_Checking</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Test_1_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Work_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Work_Order__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Checklist__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Test_2_Record</name>
+        <label>Test 2 Record</label>
+        <locationX>1766</locationX>
+        <locationY>719</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Test_2_result</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Test_2_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Work_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Work_Order__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Checklist__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Test_2_Record_Type</name>
+        <label>Test 2 Record Type</label>
+        <locationX>1766</locationX>
+        <locationY>611</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Test_2_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>T2 Test - Dyno Test</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Test_3_Record</name>
+        <label>Test 3 Record</label>
+        <locationX>2822</locationX>
+        <locationY>719</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Test_3_Result</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Test_3_Record_Type.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Work_Order__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Work_Order__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Checklist__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Test_3_Record_Type</name>
+        <label>Test 3 Record Type</label>
+        <locationX>2822</locationX>
+        <locationY>611</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Test_3_Record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>T3 Test - On Road Test</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>1640</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Getting_Record_Types_Records</targetReference>
+        </connector>
+        <object>Checklist__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Payments</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Payments</value>
+    </caseValues>
+    <layouts>
+        <layout>Payments Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Refund Details --></label>
+            <section>Refund Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Phone Number Should not be more/less than 10 digits --></errorMessage>
+        <name>Phone_Number_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- &quot;Phone number must contain only numerical digits (0-9). Please remove any non-numeric characters.&quot; --></errorMessage>
+        <name>Phone_Number_should_take_only_numeric</name>
+    </validationRules>
+</CustomObjectTranslation>

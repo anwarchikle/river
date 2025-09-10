@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Coco TC</label>
+    <protected>false</protected>
+    <values>
+        <field>Terms_and_Condition__c</field>
+        <value xsi:type="xsd:string">1. E and O.E.
+2. Goods (Vehicles, Chargers, Accessories and others) once invoiced will not be returned or exchanged under any circumstances.
+3. The vehicle/documents has been thoroughly inspected, tested and is free of any kind of defect and is up to my satisfaction.
+4. I have read the warranty terms and conditions as explained in the owner&apos;s manual and understand that my warranty claims if any, will be considered by the manufacturer only in accordance with the scope and limit of warranty as laid down in the warranty certificate.
+5. I have checked my particulars and are correct to best of my knowledge.
+6. I have received the vehicle in good condition along with tools and first aid kit and other compulsory accessories.
+7. Registration and insurance will be done at the owner&apos;s risk and liability.
+8. I have understood all the conditions about Colour, Model and Manufacturing Date.
+9. Subsidies applicable (at the time of invoicing), if any, are subject to approval from respective Government departments. Terms and conditions apply.
+10. I hereby acknowledge the ownership of the vehicle and its accessories as outlined in this invoice.I will take physical possession of the vehicle and its accessories once the registration process is complete in all respects.
+11. I shall acknowledge and give consent to the https://www.rideriver.com/terms &amp; https://www.rideriver.com/privacypolicy(www.rideriver.com.)</value>
+    </values>
+</CustomMetadata>

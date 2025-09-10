@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Basavanagudi_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Basavanagudi SC</label>
+        <sharedTo>
+            <group>Basavanagudi_Service</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Basavanagudi_Service</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Belagavi_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Belagavi SC</label>
+        <sharedTo>
+            <group>X294003_Service_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X294003_Service_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Chennai_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Chennai SC</label>
+        <sharedTo>
+            <group>X331001_ServiceTeam</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X331001_ServiceTeam</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Coimbatore_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Coimbatore SC</label>
+        <sharedTo>
+            <group>X332001_Salesteam</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X332001_Service_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Indiranagar_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Indiranagar SC</label>
+        <sharedTo>
+            <group>X291002_SERVICE_TEAM</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X291002_SERVICE_TEAM</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>JP_Nagar_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>JP Nagar SC</label>
+        <sharedTo>
+            <group>X291001_Service_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X291001_Service_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Kochi_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Kochi SC</label>
+        <sharedTo>
+            <group>X321001_Service_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X321001_Service_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Kukattpally_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Kukattpally SC</label>
+        <sharedTo>
+            <group>X362001_Serviceteam</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X362001_Serviceteam</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Mysore_sc</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Mysore sc</label>
+        <sharedTo>
+            <group>X294004_Service_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X294004_Service_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Nagercoil_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Nagercoil SC</label>
+        <sharedTo>
+            <group>Nagercoil_Service</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Nagercoil_Service</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Narayanguda_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Narayanguda SC</label>
+        <sharedTo>
+            <group>Narayanguda_Service</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Narayanguda_Service</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Porur_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Porur SC</label>
+        <sharedTo>
+            <group>Porur_SC</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Porur_SC</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Rajajinagar_Peenya_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Rajajinagar/Peenya SC</label>
+        <sharedTo>
+            <group>X292002_ServiceTean</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X292002_SalesTeam</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Share_all_Product_request_to_warehous_user</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share all Product request to warehous user</label>
+        <sharedTo>
+            <group>Warehouse_Group</group>
+        </sharedTo>
+        <sharedFrom>
+            <portalRole>AUserPartnerPersonAccount</portalRole>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Tirupathi_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Tirupathi SC</label>
+        <sharedTo>
+            <group>Tirupati_SC</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Tirupati_SC</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Tiruppur_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Tiruppur SC</label>
+        <sharedTo>
+            <group>Tiruppur_SC</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Tiruppur_SC</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Trivandrum_Service</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Trivandrum Service</label>
+        <sharedTo>
+            <group>Trivandrum_Service</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Trivandrum_Service</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Vellore_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Vellore  SC</label>
+        <sharedTo>
+            <group>Vellore_Service_centre</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Vellore_Service_centre</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Vizag_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Vizag SC</label>
+        <sharedTo>
+            <group>X122001_Salesteam</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X122001_Salesteam</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+    <sharingOwnerRules>
+        <fullName>Yelahanka_SC</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Yelahanka SC</label>
+        <sharedTo>
+            <group>X292001_SERVICE</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>X292001_SERVICE</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

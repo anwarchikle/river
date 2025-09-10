@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>If_Vehicle_associated</name>
+        <label>If Vehicle associated</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Vehicle_exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Vehicle_details</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Vehicle_details</targetReference>
+            </connector>
+            <label>Vehicle exists</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Vehicle details on Case autopopulate {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Vehicle details on Case autopopulate</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Vehicle_details</name>
+        <label>Get Vehicle details</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>If_Vehicle_associated</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CurrentOwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Account.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Vehicle</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Vehicle_details</name>
+        <label>Update Vehicle details</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <inputAssignments>
+            <field>Vehicle_Identification_Number__c</field>
+            <value>
+                <elementReference>Get_Vehicle_details.VehicleIdentificationNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Vehicle_Registration_Number__c</field>
+            <value>
+                <elementReference>Get_Vehicle_details.VehicleRegistrationNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Vehicle_details</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>When_Salesforce_Support_Ticket_Is_In_Progress</fullName>
+        <description>When Salesforce Support Ticket Is In Progress</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Salesforce_Support_Ticket_Email/Salesforce_Support_Ticket_In_Progress</template>
+    </alerts>
+    <alerts>
+        <fullName>When_Salesforce_Support_Ticket_is_Assigned</fullName>
+        <description>When Salesforce Support Ticket is Assigned</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Salesforce_Support_Ticket_Email/Salesforce_Support_Ticket_Assigned</template>
+    </alerts>
+    <alerts>
+        <fullName>When_Salesforce_Support_Ticket_is_Closed</fullName>
+        <description>When Salesforce Support Ticket is Closed</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Salesforce_Support_Ticket_Email/Salesforce_Support_Ticket_Close</template>
+    </alerts>
+    <alerts>
+        <fullName>When_Salesforce_Support_Ticket_is_On_Hold</fullName>
+        <description>When Salesforce Support Ticket is On Hold</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Salesforce_Support_Ticket_Email/Salesforce_Support_Ticket_on_Hold</template>
+    </alerts>
+    <alerts>
+        <fullName>When_Salesforce_Support_Ticket_is_Opened</fullName>
+        <description>When Salesforce Support Ticket is Opened</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Salesforce_Support_Ticket_Email/Salesforce_Support_Ticket_Creation</template>
+    </alerts>
+</Workflow>

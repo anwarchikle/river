@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>when_Case_type_is_Complaint_And_status_is_RNR</fullName>
+        <description>when Case type is Complaint And status is RNR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Complaint_RNR_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_Complaint_And_status_is_close</fullName>
+        <description>when Case type is Complaint And status is close</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Complaint_Close_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_Complaint_And_status_is_open</fullName>
+        <description>when Case type is Complaint And status is open</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Complaint_Open_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_General_Query_And_status_is_RNR</fullName>
+        <description>when Case type is General Query And status is  RNR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/General_Query_RNR_template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_General_Query_And_status_is_close</fullName>
+        <description>when Case type is General Query And status is close</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/General_Query_Close_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_General_Query_And_status_is_open</fullName>
+        <description>when Case type is General Query And status is open</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/General_Query_open_template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_PFSU_And_status_is_Close</fullName>
+        <description>when Case type is PFSU And status is Close</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/PSFU_Concerns_Close_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_PFSU_And_status_is_RNR</fullName>
+        <description>when Case type is PFSU And status is RNR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/PSFU_Concerns_RNR_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_PFSU_And_status_is_open</fullName>
+        <description>when Case type is PFSU And status is open</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/PSFU_Concerns_Open_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_Service_request_And_status_is_RNR</fullName>
+        <description>when Case type is Service request And status is RNR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Service_Request_RNR_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_Service_request_And_status_is_open</fullName>
+        <description>when Case type is Service request And status is open</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Service_Request_open_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_urgent_Complaint_And_status_is_Close</fullName>
+        <description>when Case type is urgent Complaint And status is Close</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Urgent_Complaint_Close_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_urgent_Complaint_And_status_is_RNR</fullName>
+        <description>when Case type is urgent Complaint And status is RNR</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Urgent_Complaint_RNR_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>when_Case_type_is_urgent_Complaint_And_status_is_open</fullName>
+        <description>when Case type is urgent Complaint And status is open</description>
+        <protected>false</protected>
+        <recipients>
+            <field>case_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>unfiled$public/Urgent_Complaint_open_Template</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>ChangePriorityToHigh</fullName>
+        <field>Priority</field>
+        <literalValue>High</literalValue>
+        <name>Changes the case priority to high.</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

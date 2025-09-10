@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>ShipmentItem</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>Shipment Item Details</description>
+    <label>Shipment Item Details</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipment Item ID</displayNameOverride>
+            <field>Id</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Shipment Item Number</displayNameOverride>
+            <field>Name</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipment</displayNameOverride>
+            <field>Shipment</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Product</displayNameOverride>
+            <field>Product2</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Shipped Quantity</displayNameOverride>
+            <field>Quantity</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Return Order Line Item</displayNameOverride>
+            <field>ReturnOrderLineItem</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Parent Shipment</displayNameOverride>
+            <field>Parent_Shipment__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is VOR</displayNameOverride>
+            <field>Is_VOR__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Unit Price</displayNameOverride>
+            <field>Unit_Price__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>CGST</displayNameOverride>
+            <field>CGST__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>SGST</displayNameOverride>
+            <field>SGST__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>IGST</displayNameOverride>
+            <field>IGST__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Order</displayNameOverride>
+            <field>Order__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Price</displayNameOverride>
+            <field>Total_Price__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>VOR (5%)</displayNameOverride>
+            <field>VOR_5__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Sub Total</displayNameOverride>
+            <field>Sub_Total__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Total Tax</displayNameOverride>
+            <field>Total_Tax__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grand Total</displayNameOverride>
+            <field>Grand_Total__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Quantity Received</displayNameOverride>
+            <field>Quantity_Received__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Missing/Damaged Quantity</displayNameOverride>
+            <field>Missing_Damaged_Quantity__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PO</displayNameOverride>
+            <field>PO__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Related Order Line Item</displayNameOverride>
+            <field>Related_Order_Line_Item__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Outstanding Quantity</displayNameOverride>
+            <field>Outstanding_Quantity__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Requested Quantity</displayNameOverride>
+            <field>Requested_Quantity__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Destination_Location__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Product_Code__c</field>
+            <table>ShipmentItem</table>
+        </columns>
+        <masterLabel>Shipment Items</masterLabel>
+    </sections>
+</ReportType>

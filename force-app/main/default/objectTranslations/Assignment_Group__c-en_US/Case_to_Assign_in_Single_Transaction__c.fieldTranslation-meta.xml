@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Case to Assign in Single Transaction --></label>
+    <name>Case_to_Assign_in_Single_Transaction__c</name>
+</CustomFieldTranslation>

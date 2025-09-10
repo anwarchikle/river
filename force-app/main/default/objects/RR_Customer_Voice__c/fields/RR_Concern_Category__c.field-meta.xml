@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RR_Concern_Category__c</fullName>
+    <label>Concern Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Range</fullName>
+                <default>false</default>
+                <label>Range</label>
+            </value>
+            <value>
+                <fullName>Charger</fullName>
+                <default>false</default>
+                <label>Charger</label>
+            </value>
+            <value>
+                <fullName>Belt</fullName>
+                <default>false</default>
+                <label>Belt</label>
+            </value>
+            <value>
+                <fullName>Switch Gear RH</fullName>
+                <default>false</default>
+                <label>Switch Gear RH</label>
+            </value>
+            <value>
+                <fullName>Switch Gear LH</fullName>
+                <default>false</default>
+                <label>Switch Gear LH</label>
+            </value>
+            <value>
+                <fullName>Suspension</fullName>
+                <default>false</default>
+                <label>Suspension</label>
+            </value>
+            <value>
+                <fullName>Display</fullName>
+                <default>false</default>
+                <label>Display</label>
+            </value>
+            <value>
+                <fullName>Steering</fullName>
+                <default>false</default>
+                <label>Steering</label>
+            </value>
+            <value>
+                <fullName>Wheels</fullName>
+                <default>false</default>
+                <label>Wheels</label>
+            </value>
+            <value>
+                <fullName>PRCD</fullName>
+                <default>false</default>
+                <label>PRCD</label>
+            </value>
+            <value>
+                <fullName>Lockset</fullName>
+                <default>false</default>
+                <label>Lockset</label>
+            </value>
+            <value>
+                <fullName>Brakes</fullName>
+                <default>false</default>
+                <label>Brakes</label>
+            </value>
+            <value>
+                <fullName>Horn</fullName>
+                <default>false</default>
+                <label>Horn</label>
+            </value>
+            <value>
+                <fullName>Indicator</fullName>
+                <default>false</default>
+                <label>Indicator</label>
+            </value>
+            <value>
+                <fullName>HeadLamp</fullName>
+                <default>false</default>
+                <label>HeadLamp</label>
+            </value>
+            <value>
+                <fullName>TailLamp</fullName>
+                <default>false</default>
+                <label>TailLamp</label>
+            </value>
+            <value>
+                <fullName>Accessories</fullName>
+                <default>false</default>
+                <label>Accessories</label>
+            </value>
+            <value>
+                <fullName>Bootlamp</fullName>
+                <default>false</default>
+                <label>Bootlamp</label>
+            </value>
+            <value>
+                <fullName>Centre Stand</fullName>
+                <default>false</default>
+                <label>Centre Stand</label>
+            </value>
+            <value>
+                <fullName>Crash Guard</fullName>
+                <default>false</default>
+                <label>Crash Guard</label>
+            </value>
+            <value>
+                <fullName>Foot Peg LH</fullName>
+                <default>false</default>
+                <label>Foot Peg LH</label>
+            </value>
+            <value>
+                <fullName>Mode</fullName>
+                <default>false</default>
+                <label>Mode</label>
+            </value>
+            <value>
+                <fullName>Panel</fullName>
+                <default>false</default>
+                <label>Panel</label>
+            </value>
+            <value>
+                <fullName>Performance</fullName>
+                <default>false</default>
+                <label>Performance</label>
+            </value>
+            <value>
+                <fullName>Vehicle Power Cut OFF</fullName>
+                <default>false</default>
+                <label>Vehicle Power Cut OFF</label>
+            </value>
+            <value>
+                <fullName>Side stand</fullName>
+                <default>false</default>
+                <label>Side stand</label>
+            </value>
+            <value>
+                <fullName>Software</fullName>
+                <default>false</default>
+                <label>Software</label>
+            </value>
+            <value>
+                <fullName>Brake Hose Routing</fullName>
+                <default>false</default>
+                <label>Brake Hose Routing</label>
+            </value>
+            <value>
+                <fullName>Brakes Lever</fullName>
+                <default>false</default>
+                <label>Brakes Lever</label>
+            </value>
+            <value>
+                <fullName>Brakes Switch</fullName>
+                <default>false</default>
+                <label>Brakes Switch</label>
+            </value>
+            <value>
+                <fullName>Charger Wire</fullName>
+                <default>false</default>
+                <label>Charger Wire</label>
+            </value>
+            <value>
+                <fullName>Diagnosis</fullName>
+                <default>false</default>
+                <label>Diagnosis</label>
+            </value>
+            <value>
+                <fullName>Drive Belt</fullName>
+                <default>false</default>
+                <label>Drive Belt</label>
+            </value>
+            <value>
+                <fullName>Fender Rear</fullName>
+                <default>false</default>
+                <label>Fender Rear</label>
+            </value>
+            <value>
+                <fullName>Handlebar</fullName>
+                <default>false</default>
+                <label>Handlebar</label>
+            </value>
+            <value>
+                <fullName>LH Switchgear</fullName>
+                <default>false</default>
+                <label>LH Switchgear</label>
+            </value>
+            <value>
+                <fullName>Limp Mode</fullName>
+                <default>false</default>
+                <label>Limp Mode</label>
+            </value>
+            <value>
+                <fullName>Main Stand</fullName>
+                <default>false</default>
+                <label>Main Stand</label>
+            </value>
+            <value>
+                <fullName>Pannel</fullName>
+                <default>false</default>
+                <label>Pannel</label>
+            </value>
+            <value>
+                <fullName>Rear Wheel</fullName>
+                <default>false</default>
+                <label>Rear Wheel</label>
+            </value>
+            <value>
+                <fullName>RH Switch gear</fullName>
+                <default>false</default>
+                <label>RH Switch gear</label>
+            </value>
+            <value>
+                <fullName>RH Switchgear</fullName>
+                <default>false</default>
+                <label>RH Switchgear</label>
+            </value>
+            <value>
+                <fullName>Seat</fullName>
+                <default>false</default>
+                <label>Seat</label>
+            </value>
+            <value>
+                <fullName>Side Stand Sensor</fullName>
+                <default>false</default>
+                <label>Side Stand Sensor</label>
+            </value>
+            <value>
+                <fullName>Suspension FR</fullName>
+                <default>false</default>
+                <label>Suspension FR</label>
+            </value>
+            <value>
+                <fullName>Suspension RR</fullName>
+                <default>false</default>
+                <label>Suspension RR</label>
+            </value>
+            <value>
+                <fullName>Tail Lamp</fullName>
+                <default>false</default>
+                <label>Tail Lamp</label>
+            </value>
+            <value>
+                <fullName>Throttle</fullName>
+                <default>false</default>
+                <label>Throttle</label>
+            </value>
+            <value>
+                <fullName>ODO</fullName>
+                <default>false</default>
+                <label>ODO</label>
+            </value>
+            <value>
+                <fullName>Harness</fullName>
+                <default>false</default>
+                <label>Harness</label>
+            </value>
+            <value>
+                <fullName>Time</fullName>
+                <default>false</default>
+                <label>Time</label>
+            </value>
+            <value>
+                <fullName>USB</fullName>
+                <default>false</default>
+                <label>USB</label>
+            </value>
+            <value>
+                <fullName>Wheels Rim</fullName>
+                <default>false</default>
+                <label>Wheels Rim</label>
+            </value>
+            <value>
+                <fullName>Underbracket</fullName>
+                <default>false</default>
+                <label>Underbracket</label>
+            </value>
+            <value>
+                <fullName>Front wheel</fullName>
+                <default>false</default>
+                <label>Front wheel</label>
+            </value>
+            <value>
+                <fullName>Glove box</fullName>
+                <default>false</default>
+                <label>Glove box</label>
+            </value>
+            <value>
+                <fullName>Foot peg RH</fullName>
+                <default>false</default>
+                <label>Foot peg RH</label>
+            </value>
+            <value>
+                <fullName>Tyre</fullName>
+                <default>false</default>
+                <label>Tyre</label>
+            </value>
+            <value>
+                <fullName>SOC</fullName>
+                <default>false</default>
+                <label>SOC</label>
+            </value>
+            <value>
+                <fullName>PMS</fullName>
+                <default>false</default>
+                <label>PMS</label>
+            </value>
+            <value>
+                <fullName>Chain</fullName>
+                <default>false</default>
+                <label>Chain</label>
+            </value>
+            <value>
+                <fullName>General</fullName>
+                <default>false</default>
+                <label>General</label>
+            </value>
+            <value>
+                <fullName>Washing</fullName>
+                <default>false</default>
+                <label>Washing</label>
+            </value>
+            <value>
+                <fullName>Boot lamp</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Boot lamp</label>
+            </value>
+            <value>
+                <fullName>Hyb. mode SOC drop</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hyb. mode SOC drop</label>
+            </value>
+            <value>
+                <fullName>Sudden SOC Drop</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sudden SOC Drop</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

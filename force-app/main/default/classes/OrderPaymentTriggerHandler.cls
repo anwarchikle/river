@@ -7,7 +7,6 @@
 public class OrderPaymentTriggerHandler {
     
     public static void insertHandler(List<Order_Payment__c> newRecords){
-        
         Set<Id> orderIdsToUpdate = new Set<Id>();
         Set<Id> OrderPaymentIds = new set<Id>();
         Map<Id,Payment__c> mapPaymentIdtoPayment = new  Map<Id,Payment__c>();
@@ -32,11 +31,10 @@ public class OrderPaymentTriggerHandler {
                 op.Amount1__c = mapPaymentIdtoPayment.get(op.Payments__c).Amount__c;
             }
         }		
-        
     }
     
     
-    Public static void updateOrderOnInsert(List<Order_Payment__c> newRecords){
+    public static void updateOrderOnInsert(List<Order_Payment__c> newRecords){
         
         system.debug('The update Order is running');  
         
@@ -119,7 +117,7 @@ public class OrderPaymentTriggerHandler {
         
     }
     
-    Public static void updateOrderOnUpdate(List<Order_Payment__c> newRecords, Map<Id, Order_Payment__c> oldMap){
+    public static void updateOrderOnUpdate(List<Order_Payment__c> newRecords, Map<Id, Order_Payment__c> oldMap){
         
         system.debug('The update Order is running');  
         system.debug('newRecords================='+newRecords);
@@ -197,11 +195,10 @@ public class OrderPaymentTriggerHandler {
         system.debug('updated Orders are>>'+orderToUpate);
                 
         Database.update(orderToUpate,false);
-        
     }
     
     
-    Public static void checkDuplicateOnInsert(List<Order_Payment__c> newRecords, Boolean isUpdate){
+    public static void checkDuplicateOnInsert(List<Order_Payment__c> newRecords, Boolean isUpdate){
         Set<Id> orderIdsToUpdate = new Set<Id>();
         Map<Id,Payment__c> mapPaymentIdtoPayment = new  Map<Id,Payment__c>();        
         Map<Id,Order_Payment__c> mapIdtoOrderPayment = new  Map<Id,Order_Payment__c>();
@@ -234,9 +231,9 @@ public class OrderPaymentTriggerHandler {
                     op.Payments__c.addError('Duplicate Order Payment found with the same Payment!');
                 }
             }
-        }
-        
+        }   
     }
+
     //methood added by Aniket on 12/02/2025
     public static void populatePDFInOrder(List<Order_Payment__c> newpaymentList,Map<Id,Order_Payment__c> oldPaymentMap){
         try{
@@ -253,14 +250,11 @@ public class OrderPaymentTriggerHandler {
             //upto here
             for(Order_Payment__c op : newpaymentListToProcess){
                 if(op.Payment_Acknowledgement_Generated__c == true && oldPaymentMap.get(op.Id).Payment_Acknowledgement_Generated__c == false){
-                    
-                        orderPaymentIds.add(op.Id);
-                        orderIdsToFetchorder.add(op.Order__c);
-                    
-                    
+                    orderPaymentIds.add(op.Id);
+                    orderIdsToFetchorder.add(op.Order__c);
                 }
-            
             }
+
             Attachment att = [SELECT Id, Name, Body, ParentId FROM Attachment WHERE ParentId IN:orderPaymentIds Order By CreatedDate Desc LIMIT 1];
             System.debug('Its Coming upto here');
             System.debug('Attachment ===>'+att);
@@ -284,10 +278,10 @@ public class OrderPaymentTriggerHandler {
                 insert cd;
                 system.debug('cd ===> ' + cd);
 
-                ContentDistribution cdl = [SELECT Id,ContentDownloadUrl,DistributionPublicUrl FROM ContentDistribution WHERE Id = :cd.Id LIMIT 1];
-                System.debug('Public Link: ' + cdl);
-                System.debug('Public ContentDownloadUrl: ' + cdl.ContentDownloadUrl);
-                System.debug('Public DistributionPublicUrl: ' + cdl.DistributionPublicUrl);
+                ContentDistribution cdl = [SELECT Id,ContentDownloadUrl,DistributionpublicUrl FROM ContentDistribution WHERE Id = :cd.Id LIMIT 1];
+                System.debug('public Link: ' + cdl);
+                System.debug('public ContentDownloadUrl: ' + cdl.ContentDownloadUrl);
+                System.debug('public DistributionpublicUrl: ' + cdl.DistributionpublicUrl);
 
                 Order orderToUpdate = [Select id,Booking_Form_File_URL__c from Order Where Id IN:orderIdsToFetchorder LIMIT 1];
                 orderToUpdate.Booking_Form_File_URL__c=cdl.ContentDownloadUrl;
@@ -299,6 +293,5 @@ public class OrderPaymentTriggerHandler {
             System.debug('Error is ===>'+e.getMessage());
             System.debug('Error Line Number===>'+e.getLineNumber());
         }
-
     }
 }

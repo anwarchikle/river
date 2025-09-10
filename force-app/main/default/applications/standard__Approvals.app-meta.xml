@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Approvals</label>
+    <navType>Console</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Salesforce_Support_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Salesforce_Support__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager (Partner)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Salesforce_Support_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Salesforce_Support__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Service Manager(Partner)</profile>
+    </profileActionOverrides>
+    <tabs>standard-ApprovalsHome</tabs>
+    <tabs>Warranty_Prior__c</tabs>
+    <tabs>Create_Batch__c</tabs>
+    <tabs>Salesforce_Support__c</tabs>
+    <tabs>Duplicate_Record__c</tabs>
+    <tabs>Comment__c</tabs>
+    <uiType>Lightning</uiType>
+    <workspaceConfig>
+        <mappings>
+            <tab>Comment__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Create_Batch__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Duplicate_Record__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Salesforce_Support__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Warranty_Prior__c</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-ApprovalsHome</tab>
+        </mappings>
+    </workspaceConfig>
+</CustomApplication>

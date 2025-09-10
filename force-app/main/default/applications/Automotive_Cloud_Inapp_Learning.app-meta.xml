@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Lead_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Lead_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Lead</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>Home_Page_Default1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Welcome to the Automotive Cloud in-app navigation. The app helps you in getting started with Automotive cloud  through a series of prompts, designed to help you navigate through the different features and enablement artefacts.</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Automotive Cloud In-app Learning</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Salesforce_Support_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Salesforce_Support__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager (Partner)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Salesforce_Support_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Salesforce_Support__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Sales Manager (Partner)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Salesforce_Support_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Salesforce_Support__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Service Manager(Partner)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Salesforce_Support_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Salesforce_Support__c</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Service Manager(Partner)</profile>
+    </profileActionOverrides>
+    <tabs>LMS</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>Warehouse__c</tabs>
+    <tabs>standard-Order</tabs>
+    <tabs>Order_Payment__c</tabs>
+    <tabs>Payment__c</tabs>
+    <tabs>Insurance__c</tabs>
+    <tabs>Inventory_Lot__c</tabs>
+    <tabs>Subsidy__c</tabs>
+    <tabs>standard-Vehicle</tabs>
+    <tabs>standard-Product2</tabs>
+    <tabs>Integration_Log__c</tabs>
+    <tabs>Finance__c</tabs>
+    <tabs>Offers__c</tabs>
+    <tabs>Manufacturer_Unit__c</tabs>
+    <tabs>PO_Payments__c</tabs>
+    <tabs>Daily_Ledger__c</tabs>
+    <tabs>Payment_Split__c</tabs>
+    <tabs>PineLabs_Machine_Info__c</tabs>
+    <tabs>Exception_Log__c</tabs>
+    <tabs>Warranty_Prior__c</tabs>
+    <tabs>Create_Batch__c</tabs>
+    <tabs>Salesforce_Support__c</tabs>
+    <tabs>Duplicate_Record__c</tabs>
+    <tabs>Comment__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Automotive_Cloud_In_app_Learning_UtilityBar</utilityBar>
+</CustomApplication>

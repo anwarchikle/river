@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Checklist</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Checklists</value>
+    </caseValues>
+    <layouts>
+        <layout>Checklist Layout</layout>
+        <sections>
+            <label><!-- Accessories --></label>
+            <section>Accessories</section>
+        </sections>
+        <sections>
+            <label><!-- Assy broken / damages --></label>
+            <section>Assy broken / damages</section>
+        </sections>
+        <sections>
+            <label><!-- Bar Code VIN No --></label>
+            <section>Bar Code VIN No</section>
+        </sections>
+        <sections>
+            <label><!-- Battery --></label>
+            <section>Battery</section>
+        </sections>
+        <sections>
+            <label><!-- Battery SOC% --></label>
+            <section>Battery SOC%</section>
+        </sections>
+        <sections>
+            <label><!-- Body parts --></label>
+            <section>Body parts</section>
+        </sections>
+        <sections>
+            <label><!-- Brake --></label>
+            <section>Brake</section>
+        </sections>
+        <sections>
+            <label><!-- Brakes --></label>
+            <section>Brakes</section>
+        </sections>
+        <sections>
+            <label><!-- Brakes &amp; Stopping --></label>
+            <section>Brakes &amp; Stopping</section>
+        </sections>
+        <sections>
+            <label><!-- Charging function --></label>
+            <section>Charging function</section>
+        </sections>
+        <sections>
+            <label><!-- Colour of Vehicle --></label>
+            <section>Colour of Vehicle</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Dash board function  ( Testing mode ) --></label>
+            <section>Dash board function  ( Testing mode )</section>
+        </sections>
+        <sections>
+            <label><!-- Dash board functioning test ( Testing mode ) --></label>
+            <section>Dash board functioning test ( Testing mode )</section>
+        </sections>
+        <sections>
+            <label><!-- Dash board working --></label>
+            <section>Dash board working</section>
+        </sections>
+        <sections>
+            <label><!-- ES Start --></label>
+            <section>ES Start</section>
+        </sections>
+        <sections>
+            <label><!-- Electrical Lights and Gauge Controls - Lights - Ignition - Horn --></label>
+            <section>Electrical Lights and Gauge Controls - Lights - Ignition - Horn</section>
+        </sections>
+        <sections>
+            <label><!-- First aid &amp; Tool kit --></label>
+            <section>First aid &amp; Tool kit</section>
+        </sections>
+        <sections>
+            <label><!-- Hand grips --></label>
+            <section>Hand grips</section>
+        </sections>
+        <sections>
+            <label><!-- Handle bar --></label>
+            <section>Handle bar</section>
+        </sections>
+        <sections>
+            <label><!-- Horns --></label>
+            <section>Horns</section>
+        </sections>
+        <sections>
+            <label><!-- Lamp function --></label>
+            <section>Lamp function</section>
+        </sections>
+        <sections>
+            <label><!-- Lock &amp; Key Function --></label>
+            <section>Lock &amp; Key Function</section>
+        </sections>
+        <sections>
+            <label><!-- Mode function --></label>
+            <section>Mode function</section>
+        </sections>
+        <sections>
+            <label><!-- Noise level --></label>
+            <section>Noise level</section>
+        </sections>
+        <sections>
+            <label><!-- ODO --></label>
+            <section>ODO</section>
+        </sections>
+        <sections>
+            <label><!-- Park assist --></label>
+            <section>Park assist</section>
+        </sections>
+        <sections>
+            <label><!-- Parts Missing / Breakage --></label>
+            <section>Parts Missing / Breakage</section>
+        </sections>
+        <sections>
+            <label><!-- Power &amp; Pickup --></label>
+            <section>Power &amp; Pickup</section>
+        </sections>
+        <sections>
+            <label><!-- QA checks completion --></label>
+            <section>QA checks completion</section>
+        </sections>
+        <sections>
+            <label><!-- R&amp;H  Rattling / Squecking and Vibration noise --></label>
+            <section>R&amp;H  Rattling / Squecking and Vibration noise</section>
+        </sections>
+        <sections>
+            <label><!-- R&amp;H  Shock Absorber &amp; Ride issues --></label>
+            <section>R&amp;H  Shock Absorber &amp; Ride issues</section>
+        </sections>
+        <sections>
+            <label><!-- R&amp;H Vehicle Pulling --></label>
+            <section>R&amp;H Vehicle Pulling</section>
+        </sections>
+        <sections>
+            <label><!-- Rework details and correction check --></label>
+            <section>Rework details and correction check</section>
+        </sections>
+        <sections>
+            <label><!-- Ride and Handling -Handle bar problems --></label>
+            <section>Ride and Handling -Handle bar problems</section>
+        </sections>
+        <sections>
+            <label><!-- Rotor bolt --></label>
+            <section>Rotor bolt</section>
+        </sections>
+        <sections>
+            <label><!-- Seat --></label>
+            <section>Seat</section>
+        </sections>
+        <sections>
+            <label><!-- Side Stand &amp; Main Stand Assembly --></label>
+            <section>Side Stand &amp; Main Stand Assembly</section>
+        </sections>
+        <sections>
+            <label><!-- Side stand Dimension --></label>
+            <section>Side stand Dimension</section>
+        </sections>
+        <sections>
+            <label><!-- Starting --></label>
+            <section>Starting</section>
+        </sections>
+        <sections>
+            <label><!-- Steering --></label>
+            <section>Steering</section>
+        </sections>
+        <sections>
+            <label><!-- Switches Operation &amp; Dashboard Indications --></label>
+            <section>Switches Operation &amp; Dashboard Indications</section>
+        </sections>
+        <sections>
+            <label><!-- Throttle --></label>
+            <section>Throttle</section>
+        </sections>
+        <sections>
+            <label><!-- Throttle play --></label>
+            <section>Throttle play</section>
+        </sections>
+        <sections>
+            <label><!-- Torque --></label>
+            <section>Torque</section>
+        </sections>
+        <sections>
+            <label><!-- Tyre --></label>
+            <section>Tyre</section>
+        </sections>
+        <sections>
+            <label><!-- Vehicle Power and Pickup --></label>
+            <section>Vehicle Power and Pickup</section>
+        </sections>
+        <sections>
+            <label><!-- Vibration --></label>
+            <section>Vibration</section>
+        </sections>
+        <sections>
+            <label><!-- Vibration level --></label>
+            <section>Vibration level</section>
+        </sections>
+        <sections>
+            <label><!-- Wheel Freeness --></label>
+            <section>Wheel Freeness</section>
+        </sections>
+        <sections>
+            <label><!-- Wheel freeness and Hand grip --></label>
+            <section>Wheel freeness and Hand grip</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Pre Delivery Inspection</layout>
+        <sections>
+            <label><!-- Accessories --></label>
+            <section>Accessories</section>
+        </sections>
+        <sections>
+            <label><!-- Assy broken / damages --></label>
+            <section>Assy broken / damages</section>
+        </sections>
+        <sections>
+            <label><!-- Bar Code VIN No --></label>
+            <section>Bar Code VIN No</section>
+        </sections>
+        <sections>
+            <label><!-- Battery SOC% --></label>
+            <section>Battery SOC%</section>
+        </sections>
+        <sections>
+            <label><!-- Body parts --></label>
+            <section>Body parts</section>
+        </sections>
+        <sections>
+            <label><!-- Brakes --></label>
+            <section>Brakes</section>
+        </sections>
+        <sections>
+            <label><!-- Colour of Vehicle --></label>
+            <section>Colour of Vehicle</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Dash board function  ( Testing mode ) --></label>
+            <section>Dash board function  ( Testing mode )</section>
+        </sections>
+        <sections>
+            <label><!-- ES Start --></label>
+            <section>ES Start</section>
+        </sections>
+        <sections>
+            <label><!-- Electrical Lights and Gauge Controls - Lights - Ignition - Horn --></label>
+            <section>Electrical Lights and Gauge Controls - Lights - Ignition - Horn</section>
+        </sections>
+        <sections>
+            <label><!-- ODO --></label>
+            <section>ODO</section>
+        </sections>
+        <sections>
+            <label><!-- QA checks completion --></label>
+            <section>QA checks completion</section>
+        </sections>
+        <sections>
+            <label><!-- Rework details and correction check --></label>
+            <section>Rework details and correction check</section>
+        </sections>
+        <sections>
+            <label><!-- Seat --></label>
+            <section>Seat</section>
+        </sections>
+        <sections>
+            <label><!-- Torque --></label>
+            <section>Torque</section>
+        </sections>
+        <sections>
+            <label><!-- Wheel freeness and Hand grip --></label>
+            <section>Wheel freeness and Hand grip</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>T1 Test</layout>
+        <sections>
+            <label><!-- Battery --></label>
+            <section>Battery</section>
+        </sections>
+        <sections>
+            <label><!-- Brake --></label>
+            <section>Brake</section>
+        </sections>
+        <sections>
+            <label><!-- Charging function --></label>
+            <section>Charging function</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- First aid &amp; Tool kit --></label>
+            <section>First aid &amp; Tool kit</section>
+        </sections>
+        <sections>
+            <label><!-- Horns --></label>
+            <section>Horns</section>
+        </sections>
+        <sections>
+            <label><!-- Lock &amp; Key Function --></label>
+            <section>Lock &amp; Key Function</section>
+        </sections>
+        <sections>
+            <label><!-- Parts Missing / Breakage --></label>
+            <section>Parts Missing / Breakage</section>
+        </sections>
+        <sections>
+            <label><!-- Side Stand &amp; Main Stand Assembly --></label>
+            <section>Side Stand &amp; Main Stand Assembly</section>
+        </sections>
+        <sections>
+            <label><!-- Side stand Dimension --></label>
+            <section>Side stand Dimension</section>
+        </sections>
+        <sections>
+            <label><!-- Switches Operation &amp; Dashboard Indications --></label>
+            <section>Switches Operation &amp; Dashboard Indications</section>
+        </sections>
+        <sections>
+            <label><!-- Tyre --></label>
+            <section>Tyre</section>
+        </sections>
+        <sections>
+            <label><!-- Wheel Freeness --></label>
+            <section>Wheel Freeness</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>T2 Test</layout>
+        <sections>
+            <label><!-- Brakes &amp; Stopping --></label>
+            <section>Brakes &amp; Stopping</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Dash board functioning test ( Testing mode ) --></label>
+            <section>Dash board functioning test ( Testing mode )</section>
+        </sections>
+        <sections>
+            <label><!-- Handle bar --></label>
+            <section>Handle bar</section>
+        </sections>
+        <sections>
+            <label><!-- Park assist --></label>
+            <section>Park assist</section>
+        </sections>
+        <sections>
+            <label><!-- Starting --></label>
+            <section>Starting</section>
+        </sections>
+        <sections>
+            <label><!-- Throttle play --></label>
+            <section>Throttle play</section>
+        </sections>
+        <sections>
+            <label><!-- Vehicle Power and Pickup --></label>
+            <section>Vehicle Power and Pickup</section>
+        </sections>
+        <sections>
+            <label><!-- Vibration --></label>
+            <section>Vibration</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>T3 Test</layout>
+        <sections>
+            <label><!-- Brakes --></label>
+            <section>Brakes</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Dash board working --></label>
+            <section>Dash board working</section>
+        </sections>
+        <sections>
+            <label><!-- Hand grips --></label>
+            <section>Hand grips</section>
+        </sections>
+        <sections>
+            <label><!-- Lamp function --></label>
+            <section>Lamp function</section>
+        </sections>
+        <sections>
+            <label><!-- Mode function --></label>
+            <section>Mode function</section>
+        </sections>
+        <sections>
+            <label><!-- Noise level --></label>
+            <section>Noise level</section>
+        </sections>
+        <sections>
+            <label><!-- Power &amp; Pickup --></label>
+            <section>Power &amp; Pickup</section>
+        </sections>
+        <sections>
+            <label><!-- R&amp;H  Rattling / Squecking and Vibration noise --></label>
+            <section>R&amp;H  Rattling / Squecking and Vibration noise</section>
+        </sections>
+        <sections>
+            <label><!-- R&amp;H  Shock Absorber &amp; Ride issues --></label>
+            <section>R&amp;H  Shock Absorber &amp; Ride issues</section>
+        </sections>
+        <sections>
+            <label><!-- R&amp;H Vehicle Pulling --></label>
+            <section>R&amp;H Vehicle Pulling</section>
+        </sections>
+        <sections>
+            <label><!-- Ride and Handling -Handle bar problems --></label>
+            <section>Ride and Handling -Handle bar problems</section>
+        </sections>
+        <sections>
+            <label><!-- Rotor bolt --></label>
+            <section>Rotor bolt</section>
+        </sections>
+        <sections>
+            <label><!-- Seat --></label>
+            <section>Seat</section>
+        </sections>
+        <sections>
+            <label><!-- Starting --></label>
+            <section>Starting</section>
+        </sections>
+        <sections>
+            <label><!-- Steering --></label>
+            <section>Steering</section>
+        </sections>
+        <sections>
+            <label><!-- Throttle --></label>
+            <section>Throttle</section>
+        </sections>
+        <sections>
+            <label><!-- Vibration level --></label>
+            <section>Vibration level</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- T1 Test - Functionality Check &amp; FA2 Check --></label>
+        <name>T1_Test_Functionality_Check_FA2_Check</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- T2 Test - Dyno Test --></label>
+        <name>T2_Test_Dyno_Test</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- T3 Test - On Road Test --></label>
+        <name>T3_Test_On_Road_Test</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- T4 Test - Pre Delivery Inspection (PDI) --></label>
+        <name>T4_Test_Pre_Delivery_Inspection</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

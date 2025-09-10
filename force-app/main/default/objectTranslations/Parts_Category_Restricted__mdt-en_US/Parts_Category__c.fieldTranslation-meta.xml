@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Parts Category --></label>
+    <name>Parts_Category__c</name>
+    <picklistValues>
+        <masterLabel>Insurance</masterLabel>
+        <translation><!-- Insurance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid</masterLabel>
+        <translation><!-- Paid --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>River Warranty: Field Fix</masterLabel>
+        <translation><!-- River Warranty: Field Fix --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

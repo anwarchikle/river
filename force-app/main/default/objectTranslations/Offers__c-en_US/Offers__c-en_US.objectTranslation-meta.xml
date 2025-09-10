@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Offers</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Offers</value>
+    </caseValues>
+    <layouts>
+        <layout>Offers Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End date should not be less than start date --></errorMessage>
+        <name>Start_date_and_end_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date and End Date must not be the same --></errorMessage>
+        <name>Start_date_end_date_should_not_same</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Error End should be greater than Start date --></errorMessage>
+        <name>offer_start_and_end_date</name>
+    </validationRules>
+</CustomObjectTranslation>

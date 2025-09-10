@@ -2,7 +2,16 @@
 public class MobileAPP_BookOrder_Test {
     @isTest
     static void testUpdate1() {
-        User usr = [SELECT Id FROM User Where Profile.Name = 'Sales Manager (Partner)' AND IsActive = true LIMIT 1];
+        Profile p = [SELECT Id FROM Profile WHERE Name = 'Sales Manager (Partner)' LIMIT 1];
+        Account acc = new Account(Name= 'Partner1 Store', Center_Code__c='D002', Store_Name__c='Demo Partner Store1',BillingPostalCode='888886', Type='Dealer');
+        insert acc;
+        Contact con = UtilityTestClass.createTestContact('Partner','Manager','partner.manager@example.com','9876543218',acc.Id, 'Sales');
+        User usr = new User(
+            FirstName = 'Partner', LastName = 'Manager', Alias = 'pmanag',  Email = 'partner.manager@example.com', Username = 'partner.manager.' + DateTime.now().getTime() + '@example.com',
+            ProfileId = p.Id, TimeZoneSidKey = 'America/New_York', LocaleSidKey = 'en_US', EmailEncodingKey = 'UTF-8', LanguageLocaleKey = 'en_US', ContactId = con.Id
+        );
+        insert usr;
+        Pin_Code__c pin = UtilityTestClass.createTestPinCode(acc.Id, '888886', 'Patna1');
         System.runAs(usr) {
             List<Opportunity> oppList = [Select Id from Opportunity Where stageName != 'Closed Won'];
             MobileApp_Wrapper.CustomerDetails customer = new MobileApp_Wrapper.CustomerDetails();

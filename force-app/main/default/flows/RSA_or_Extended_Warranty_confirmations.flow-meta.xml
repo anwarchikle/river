@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Order_Extended_Warranty_confirmation</name>
+        <label>Order Extended Warranty confirmation</label>
+        <locationX>242</locationX>
+        <locationY>384</locationY>
+        <actionName>Order_Invoice__c.Order_Extended_Warranty_confirmation</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Order_Invoice__c.Order_Extended_Warranty_confirmation</nameSegment>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Is_RSA_OR_EW_Order_has_been_created</name>
+        <label>Is RSA OR  EW Order has been created</label>
+        <locationX>374</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>EW_Created</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.EW__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Order_Extended_Warranty_confirmation</targetReference>
+            </connector>
+            <label>EW Created</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>RSA or Extended Warranty confirmations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>RSA or Extended Warranty confirmations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <object>Order_Invoice__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Is_RSA_OR_EW_Order_has_been_created</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

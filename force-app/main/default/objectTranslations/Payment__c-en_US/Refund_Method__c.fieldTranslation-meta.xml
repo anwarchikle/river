@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Refund Method --></label>
+    <name>Refund_Method__c</name>
+    <picklistValues>
+        <masterLabel>Cash Refund</masterLabel>
+        <translation><!-- Cash Refund --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cheque or Bank Transfer</masterLabel>
+        <translation><!-- Cheque or Bank Transfer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Credit Back to Original Payment Method</masterLabel>
+        <translation><!-- Credit Back to Original Payment Method --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

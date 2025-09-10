@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Approval_Email_Sumbission1</fullName>
+        <description>Approval Email Sumbission</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Warranty_Prior_Approval_Process_Emails/Approval_Request_Submission_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Approval_Email_Sumbission2</fullName>
+        <description>Approval Email Sumbission</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Warranty_Prior_Approval_Process_Emails/Approval_Request_Submission_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Waranty_Approved</fullName>
+        <description>Waranty Approved</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Warranty_Prior_Approval_Process_Emails/Approved_Request_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Waranty_Rejection</fullName>
+        <description>Waranty Rejection</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Warranty_Prior_Approval_Process_Emails/Rejected_Request_Email</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Sumbit_For_Approval</fullName>
+        <field>Status__c</field>
+        <literalValue>Sumbit for Approval</literalValue>
+        <name>Sumbit For Approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_manager_field</fullName>
+        <field>Manager_email__c</field>
+        <formula>Owner:User.Manager.Email</formula>
+        <name>Update manager field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Warranty_Approved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Warranty Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Warranty_Rejected</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Warranty Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

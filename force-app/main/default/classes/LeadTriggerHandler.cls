@@ -6,7 +6,10 @@
 * @last modified by  :
 **/
 public class LeadTriggerHandler {
-    
+
+    public static Boolean isConverting = false;
+    public static Set<Id> convertingLeadIds = new Set<Id>();
+
     public static void pincodeIsMandatory(List<Lead> newLeads){
         try{
             for(Lead ledRec : newLeads){
@@ -18,25 +21,53 @@ public class LeadTriggerHandler {
             System.debug('error message =====> '+ e.getMessage() + ' at line number =====>'+ e.getLineNumber());
         }
     }
-    
-    public static void dontCreateDuplicateLead(List<Lead> newLeads) {
-        Set<String> setOfPhoneNumbers = new Set<String>();
-        
-        for (Lead ledRec : newLeads) {
-            if (!String.isBlank(ledRec.Phone)) {
-                setOfPhoneNumbers.add(ledRec.Phone);
+
+    public static void checkForConversion(List<Lead> newLeads, Map<Id, Lead> oldMap) {
+        for(Lead newLead : newLeads) {
+            Lead oldLead = oldMap.get(newLead.Id);
+            if(oldLead != null && !oldLead.IsConverted && newLead.IsConverted) {
+                isConverting = true;
+                convertingLeadIds.add(newLead.Id);
+                break;
             }
         }
-        
-        Map<String, Account> phoneToAccountMap = new Map<String, Account>();
-        if(!setOfPhoneNumbers.isEmpty()){
-            for (Account acc : [SELECT Id, Phone FROM Account WHERE Phone IN :setOfPhoneNumbers]) {
-                if (!String.isBlank(acc.Phone)) {
-                    phoneToAccountMap.put(acc.Phone, acc);
+    }
+    
+    public static void dontCreateDuplicateLead(List<Lead> newLeads) {
+        try {
+            if(isConverting && convertingLeadIds.isEmpty()) {
+                return;
+            }
+            
+            Set<String> setOfPhoneNumbers = new Set<String>();
+            Set<Id> currentLeadIds = new Set<Id>();
+            
+            for (Lead ledRec : newLeads) {
+                if (!String.isBlank(ledRec.Phone)) {
+                    setOfPhoneNumbers.add(ledRec.Phone);
+                }
+                currentLeadIds.add(ledRec.Id);
+            }
+            
+            if (setOfPhoneNumbers.isEmpty()) return;
+            
+            Map<String, Account> phoneToAccountMap = new Map<String, Account>();
+            if(!isConverting) {
+                for (Account acc : [SELECT Id, Phone FROM Account WHERE Phone IN :setOfPhoneNumbers]) {
+                    if (!String.isBlank(acc.Phone)) {
+                        phoneToAccountMap.put(acc.Phone, acc);
+                    }
                 }
             }
+            
             Map<String, List<Lead>> phoneToLeadMap = new Map<String, List<Lead>>();
-            for (Lead existingLead : [SELECT Id, Phone FROM Lead WHERE Phone IN :setOfPhoneNumbers]) {
+            String leadQuery = 'SELECT Id, Phone FROM Lead WHERE Phone IN :setOfPhoneNumbers';
+            
+            if(isConverting && !convertingLeadIds.isEmpty()) {
+                leadQuery += ' AND Id NOT IN :convertingLeadIds';
+            }
+            
+            for (Lead existingLead : Database.query(leadQuery)) {
                 if (!String.isBlank(existingLead.Phone)) {
                     if (!phoneToLeadMap.containsKey(existingLead.Phone)) {
                         phoneToLeadMap.put(existingLead.Phone, new List<Lead>());
@@ -44,11 +75,11 @@ public class LeadTriggerHandler {
                     phoneToLeadMap.get(existingLead.Phone).add(existingLead);
                 }
             }
+            
             for (Lead ledRec : newLeads) {
                 if (String.isBlank(ledRec.Phone)) continue;
                 
-                if (phoneToAccountMap.containsKey(ledRec.Phone)) {
-                    ledRec.addError('Account already exists with this phone number');
+                if(isConverting && convertingLeadIds.contains(ledRec.Id)) {
                     continue;
                 }
                 
@@ -60,8 +91,20 @@ public class LeadTriggerHandler {
                         }
                     }
                 }
+                
+                if (!isConverting && phoneToAccountMap.containsKey(ledRec.Phone)) {
+                    ledRec.addError('Account already exists with this phone number');
+                    break;
+                }
             }
+        } catch(Exception e) {
+            System.debug('error message =====> '+ e.getMessage() + ' at line number =====>'+ e.getLineNumber());
         }
+    }
+    
+    public static void resetConversionContext() {
+        isConverting = false;
+        convertingLeadIds.clear();
     }
     
     public static void OthersIsMandatoryIsSourceIsOther(List<Lead> newLeads){

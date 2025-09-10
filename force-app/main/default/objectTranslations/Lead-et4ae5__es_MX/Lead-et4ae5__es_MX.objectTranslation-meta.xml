@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <quickActions>
+        <label><!-- Create Follow-Up --></label>
+        <name>Create_Follow_Up</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Test Ride --></label>
+        <name>Create_Test_Ride</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Lead Disposition --></label>
+        <name>Lead_Disposition</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Task --></label>
+        <name>Update_Task</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage><!-- You are allowed to select only the following Lead Sources:  Outdoor Activation, Inbound Store Call, External Referral, Walk-In. Please update your selection. --></errorMessage>
+        <name>DMS_Users_source_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You are not allowed to Modify the Lead source --></errorMessage>
+        <name>Lead_Source_cannot_be_changed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lost reason should not be blank --></errorMessage>
+        <name>Lead_close_lost_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This Field cannot be blank --></errorMessage>
+        <name>PS_NAME_CANNOT_BE_BLANK_AND_CHANGE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Phone number must be greater than or equal to 10 digits. --></errorMessage>
+        <name>PhoneNumberValidation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the primary phone number, please add new number in Secondory phone number --></errorMessage>
+        <name>Phone_number_change_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The phone number must be exactly 10 digits and contain only numbers --></errorMessage>
+        <name>Phone_number_must_be_didgit_Walkin</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Partner Community users cannot change the lead owner. --></errorMessage>
+        <name>Prevent_Lead_Owner_Change_Partner</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Lost Reason and Lost Feedback are required when Status is &apos;Drop Out&apos;. If &apos;Others – need reason&apos; is selected, please provide additional details. --></errorMessage>
+        <name>Require_Lost_Reason_and_Feedback_On_Drop</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Event Location and Event Name are required when Lead Source is &apos;Outdoor activity --></errorMessage>
+        <name>eventLocationAndNameIsMandatory</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AltavistaNews --></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- SendGmail --></label>
+        <name>SendGmail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Upload_Leads --></label>
+        <name>Upload_Leads</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label>Volver a suscribirse a Marketing Cloud</label>
+        <name>et4ae5__ExactTarget_Resubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label>Anular suscripción de Marketing Cloud</label>
+        <name>et4ae5__ExactTarget_Unsubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label>Enviar email de Marketing Cloud</label>
+        <name>et4ae5__Send_ExactTarget_Email</name>
+    </webLinks>
+    <webLinks>
+        <label>Enviar SMS de Marketing Cloud</label>
+        <name>et4ae5__Send_ExactTarget_SMS</name>
+    </webLinks>
+    <webLinks>
+        <label>Ver Marketing Cloud Analytics</label>
+        <name>et4ae5__View_ExactTarget_Analytics</name>
+    </webLinks>
+</CustomObjectTranslation>

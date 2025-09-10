@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Lost Reason --></label>
+    <name>Lost_Reason__c</name>
+    <picklistValues>
+        <masterLabel>Change in Personal Circumstances</masterLabel>
+        <translation><!-- Change in Personal Circumstances --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Changed Vehicle Preference</masterLabel>
+        <translation><!-- Changed Vehicle Preference --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Decision to Buy Used Instead- Decides to purchase a used vehicle instead of a new one</masterLabel>
+        <translation><!-- Decision to Buy Used Instead- Decides to purchase a used vehicle instead of a new one --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Delayed Delivery</masterLabel>
+        <translation><!-- Delayed Delivery --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Displeased with Test Drive- Not satisfied with the performance or comfort of the vehicle after a test drive</masterLabel>
+        <translation><!-- Displeased with Test Drive- Not satisfied with the performance or comfort of the vehicle after a test drive --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Financial Constraints</masterLabel>
+        <translation><!-- Financial Constraints --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Found Better Deal Elsewhere</masterLabel>
+        <translation><!-- Found Better Deal Elsewhere --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mechanical or Quality Concerns-Discovered issues with the vehicle&apos;s quality or mechanical condition</masterLabel>
+        <translation><!-- Mechanical or Quality Concerns-Discovered issues with the vehicle&apos;s quality or mechanical condition --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Poor customer service or unprofessional behavior from the dealership staff</masterLabel>
+        <translation><!-- Poor customer service or unprofessional behavior from the dealership staff --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unavailability of Desired Features</masterLabel>
+        <translation><!-- Unavailability of Desired Features --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle not needed anymore</masterLabel>
+        <translation><!-- Vehicle not needed anymore --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

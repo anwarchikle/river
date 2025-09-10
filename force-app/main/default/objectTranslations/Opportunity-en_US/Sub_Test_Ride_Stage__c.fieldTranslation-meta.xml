@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Sub Test Ride Stage --></label>
+    <name>Sub_Test_Ride_Stage__c</name>
+    <picklistValues>
+        <masterLabel>Test Ride Re-scheduled</masterLabel>
+        <translation><!-- Test Ride Re-scheduled --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Test Ride confirmed</masterLabel>
+        <translation><!-- Test Ride confirmed --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

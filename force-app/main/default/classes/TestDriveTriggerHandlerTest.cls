@@ -4,7 +4,7 @@ public class TestDriveTriggerHandlerTest {
     @isTest
     public static void testDriveClass(){
         
-        Lead objLead = new Lead( FirstName = 'Test', LastName = 'Sample', Company = 'Testing Sample Co',PostalCode = '560068',LeadSource='Telephone',Secondary_Sources__c ='Telephone',Phone='9876543210' );  
+        Lead objLead = new Lead( FirstName = 'Test', LastName = 'Sample', Company = 'Testing Sample Co',PostalCode = '560068',LeadSource='Telephone',Secondary_Sources__c ='Telephone',Phone='9879993210' );  
         insert objLead;  
 
         List<Test_Drive__c> listOftestDrive = new List<Test_Drive__c>();

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Integration Type --></label>
+    <name>Integration_Type__c</name>
+    <picklistValues>
+        <masterLabel>Account Registration</masterLabel>
+        <translation><!-- Account Registration --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Case creation</masterLabel>
+        <translation><!-- Case creation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead Creation</masterLabel>
+        <translation><!-- Lead Creation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead Creation - 91Wheels</masterLabel>
+        <translation><!-- Lead Creation - 91Wheels --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lead Creation - BikeDekho</masterLabel>
+        <translation><!-- Lead Creation - BikeDekho --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mobile App</masterLabel>
+        <translation><!-- Mobile App --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Creation</masterLabel>
+        <translation><!-- Order Creation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Order Update</masterLabel>
+        <translation><!-- Order Update --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Payment Creation</masterLabel>
+        <translation><!-- Payment Creation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Payment Update</masterLabel>
+        <translation><!-- Payment Update --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Appointment creation</masterLabel>
+        <translation><!-- Service Appointment creation --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Milestone Notification</masterLabel>
+        <translation><!-- Service Milestone Notification --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>VIN Verification</masterLabel>
+        <translation><!-- VIN Verification --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

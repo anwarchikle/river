@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Follow-Up Primary Remarks --></label>
+    <name>Follow_Up_Remarks__c</name>
+    <picklistValues>
+        <masterLabel>Asking about delivery timelines</masterLabel>
+        <translation><!-- Asking about delivery timelines --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Asking for additional discounts or offers</masterLabel>
+        <translation><!-- Asking for additional discounts or offers --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer Needs More Information</masterLabel>
+        <translation><!-- Customer Needs More Information --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Customer asked to follow up later</masterLabel>
+        <translation><!-- Customer asked to follow up later --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Needs more time to decide</masterLabel>
+        <translation><!-- Needs more time to decide --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Others</masterLabel>
+        <translation><!-- Others --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RNR</masterLabel>
+        <translation><!-- RNR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wants finance or insurance details</masterLabel>
+        <translation><!-- Wants finance or insurance details --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wants price list or brochure</masterLabel>
+        <translation><!-- Wants price list or brochure --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wants to compare with other brands</masterLabel>
+        <translation><!-- Wants to compare with other brands --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

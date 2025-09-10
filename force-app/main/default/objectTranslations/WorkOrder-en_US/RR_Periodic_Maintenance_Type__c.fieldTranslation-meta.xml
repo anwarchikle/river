@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Periodic Maintenance Type --></label>
+    <name>RR_Periodic_Maintenance_Type__c</name>
+    <picklistValues>
+        <masterLabel>10th Service</masterLabel>
+        <translation><!-- 10th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>11th Service</masterLabel>
+        <translation><!-- 11th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>12th Service</masterLabel>
+        <translation><!-- 12th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>13th Service</masterLabel>
+        <translation><!-- 13th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>14th Service</masterLabel>
+        <translation><!-- 14th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>15th Service</masterLabel>
+        <translation><!-- 15th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>16th Service</masterLabel>
+        <translation><!-- 16th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>17th Service</masterLabel>
+        <translation><!-- 17th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>18th Service</masterLabel>
+        <translation><!-- 18th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>1st Service</masterLabel>
+        <translation><!-- 1st Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>2nd Service</masterLabel>
+        <translation><!-- 2nd Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>3rd Service</masterLabel>
+        <translation><!-- 3rd Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>4th Service</masterLabel>
+        <translation><!-- 4th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>5th Service</masterLabel>
+        <translation><!-- 5th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>6th Service</masterLabel>
+        <translation><!-- 6th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>7th Service</masterLabel>
+        <translation><!-- 7th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>8th Service</masterLabel>
+        <translation><!-- 8th Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>9th Service</masterLabel>
+        <translation><!-- 9th Service --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

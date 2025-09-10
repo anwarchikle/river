@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Sales_Manager_Partner_Location_Access</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Sales Manager (Partner) Location Access</label>
+        <sharedTo>
+            <portalRole>AUserPartnerPersonAccount</portalRole>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Warehouse_location_to_all_partner_users</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Warehouse location to all partner users</label>
+        <sharedTo>
+            <portalRole>AUserPartnerPersonAccount</portalRole>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>contains</operation>
+            <value>River Warehouse</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

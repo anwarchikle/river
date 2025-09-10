@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Claim_Approval_Email</fullName>
+        <description>Claim Approval Email</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>binesh-j0kz@force.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Claim_Approved_and_Rejection/Claim_Approved1</template>
+    </alerts>
+    <alerts>
+        <fullName>Claim_Rejected</fullName>
+        <description>Claim Rejected</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>binesh-j0kz@force.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Claim_Approved_and_Rejection/Claim_Rejection</template>
+    </alerts>
+    <alerts>
+        <fullName>Claim_Sent_to_Finance_Email</fullName>
+        <description>Claim Sent to Finance Email</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>biswanath@rideriver.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Claim_Approved_and_Rejection/Claim_Sent_to_Finance</template>
+    </alerts>
+    <alerts>
+        <fullName>Claim_Status</fullName>
+        <description>Claim Status</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>binesh-j0kz@force.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Claim_Status_Email</template>
+    </alerts>
+</Workflow>

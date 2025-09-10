@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Part</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Parts</value>
+    </caseValues>
+    <layouts>
+        <layout>Work Order Line Item Layout</layout>
+        <sections>
+            <label><!-- Pricings --></label>
+            <section>Pricings</section>
+        </sections>
+        <sections>
+            <label><!-- Product Information --></label>
+            <section>Product Information</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please select the appropriate fault code record that matches the &quot;Product&quot; you have chosen. --></errorMessage>
+        <name>Checking_faultcode_with_product_Name_val</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The selected Product in Inventory Lot must match the specified Product. --></errorMessage>
+        <name>Inventory_and_Product_same</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Choose the product with the type &apos;Accessories&apos; or &apos;Parts&apos;. --></errorMessage>
+        <name>Product_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please choose the product fault code --></errorMessage>
+        <name>product_for_product_fault_codevalidation</name>
+    </validationRules>
+</CustomObjectTranslation>

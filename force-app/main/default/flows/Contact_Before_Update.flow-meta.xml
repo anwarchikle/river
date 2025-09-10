@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Make_Contact_as_primary</name>
+        <label>Make Contact as primary</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Primary_Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_the_Contact</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Show_error_in_phone</name>
+        <label>Show error in phone</label>
+        <locationX>314</locationX>
+        <locationY>719</locationY>
+        <customErrorMessages>
+            <errorMessage>Phone is mandatory for a Primary Contact</errorMessage>
+            <fieldSelection>Phone</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Show_the_error</name>
+        <label>Show the error</label>
+        <locationX>50</locationX>
+        <locationY>719</locationY>
+        <customErrorMessages>
+            <errorMessage>Only one Primary Contact is allowed per Account</errorMessage>
+            <fieldSelection>Primary_Contact__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_the_Contact</name>
+        <label>Check the Contact</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Primary_Contact_exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contacts</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_Contact__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Show_the_error</targetReference>
+            </connector>
+            <label>Primary Contact exists</label>
+        </rules>
+        <rules>
+            <name>If_the_Email_and_Phone_are_empty</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Phone</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Primary_Contact__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Show_error_in_phone</targetReference>
+            </connector>
+            <label>If the Phone is empty</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Update Primary Check True if it is a first Contact for an Account.</description>
+        <name>Update_Primary_Check</name>
+        <label>Update Primary Check</label>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Update_Primary_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNew</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contacts</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Make_Contact_as_primary</targetReference>
+            </connector>
+            <label>Update Primary Contact</label>
+        </rules>
+    </decisions>
+    <description>Jitendra : 12/06/2024 : Email and phone required error is fixed for Primary Contact
+Jitendra : 12/06/2024 : Flag is added for making Primary Contact set true only when record is created</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>isNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>Contact - Before Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - Before Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contacts</name>
+        <label>Get Contacts</label>
+        <locationX>578</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Primary_Check</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Primary_Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contacts</targetReference>
+        </connector>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -26,6 +26,7 @@ public class SobjectLoadAssignment {
 
             rv_MapOfAGIdByAG = SobjectLoadAssignmentUtility.GetassigmentGroup();
             System.debug('rv_MapOfAGIdByAG ========>' + rv_MapOfAGIdByAG);
+            System.debug('r111 ========>' + rv_MapOfAGIdByAG.values());
 
             for (Assignment_Group__c rv_AGRec : rv_MapOfAGIdByAG.values()) {
                 if (rv_AGRec.Execution_SOQL__c != null) {
@@ -70,4 +71,3 @@ public class SobjectLoadAssignment {
         }
     }
 }
-

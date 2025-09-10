@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>River Factory</label>
+    <protected>false</protected>
+    <values>
+        <field>GST__c</field>
+        <value xsi:type="xsd:string">08ABCDE9999F1Z83</value>
+    </values>
+    <values>
+        <field>Pincode__c</field>
+        <value xsi:type="xsd:string">562114</value>
+    </values>
+    <values>
+        <field>River_Bill_To_Address3__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>River_Bill_To_Address__c</field>
+        <value xsi:type="xsd:string">River Factory</value>
+    </values>
+    <values>
+        <field>River_billToAddress3__c</field>
+        <value xsi:type="xsd:string">River Mobility Private Limited, Vagata Village, Jadigenahalli, Hoskote Taluk, Bengaluru, Karnataka, India.</value>
+    </values>
+    <values>
+        <field>River_billToadress2__c</field>
+        <value xsi:type="xsd:string">Sy No. 113,123-128,</value>
+    </values>
+    <values>
+        <field>State_Code__c</field>
+        <value xsi:type="xsd:double">28.0</value>
+    </values>
+</CustomMetadata>

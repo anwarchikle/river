@@ -11,8 +11,8 @@
 * 1.0 | April 18, 2025 |   | Initial Version
 **/
 
-public class OpportunityTriggerHandler {
-
+public without sharing class OpportunityTriggerHandler {   
+    
     // public static void pincodeIsMandatory(List<Opportunity> newLeads){
     //     try{
     //         for(Opportunity oppRec : newLeads){
@@ -25,7 +25,85 @@ public class OpportunityTriggerHandler {
     //     }
     // }
     
-    public static void createOrderIfOppIsClosedWon(List<Opportunity> listOfOpp, Map<Id, Opportunity> oldMap) {
+    public static void tagPricebookToOwner(List<Opportunity> newList, Map<Id, Opportunity> oldMap) {
+        try {
+            Set<Id> ownerIds = new Set<Id>();
+            for (Opportunity opp : newList) {
+                if(oldMap != null){
+                    if(oldMap.size() > 0 && opp.OwnerId != oldMap.get(opp.Id).OwnerId){
+                        ownerIds.add(opp.OwnerId);
+                    }
+                }else{
+                    ownerIds.add(opp.OwnerId);
+                }
+            }
+
+            if (ownerIds.isEmpty()) return;
+
+            Map<Id, User> ownerToUserMap = new Map<Id, User>([SELECT Id, ContactId, Contact.Location__c, Contact.Location__r.Price_Book__c FROM User WHERE Id IN :ownerIds AND ContactId != null]);
+
+            Pricebook2 defaultPB = [SELECT Id FROM Pricebook2 WHERE IsActive = true AND IsStandard = true LIMIT 1];
+
+            List<Opportunity> oppsToUpdate = new List<Opportunity>();
+            Set<Id> oppsNeedingReset = new Set<Id>();
+            System.debug('1 ======>');
+            for (Opportunity opp : newList) {
+                if (ownerToUserMap.containsKey(opp.OwnerId)) {
+                    User owner = ownerToUserMap.get(opp.OwnerId);
+
+                    Id targetPBId = owner.Contact != null && owner.Contact.Location__r != null && owner.Contact.Location__r.Price_Book__c != null
+                                    ? owner.Contact.Location__r.Price_Book__c : defaultPB.Id;
+
+                    if (opp.Pricebook2Id != targetPBId) {
+                        Opportunity oppToUpdate = new Opportunity(Id = opp.Id, Pricebook2Id = targetPBId);
+                        oppsToUpdate.add(oppToUpdate);
+                        oppsNeedingReset.add(opp.Id);
+                    }
+                }
+            }
+
+            if (!oppsToUpdate.isEmpty()) {
+                System.debug('2 ======>');
+                
+                List<OpportunityLineItem> oliToDelete = [SELECT Id, OpportunityId, SortOrder, PricebookEntryId, Product2Id, ProductCode, Name, Quantity, TotalPrice, UnitPrice, ListPrice, ServiceDate, Description, 
+                                                        CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp, IsDeleted, LastViewedDate, LastReferencedDate, AssetIdentificationNumber, Payment_Method__c
+                                                        FROM OpportunityLineItem WHERE OpportunityId IN :oppsNeedingReset];
+
+                List<Opportunity_Line_Item__c> oliHistoryList = new List<Opportunity_Line_Item__c>();
+                System.debug('oliToDelete ======>' + oliToDelete);
+                for(OpportunityLineItem oliRec : oliToDelete){
+                    Opportunity_Line_Item__c oliHistory = new Opportunity_Line_Item__c();
+                    oliHistory.ServiceDate__c      = oliRec.ServiceDate;
+                    oliHistory.Discount__c         = oliRec.Discount;
+                    oliHistory.OpportunityId__c    = oliRec.OpportunityId;
+                    oliHistory.Description__c      = oliRec.Description;
+                    oliHistory.ListPrice__c        = oliRec.ListPrice;
+                    oliHistory.Payment_Method__c   = oliRec.Payment_Method__c;
+                    oliHistory.Product__c          = oliRec.Product2Id;
+                    oliHistory.ProductCode__c      = oliRec.ProductCode;
+                    oliHistory.Quantity__c         = oliRec.Quantity;
+                    oliHistory.Unit_Price__c       = oliRec.UnitPrice;
+                    oliHistory.Sub_total__c        = oliRec.UnitPrice * oliRec.Quantity;
+                    oliHistory.Total_Price__c      = oliRec.TotalPrice;
+                    oliHistoryList.add(oliHistory);
+                }
+
+                if(!oliHistoryList.isEmpty()){
+                    insert oliHistoryList;
+                }
+
+                if (!oliToDelete.isEmpty()) {
+                    delete oliToDelete;
+                }
+                update oppsToUpdate;
+            }
+        } catch (Exception e) {
+            System.debug('Error =======>' + e.getMessage() + ' at line number =======> ' + e.getLineNumber());
+        }
+    }
+
+    
+    public static void createOrderIfOppIsClosedWon(List<Opportunity> listOfOpp, Map<Id, Opportunity> oldMap) { 
         try{
             Map<Id, Opportunity> oppsToCreateOrders = new Map<Id, Opportunity>();
             List<Order> listOfOrder = new List<Order>();
@@ -98,7 +176,7 @@ public class OpportunityTriggerHandler {
                     whatId = String.valueOf(dateObj.get('recordId'));
                 }
             }
-
+            
             if (dateObj.containsKey('street'))     street = String.valueOf(dateObj.get('street'));
             if (dateObj.containsKey('city'))       city = String.valueOf(dateObj.get('city'));
             if (dateObj.containsKey('country'))    country = String.valueOf(dateObj.get('country'));
@@ -137,7 +215,7 @@ public class OpportunityTriggerHandler {
                     DurationInMinutes__c = 45,
                     Test_Drive_Status__c = Status
                 );
-
+                
                 if (rideType == 'HTR') {
                     newEvent.Address__Street__s        = street;
                     newEvent.Address__City__s          = city;
@@ -162,7 +240,7 @@ public class OpportunityTriggerHandler {
                 }
                 insert newEvent;
                 System.debug('Event successfully created =====> ' + newEvent.Id);
-
+                
                 return 'Event Scheduled Successfully';
             } else {
                 Test_Drive__c newEvent = new Test_Drive__c(
@@ -171,7 +249,7 @@ public class OpportunityTriggerHandler {
                     Test_Drive_Status__c = Status,
                     Ride_Type__c = rideType
                 );
-
+                
                 if (rideType == 'HTR') {
                     newEvent.Address__Street__s        = street;
                     newEvent.Address__City__s          = city;
@@ -203,7 +281,7 @@ public class OpportunityTriggerHandler {
                 }
                 insert newEvent;
                 System.debug('Event successfully created without dates =====> ' + newEvent.Id);
-
+                
                 if (whatId.startsWithIgnoreCase('006')) {
                     Opportunity opp = new Opportunity();
                     opp.StageName = 'Test Ride Scheduled';
@@ -215,7 +293,7 @@ public class OpportunityTriggerHandler {
                     led.Status = 'Test Ride';
                     update led;
                 }
-
+                
                 return 'Event Created Successfully';
             }
         } catch (Exception e) {
@@ -266,7 +344,7 @@ public class OpportunityTriggerHandler {
                         testDriverec.Subject__c = 'Scheduled Event for Test Ride';
                         testDriverec.DurationInMinutes__c = 45;
                         insert testDriverec;
-
+                        
                         Follow_Up__c followUpRec = new Follow_Up__c();
                         followUpRec.Phone__c = opp.Phone__c;
                         followUpRec.Name = opp.Name + ' - follow-up';
@@ -422,14 +500,14 @@ public class OpportunityTriggerHandler {
             List<OpportunityLineItem> oppLineItems = new List<OpportunityLineItem>();
             if(!oppLineItems.isEmpty()){
                 oppLineItems = [SELECT Id, OpportunityId FROM OpportunityLineItem WHERE OpportunityId IN :setOfOppIdWhichAreClosedWon];
-
+                
                 for (OpportunityLineItem oli : oppLineItems) {
                     if (!mapOfOppAndLineItems.containsKey(oli.OpportunityId)) {
                         mapOfOppAndLineItems.put(oli.OpportunityId, new List<OpportunityLineItem>());
                     }
                     mapOfOppAndLineItems.get(oli.OpportunityId).add(oli);
                 }
-
+                
                 for (Opportunity opp : newListOfOpp) {
                     if (setOfOppIdWhichAreClosedWon.contains(opp.Id)) {
                         List<OpportunityLineItem> oppLineItemList = mapOfOppAndLineItems.get(opp.Id);
@@ -443,12 +521,12 @@ public class OpportunityTriggerHandler {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
     }
-
+    
     public static void onClosedWonShowErrorIfBookingAmountIsNull(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap) {
         try{
             for(Opportunity newOpp : newListOfOpp) {
                 Opportunity oldOpp = oldMap.get(newOpp.Id);
-
+                
                 if (newOpp.StageName == 'Closed Won' && oldOpp.StageName != 'Closed Won') {
                     if (newOpp.Booking_Amount__c == null) {
                         newOpp.addError('Please Add the Enquiry Booking Amount');   
@@ -459,7 +537,7 @@ public class OpportunityTriggerHandler {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
     }
-
+    
     public static void createFollowUpOnOppCreated(List<Opportunity> newListOfOpp){
         try{
             List<Follow_Up__c> followUpListToBeInserted = new List<Follow_Up__c>();
@@ -478,7 +556,7 @@ public class OpportunityTriggerHandler {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
     }
-
+    
     public static void changeOwnerOfTestDriveAndFollowUpIsOppOwnerIsChanged(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap){
         try{
             set<Id> setOfOppId = new Set<Id>();
@@ -489,7 +567,7 @@ public class OpportunityTriggerHandler {
                     setOfOppId.add(opp.Id);
                 }
             }
-
+            
             if(!setOfOppId.isEmpty()){
                 Map<Id,Opportunity> mapOfOpp = new Map<Id,Opportunity>([Select Id,OwnerId from Opportunity where Id IN : setOfOppId]);
                 List<Test_Drive__c> testDriveList = [Select Id,Opportunity__c,OwnerId from Test_Drive__c where Opportunity__c IN : setOfOppId];
@@ -500,7 +578,7 @@ public class OpportunityTriggerHandler {
                     }
                 }
                 List<Follow_Up__c> followUpList = [Select Id,Opportunity__c,OwnerId from Follow_Up__c where Opportunity__c IN : setOfOppId];
-
+                
                 if(!followUpList.isEmpty()){
                     for(Follow_Up__c followUp : followUpList){
                         followUp.OwnerId = mapOfOpp.get(followUp.Opportunity__c).OwnerId;
@@ -517,6 +595,36 @@ public class OpportunityTriggerHandler {
             }
         } catch (Exception e) {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
+        }
+    }
+
+    public static void lockTheRecordAfterClosedWon(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap){
+        try {
+           
+            // String currentProfileName = [SELECT Profile.Name FROM User WHERE Id = :UserInfo.getUserId()].Profile.Name;
+            // if (currentProfileName == 'System Administrator') {
+            //     return;
+            // }
+            
+            for (Opportunity opp : newListOfOpp) {
+                Opportunity oldRec = oldMap.get(opp.Id);
+
+                if (oldRec == null) {
+                    System.debug('Skipping record due to null oldRec for ID: ' + opp.Id);
+                    continue;
+                }
+                
+
+                System.debug('Checking Job Card: ' + opp.Id);
+                System.debug('Old Status: ' + oldRec.StageName);
+                System.debug('New Status: ' + opp.StageName);
+
+                if (oldRec.StageName == 'Closed Won') {
+                    opp.addError('You cannot update Closed Won Enquiry');
+                }
+            }
+        } catch (Exception ex) {
+            System.debug('Exception in validateJobCardStatus: ' + ex.getMessage() + 'Line Number : ' + ex.getLineNumber());
         }
     }
 }

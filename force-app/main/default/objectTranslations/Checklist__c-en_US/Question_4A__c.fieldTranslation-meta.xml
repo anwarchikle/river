@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Belt slipping while applying  various speed - No slippage --></help>
+    <label><!-- Question 4 --></label>
+    <name>Question_4A__c</name>
+    <picklistValues>
+        <masterLabel>NOT OK</masterLabel>
+        <translation><!-- NOT OK --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OK</masterLabel>
+        <translation><!-- OK --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

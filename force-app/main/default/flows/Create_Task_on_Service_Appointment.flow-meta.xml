@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>CustomerRequested</name>
+        <choiceText>Reschedule - Customer Requested</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Reschedule - Customer Requested</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>NotResponding</name>
+        <choiceText>Reschedule - Ringing, Not Responding</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Reschedule - Ringing, Not Responding</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>UnreachableCustomer</name>
+        <choiceText>Unreachable</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Unreachable</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Check_for_Reschedule_Tasks</name>
+        <label>Check for Reschedule Tasks</label>
+        <locationX>248</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Create_Task</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_Status</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Canceled</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cannot Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Error_Screen1</targetReference>
+            </connector>
+            <label>Check for Status</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Rescheduled_Selected</name>
+        <label>Check if Rescheduled Selected</label>
+        <locationX>446</locationX>
+        <locationY>458</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Rescheduled_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Due_Date</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Feedback_by_Customer</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reschedule - Customer Requested</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Stage_Asset_Milestone</targetReference>
+            </connector>
+            <label>Rescheduled Selected</label>
+        </rules>
+    </decisions>
+    <dynamicChoiceSets>
+        <name>FeedbackByCustPicklistChoiceSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Feedback_by_Customer__c</picklistField>
+        <picklistObject>Task</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>PriorityChoiceSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Priority</picklistField>
+        <picklistObject>Task</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>StatusPicklistChoiceSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Status</picklistField>
+        <picklistObject>Task</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>dueDate</name>
+        <dataType>Date</dataType>
+        <expression>DATEVALUE({!recordId.DueDate})</expression>
+    </formulas>
+    <formulas>
+        <name>RescheduleAttempts</name>
+        <dataType>Number</dataType>
+        <expression>{!recordId.Reschedule_Attempts__c}+1</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <name>TaskSubjectName</name>
+        <dataType>String</dataType>
+        <expression>{!recordId.Asset_Milestone__r.Name} +  IF(!ISBLANK({!Feedback_by_Customer}),&apos; - &apos; + {!Feedback_by_Customer} ,&apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>Create Task on Service Appointment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Task on Service Appointment</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Task</name>
+        <label>Create Task</label>
+        <locationX>446</locationX>
+        <locationY>350</locationY>
+        <connector>
+            <targetReference>Check_if_Rescheduled_Selected</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>Due_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Comment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Feedback_by_Customer__c</field>
+            <value>
+                <elementReference>Feedback_by_Customer</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>recordId.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>Normal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>In Progress</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Vehicle__c</field>
+            <value>
+                <elementReference>recordId.Vehicle__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhatId</field>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordUpdates>
+        <name>Update_Service_Appointment</name>
+        <label>Update Service Appointment</label>
+        <locationX>314</locationX>
+        <locationY>674</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Appointment_Date__c</field>
+            <value>
+                <elementReference>Due_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reschedule_Attempts__c</field>
+            <value>
+                <elementReference>RescheduleAttempts</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ServiceAppointment</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Stage_Asset_Milestone</name>
+        <label>Update Stage Asset Milestone</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <connector>
+            <targetReference>Update_Service_Appointment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Asset_Milestone__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Reschedule</stringValue>
+            </value>
+        </inputAssignments>
+        <object>AssetMilestone</object>
+    </recordUpdates>
+    <screens>
+        <name>Copy_1_of_Error_Screen1</name>
+        <label>Copy 1 of Error Screen1</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Copy_1_of_Morethan3TasksFound</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(199, 49, 49);&quot; data-sider-select-id=&quot;8196a3d4-4cab-4c2e-8af9-1b09d82212c7&quot;&gt;You cannot create Tasks on Cancelled Service Appointment. Please create a new Valid Service Appointment.&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>842</locationX>
+        <locationY>458</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ErrorMessage</name>
+            <fieldText>&lt;p data-sider-select-id=&quot;a1f3c759-93bf-4cc2-b78c-9ea04fd25cbc&quot; style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 14px; color: rgb(208, 65, 65);&quot; data-sider-select-id=&quot;30d9ebc7-7a75-4c32-aaca-7859c2268306&quot;&gt;Something went wrong. Please contact System Administrator&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>New_Task</name>
+        <label>New Task</label>
+        <locationX>248</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Check_for_Reschedule_Tasks</targetReference>
+        </connector>
+        <fields>
+            <name>Subject</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>TaskSubjectName</elementReference>
+            </defaultValue>
+            <fieldText>Subject</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Comment</name>
+            <fieldText>Comment</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Due_Date</name>
+            <dataType>Date</dataType>
+            <fieldText>Appointment Date</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;&lt;span style=&quot;color: rgb(215, 25, 25); background-color: rgb(255, 255, 255);&quot;&gt;Please enter Valid date. The Valid date can be between Today till next of Service Due Date {!dueDate}.&lt;/span&gt;&lt;/p&gt;</errorMessage>
+                <formulaExpression>AND({!Due_Date}&gt;=TODAY(), {!Due_Date}&lt;=DATEVALUE({!recordId.DueDate}))</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>Feedback_by_Customer</name>
+            <choiceReferences>NotResponding</choiceReferences>
+            <choiceReferences>CustomerRequested</choiceReferences>
+            <choiceReferences>UnreachableCustomer</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Feedback by Customer</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>New_Task</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>ServiceAppointment</objectType>
+    </variables>
+</Flow>

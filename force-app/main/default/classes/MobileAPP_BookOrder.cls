@@ -105,7 +105,7 @@ global class MobileAPP_BookOrder {
                     }
                     
                     User userRec = [SELECT Id,ContactId ,Contact.AccountId FROM User WHERE Id = :UserInfo.getUserId() LIMIT 1];
-                    system.debug('2=================>');
+                    system.debug('2=================>' + userRec);
                     
                     Pin_Code__c pincode;
                     if(userRec != null && userRec.ContactId != null && userRec.Contact.AccountId != null){

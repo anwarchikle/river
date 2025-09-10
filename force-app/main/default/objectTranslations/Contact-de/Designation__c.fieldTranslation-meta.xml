@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Designation --></label>
+    <name>Designation__c</name>
+    <picklistValues>
+        <masterLabel>ASM</masterLabel>
+        <translation><!-- ASM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CRE</masterLabel>
+        <translation><!-- CRE --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>CRM</masterLabel>
+        <translation><!-- CRM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>GM</masterLabel>
+        <translation><!-- GM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HTR</masterLabel>
+        <translation><!-- HTR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDI</masterLabel>
+        <translation><!-- PDI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PS</masterLabel>
+        <translation><!-- PS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Parts</masterLabel>
+        <translation><!-- Parts --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RSM</masterLabel>
+        <translation><!-- RSM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SA</masterLabel>
+        <translation><!-- SA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SM</masterLabel>
+        <translation><!-- SM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SP</masterLabel>
+        <translation><!-- SP --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Center</masterLabel>
+        <translation><!-- Service Center --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spares</masterLabel>
+        <translation><!-- Spares --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Spares Manager</masterLabel>
+        <translation><!-- Spares Manager --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technical Manager</masterLabel>
+        <translation><!-- Technical Manager --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technical Support</masterLabel>
+        <translation><!-- Technical Support --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Technical Trainer</masterLabel>
+        <translation><!-- Technical Trainer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>WM</masterLabel>
+        <translation><!-- WM --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

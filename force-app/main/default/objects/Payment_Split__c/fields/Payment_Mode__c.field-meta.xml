@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Mode__c</fullName>
+    <label>Payment Mode</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Card</fullName>
+                <default>false</default>
+                <label>Card</label>
+            </value>
+            <value>
+                <fullName>UPI</fullName>
+                <default>false</default>
+                <label>UPI</label>
+            </value>
+            <value>
+                <fullName>Cash</fullName>
+                <default>false</default>
+                <label>Cash</label>
+            </value>
+            <value>
+                <fullName>Bank EMI</fullName>
+                <default>false</default>
+                <label>Bank EMI</label>
+            </value>
+            <value>
+                <fullName>Brand EMI</fullName>
+                <default>false</default>
+                <label>Brand EMI</label>
+            </value>
+            <value>
+                <fullName>Online (NEFT,RTGS)</fullName>
+                <default>false</default>
+                <label>Online (NEFT,RTGS)</label>
+            </value>
+            <value>
+                <fullName>Cheque</fullName>
+                <default>false</default>
+                <label>Cheque</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

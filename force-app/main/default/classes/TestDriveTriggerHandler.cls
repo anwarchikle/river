@@ -320,7 +320,9 @@ public class TestDriveTriggerHandler {
                 }
             }
 
+
             if (!setOfLeadId.isEmpty()) {
+                
                 List<Lead> leadRec = [SELECT Id, Name, Status, PostalCode FROM Lead WHERE Id IN :setOfLeadId AND Status != 'Converted'];
                 List<Follow_Up__c> listOfFollowUp = [SELECT Id, Name, Opportunity__c, Lead__c FROM Follow_Up__c WHERE Lead__c IN :setOfLeadId];
                 List<Test_Drive__c> listOfTestDrive = [SELECT Id, Name, Lead__c, Opportunity__c FROM Test_Drive__c WHERE Lead__c IN :setOfLeadId];
@@ -480,8 +482,8 @@ public class TestDriveTriggerHandler {
         try{
             Set<Id> oppIdsToUpdate = new Set<Id>();
             for (Test_Drive__c testDriveRec : newList) {
-                if (testDriveRec.Opportunity__c != null &&
-                    (testDriveRec.Test_Drive_Status__c == 'Scheduled' || testDriveRec.Test_Drive_Status__c == 'Completed')) {
+                if (testDriveRec.Opportunity__c != null && 
+                    ((testDriveRec.Test_Drive_Status__c == 'Scheduled' || testDriveRec.Test_Drive_Status__c == 'Completed'))) {
                     oppIdsToUpdate.add(testDriveRec.Opportunity__c);
                 }
             }

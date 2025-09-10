@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Job Card</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Job Cards</value>
+    </caseValues>
+    <layouts>
+        <layout>Work Order Custom</layout>
+        <sections>
+            <label><!-- Accessories --></label>
+            <section>Accessories</section>
+        </sections>
+        <sections>
+            <label><!-- Bike Inventory --></label>
+            <section>Bike Inventory</section>
+        </sections>
+        <sections>
+            <label><!-- Check Points --></label>
+            <section>Check Points</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Feedback --></label>
+            <section>Customer Feedback</section>
+        </sections>
+        <sections>
+            <label><!-- Final Inspection --></label>
+            <section>Final Inspection</section>
+        </sections>
+        <sections>
+            <label><!-- Important Details --></label>
+            <section>Important Details</section>
+        </sections>
+        <sections>
+            <label><!-- Insurance Details --></label>
+            <section>Insurance Details</section>
+        </sections>
+        <sections>
+            <label><!-- Labour Code totals --></label>
+            <section>Labour Code totals</section>
+        </sections>
+        <sections>
+            <label><!-- Other Details --></label>
+            <section>Other Details</section>
+        </sections>
+        <sections>
+            <label><!-- Other Observations --></label>
+            <section>Other Observations</section>
+        </sections>
+        <sections>
+            <label><!-- Parts totals --></label>
+            <section>Parts totals</section>
+        </sections>
+        <sections>
+            <label><!-- Rework Details --></label>
+            <section>Rework Details</section>
+        </sections>
+        <sections>
+            <label><!-- Status Details --></label>
+            <section>Status Details</section>
+        </sections>
+        <sections>
+            <label><!-- Test Ride --></label>
+            <section>Test Ride</section>
+        </sections>
+        <sections>
+            <label><!-- Timings --></label>
+            <section>Timings</section>
+        </sections>
+        <sections>
+            <label><!-- Totals &amp; Payments --></label>
+            <section>Totals &amp; Payments</section>
+        </sections>
+        <sections>
+            <label><!-- Washing Checklist --></label>
+            <section>Washing Checklist</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Work Order Layout</layout>
+        <sections>
+            <label><!-- Check Points --></label>
+            <section>Check Points</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Feedback --></label>
+            <section>Customer Feedback</section>
+        </sections>
+        <sections>
+            <label><!-- Final Inspection --></label>
+            <section>Final Inspection</section>
+        </sections>
+        <sections>
+            <label><!-- Insurance Details --></label>
+            <section>Insurance Details</section>
+        </sections>
+        <sections>
+            <label><!-- Labour Code Totals --></label>
+            <section>Labour Code Totals</section>
+        </sections>
+        <sections>
+            <label><!-- Parts Totals --></label>
+            <section>Parts Totals</section>
+        </sections>
+        <sections>
+            <label><!-- Test Ride --></label>
+            <section>Test Ride</section>
+        </sections>
+        <sections>
+            <label><!-- Timings --></label>
+            <section>Timings</section>
+        </sections>
+        <sections>
+            <label><!-- Total &amp; Payments --></label>
+            <section>Total &amp; Payments</section>
+        </sections>
+        <sections>
+            <label><!-- Washing Checklist --></label>
+            <section>Washing Checklist</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Cancel Job Card --></label>
+        <name>RR_Cancel_Job_Card</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- this is for vehicle job card which are getting created from quick action of vehicle (WorkOrderPDI) --></description>
+        <label><!-- Vehicle PDI --></label>
+        <name>Vehicle_PDI</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Associated Service Appointment is already Canceled. --></errorMessage>
+        <name>Before_Canceled_Service_Appointment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Associated Case is already closed. --></errorMessage>
+        <name>Before_Closed_Case</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Associated Service Appointment is already Completed. --></errorMessage>
+        <name>Before_Completed_Service_Appointment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Estimated Delivery Time Should not In Past Date --></errorMessage>
+        <name>Est_Delivery_Time_Not_In_Past</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Vehicle Delivery Order No Should not be blank --></errorMessage>
+        <name>If_job_Type_is_Accidental_VDO_Mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Insurance amount  should not be more than total price --></errorMessage>
+        <name>Insurance_Amount_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please fill all the Insurance details. --></errorMessage>
+        <name>Insurance_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Periodic maintenance cannot be empty --></errorMessage>
+        <name>Periodic_maintenance_cannot_be_empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit this record because the Jobcard is Completed --></errorMessage>
+        <name>Prevent_Edit_If_Completed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You do not have the permission to cancel the Jobcard. Please send a request for cancellation. --></errorMessage>
+        <name>Prevent_partners_from_cancelling_JobCard</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please check all the Check points --></errorMessage>
+        <name>Require_Check_point</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter the customer feedback --></errorMessage>
+        <name>Require_customer_feedback</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure all sections, including Technician, checkpoints, FI Section and Customer Feedback are completed  and prior status was In Progress to proceed --></errorMessage>
+        <name>Required_fields_in_Ready_for_delivery</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status cannot be set to In Progress unless the prior status was Re-Work, On Hold or New. --></errorMessage>
+        <name>Required_prior_status_for_In_Progress</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status cannot be set to Ready for Delivery unless the prior status was In Progress. --></errorMessage>
+        <name>Required_prior_status_for_delivery</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Need to return the Spare Vehicle --></errorMessage>
+        <name>Spare_Vehicle_return</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The Start Date Should Not In Past It Should Be In Current Time. --></errorMessage>
+        <name>Start_Date_Should_Not_In_Past</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select Technician --></errorMessage>
+        <name>Technician_required_to_close_work_order</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- The status cannot be changed once it is set to &quot;Completed&quot;. --></errorMessage>
+        <name>Work_Orer_Completed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide Cancellation Reason. --></errorMessage>
+        <name>Work_order_status_Cancel_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure  all the FI stage has value --></errorMessage>
+        <name>require_for_FI_stage</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You can assign to Re-work  only from Ready for Delivery --></errorMessage>
+        <name>required_prior_status_for_Re_work</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please provide a Re-work Details when the Status is set to &apos;Re-Work&apos; --></errorMessage>
+        <name>work_order_Rework_details_validation</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Generate_Estimation --></label>
+        <name>Generate_Estimation</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Generate_Insurance_Invoice --></label>
+        <name>Generate_Insurance_Invoice</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Generate_Invoice --></label>
+        <name>Generate_Invoice</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Generate_Pre_Insurance_Invoice --></label>
+        <name>Generate_Pre_Insurance_Invoice</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Generate_Pre_Invoice --></label>
+        <name>Generate_Pre_Invoice</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New --></label>
+        <name>New</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RR_JC_Customer_Copy --></label>
+        <name>RR_JC_Customer_Copy</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- RR_JC_Internal_Copy --></label>
+        <name>RR_JC_Internal_Copy</name>
+    </webLinks>
+</CustomObjectTranslation>

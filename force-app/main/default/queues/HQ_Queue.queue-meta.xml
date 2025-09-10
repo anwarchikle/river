@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>HQ Queue</name>
+    <queueMembers>
+        <users>
+            <user>alvin@rideriver.com</user>
+            <user>chandrashekharc@rideriver.com</user>
+            <user>rideriver@cloudodyssey.co</user>
+            <user>gauravp@rideriver.com</user>
+            <user>hridhyas@rideriver.com</user>
+            <user>manihariharan@rideriver.com</user>
+            <user>prakashgr@rideriver.com</user>
+            <user>premk@rideriver.com</user>
+            <user>pushpalatha@rideriver.com</user>
+            <user>rahulk@rideriver.com</user>
+            <user>roshank@rideriver.com</user>
+            <user>sradham@rideriver.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

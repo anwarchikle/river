@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Salesforce Helpdesk</name>
+    <queueMembers>
+        <users>
+            <user>debanwita@rideriver.com</user>
+            <user>prathap@rideriver.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Salesforce_Support__c</sobjectType>
+    </queueSobject>
+</Queue>

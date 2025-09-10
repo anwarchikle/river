@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Custom_Error_Message_1</name>
+        <label>Custom Error Message 1</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>Wrong Product Selected, Please select &quot; River Extended Warranty 1 &quot; to proceed.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Error_2</name>
+        <label>Error 2</label>
+        <locationX>314</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>Wrong Product Selected, Please select &quot; River Extended Warranty 2 &quot; to proceed.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Error_3</name>
+        <label>Error 3</label>
+        <locationX>578</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>Wrong Product Selected, Please select &quot; River Extended Warranty 3 &quot; to proceed.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Error_4</name>
+        <label>Error 4</label>
+        <locationX>842</locationX>
+        <locationY>503</locationY>
+        <customErrorMessages>
+            <errorMessage>You are not eligible for extended warranty since your vehicle&apos;s purchase date exceeds 365 days</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_the_product_based_on_Vehicle_age</name>
+        <label>Check the product based on Vehicle age</label>
+        <locationX>578</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>River_Extended_Warranty_1_need_to_be_added</name>
+            <conditionLogic>(1 OR  2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>RV-EW-2</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>RV-EW-3</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_job_card_details.Vehicle_Age__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>181.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Custom_Error_Message_1</targetReference>
+            </connector>
+            <label>River Extended Warranty 1 need to be added</label>
+        </rules>
+        <rules>
+            <name>River_Extended_Warranty_2_need_to_be_added</name>
+            <conditionLogic>(1 OR 2) AND (3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>RV-EW-1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>RV-EW-3</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_job_card_details.Vehicle_Age__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>182.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_job_card_details.Vehicle_Age__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>273.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_2</targetReference>
+            </connector>
+            <label>River Extended Warranty 2 need to be added</label>
+        </rules>
+        <rules>
+            <name>River_Extended_Warranty_3_need_to_be_added</name>
+            <conditionLogic>(1 OR 2 )AND( 3 AND 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>RV-EW-1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RV-EW-2</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_job_card_details.Vehicle_Age__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>274.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_job_card_details.Vehicle_Age__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>365.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_3</targetReference>
+            </connector>
+            <label>River Extended Warranty 3 need to be added</label>
+        </rules>
+        <rules>
+            <name>River_extended_warranty_validity_ends</name>
+            <conditionLogic>1 AND( 2 OR 3 OR 4)</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_job_card_details.Vehicle_Age__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>365.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RV-EW-1</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RV-EW-2</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PricebookEntry.Product2.ProductCode</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>RV-EW-3</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_4</targetReference>
+            </connector>
+            <label>River extended warranty validity ends</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Prevent Extended warranty based on Purchase date of Vehichles {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Prevent Extended warranty based on Purchase date of Vehichles</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_job_card_details</name>
+        <label>Get job card details</label>
+        <locationX>578</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_the_product_based_on_Vehicle_age</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WorkOrderId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>WorkOrder</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>452</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_job_card_details</targetReference>
+        </connector>
+        <object>WorkOrderLineItem</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

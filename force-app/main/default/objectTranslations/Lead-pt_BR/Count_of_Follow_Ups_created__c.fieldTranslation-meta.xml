@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Count of Follow Ups created --></label>
+    <name>Count_of_Follow_Ups_created__c</name>
+</CustomFieldTranslation>

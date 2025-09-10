@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Ensure latest Firmware is flashed --></label>
+    <name>RR_Ensure_latest_Firmware_is_flashed__c</name>
+</CustomFieldTranslation>

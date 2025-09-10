@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Job Type --></label>
+    <name>RR_Job_Type__c</name>
+    <picklistValues>
+        <masterLabel>Accidental</masterLabel>
+        <translation><!-- Accidental --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Insurance</masterLabel>
+        <translation><!-- Insurance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PDI</masterLabel>
+        <translation><!-- PDI --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paid Service</masterLabel>
+        <translation><!-- Paid Service --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Periodic maintenance</masterLabel>
+        <translation><!-- Periodic maintenance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Running Repairs</masterLabel>
+        <translation><!-- Running Repairs --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>VAS Purchase</masterLabel>
+        <translation><!-- VAS Purchase --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warranty</masterLabel>
+        <translation><!-- Warranty --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

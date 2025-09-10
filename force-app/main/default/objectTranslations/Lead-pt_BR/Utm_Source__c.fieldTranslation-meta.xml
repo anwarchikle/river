@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Utm Source --></label>
+    <name>Utm_Source__c</name>
+    <picklistValues>
+        <masterLabel>Google</masterLabel>
+        <translation><!-- Google --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta</masterLabel>
+        <translation><!-- Meta --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Meta_FB</masterLabel>
+        <translation><!-- Meta_FB --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Null</masterLabel>
+        <translation><!-- Null --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

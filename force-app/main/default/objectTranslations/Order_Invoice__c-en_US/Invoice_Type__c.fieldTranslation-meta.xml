@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Invoice Type --></label>
+    <name>Invoice_Type__c</name>
+    <picklistValues>
+        <masterLabel>Accessories Invoice</masterLabel>
+        <translation><!-- Accessories Invoice --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Add-ons Invoice</masterLabel>
+        <translation><!-- Add-ons Invoice --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Merchandise Invoice</masterLabel>
+        <translation><!-- Merchandise Invoice --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other Charges Invoice</masterLabel>
+        <translation><!-- Other Charges Invoice --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Invoice</masterLabel>
+        <translation><!-- Vehicle Invoice --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

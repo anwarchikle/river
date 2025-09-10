@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Approved</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Job_Card_Status</fullName>
+        <field>Status</field>
+        <literalValue>Cancellation Requested</literalValue>
+        <name>Change Job Card Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Change_Job_Card_Statuss</fullName>
+        <field>Status</field>
+        <literalValue>Cancellation Requested</literalValue>
+        <name>Change Job Card Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Checklist_Approved</fullName>
+        <field>Checklist_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Checklist Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Field_Change</fullName>
+        <description>Status is marked as Canclled</description>
+        <field>Status</field>
+        <literalValue>Canceled</literalValue>
+        <name>Field Change</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Field_Update</fullName>
+        <field>Status</field>
+        <literalValue>Ready for Delivery</literalValue>
+        <name>Field Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>On_hold</fullName>
+        <field>Status</field>
+        <literalValue>On Hold</literalValue>
+        <name>On hold</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Quality_Check_Rejection</fullName>
+        <field>Status</field>
+        <literalValue>Re-Work</literalValue>
+        <name>Quality Check Rejection</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RR_Approved_Cancellation_Request</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Approved Cancellation Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RR_Change_Job_Card_Status</fullName>
+        <field>Status</field>
+        <literalValue>Cancellation Requested</literalValue>
+        <name>Change Job Card Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RR_Rejected_Cancellation_Request</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Rejected Cancellation Request</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RR_Reset_Cancellation_Approval_status</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Pending</literalValue>
+        <name>Reset Cancellation Approval status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RR_Update_the_status</fullName>
+        <field>Status</field>
+        <literalValue>Canceled</literalValue>
+        <name>Update the status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Reject</fullName>
+        <field>Approval_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Reject</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Job_Card_Status_Cancelled1</fullName>
+        <field>Status</field>
+        <literalValue>In Progress</literalValue>
+        <name>Update Job Card Status Cancelled1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Rejected_status</fullName>
+        <field>Status</field>
+        <literalValue>In Progress</literalValue>
+        <name>Update Rejected status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Rework_Detaills</fullName>
+        <field>Re_Work_Details__c</field>
+        <formula>&quot;Check List approval has been rejected&quot;</formula>
+        <name>Update Rework Detaills</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_The_Status</fullName>
+        <field>Status</field>
+        <literalValue>Canceled</literalValue>
+        <name>Update The Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_The_Status1</fullName>
+        <field>Status</field>
+        <literalValue>Canceled</literalValue>
+        <name>Update The Status1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Work_Order_Approved</fullName>
+        <field>Work_Order_Approved__c</field>
+        <literalValue>1</literalValue>
+        <name>Work Order Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Work_Order_Cancel</fullName>
+        <field>Status</field>
+        <literalValue>Canceled</literalValue>
+        <name>Work Order Cancel</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Work_Order_Rejection_Reason</fullName>
+        <field>On_Hold_Reason__c</field>
+        <formula>&quot;Work Order rejected!&quot;</formula>
+        <name>Work Order Rejection Reason</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>work_order_QC_Completed</fullName>
+        <field>Status</field>
+        <literalValue>Submitted to Service Advisor</literalValue>
+        <name>work order QC Completed</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

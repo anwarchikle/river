@@ -1,0 +1,115 @@
+<template>
+    <lightning-quick-action-panel header="Create Order">
+        <lightning-spinner if:true={isSpinner} variant="brand" size="large"> </lightning-spinner>
+        <template if:true={addProducts}>
+            <lightning-layout>
+                <lightning-layout-item size="12">
+                    <table
+                        class="slds-table slds-table_cell-buffer slds-table_bordered slds-border_left slds-border_right"
+                        aria-labelledby="element-with-table-label other-element-with-table-label">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={filterList} for:item="filterData" for:index="index">
+                                <tr key={filterData.id}>
+                                    <td>
+                                        <c-custom-lookup-l-w-c name="productName" data-index={index}
+                                            value={filterData.productName}
+                                            oncustomlookupupdateevent={handleLookupSelection}>
+                                        </c-custom-lookup-l-w-c>
+                                    </td>
+                                    <td>
+                                        <lightning-input type="number" name="quantity" data-index={index}
+                                            value={filterData.quantity} variant="label-hidden" onchange={handleChange}>
+                                        </lightning-input>
+                                    </td>
+                                    <td>
+                                        <lightning-button-icon data-index={filterData.id}
+                                            class="slds-float--right slds-m-horizontal_large" icon-name="action:new"
+                                            onclick={handleAddRow}></lightning-button-icon>
+                                        <lightning-button-icon data-index={filterData.id} class="slds-float--right"
+                                            icon-name="action:delete" onclick={handleRemoveRow}></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+
+        <template if:true={addPaymentDetail}>
+
+            <!-- First Row -->
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <div class="custom-box">
+                        <lightning-combobox name="paymentStatus" label="Payment Status"
+                            options={PaymentStatusPicklistValue.data.values} placeholder="Select Payment Status"
+                            onchange={handleChange} required></lightning-combobox>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <div class="custom-box">
+                        <lightning-input type="text" label="Transaction Id" name="transactionId" required
+                            onchange={handleChange}></lightning-input>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Second Row -->
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <div class="custom-box">
+                        <lightning-input type="text" label="Payment Amount" name="orderAmount" required
+                            onchange={handleChange}></lightning-input>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <div class="custom-box">
+                        <lightning-combobox name="paymentMode" label="Payment Mode"
+                            options={ModeOfPaymentPicklistValue.data.values} placeholder="Select Payment Mode"
+                            onchange={handleChange} required></lightning-combobox>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <!-- Third Row -->
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+                    padding="horizontal-small">
+                    <div class="custom-box">
+                        <lightning-input type="dateTime" label="Payment Date" name="paymentDate"
+                            onchange={handleChange}></lightning-input>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </template>
+        <template if:true={saveData}>
+            <p slot="footer">
+                <lightning-button variant="neutral" label="Cancel" onclick={handleClose}></lightning-button>
+                <!-- &nbsp;&nbsp;
+                <lightning-button variant="neutral" label="Back" onclick={handleBack}></lightning-button> -->
+                &nbsp;&nbsp;
+                <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+            </p>
+        </template>
+
+        <template if:true={nextData}>
+            <p slot="footer" class="slds-text-align_center">
+                <lightning-button variant="neutral" label="Cancel" onclick={handleClose}></lightning-button>
+                &nbsp;&nbsp;
+                <lightning-button variant="brand" label="Next" onclick={handleNext}></lightning-button>
+            </p>
+        </template>
+    </lightning-quick-action-panel>
+</template>

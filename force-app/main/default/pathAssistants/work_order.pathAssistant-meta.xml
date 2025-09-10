@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>WorkOrder</entityName>
+    <fieldName>Status</fieldName>
+    <masterLabel>work order</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Cancellation_Reason__c</fieldNames>
+        <picklistValueName>Canceled</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Re_Work_Details__c</fieldNames>
+        <picklistValueName>Re-Work</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

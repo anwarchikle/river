@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Inventory Lot</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Inventory Lot</value>
+    </caseValues>
+    <layouts>
+        <layout>Inventory Lot Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Maximum quantity should be greater than Minimum quantity --></errorMessage>
+        <name>Min_should_be_Lesser_than_Max_quantity</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Type should be Vehicle --></errorMessage>
+        <name>Product_should_be_Vehicle</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A new record with the type &quot;Spare Vehicle&quot; cannot be created. Because this record is limited to the creation of records. --></errorMessage>
+        <name>Restrict_records_creation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Type should be accessories --></errorMessage>
+        <name>product_type_should_be_match_accessories</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product Type should be parts --></errorMessage>
+        <name>product_type_should_be_part</name>
+    </validationRules>
+</CustomObjectTranslation>

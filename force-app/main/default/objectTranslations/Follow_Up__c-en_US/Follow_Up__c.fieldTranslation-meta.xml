@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Follow Up --></label>
+    <name>Follow_Up__c</name>
+    <picklistValues>
+        <masterLabel>Follow up 1</masterLabel>
+        <translation><!-- Follow up 1 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 10</masterLabel>
+        <translation><!-- Follow up 10 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 4</masterLabel>
+        <translation><!-- Follow up 4 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 5</masterLabel>
+        <translation><!-- Follow up 5 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 6</masterLabel>
+        <translation><!-- Follow up 6 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 7</masterLabel>
+        <translation><!-- Follow up 7 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 8</masterLabel>
+        <translation><!-- Follow up 8 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 9</masterLabel>
+        <translation><!-- Follow up 9 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow up 2</masterLabel>
+        <translation><!-- Follow up 2 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Follow Up 3</masterLabel>
+        <translation><!-- Follow Up 3 --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

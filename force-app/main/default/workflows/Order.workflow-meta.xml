@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Email_To_ASM_For_Approval</fullName>
+        <description>Email To ASM For Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>ASM_Approval_Process_Emails/Email_To_ASM_For_Employee_Discount_Approval</template>
+    </alerts>
+    <alerts>
+        <fullName>Employee_Discount_Approved_For_DMS</fullName>
+        <description>Employee Discount Approved For DMS</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>ASM_Approval_Process_Emails/Employee_Discount_Approved_For_DMS</template>
+    </alerts>
+    <alerts>
+        <fullName>Employee_Discount_Rejected_for_DMS</fullName>
+        <description>Employee Discount Rejected for DMS</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>ASM_Approval_Process_Emails/Employee_Discount_Rejected_For_DMS</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_Approved_Email_Send_To_Warehouse</fullName>
+        <description>Order Approved Email Send To Warehouse</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>patrick@rideriver.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_Approved_Email1_Warehouse</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_Check_UTR_Verify</fullName>
+        <description>Order Check UTR Verify</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>binesh-j0kz@force.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_UTR_Verification</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_Dispatch_Email_Alert</fullName>
+        <description>Order Dispatch Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>binesh-j0kz@force.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_Dispatch_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_Email_Send_to_Finance_Team</fullName>
+        <description>Order Email Send to Finance Team</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>biswanath@rideriver.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_Sent_to_Finance</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_Extended_Warranty_confirmation</fullName>
+        <description>Order Extended Warranty confirmation</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Account_email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Extended_Warranty_Confirmation</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_RSA_Confirmation</fullName>
+        <description>Order RSA Confirmation</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Account_email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/RSA_Emailer</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_Rejection_Email_Alert</fullName>
+        <description>Order Rejection Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>patrick@rideriver.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_Rejection_Email</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_UTR_Amount_Greater_than_Order_Amount_Alert</fullName>
+        <description>Order UTR Amount Greater than Order Amount Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>binesh-j0kz@force.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_UTR_Verification</template>
+    </alerts>
+    <alerts>
+        <fullName>Order_UTR_Verification_Done_Email_to_Watehouse_Alert</fullName>
+        <description>Order UTR Verification Done Email to Watehouse Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>patrick@rideriver.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>Order_Emails/Order_UTR_Verification_Done_Email_to_Watehouse</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Approval_Status</fullName>
+        <field>Approval_Statuses__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Approval Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Approved</fullName>
+        <field>Approval__c</field>
+        <literalValue>1</literalValue>
+        <name>Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AutoPopulate_Manager_Email</fullName>
+        <field>Manager_Email__c</field>
+        <formula>Owner:User.Manager.Email</formula>
+        <name>AutoPopulate Manager Email</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Cancellation_Approval_Status_Rejected</fullName>
+        <field>Cancellation_Request_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Cancellation Approval Status - Rejected</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Cancellation_Approval_Status_Update</fullName>
+        <field>Cancellation_Request_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Cancellation Approval Status - Approved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Company_warehouse_update</fullName>
+        <field>Company_warehouse__c</field>
+        <literalValue>1</literalValue>
+        <name>Company warehouse update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Dealer_Manager_approval</fullName>
+        <field>Dealer_Warehouse__c</field>
+        <literalValue>0</literalValue>
+        <name>Dealer Manager approval</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PO_Payment_Pending1</fullName>
+        <field>Status</field>
+        <literalValue>PO Payment Pending</literalValue>
+        <name>PO Payment Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Pending</fullName>
+        <field>Approval_Statuses__c</field>
+        <literalValue>Pending</literalValue>
+        <name>Pending</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_Packing</fullName>
+        <field>Status</field>
+        <literalValue>Packing</literalValue>
+        <name>Status Packing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Approval_Status</fullName>
+        <field>Approval_Statuses__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Update Approval Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Offer_Amount</fullName>
+        <field>Offers_Amount__c</field>
+        <formula>0</formula>
+        <name>Update Offer Amount</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Order_Status_cancelled</fullName>
+        <field>Cancellation_Request_Status__c</field>
+        <literalValue>Rejected</literalValue>
+        <name>Update Order Status cancelled</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Order_cancel_status</fullName>
+        <field>Cancellation_Request_Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>Update Order cancel status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Order_status_to_Cancel</fullName>
+        <field>Status</field>
+        <literalValue>Order Cancelled</literalValue>
+        <name>Update Order status to Cancel</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_the_Availability_in_Dealership</fullName>
+        <field>Dealer_Warehouse__c</field>
+        <literalValue>1</literalValue>
+        <name>Update the Availability in Dealership</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>dealer_manager</fullName>
+        <field>Dealer_Warehouse__c</field>
+        <literalValue>1</literalValue>
+        <name>dealer manager</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <tasks>
+        <fullName>Manufacture_a_Vehicle</fullName>
+        <assignedTo>binesh-j0kz@force.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>60</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Order.CreatedDate</offsetFromField>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Manufacture a Vehicle</subject>
+    </tasks>
+</Workflow>

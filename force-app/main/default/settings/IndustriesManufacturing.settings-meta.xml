@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IndustriesManufacturingSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableFleetManagement>false</enableFleetManagement>
+    <enableIndManufacturing>true</enableIndManufacturing>
+    <enableIndustriesMfgAdvForecast>true</enableIndustriesMfgAdvForecast>
+    <enableIndustriesMfgIAS>false</enableIndustriesMfgIAS>
+    <enableIndustriesMfgProgram>true</enableIndustriesMfgProgram>
+    <enableIndustriesMfgTargets>true</enableIndustriesMfgTargets>
+    <enablePartnerLeadManagement>true</enablePartnerLeadManagement>
+    <enablePartnerPerformanceManagement>true</enablePartnerPerformanceManagement>
+    <enablePartnerVisitManagement>true</enablePartnerVisitManagement>
+    <enablePtnrLeadMgmtMappings>false</enablePtnrLeadMgmtMappings>
+    <enableVehAssetFinAddtnlCmpnts>false</enableVehAssetFinAddtnlCmpnts>
+    <enableVehicleAndAssetFinance>false</enableVehicleAndAssetFinance>
+</IndustriesManufacturingSettings>

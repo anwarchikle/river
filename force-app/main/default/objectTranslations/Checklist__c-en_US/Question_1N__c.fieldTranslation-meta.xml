@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- No Throttle Deadplay / delay --></help>
+    <label><!-- Question 1 --></label>
+    <name>Question_1N__c</name>
+    <picklistValues>
+        <masterLabel>NOT OK</masterLabel>
+        <translation><!-- NOT OK --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OK</masterLabel>
+        <translation><!-- OK --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Concern Category --></label>
+    <name>RR_Concern_Category__c</name>
+    <picklistValues>
+        <masterLabel>Accessories</masterLabel>
+        <translation><!-- Accessories --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Belt</masterLabel>
+        <translation><!-- Belt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bootlamp</masterLabel>
+        <translation><!-- Bootlamp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brake Hose Routing</masterLabel>
+        <translation><!-- Brake Hose Routing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brakes</masterLabel>
+        <translation><!-- Brakes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brakes Lever</masterLabel>
+        <translation><!-- Brakes Lever --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Brakes Switch</masterLabel>
+        <translation><!-- Brakes Switch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Centre Stand</masterLabel>
+        <translation><!-- Centre Stand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chain</masterLabel>
+        <translation><!-- Chain --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charger</masterLabel>
+        <translation><!-- Charger --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charger Wire</masterLabel>
+        <translation><!-- Charger Wire --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crash Guard</masterLabel>
+        <translation><!-- Crash Guard --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diagnosis</masterLabel>
+        <translation><!-- Diagnosis --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Display</masterLabel>
+        <translation><!-- Display --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Drive Belt</masterLabel>
+        <translation><!-- Drive Belt --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fender Rear</masterLabel>
+        <translation><!-- Fender Rear --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foot Peg LH</masterLabel>
+        <translation><!-- Foot Peg LH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Foot peg RH</masterLabel>
+        <translation><!-- Foot peg RH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Front wheel</masterLabel>
+        <translation><!-- Front wheel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General</masterLabel>
+        <translation><!-- General --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Glove box</masterLabel>
+        <translation><!-- Glove box --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Handlebar</masterLabel>
+        <translation><!-- Handlebar --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Harness</masterLabel>
+        <translation><!-- Harness --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HeadLamp</masterLabel>
+        <translation><!-- HeadLamp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Horn</masterLabel>
+        <translation><!-- Horn --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Indicator</masterLabel>
+        <translation><!-- Indicator --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>LH Switchgear</masterLabel>
+        <translation><!-- LH Switchgear --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Limp Mode</masterLabel>
+        <translation><!-- Limp Mode --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lockset</masterLabel>
+        <translation><!-- Lockset --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Main Stand</masterLabel>
+        <translation><!-- Main Stand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mode</masterLabel>
+        <translation><!-- Mode --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ODO</masterLabel>
+        <translation><!-- ODO --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PMS</masterLabel>
+        <translation><!-- PMS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PRCD</masterLabel>
+        <translation><!-- PRCD --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Panel</masterLabel>
+        <translation><!-- Panel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pannel</masterLabel>
+        <translation><!-- Pannel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Performance</masterLabel>
+        <translation><!-- Performance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RH Switch gear</masterLabel>
+        <translation><!-- RH Switch gear --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>RH Switchgear</masterLabel>
+        <translation><!-- RH Switchgear --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Range</masterLabel>
+        <translation><!-- Range --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rear Wheel</masterLabel>
+        <translation><!-- Rear Wheel --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>SOC</masterLabel>
+        <translation><!-- SOC --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Seat</masterLabel>
+        <translation><!-- Seat --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side Stand Sensor</masterLabel>
+        <translation><!-- Side Stand Sensor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Side stand</masterLabel>
+        <translation><!-- Side stand --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Software</masterLabel>
+        <translation><!-- Software --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Steering</masterLabel>
+        <translation><!-- Steering --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension</masterLabel>
+        <translation><!-- Suspension --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension FR</masterLabel>
+        <translation><!-- Suspension FR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Suspension RR</masterLabel>
+        <translation><!-- Suspension RR --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear LH</masterLabel>
+        <translation><!-- Switch Gear LH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Switch Gear RH</masterLabel>
+        <translation><!-- Switch Gear RH --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tail Lamp</masterLabel>
+        <translation><!-- Tail Lamp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TailLamp</masterLabel>
+        <translation><!-- TailLamp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Throttle</masterLabel>
+        <translation><!-- Throttle --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Time</masterLabel>
+        <translation><!-- Time --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tyre</masterLabel>
+        <translation><!-- Tyre --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>USB</masterLabel>
+        <translation><!-- USB --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Underbracket</masterLabel>
+        <translation><!-- Underbracket --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vehicle Power Cut OFF</masterLabel>
+        <translation><!-- Vehicle Power Cut OFF --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Washing</masterLabel>
+        <translation><!-- Washing --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels</masterLabel>
+        <translation><!-- Wheels --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wheels Rim</masterLabel>
+        <translation><!-- Wheels Rim --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -23,7 +23,7 @@ trigger TestDriveTrigger on Test_Drive__c (before insert, after insert,after Upd
        TestDriveTriggerHandler.afterInsert(Trigger.new);
        TestDriveTriggerHandler.convertLeadIfStatusIsScheduled(Trigger.new,Trigger.oldMap);
        TestDriveTriggerHandler.sendLeadToDealerOnTestRideScheduled(Trigger.new,Trigger.oldMap);
-       TestDriveTriggerHandler.onCreationOfTestDriveUpdateOppAndOnCompletionOfTestDrive(Trigger.new);
+    //    TestDriveTriggerHandler.onCreationOfTestDriveUpdateOppAndOnCompletionOfTestDrive(Trigger.new);
        TestDriveTriggerHandler.convertLeadIfTheRideTypeIsStoreTestRideAndLeadInstoreTestdriveIsTrue(Trigger.new);
        TestDriveTriggerHandler.deleteOldNotCompletedTestDrive(Trigger.new);
        
@@ -35,7 +35,7 @@ trigger TestDriveTrigger on Test_Drive__c (before insert, after insert,after Upd
         TestDriveTriggerHandler.sendLeadToDealerOnTestRideScheduled(Trigger.new,Trigger.oldMap);
         TestDriveTriggerHandler.convertLeadIfStatusIsScheduled(Trigger.new,Trigger.oldMap);
         TestDriveTriggerHandler.deleteNotesAndAttachmentsOnTestRideCompletion(Trigger.new,Trigger.oldMap);
-        TestDriveTriggerHandler.onCreationOfTestDriveUpdateOppAndOnCompletionOfTestDrive(Trigger.new);
+        // TestDriveTriggerHandler.onCreationOfTestDriveUpdateOppAndOnCompletionOfTestDrive(Trigger.new);
         TestDriveTriggerHandler.updateOpportunityStatusOnTestRideStatusUpdate(Trigger.new,Trigger.oldMap);
         TestDriveTriggerHandler.createFollowUpOnTestRideCompletion(Trigger.new);
     }     

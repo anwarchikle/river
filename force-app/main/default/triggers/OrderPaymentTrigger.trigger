@@ -19,13 +19,13 @@ trigger OrderPaymentTrigger on Order_Payment__c (before insert, before update, a
     
     if(trigger.isAfter){
         If(trigger.isInsert){
-            OrderPaymentTriggerHandler.updateOrderOnInsert(trigger.new);
+            //OrderPaymentTriggerHandler.updateOrderOnInsert(trigger.new);
             OrderStatusHandler.sendPreOrderReceipt01(trigger.new); 
             //new on 12/02/2025
         }
         
         If(trigger.isUpdate){
-            OrderPaymentTriggerHandler.updateOrderOnUpdate(trigger.new, trigger.oldMap);
+            //OrderPaymentTriggerHandler.updateOrderOnUpdate(trigger.new, trigger.oldMap);
             OrderPaymentTriggerHandler.populatePDFInOrder(trigger.new,Trigger.oldMap);
         }
     }

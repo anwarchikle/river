@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Attribute --></label>
+    <name>Attribute__c</name>
+    <picklistValues>
+        <masterLabel>Accessories</masterLabel>
+        <translation><!-- Accessories --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Aesthetic Checks</masterLabel>
+        <translation><!-- Aesthetic Checks --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Charging Functionality</masterLabel>
+        <translation><!-- Charging Functionality --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dashboard Functionality</masterLabel>
+        <translation><!-- Dashboard Functionality --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Decals</masterLabel>
+        <translation><!-- Decals --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Documentation/ Hardware verification</masterLabel>
+        <translation><!-- Documentation/ Hardware verification --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Firmware Checks</masterLabel>
+        <translation><!-- Firmware Checks --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Lockset Functionality</masterLabel>
+        <translation><!-- Lockset Functionality --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Presets</masterLabel>
+        <translation><!-- Presets --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Test Ride (3km)</masterLabel>
+        <translation><!-- Test Ride (3km) --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

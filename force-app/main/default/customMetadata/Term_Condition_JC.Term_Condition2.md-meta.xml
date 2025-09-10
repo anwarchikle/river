@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Term &amp; Condition2</label>
+    <protected>false</protected>
+    <values>
+        <field>SI_No__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Term_Condition__c</field>
+        <value xsi:type="xsd:string">I/We agree that River Mobility Pvt. Ltd. assumed no responsibility of any damages by whatever means to the vehicle during the course of repair and 
+trial.I/We agree that the vehicle left for repairs will be stored,repaired and driven at my/our risk.</value>
+    </values>
+</CustomMetadata>

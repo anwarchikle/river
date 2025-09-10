@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Vehicle</baseObject>
+    <category>products</category>
+    <deployed>true</deployed>
+    <description>blah</description>
+    <join>
+        <join>
+            <outerJoin>false</outerJoin>
+            <relationship>Assignment_logs__r</relationship>
+        </join>
+        <outerJoin>false</outerJoin>
+        <relationship>Service_Appointments__r</relationship>
+    </join>
+    <label>vehicles_hiba</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle ID</displayNameOverride>
+            <field>Id</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Vehicle Name</displayNameOverride>
+            <field>Name</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset</displayNameOverride>
+            <field>Asset</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Current Owner</displayNameOverride>
+            <field>CurrentOwner</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Definition</displayNameOverride>
+            <field>VehicleDefinition</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Interior Color</displayNameOverride>
+            <field>InteriorColor</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latest Residual Value</displayNameOverride>
+            <field>LatestResidualValue</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latest Residual Value Date</displayNameOverride>
+            <field>LatestResidualValueDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Market Price</displayNameOverride>
+            <field>MarketPrice</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Market Price Date</displayNameOverride>
+            <field>MarketPriceDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Average Market Value</displayNameOverride>
+            <field>AverageMarketValue</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Highest Market Value</displayNameOverride>
+            <field>HighestMarketValue</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lowest Market Value</displayNameOverride>
+            <field>LowestMarketValue</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manufacturer Warranty Start Date</displayNameOverride>
+            <field>ManufacturerWarrantyStartDt</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manufacturer Warranty End Date</displayNameOverride>
+            <field>ManufacturerWarrantyEndDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is Recall Open</displayNameOverride>
+            <field>IsRecallOpen</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Upholstery Type</displayNameOverride>
+            <field>UpholsteryType</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Upholstery Color</displayNameOverride>
+            <field>UpholsteryColor</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manufactured Date</displayNameOverride>
+            <field>ManufacturedDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manufacturing Batch Number</displayNameOverride>
+            <field>ManufacturingBatchNumber</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Manufacturing Plant Name</displayNameOverride>
+            <field>ManufacturingPlantName</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Rim Size</displayNameOverride>
+            <field>FrontRimSize</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Rim Size</displayNameOverride>
+            <field>RearRimSize</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front Tire Size</displayNameOverride>
+            <field>FrontTireSize</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear Tire Size</displayNameOverride>
+            <field>RearTireSize</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Steering Type</displayNameOverride>
+            <field>SteeringType</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Gear Box Type</displayNameOverride>
+            <field>GearBoxType</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Service Date</displayNameOverride>
+            <field>LastServiceDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active Service Contract Count</displayNameOverride>
+            <field>ActiveServiceContractCount</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active Warranty Count</displayNameOverride>
+            <field>ActiveWarrantyCount</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active Subscription Count</displayNameOverride>
+            <field>ActiveSubscriptionCount</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active Recall Count</displayNameOverride>
+            <field>ActiveRecallCount</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cylinder Count</displayNameOverride>
+            <field>CylinderCount</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Head Unit Name</displayNameOverride>
+            <field>HeadUnitName</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Validity Date</displayNameOverride>
+            <field>RegistrationValidityDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Odometer Reading Date</displayNameOverride>
+            <field>OdometerReadingDate</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Exterior Color</displayNameOverride>
+            <field>ExteriorColor</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Market Price Source</displayNameOverride>
+            <field>MarketPriceSource</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Condition Type</displayNameOverride>
+            <field>ConditionType</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Location</displayNameOverride>
+            <field>Location</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street</displayNameOverride>
+            <field>LocationStreet</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
+            <field>LocationCity</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State (text only)</displayNameOverride>
+            <field>LocationState</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Postal Code</displayNameOverride>
+            <field>LocationPostalCode</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country (text only)</displayNameOverride>
+            <field>LocationCountry</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latitude</displayNameOverride>
+            <field>LocationLatitude</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Longitude</displayNameOverride>
+            <field>LocationLongitude</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Geocode Accuracy</displayNameOverride>
+            <field>LocationGeocodeAccuracy</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Identification Number</displayNameOverride>
+            <field>VehicleIdentificationNumber</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engine Number</displayNameOverride>
+            <field>EngineNumber</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Chassis Number</displayNameOverride>
+            <field>ChassisNumber</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Registration Number</displayNameOverride>
+            <field>VehicleRegistrationNumber</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Registration Region Code</displayNameOverride>
+            <field>RegistrationRegionCode</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Odometer Reading</displayNameOverride>
+            <field>LastOdometerReading</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Odometer Reading Unit of Measure</displayNameOverride>
+            <field>OdometerReadingUom</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Head Unit Security Code</displayNameOverride>
+            <field>HeadUnitSecurityCode</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ignition Key Code</displayNameOverride>
+            <field>IgnitionKeyCode</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Odometer Status (Deprecated)</displayNameOverride>
+            <field>OdometerStatus</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Telematics Service Active</displayNameOverride>
+            <field>IsTelematicsServiceActive</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Stock Code</displayNameOverride>
+            <field>StockCode</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Connected Service Active</displayNameOverride>
+            <field>IsConnectedServiceActive</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Odometer State</displayNameOverride>
+            <field>OdometerState</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Source System Identifier</displayNameOverride>
+            <field>SourceSystemIdentifier</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Source System Name</displayNameOverride>
+            <field>SourceSystemName</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Image</displayNameOverride>
+            <field>Image__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Active</displayNameOverride>
+            <field>Approval_Status__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>EMI Amount</displayNameOverride>
+            <field>EMI_Amount__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Finance</displayNameOverride>
+            <field>Finance__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Financed Amount</displayNameOverride>
+            <field>Financed_Amount__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Insurance</displayNameOverride>
+            <field>Insurance__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Loan Start Date</displayNameOverride>
+            <field>Loan_Start_Date__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tenure Type</displayNameOverride>
+            <field>Tenure_Type__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Tenure</displayNameOverride>
+            <field>Tenure__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Insurance Amount</displayNameOverride>
+            <field>Insurance_Amount__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle</displayNameOverride>
+            <field>Spare_Vehicle__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle Stage</displayNameOverride>
+            <field>Vehicle_Stage__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Policy Number</displayNameOverride>
+            <field>Policy_Number__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Add-On</displayNameOverride>
+            <field>Add_On__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Colour</displayNameOverride>
+            <field>Colour__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Battery Details</displayNameOverride>
+            <field>Vehicle_Details__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Purchased Date</displayNameOverride>
+            <field>Purchased_Date__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Software Version</displayNameOverride>
+            <field>Software_Version__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Status</displayNameOverride>
+            <field>Spare_Vehicle_Status__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Battery Number</displayNameOverride>
+            <field>RR_Battery_Number__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Charger PC Number</displayNameOverride>
+            <field>Charger_PC_Number__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PDI Status Pass</displayNameOverride>
+            <field>PDI_Status_Pass__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Dealer</displayNameOverride>
+            <field>Dealer__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Grace Period</displayNameOverride>
+            <field>Grace_Period__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>isCustomerStateSame</displayNameOverride>
+            <field>isCustomerStateSame__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EW_Expire_Date__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EW_Start_Date__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EW_Submitted__c</field>
+            <table>Vehicle</table>
+        </columns>
+        <masterLabel>Vehicles</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Appointment ID</displayNameOverride>
+            <field>Id</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Appointment Number</displayNameOverride>
+            <field>Name</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Work Type</displayNameOverride>
+            <field>WorkType</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Address</displayNameOverride>
+            <field>Address</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Street</displayNameOverride>
+            <field>Street</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>City</displayNameOverride>
+            <field>City</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>State/Province (text only)</displayNameOverride>
+            <field>State</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Zip/Postal Code</displayNameOverride>
+            <field>PostalCode</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Country (text only)</displayNameOverride>
+            <field>Country</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Latitude</displayNameOverride>
+            <field>Latitude</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Longitude</displayNameOverride>
+            <field>Longitude</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Geocode Accuracy</displayNameOverride>
+            <field>GeocodeAccuracy</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Earliest Start Permitted</displayNameOverride>
+            <field>EarliestStartTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Due Date</displayNameOverride>
+            <field>DueDate</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration</displayNameOverride>
+            <field>Duration</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Arrival Window Start</displayNameOverride>
+            <field>ArrivalWindowStartTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Arrival Window End</displayNameOverride>
+            <field>ArrivalWindowEndTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status</displayNameOverride>
+            <field>Status</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Scheduled Start</displayNameOverride>
+            <field>SchedStartTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Scheduled End</displayNameOverride>
+            <field>SchedEndTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Actual Start</displayNameOverride>
+            <field>ActualStartTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Actual End</displayNameOverride>
+            <field>ActualEndTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Actual Duration (Minutes)</displayNameOverride>
+            <field>ActualDuration</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration Type</displayNameOverride>
+            <field>DurationType</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Duration in Minutes</displayNameOverride>
+            <field>DurationInMinutes</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Territory</displayNameOverride>
+            <field>ServiceTerritory</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Subject</displayNameOverride>
+            <field>Subject</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Status Category</displayNameOverride>
+            <field>StatusCategory</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Note</displayNameOverride>
+            <field>ServiceNote</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Appointment Type</displayNameOverride>
+            <field>AppointmentType</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email</displayNameOverride>
+            <field>Email</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Phone</displayNameOverride>
+            <field>Phone</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Cancellation Reason</displayNameOverride>
+            <field>CancellationReason</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Additional Information</displayNameOverride>
+            <field>AdditionalInformation</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Comment</displayNameOverride>
+            <field>Comments</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Capacity Usage Autonumber</displayNameOverride>
+            <field>CapacityUsageAutonumber</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Anonymous Booking</displayNameOverride>
+            <field>IsAnonymousBooking</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Offsite Appointment</displayNameOverride>
+            <field>IsOffsiteAppointment</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Appointment Booking URL</displayNameOverride>
+            <field>ApptBookingInfoUrl</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Engagement Channel Type</displayNameOverride>
+            <field>EngagementChannelType</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Associated Product</displayNameOverride>
+            <field>AssociatedProduct</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Checked In Time</displayNameOverride>
+            <field>CheckedInTime</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Attendee Limit</displayNameOverride>
+            <field>AttendeeLimit</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Appointment Mode</displayNameOverride>
+            <field>AppointmentMode</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Group Appointment Access Type</displayNameOverride>
+            <field>GroupAppointmentAccessType</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Appointment</displayNameOverride>
+            <field>Service_Appointment__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Email</displayNameOverride>
+            <field>Contact_Email__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Name</displayNameOverride>
+            <field>Contact_Name__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Inventory Lot</displayNameOverride>
+            <field>Inventory_Lot__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RSA Required</displayNameOverride>
+            <field>RSA_Required__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Centre</displayNameOverride>
+            <field>Service_Centre__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle</displayNameOverride>
+            <field>Spare_Vehicle__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Distance Range</displayNameOverride>
+            <field>Distance_Range__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Service Vehicle</displayNameOverride>
+            <field>Service_Vehicle__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Status</displayNameOverride>
+            <field>Spare_Vehicle_Status__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>Account_Name__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Phone</displayNameOverride>
+            <field>Account_Phone__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Appointment Date</displayNameOverride>
+            <field>Appointment_Date__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Asset Milestone</displayNameOverride>
+            <field>Asset_Milestone__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Reschedule Attempts</displayNameOverride>
+            <field>Reschedule_Attempts__c</field>
+            <table>Vehicle.Service_Appointments__r</table>
+        </columns>
+        <masterLabel>Service Appointments</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Assignment Log ID</displayNameOverride>
+            <field>Id</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Assignment Log Name</displayNameOverride>
+            <field>Name</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Vehicle</displayNameOverride>
+            <field>Vehicle__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Description</displayNameOverride>
+            <field>Description__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front View</displayNameOverride>
+            <field>Front_View__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Front_View</displayNameOverride>
+            <field>Front_Views__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LH View</displayNameOverride>
+            <field>LH_View__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>LH_View</displayNameOverride>
+            <field>LH_Views__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RH View</displayNameOverride>
+            <field>RH_View__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>RH_View</displayNameOverride>
+            <field>RH_Views__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear View</displayNameOverride>
+            <field>Rear_View__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Rear View</displayNameOverride>
+            <field>Rear_Views__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Delivery Time</displayNameOverride>
+            <field>Spare_Vehicle_Delivery_Time__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Odo Reading(Delivered)</displayNameOverride>
+            <field>Spare_Vehicle_Odo_Reading__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Odo Reading(Returned)</displayNameOverride>
+            <field>Spare_Vehicle_Odo_Readings__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Returning Time</displayNameOverride>
+            <field>Spare_Vehicle_Returning_Time__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Work Order</displayNameOverride>
+            <field>Work_Order__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Spare Vehicle Number</displayNameOverride>
+            <field>Spare_Vehicle_Number__c</field>
+            <table>Vehicle.Service_Appointments__r.Assignment_logs__r</table>
+        </columns>
+        <masterLabel>Assignment Logs</masterLabel>
+    </sections>
+</ReportType>

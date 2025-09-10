@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Electrical Component Functioning (Lights, Switch Cube Operations). --></help>
+    <label><!-- Electrical Component Functioning --></label>
+    <name>RR_Electrical_Component_Functioning__c</name>
+</CustomFieldTranslation>

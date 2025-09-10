@@ -6,22 +6,23 @@ public class MobileApp_EventFollowUpTest {
         
         Account acc = UtilityTestClass.createTestAccount('Test Account', 'C001', 'Test Store', '560076', 'Customer');
 
-        Lead lead = UtilityTestClass.createTestLead('Test Lead', 'Test Company','New','9035244421','560076','Telephone', 'Telephone');
-
         Opportunity opp = UtilityTestClass.createTestOpportunity( 'Test Opportunity', acc.Id, 'RNR', System.today().addDays(30), 10000 );
         
-
-        Follow_Up__c followUp = UtilityTestClass.createFollowUp('Test Follow Up',  lead.Id, opp.Id);
+        String OwnerId = UserInfo.getUserId();
+        Follow_Up__c followUp = new Follow_Up__c(); 
+        followUp.Name = 'Test Follow Up';
+        followUp.Opportunity__c = opp.Id;
+        followUp.OwnerId = OwnerId;
         followUp.Feedback__c = 'Test Feedback';
         followUp.Follow_Up_Date__c = Date.today();
         followUp.Next_Follow_Up_Date__c = Date.today().addDays(2);
         followUp.Status__c = 'New';
         followUp.FollowUpType__c = 'booking call';
-        update followUp;
+        insert followUp;
 
         MobileApp_Wrapper.MobileApp_LeadTotalLeadsWrapper wrapper = new MobileApp_Wrapper.MobileApp_LeadTotalLeadsWrapper();
         wrapper.UserId = UserInfo.getUserId();
-        wrapper.FilterDate = 'TODAY'; 
+        wrapper.FilterDate = 'THIS_MONTH'; 
         wrapper.FilterEndRange = null;
 
         RestRequest req = new RestRequest();
@@ -68,4 +69,5 @@ public class MobileApp_EventFollowUpTest {
         MobileApp_EventFollowUp.getFollowUps();
 
     }
+
 }

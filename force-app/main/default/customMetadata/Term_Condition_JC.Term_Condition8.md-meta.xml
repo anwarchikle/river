@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Term &amp; Condition8</label>
+    <protected>false</protected>
+    <values>
+        <field>SI_No__c</field>
+        <value xsi:type="xsd:double">8.0</value>
+    </values>
+    <values>
+        <field>Term_Condition__c</field>
+        <value xsi:type="xsd:string">I/We have no objection to your levying an estimate charge of Rs 500/- or 1% of the total amount, whichever is higher against man hours put for estimate 
+preparation for accidental vehicles.</value>
+    </values>
+</CustomMetadata>

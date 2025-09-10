@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>River Mobility Private Limited</label>
+    <protected>false</protected>
+    <values>
+        <field>Account_Number__c</field>
+        <value xsi:type="xsd:string">720205000494</value>
+    </values>
+    <values>
+        <field>Bank_Name__c</field>
+        <value xsi:type="xsd:string">ICICI Bank</value>
+    </values>
+    <values>
+        <field>Beneficiary_Name__c</field>
+        <value xsi:type="xsd:string">River Mobility Private Limited</value>
+    </values>
+    <values>
+        <field>CIN__c</field>
+        <value xsi:type="xsd:string">U34100KA2022PTC158972</value>
+    </values>
+    <values>
+        <field>Company_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Contact__c</field>
+        <value xsi:type="xsd:string">+919731158443</value>
+    </values>
+    <values>
+        <field>Customer_Care_Email__c</field>
+        <value xsi:type="xsd:string">support@rideriver.com</value>
+    </values>
+    <values>
+        <field>Customer_HelpLine_Number__c</field>
+        <value xsi:type="xsd:string">080-69537509</value>
+    </values>
+    <values>
+        <field>Email__c</field>
+        <value xsi:type="xsd:string">support@rideriver.com</value>
+    </values>
+    <values>
+        <field>GST__c</field>
+        <value xsi:type="xsd:string">29AALCR7167F1ZU</value>
+    </values>
+    <values>
+        <field>IFSC__c</field>
+        <value xsi:type="xsd:string">ICIC0007202</value>
+    </values>
+    <values>
+        <field>PAN__c</field>
+        <value xsi:type="xsd:string">AALCR7167F</value>
+    </values>
+    <values>
+        <field>Swift_Code__c</field>
+        <value xsi:type="xsd:string">ICICNBBCTS</value>
+    </values>
+    <values>
+        <field>Timings__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

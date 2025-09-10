@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Drop Out Reasons --></label>
+    <name>Drop_Out_Reasons__c</name>
+    <picklistValues>
+        <masterLabel>Chose Another Brand / Store</masterLabel>
+        <translation><!-- Chose Another Brand / Store --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Considering Later / Unable to Proceed</masterLabel>
+        <translation><!-- Considering Later / Unable to Proceed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Not Interested / Not Serious Casual enquiry</masterLabel>
+        <translation><!-- Not Interested / Not Serious Casual enquiry --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

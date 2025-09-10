@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Purchase Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Purchase Orders</value>
+    </caseValues>
+    <layouts>
+        <layout>DMS USer</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Finance Details --></label>
+            <section>Finance Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Finance Details --></label>
+            <section>Finance Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add Product Request Item --></label>
+        <name>Add_Product_Request_Item</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Initiate Allotment --></label>
+        <name>Initial_Allotment</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Sales --></label>
+        <name>Sales</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Service --></label>
+        <name>Service</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Finance details should not be blank --></errorMessage>
+        <name>Finance_details_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- LR Details shouldn&apos;t be blank --></errorMessage>
+        <name>LR_Details_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot cancel a Purchase Order once it has been Alloted or beyond. --></errorMessage>
+        <name>Restrict_Cancel_After_Alloted</name>
+    </validationRules>
+</CustomObjectTranslation>

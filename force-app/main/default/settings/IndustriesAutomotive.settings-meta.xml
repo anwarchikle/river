@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IndustriesAutomotiveSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableAutomotiveAppraisals>false</enableAutomotiveAppraisals>
+    <enableAutomotiveCloud>true</enableAutomotiveCloud>
+    <enableAutomotiveScheduler>false</enableAutomotiveScheduler>
+    <enableAutomotiveServiceExcellence>true</enableAutomotiveServiceExcellence>
+</IndustriesAutomotiveSettings>

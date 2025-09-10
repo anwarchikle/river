@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Account/allocation aacount</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Delivery specialist account</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Home test ride ex account</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PDI ex Account</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product specialist account</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Store Manager Account</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Tele/CRE Account</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- The Dealer code is mandatory --></errorMessage>
+        <name>Dealer_code_mandatory</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You Don&apos;t have the access to change the details in this account --></errorMessage>
+        <name>Edit_access_of_Dealer_accounts</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the primary phone number, please add new number in Secondory phone number --></errorMessage>
+        <name>Phone_number_change_restriction</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Enter 10 Digit Phone Number --></errorMessage>
+        <name>Phone_validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please mention store type --></errorMessage>
+        <name>STORE_TYPE</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- AltavistaNews --></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label>Marketing Cloud-Abonnement erneuern</label>
+        <name>et4ae5__ExactTarget_Resubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label>Marketing Cloud-Abonnement abbestellen</label>
+        <name>et4ae5__ExactTarget_Unsubscribe</name>
+    </webLinks>
+    <webLinks>
+        <label>Marketing Cloud-E-Mail senden</label>
+        <name>et4ae5__Send_ExactTarget_Email</name>
+    </webLinks>
+    <webLinks>
+        <label>Marketing Cloud-Analysen anzeigen</label>
+        <name>et4ae5__View_ExactTarget_Analytics</name>
+    </webLinks>
+</CustomObjectTranslation>

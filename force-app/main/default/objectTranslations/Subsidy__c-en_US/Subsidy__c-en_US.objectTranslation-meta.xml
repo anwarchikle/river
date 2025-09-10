@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Subsidy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subsidy</value>
+    </caseValues>
+    <layouts>
+        <layout>Subsidy Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End date should not be less than start date --></errorMessage>
+        <name>Start_date_and_End_date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date and End Date must not be the same --></errorMessage>
+        <name>Start_date_end_date_should_not_same</name>
+    </validationRules>
+</CustomObjectTranslation>
