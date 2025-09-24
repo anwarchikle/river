@@ -204,6 +204,13 @@
         <value>https://vms.readyassist.net/api</value>
     </labels>
     <labels>
+        <fullName>Site_Base_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Site_Base_URL</shortDescription>
+        <value>https://rivermobilityprivatelimited2--riverlms.sandbox.my.salesforce-sites.com/gatePassQr</value>
+    </labels>
+    <labels>
         <fullName>Threshold_Count</fullName>
         <language>en_US</language>
         <protected>false</protected>

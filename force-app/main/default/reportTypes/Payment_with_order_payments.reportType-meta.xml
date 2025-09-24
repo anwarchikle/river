@@ -155,6 +155,11 @@
             <field>Tracking_Id__c</field>
             <table>Payment__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Enquiry__c</field>
+            <table>Payment__c</table>
+        </columns>
         <masterLabel>Payments</masterLabel>
     </sections>
     <sections>
@@ -241,6 +246,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Log_Payment__c</field>
+            <table>Payment__c.Order_Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Enquiry__c</field>
             <table>Payment__c.Order_Payments__r</table>
         </columns>
         <masterLabel>Order Payments</masterLabel>

@@ -23,16 +23,8 @@
         <translation><!-- College activities --></translation>
     </picklistValues>
     <picklistValues>
-        <masterLabel>Google</masterLabel>
-        <translation><!-- Google --></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>Meta</masterLabel>
-        <translation><!-- Meta --></translation>
-    </picklistValues>
-    <picklistValues>
-        <masterLabel>River Website</masterLabel>
-        <translation><!-- River Website --></translation>
+        <masterLabel>Organic - Web</masterLabel>
+        <translation><!-- Organic - Web --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Tech Park activities</masterLabel>
@@ -45,6 +37,14 @@
     <picklistValues>
         <masterLabel>Theater campaigns</masterLabel>
         <translation><!-- Theater campaigns --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Web – Google</masterLabel>
+        <translation><!-- Web – Google  --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Web – Meta</masterLabel>
+        <translation><!-- Web – Meta  --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>WhatsApp</masterLabel>

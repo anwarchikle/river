@@ -3,13 +3,12 @@ global with sharing class AccountRegistrationAPI {
     
     @HttpPost
     global static void createAccountContact() {
-        RestResponse res = RestContext.response;
-        res.addHeader('Content-Type', 'application/json');
-        Map<String, String> response = new Map<String, String>();
-        
         RestRequest req = RestContext.request;
+        RestResponse res = RestContext.response;
+
+        res.addHeader('Content-Type', 'application/json');
         String requestBody = req.requestBody.toString();
-        
+
         Map<String, Object> requestMap = (Map<String, Object>)JSON.deserializeUntyped(requestBody);
         Map<String, Object> billing_address = (Map<String, Object>)requestMap.get('billing_address') != null? (Map<String, Object>)requestMap.get('billing_address'):null;
         Map<String, Object> shipping_address = (Map<String, Object>)requestMap.get('shipping_address') != null? (Map<String, Object>)requestMap.get('shipping_address'):null;
@@ -22,111 +21,19 @@ global with sharing class AccountRegistrationAPI {
         List<Account> existingAccount = new List<Account>();
         
         try{
-            
-            If(phone != '')
-                existingAccount = [SELECT Id FROM Account WHERE Phone = :phone  LIMIT 1];
-            
-            If(existingAccount.isEmpty()){ 
-                existingLead = [SELECT Id,Owner.Type,Is_Order_Created__c FROM Lead 
-                                WHERE (Email = :leadEmail OR Phone = :phone) 
-                                AND isConverted = false 
-                                LIMIT 1];
+            if(phone != null || phone != ''){
+                existingAccount = [SELECT Id,Name,Phone FROM Account WHERE Phone = :phone  LIMIT 1];
+
                 
-                
-                if (!existingLead.isEmpty()) {
-                    system.debug('existing lead found>>'+existingLead[0]);
-                    if (existingLead[0].Owner.Type == 'Queue') {
-                        User targetUser = [SELECT Id,LastName FROM User WHERE LastName LIKE '%@store' LIMIT 1];
-                        
-                        if (targetUser != null) {
-                            existingLead[0].OwnerId = targetUser.Id;
-                            existingLead[0].Is_Order_Created__c = true;
-                            update existingLead[0];
-                        }
-                    }
+                if(!existingAccount.isEmpty()){
                     
-                    Database.LeadConvert lc = new Database.LeadConvert();
-                    lc.setLeadId(existingLead[0].Id);
-                    lc.setConvertedStatus('Converted');
+                    createOpportunityForAccount(existingAccount[0]);
+
+                    accountId = existingAccount[0].Id;
                     
-                    Database.LeadConvertResult lcr = Database.convertLead(lc);
-                    
-                    if (lcr.isSuccess()) {
-                        system.debug('Lead converted to Account and Contact' + lcr.getAccountId() + ' contact is >> ' + lcr.getContactId());
-                        Id newContactId = lcr.getContactId();
-                        
-                        // Set the custom field Primary_Contact__c to true on the Contact
-                        //Contact newContact = new Contact(Id = newContactId, Primary_Contact__c = true);
-                        //update newContact;
-                        
-                        Account newAccount = new Account(Id = lcr.getAccountId(),
-                                                         Type = 'Customer',
-                                                         Name = (String)requestMap.get('full_name'),
-                                                         Phone = (String)requestMap.get('phone_number') != null ? (String)requestMap.get('phone_number') : '',
-                                                         Email__c = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
-                                                         BillingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
-                                                         BillingStreet = ((String)billing_address.get('address_1') != null ? (String)billing_address.get('address_1') : '') +' '+ ((String)billing_address.get('address_2') != null ? (String)billing_address.get('address_2') : ''),
-                                                         BillingCity = (String)billing_address.get('city') != null ? (String)billing_address.get('city') : '',
-                                                         BillingState = (String)billing_address.get('state') != null ? (String)billing_address.get('state') : '',
-                                                         BillingPostalCode = (String)billing_address.get('pin_code') != null ? (String)billing_address.get('pin_code') : '',
-                                                         ShippingCountry = (String)shipping_address.get('country') != null ? (String)shipping_address.get('country') : 'India',
-                                                         ShippingStreet = ((String)shipping_address.get('address_1') != null ? (String)shipping_address.get('address_1') : '')+ ' '+((String)shipping_address.get('address_2') != null ? (String)shipping_address.get('address_2') : ''),
-                                                         ShippingCity = (String)shipping_address.get('city') != null ? (String)shipping_address.get('city') : '',
-                                                         ShippingState = (String)shipping_address.get('state') != null ? (String)shipping_address.get('state') : '',
-                                                         ShippingPostalCode = (String)shipping_address.get('pin_code') != null ? (String)shipping_address.get('pin_code') : ''
-                                                        );
-                        update newAccount;
-                        
-                        accountId = lcr.getAccountId();
-                    } else {
-                        system.debug('error occurred >> ' + lcr);
-                    }
-                } 
-                else {
-                    
-                    
-                    Lead newLead = new Lead(
-                        LastName = (String)requestMap.get('full_name'),
-                        Company =(String)requestMap.get('full_name'),
-                        Email = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
-                        Phone = (String)requestMap.get('phone_number') != null ? (String)requestMap.get('phone_number') : '',
-                        LeadSource	= 'River Website',
-                        Is_Order_Created__c = true,
-                        Status = 'Converted',
-                        Street = (billing_address.containsKey('address_1') ? (String)billing_address.get('address_1') : '') + ' ' +(billing_address.containsKey('address_2') ? (String)billing_address.get('address_2') : ''),
-                        City = billing_address.containsKey('city') ? (String)billing_address.get('city') : '',
-                        State = billing_address.containsKey('state') ? (String)billing_address.get('state') : '',
-                        PostalCode = billing_address.containsKey('pin_code') ? (String)billing_address.get('pin_code') : '',
-                        Country = billing_address.containsKey('country') ? (String)billing_address.get('country') : 'India'
-                        /* Address = new Address(
-street = ((String)billing_address.get('address_1') != null ? (String)billing_address.get('address_1') : '') + ' ' + ((String)billing_address.get('address_2') != null ? (String)billing_address.get('address_2') : ''),
-city = (String)billing_address.get('city') != null ? (String)billing_address.get('city') : '',
-state = (String)billing_address.get('state') != null ? (String)billing_address.get('state') : '',
-postalCode = (String)billing_address.get('pin_code') != null ? (String)billing_address.get('pin_code') : '',
-country = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India'
-)*/
-                    );
-                    insert newLead;
-                    
-                    if (newLead.Owner.Type == 'Queue') {
-                        User targetUser = [SELECT Id,LastName FROM User WHERE LastName LIKE '%@store' LIMIT 1];
-                        
-                        if (targetUser != null) {
-                            newLead.OwnerId = targetUser.Id;
-                            update newLead; 
-                        }
-                    }
-                    
-                    Database.LeadConvert lc = new Database.LeadConvert();
-                    lc.setLeadId(newLead.Id);
-                    lc.setConvertedStatus('Converted');
-                    
-                    Database.LeadConvertResult lcr = Database.convertLead(lc);
-                    system.debug('New Lead is created >> ' + newLead);                    system.debug('creating new account and contact1');
                     Account newAccount = new Account(
-                        Id = lcr.getAccountId(),
+                        id = accountId,
                         Name = (String)requestMap.get('full_name'),
-                        AccountSource = 'River Website',
                         Type = 'Customer',
                         Email__c = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
                         BillingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
@@ -135,73 +42,184 @@ country = (String)billing_address.get('country') != null ? (String)billing_addre
                         BillingCity = (String)billing_address.get('city') != null ? (String)billing_address.get('city') : '',
                         BillingState = (String)billing_address.get('state') != null ? (String)billing_address.get('state') : '',
                         BillingPostalCode = (String)billing_address.get('pin_code') != null ? (String)billing_address.get('pin_code') : '',
-                        ShippingCountry = (String)shipping_address.get('country') != null ? (String)shipping_address.get('country') : 'India',
+                        ShippingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
                         ShippingStreet = ((String)shipping_address.get('address_1') != null ? (String)shipping_address.get('address_1') : '') +' '+ ((String)shipping_address.get('address_2') != null ? (String)shipping_address.get('address_2') : ''),
                         ShippingCity = (String)shipping_address.get('city') != null ? (String)shipping_address.get('city') : '',
                         ShippingState = (String)shipping_address.get('state') != null ? (String)shipping_address.get('state') : '',
                         ShippingPostalCode = (String)shipping_address.get('pin_code') != null ? (String)shipping_address.get('pin_code') : ''
                     );
-                    update newAccount;
+                    Update newAccount;
+                }
+                else {
                     
-                    
-                    accountId = newAccount.Id;
+                    existingLead = [SELECT Id,Owner.Type,Is_Order_Created__c,ConvertedAccount.Phone FROM Lead 
+                                    WHERE (Email = :leadEmail OR Phone = :phone) AND isConverted = false LIMIT 1];
+                   
+                    if (!existingLead.isEmpty()) {
+                        system.debug('existing lead found>>'+existingLead[0]);
+                        if (existingLead[0].Owner.Type == 'Queue') {
+                            User targetUser = [SELECT Id,LastName FROM User WHERE LastName LIKE '%@store' LIMIT 1];
+                            
+                            if (targetUser != null) {
+                                existingLead[0].OwnerId = targetUser.Id;
+                                existingLead[0].Is_Order_Created__c = true;
+                                update existingLead[0];
+                            }
+                        }
+                        Database.LeadConvert lc = new Database.LeadConvert();
+                        lc.setLeadId(existingLead[0].Id);
+                        lc.setConvertedStatus('Converted');
+                        
+                        Database.LeadConvertResult lcr = Database.convertLead(lc);
+
+                        if (lcr.isSuccess()) {
+                            system.debug('Lead converted to Account and Contact' + lcr.getAccountId() + ' contact is >> ' + lcr.getContactId());
+                            Id accId = lcr.getAccountId();
+                            
+                            Account newAccount = new Account(Id = accId,
+                                                             Type = 'Customer',
+                                                             Name = (String)requestMap.get('full_name'),
+                                                             Phone = (String)requestMap.get('phone_number') != null ? (String)requestMap.get('phone_number') : '',
+                                                             Email__c = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
+                                                             BillingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
+                                                             BillingStreet = ((String)billing_address.get('address_1') != null ? (String)billing_address.get('address_1') : '') +' '+ ((String)billing_address.get('address_2') != null ? (String)billing_address.get('address_2') : ''),
+                                                             BillingCity = (String)billing_address.get('city') != null ? (String)billing_address.get('city') : '',
+                                                             BillingState = (String)billing_address.get('state') != null ? (String)billing_address.get('state') : '',
+                                                             BillingPostalCode = (String)billing_address.get('pin_code') != null ? (String)billing_address.get('pin_code') : '',
+                                                             ShippingCountry = (String)shipping_address.get('country') != null ? (String)shipping_address.get('country') : 'India',
+                                                             ShippingStreet = ((String)shipping_address.get('address_1') != null ? (String)shipping_address.get('address_1') : '')+ ' '+((String)shipping_address.get('address_2') != null ? (String)shipping_address.get('address_2') : ''),
+                                                             ShippingCity = (String)shipping_address.get('city') != null ? (String)shipping_address.get('city') : '',
+                                                             ShippingState = (String)shipping_address.get('state') != null ? (String)shipping_address.get('state') : '',
+                                                             ShippingPostalCode = (String)shipping_address.get('pin_code') != null ? (String)shipping_address.get('pin_code') : ''
+                                                            );
+                            update newAccount;
+
+                            accountId = accId;
+
+                            
+                            createOpportunityForAccount(newAccount);
+                        }
+                    }     
+                    else {
+                       
+                        Lead newLead = new Lead(
+                            LastName = (String)requestMap.get('full_name'),
+                            Company =(String)requestMap.get('full_name'),
+                            Email = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
+                            Phone = (String)requestMap.get('phone_number') != null ? (String)requestMap.get('phone_number') : '',
+                            LeadSource	= 'River Website',
+                            Is_Order_Created__c = true,
+                            Status = 'Converted',
+                            Street = (billing_address.containsKey('address_1') ? (String)billing_address.get('address_1') : '') + ' ' +(billing_address.containsKey('address_2') ? (String)billing_address.get('address_2') : ''),
+                            City = billing_address.containsKey('city') ? (String)billing_address.get('city') : '',
+                            State = billing_address.containsKey('state') ? (String)billing_address.get('state') : '',
+                            PostalCode = billing_address.containsKey('pin_code') ? (String)billing_address.get('pin_code') : '',
+                            Country = billing_address.containsKey('country') ? (String)billing_address.get('country') : 'India'
+                        );
+                        insert newLead;
+                        
+                        if (newLead.Owner.Type == 'Queue') {
+                            User targetUser = [SELECT Id,LastName FROM User WHERE LastName LIKE '%@store' LIMIT 1];
+                            if (targetUser != null) {
+                                newLead.OwnerId = targetUser.Id;
+                                update newLead; 
+                            }
+                        }
+                        
+                        Database.LeadConvert lc = new Database.LeadConvert();
+                        lc.setLeadId(newLead.Id);
+                        lc.setConvertedStatus('Converted');
+                        
+                        Database.LeadConvertResult lcr = Database.convertLead(lc);
+                        system.debug('New Lead is created >> ' + newLead);                    
+                        system.debug('creating new account and contact1');
+                        
+                        Account newAccount = new Account(
+                            Id = lcr.getAccountId(),
+                            Name = (String)requestMap.get('full_name'),
+                            AccountSource = 'River Website',
+                            Type = 'Customer',
+                            Email__c = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
+                            BillingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
+                            Phone = (String)requestMap.get('phone_number') != null ? (String)requestMap.get('phone_number') : '',
+                            BillingStreet = ((String)billing_address.get('address_1') != null ? (String)billing_address.get('address_1') : '') +' '+((String)billing_address.get('address_2') != null ? (String)billing_address.get('address_2') : ''),
+                            BillingCity = (String)billing_address.get('city') != null ? (String)billing_address.get('city') : '',
+                            BillingState = (String)billing_address.get('state') != null ? (String)billing_address.get('state') : '',
+                            BillingPostalCode = (String)billing_address.get('pin_code') != null ? (String)billing_address.get('pin_code') : '',
+                            ShippingCountry = (String)shipping_address.get('country') != null ? (String)shipping_address.get('country') : 'India',
+                            ShippingStreet = ((String)shipping_address.get('address_1') != null ? (String)shipping_address.get('address_1') : '') +' '+ ((String)shipping_address.get('address_2') != null ? (String)shipping_address.get('address_2') : ''),
+                            ShippingCity = (String)shipping_address.get('city') != null ? (String)shipping_address.get('city') : '',
+                            ShippingState = (String)shipping_address.get('state') != null ? (String)shipping_address.get('state') : '',
+                            ShippingPostalCode = (String)shipping_address.get('pin_code') != null ? (String)shipping_address.get('pin_code') : ''
+                        );
+                        update newAccount;
+                        
+                        accountId = newAccount.Id;
+
+                     
+                        createOpportunityForAccount(newAccount);
+                    }
                 }
             }
-            Else{
-                accountId = existingAccount[0].Id;
-                
-                Account newAccount = new Account(
-                    id = accountId,
-                    Name = (String)requestMap.get('full_name'),
-                    Type = 'Customer',
-                    Email__c = (String)requestMap.get('email_address') != null ? (String)requestMap.get('email_address') : '',
-                    BillingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
-                    Phone = (String)requestMap.get('phone_number') != null ? (String)requestMap.get('phone_number') : '',
-                    BillingStreet = ((String)billing_address.get('address_1') != null ? (String)billing_address.get('address_1') : '') +' '+((String)billing_address.get('address_2') != null ? (String)billing_address.get('address_2') : ''),
-                    BillingCity = (String)billing_address.get('city') != null ? (String)billing_address.get('city') : '',
-                    BillingState = (String)billing_address.get('state') != null ? (String)billing_address.get('state') : '',
-                    BillingPostalCode = (String)billing_address.get('pin_code') != null ? (String)billing_address.get('pin_code') : '',
-                    ShippingCountry = (String)billing_address.get('country') != null ? (String)billing_address.get('country') : 'India',
-                    ShippingStreet = ((String)shipping_address.get('address_1') != null ? (String)shipping_address.get('address_1') : '') +' '+ ((String)shipping_address.get('address_2') != null ? (String)shipping_address.get('address_2') : ''),
-                    ShippingCity = (String)shipping_address.get('city') != null ? (String)shipping_address.get('city') : '',
-                    ShippingState = (String)shipping_address.get('state') != null ? (String)shipping_address.get('state') : '',
-                    ShippingPostalCode = (String)shipping_address.get('pin_code') != null ? (String)shipping_address.get('pin_code') : ''
-                );
-                Update newAccount;
-            }
             
+            Map<String, Object> response = new Map<String, Object>();
             response.put('status', 'Success');
-            
             response.put('accountId', accountId);
             res.statusCode = 200; 
             res.responseBody = Blob.valueOf(JSON.serialize(response));
+
+            insertIntegrationLog('Account Registration',JSON.seriaLizePretty(requestMap),JSON.seriaLizePretty(response),'','Success');
             
-            Integration_Log__c  logObj = new Integration_Log__c(
-                Integration_Type__c = 'Account Registration',
-                Request_Payload__c = JSON.seriaLizePretty(requestMap),
-                Response_Payload__c = JSON.seriaLizePretty(response),
-                Status__c = 'Success'
-            );
-            Insert logObj;
-            system.debug('Log created>>'+logObj);
-        }
-        catch(exception e){
-            
+        }catch(Exception e){
             system.debug('Exception occured: '+e);
+            Map<String, Object> response = new Map<String, Object>();
             response.put('status', 'Failed');
             res.statusCode = 500; 
             res.responseBody = Blob.valueOf('Exception: '+e.getMessage());
-            
+
+            insertIntegrationLog('Account Registration',JSON.seriaLizePretty(requestMap),JSON.seriaLizePretty(response),'Exception: '+e.getMessage(),'Failed');
+        
+        }
+    }
+
+    
+    private static void createOpportunityForAccount(Account acc) {
+        List<Opportunity> oppList = [SELECT Id,StageName FROM Opportunity WHERE AccountId=:acc.Id LIMIT 1];
+        if(!oppList.isEmpty()){
+            if(oppList[0].StageName == 'Closed Won'){
+                Opportunity o = new Opportunity();
+                o.Name = acc.Name + '_Enquiry';
+                o.CloseDate = System.Today();
+                o.AccountId = acc.Id;
+                o.ForecastCategoryName = 'Pipeline';
+                o.Phone__c = acc.Phone;
+                insert o;
+            }
+        } else {
+            Opportunity o = new Opportunity();
+            o.Name = acc.Name + '_Enquiry';
+            o.CloseDate = System.Today();
+            o.AccountId = acc.Id;
+            o.ForecastCategoryName = 'Pipeline';
+            o.Phone__c = acc.Phone;
+            insert o;
+        }
+    }
+    private static void insertIntegrationLog(String type,String reqPayload,String resPayload,String errorMessage,String status){
+        try{
             Integration_Log__c  logObj = new Integration_Log__c(
-                Integration_Type__c = 'Account Registration',
-                Request_Payload__c = JSON.seriaLizePretty(requestMap),
-                Response_Payload__c = JSON.seriaLizePretty(res),
-                Error_Message__c = 'Exception: '+e.getMessage(),
-                Status__c = 'Failed'
+                Integration_Type__c = type,
+                Request_Payload__c = reqPayload,
+                Response_Payload__c = resPayload,
+                Error_Message__c = errorMessage,
+                Status__c = status
             );
             Insert logObj;
-            system.debug('Log created exception>>'+logObj);
+            System.debug('Inserted Log Object==>'+logObj);
             
+        }catch(Exception e){
+            System.debug('Error Occured==>'+e.getMessage());
+            System.debug('Error Line Number Is ==>'+e.getLineNumber());
         }
     }
     

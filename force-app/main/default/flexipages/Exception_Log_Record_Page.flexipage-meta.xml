@@ -82,6 +82,54 @@
                 <identifier>RecordReference_Id__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Rec_Name__c</fieldItem>
+                <identifier>RecordRec_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Phone__c</fieldItem>
+                <identifier>RecordPhone__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Event_Name__c</fieldItem>
+                <identifier>RecordEvent_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Event_Location__c</fieldItem>
+                <identifier>RecordEvent_Location__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.PostalCode__c</fieldItem>
+                <identifier>RecordPostalCode__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Primary_Source__c</fieldItem>
+                <identifier>RecordPrimary_Source__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Secondary_Sources__c</fieldItem>
+                <identifier>RecordSecondary_Sources__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Last_Name__c</fieldItem>
+                <identifier>RecordLast_Name__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-465de8ce-9948-44e1-8c1b-ba947a4c313e</name>
         <type>Facet</type>
     </flexiPageRegions>

@@ -42,8 +42,8 @@ global class MobileApp_EventOpenOpp {
             //\'Drop Out\',
            String query = 'SELECT Id, OrderNumber,OpportunityId,Opportunity.AccountId,Order_Id__c,Opportunity.Account.Phone,AccountId,Account.Phone,PME_Drive__c,Registration_Date__c,Delivery_Date__c,'+
             'Account.Name,Opportunity.Name, Status, Grand_Total__c, Remaining_Amount__c, Name,(Select Id,Description__c,CreatedDate from Comments__r  Order by CreatedDate DESC )'+
-               ' FROM Order ' + 'WHERE OwnerId = \'' + userId + '\' ' + 'AND Status IN (\'New\', \'Draft\', \'Activated\', \'Processing\', ' +
-               '\'Payment Pending\', \'Allotment in Process\', \'Pre Invoice\', ' + '\'RTO Registration\', \'Ready For Delivery\') ' + addQuery;
+               ' FROM Order ' + 'WHERE OwnerId = \'' + userId + '\' ' + 'AND Status IN (\'Booking\', \'Payment and Allocation\', \'Pre Invoice\', \'Invoice and Insurance\', ' +
+               '\'RTO Registration\', \'Ready For Delivery\')' + addQuery;
 
             List<Order> ordList = Database.query(query);
             System.debug('query ======>' + query);

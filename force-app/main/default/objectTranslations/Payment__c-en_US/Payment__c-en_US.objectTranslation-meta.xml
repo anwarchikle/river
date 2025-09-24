@@ -28,4 +28,8 @@
         <errorMessage><!-- &quot;Phone number must contain only numerical digits (0-9). Please remove any non-numeric characters.&quot; --></errorMessage>
         <name>Phone_Number_should_take_only_numeric</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- Paid Amount Should be Greater than Paid Amount --></errorMessage>
+        <name>paid_amount_cannot_be_less_than_2500</name>
+    </validationRules>
 </CustomObjectTranslation>

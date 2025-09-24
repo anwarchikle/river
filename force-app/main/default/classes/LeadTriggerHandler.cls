@@ -313,247 +313,7 @@ public class LeadTriggerHandler {
         }  
         System.debug('Exiting updatePreferredSeller method.');
     }
-    
-    /* LMS Added by Anwar */
-    // public static void checkLeadStatus(List<Lead> newLeads) {
-    //     try {
-    //         Map<String,String> mapOfPincodeAndCenterName = new Map<String,String>();
-    //         Map<String, String> mapOfPincodeAndDealerCode = new Map<String, String>();
-    //         Map<String, String> mapOfPincodeAndCityName = new Map<String, String>();
-    //         Map<String, String> mapOfDealerCodeAndCityName = new Map<String, String>();
-    //         Map<String, Id> queueMap = new Map<String, Id>();
-    //         for (Group grp : [SELECT Id, DeveloperName FROM Group WHERE Type = 'Queue']) {
-    //             queueMap.put(grp.DeveloperName, grp.Id);
-    //         }
-    //         System.debug('queueMap populated =========>' + queueMap);
-    
-    //         for (Pin_Code__c grp : [SELECT Id, Dealer_Service_Center__c,Dealer_Service_Center__r.Name,Dealer_Service_Center__r.Center_Code__c,Dealer_Service_Center__r.Store_Name__c,City__r.Name,
-    //                                 Area_Pincode__c FROM Pin_Code__c]) {
-    //                                     mapOfPincodeAndCenterName.put(grp.Area_Pincode__c, grp.Dealer_Service_Center__r.Store_Name__c);
-    //                                     mapOfPincodeAndDealerCode.put(grp.Area_Pincode__c, grp.Dealer_Service_Center__r.Center_Code__c);
-    //                                     mapOfPincodeAndCityName.put(grp.Area_Pincode__c, grp.City__r.Name);
-    //                                     mapOfDealerCodeAndCityName.put(grp.Dealer_Service_Center__r.Center_Code__c, grp.City__r.Name);
-    //                                 }
-    //         System.debug('queueMap populated =========>' + queueMap);
-    
-    //         List<Lead> notServiceableLeadsList = new List<Lead>();
-    //         List<Lead> OutOfBusinessHoursLeadsList = new List<Lead>();
-    //         List<Lead> DMSledList = new List<Lead>();
-    //         List<Lead> ledList = new List<Lead>();
-    //         List<Messaging.SingleEmailMessage> mailList = new List<Messaging.SingleEmailMessage>();
-    //         User usrObj = [select Id,firstname,Contact.Account.Name,Profile.Name,Contact.Account.Center_Code__c,Contact.Account.BillingPostalCode,Contact.Account.Store_Name__c from user where id=:userinfo.getuserid()];
-    //         List<User> userList = [Select Id,Name from user where profile.name = 'System Administrator' AND Name = 'Binesh Nair' LIMIT 1];
-    
-    //         set<Id> setOfAGIds = new set<Id>();
-    //         List<Assignment_Group__c> listOfAG = [SELECT Id,Last_Allocated_RRid__c,Business_Hours_Morning__c,Business_Hours_End_Time__c from Assignment_Group__c Where isActive__c = true AND Name__c = 'Out of Business Hours' LIMIT 1];
-    //         System.debug('listOfAG =======> ' + listOfAG);
-    //         for(Assignment_Group__c AGRec : listOfAG){
-    //             setOfAGIds.add(AGRec.Id);
-    //         }
-    //         Time businessHoursStartTime = listOfAG[0] != null && listOfAG[0].Business_Hours_Morning__c != null ? listOfAG[0].Business_Hours_Morning__c : Time.newInstance(8, 0, 0, 0);
-    //         Time businessHoursEndTime   = listOfAG[0] != null && listOfAG[0].Business_Hours_End_Time__c != null ? listOfAG[0].Business_Hours_End_Time__c : Time.newInstance(20, 0, 0, 0);
-    //         System.debug('businessHoursStartTime =======> ' + businessHoursStartTime);
-    //         System.debug('businessHoursEndTime =======> ' + businessHoursEndTime);
-    //         Id assigningUser;
-    //         if (!setOfAGIds.isEmpty()) {
-    //             System.debug('1 =======> ');
-    //             Decimal lastAssignmentId = listOfAG[0].Last_Allocated_RRid__c;
-    
-    //             List<Assignment_Group_Member__c> listOfAGM = [
-    //                 SELECT Id, Assignment_Group__c, Active__c, Assignment_Id__c, Max_Case_Per_Day__c,Group_Member__c 
-    //                 FROM Assignment_Group_Member__c 
-    //                 WHERE Assignment_Group__c IN :setOfAGIds 
-    //                 AND Active__c = true
-    //                 ORDER BY Assignment_Id__c ASC
-    //             ];
-    
-    //             System.debug('listOfAGM =======> ' + listOfAGM);
-    //             Assignment_Group_Member__c selectedAGM;
-    
-    //             if (lastAssignmentId != null) {
-    //                 for (Assignment_Group_Member__c agm : listOfAGM) {
-    //                     if (agm.Assignment_Id__c == lastAssignmentId + 1) {
-    //                         selectedAGM = agm;
-    //                         break;
-    //                     }
-    //                     else{
-    
-    //                     }
-    //                 }
-    //             }
-    //             System.debug('selectedAGM =======> ' + selectedAGM);
-    
-    //             Assignment_Group__c assignmentRec;
-    //             if (selectedAGM == null && !listOfAGM.isEmpty()) {
-    //                 selectedAGM = listOfAGM[0];
-    
-    //                 assignmentRec = listOfAG[0];
-    //                 assignmentRec.Last_Allocated_RRid__c = 1;
-    //             }else{
-    
-    //                 assignmentRec = listOfAG[0];
-    //                 assignmentRec.Last_Allocated_RRid__c = lastAssignmentId + 1;
-    //             }
-    //             update assignmentRec;
-    //             System.debug('assignmentRec =======> ' + assignmentRec);
-    //             System.debug('selectedAGM =======> ' + selectedAGM);
-    //             if (selectedAGM != null) {
-    //                 System.debug('Selected Assignment Group Member: ' + selectedAGM.Id);
-    //                 assigningUser = selectedAGM.Group_Member__c;
-    //             }
-    //         }
-    
-    //         for (Lead ld : newLeads) {
-    //             Id ownerId;
-    //             String DealerCode;
-    //             String StoreName;
-    //             String CityName;
-    //             String postalCode;
-    //             Time currentTime = System.now().time(); 
-    //             System.debug('currentTime =====> ' + currentTime);
-    //             System.debug('businessHoursStartTime =====> ' + businessHoursStartTime);
-    //             System.debug('businessHoursEndTime =====> ' + businessHoursEndTime);
-    
-    //             Boolean isBusinessHours = currentTime >= businessHoursStartTime && currentTime <= businessHoursEndTime;
-    //             Boolean isZipInvalid = ld.PostalCode != null && !mapOfPincodeAndCenterName.containsKey(ld.PostalCode);
-    //             System.debug('isZipInvalid =====> ' + isZipInvalid);
-    
-    //             if (isBusinessHours) {
-    //                 if (isZipInvalid && ld.OwnerId != queueMap.get('Head_Quarter')) {
-    //                     notServiceableLeadsList.add(new Lead(Id = ld.Id,Future_Lead__c = true, Status = 'New',Stores_Name__c = 'No Service Available', postalCode = ld.PostalCode,OwnerId = queueMap.get('Head_Quarter')));
-    //                     System.debug('notServiceableLeadsList =====> ' + notServiceableLeadsList);
-    //                     continue;
-    //                 } else {
-    //                     if (usrObj.Profile.Name == 'Sales Manager (Partner)' || usrObj.Profile.Name == 'Salesforce API Only System Integrations') {
-    //                         ownerId = usrObj.Id;
-    //                         DealerCode = usrObj.Contact.Account.Center_Code__c;
-    //                         StoreName = usrObj.Contact.Account.Store_Name__c;
-    //                         CityName = mapOfDealerCodeAndCityName.get(DealerCode);
-    //                         postalCode = usrObj.Contact.Account.BillingPostalCode;
-    
-    //                         DMSledList.add(new Lead(Id = ld.Id, OwnerId = ownerId,
-    //                                                 Dealer_Code__c = DealerCode,
-    //                                                 Stores_Name__c = StoreName,
-    //                                                 City = CityName,
-    //                                                 postalCode = postalCode
-    //                                                ));
-    
-    //                     }else if(assigningUser != null) {
-    
-    //                         ownerId = assigningUser;
-    //                         System.debug(' mapOfPincodeAndDealerCode ============> ' + mapOfPincodeAndDealerCode.get(ld.PostalCode));
-    //                         System.debug(' mapOfPincodeAndCityName ============> ' + mapOfPincodeAndCityName.get(ld.PostalCode));
-    //                         System.debug(' mapOfPincodeAndCityName ============> ' + mapOfPincodeAndCityName.get(ld.PostalCode));
-    //                         StoreName = mapOfPincodeAndCenterName.get(ld.PostalCode);
-    //                         CityName = mapOfPincodeAndCityName.get(ld.PostalCode) ;
-    //                         DealerCode = mapOfPincodeAndDealerCode.get(ld.PostalCode);
-    //                         postalCode = ld.PostalCode;
-    
-    //                         ledList.add(new Lead(Id = ld.Id, OwnerId = ownerId,
-    //                                              Dealer_Code__c = DealerCode,
-    //                                              Stores_Name__c = StoreName,
-    //                                              City = CityName,
-    //                                              postalCode = postalCode
-    //                                             ));
-    //                     }else{
-    //                         StoreName = mapOfPincodeAndCenterName.get(ld.PostalCode);
-    //                         CityName = mapOfPincodeAndCityName.get(ld.PostalCode) ;
-    //                         DealerCode = mapOfPincodeAndDealerCode.get(ld.PostalCode);
-    //                         postalCode = ld.PostalCode;
-    
-    //                         OutOfBusinessHoursLeadsList.add(new Lead(Id = ld.Id, Status = 'New',
-    //                                                                  OwnerId = queueMap.get('Out_of_Business_Hours'),
-    //                                                                  Stores_Name__c = StoreName,
-    //                                                                  Dealer_Code__c = DealerCode,
-    //                                                                  City = CityName,
-    //                                                                  postalCode = postalCode
-    //                                                                 ));
-    //                         System.debug('Lead assigned after hours to Out_of_Business_Hours queue. Lead Id: ' + ld.Id);
-    //                     }
-    //                 }
-    //             } 
-    //             else {
-    //                 if (isZipInvalid && ld.OwnerId != queueMap.get('Head_Quarter')) {
-    //                     notServiceableLeadsList.add(new Lead(Id = ld.Id, Future_Lead__c = true, Stores_Name__c = 'No Service Available',Status = 'New',postalCode = ld.PostalCode ,OwnerId = queueMap.get('Head_Quarter')));
-    //                     continue;
-    //                 } else {
-    //                     if (usrObj.Profile.Name == 'Sales Manager (Partner)') {
-    //                         ownerId = usrObj.Id;
-    //                         DealerCode = usrObj.Contact.Account.Center_Code__c;
-    //                         StoreName = usrObj.Contact.Account.Store_Name__c;
-    //                         CityName = mapOfDealerCodeAndCityName.get(DealerCode);
-    //                         postalCode = usrObj.Contact.Account.BillingPostalCode;
-    //                         DMSledList.add(new Lead(Id = ld.Id, OwnerId = ownerId, Dealer_Code__c = DealerCode != null ? DealerCode :'' ,
-    //                                                 Stores_Name__c = StoreName,City = CityName,
-    //                                                 postalCode = postalCode));
-    //                     } else {
-    
-    //                         StoreName = mapOfPincodeAndCenterName.get(ld.PostalCode);
-    //                         CityName = mapOfPincodeAndCityName.get(ld.PostalCode) ;
-    //                         DealerCode = mapOfPincodeAndDealerCode.get(ld.PostalCode);
-    //                         postalCode = ld.PostalCode;
-    
-    //                         OutOfBusinessHoursLeadsList.add(new Lead(Id = ld.Id, Status = 'New',
-    //                                                                  OwnerId = ld.Dealer_Allocation__c == true ? queueMap.get('Out_of_Business_Hours') : userList[0].Id,
-    //                                                                  Stores_Name__c = StoreName,
-    //                                                                  Dealer_Code__c = DealerCode,
-    //                                                                  City = CityName,
-    //                                                                  postalCode = postalCode
-    //                                                                 ));
-    
-    //                         System.debug('Lead assigned after hours to Out_of_Business_Hours queue. Lead Id: ' + ld.Id);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    
-    //         if(!OutOfBusinessHoursLeadsList.isEmpty()){
-    //             System.debug('Updating Leads which are out of business hours: ' + OutOfBusinessHoursLeadsList);
-    //             update OutOfBusinessHoursLeadsList;
-    
-    //         }
-    
-    //         if (!notServiceableLeadsList.isEmpty()) {
-    //             System.debug('Updating Not Serviceable Leads: ' + notServiceableLeadsList);
-    //             update notServiceableLeadsList;
-    //         }
-    
-    //         if (!ledList.isEmpty()) {
-    //             System.debug('Updating Assigned Leads: ' + ledList);
-    //             update ledList;
-    
-    //             Map<Id, Lead> leadMap = new Map<Id, Lead>();
-    //             for(Lead ldRec : notServiceableLeadsList){
-    //                 leadMap.put(ldRec.Id,ldRec);
-    //             }
-    //             if (!leadMap.isEmpty()) {
-    //                 String jsonData = JSON.serialize(leadMap);
-    //                 handleLeadConversion(jsonData);
-    //             }
-    
-    //         }
-    
-    //         if (!DMSledList.isEmpty()) {
-    //             System.debug('Updating Assigned Leads: ' + DMSledList);
-    //             update DMSledList;
-    
-    //             Map<Id, Lead> leadMap = new Map<Id, Lead>();
-    //             for(Lead ldRec : DMSledList){
-    //                 leadMap.put(ldRec.Id,ldRec);
-    //             }
-    //             if (!leadMap.isEmpty()) {
-    //                 String jsonData = JSON.serialize(leadMap);
-    //                 handleLeadConversion(jsonData);
-    //             }
-    
-    //         }
-    //         System.debug('checkLeadStatus method execution completed');
-    
-    //     } catch (Exception e) {
-    //         System.debug('Error ==========> ' + e.getMessage() + ' Line ==========> ' + e.getLineNumber());
-    //     }
-    // }
-    
+
     public static void enqueueLeadProcessing(List<Lead> newLeads) {
         List<Id> leadIds = new List<Id>();
         for (Lead ld : newLeads) {
@@ -645,6 +405,8 @@ public class LeadTriggerHandler {
                                 opp.StageName = 'Test Ride Scheduled';
                             }
                             oppsToUpdate.add(opp);
+
+                            
                             
                             if (lead.WhatsApp_Sent_After_Update__c) {
                                 testDrivesToCreate.add(new Test_Drive__c(
@@ -662,7 +424,11 @@ public class LeadTriggerHandler {
                 }
                 
                 if (!accountsToUpdate.isEmpty()) update accountsToUpdate;
-                if (!oppsToUpdate.isEmpty()) update oppsToUpdate;
+                if(!oppsToUpdate.isEmpty()){
+                    update oppsToUpdate;
+                    OpportunityTriggerHandler.assignOpportunityToSM(oppsToUpdate);
+                }
+                
                 if (!testDrivesToCreate.isEmpty()) insert testDrivesToCreate;
             }
             
@@ -793,6 +559,8 @@ public class LeadTriggerHandler {
                             opp.OwnerId = ownerId;
                             update opp;
                             
+                            OpportunityTriggerHandler.assignOpportunityToSM(new List<Opportunity>{opp});
+
                             if (!listOfFollowUp.isEmpty()) {
                                 for (Follow_Up__c followUpRec : listOfFollowUp) {
                                     followUpRec.Opportunity__c = opp.Id;
@@ -885,9 +653,11 @@ public class LeadTriggerHandler {
                     taskList.add(task);
                 }
             }
+           
             if (!taskList.isEmpty()) {
                 insert taskList;
             }
+            
         } catch (Exception e) {
             System.debug('Error in createTaskUnderLeadIfLeadIsNotConverted: ' + e.getMessage() + ' at line ' + e.getLineNumber());
         }

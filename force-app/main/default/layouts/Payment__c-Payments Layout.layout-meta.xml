@@ -43,6 +43,10 @@
                 <behavior>Required</behavior>
                 <field>Source_Of_Payment__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Enquiry__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

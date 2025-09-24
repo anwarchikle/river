@@ -42,6 +42,15 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>BranchUnit</fields>
+        <fields>BusinessUnitMember</fields>
+        <fields>StartDate</fields>
+        <fields>EndDate</fields>
+        <fields>IsActive</fields>
+        <relatedList>BranchUnitBusinessMembers</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

@@ -8,6 +8,380 @@
 public without sharing class OrderTriggerHandler {
     
     public static final Id vehicleRecordTypeId = Schema.SObjectType.Order.getRecordTypeInfosByName().get('Vehicle').getRecordTypeId();
+    private static Boolean isExecuted = false;
+
+    public static void thorwErrorIfBasicDetailsAreNull(List<Order> newOrders) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId) {
+                    if (ord.Status == 'Payment and Allocation') {
+
+                        if (ord.Occupation__c == null) {
+                            ord.Occupation__c.addError('Occupation is required.');
+                        }
+                        if (ord.Account_email__c == null) {
+                            ord.Account_email__c.addError('Email is required.');
+                        }
+                        if (ord.Gender__c == null) {
+                            ord.Gender__c.addError('Gender is required.');
+                        }
+                        if (ord.BillingStreet == null) {
+                            ord.BillingStreet.addError('Billing Street is required.');
+                        }
+                        if (ord.BillingCity == null) {
+                            ord.BillingCity.addError('Billing City is required.');
+                        }
+                        // if (ord.BillingState == null) {
+                        //     ord.BillingState.addError('Billing State is required.');
+                        // }
+                        if (ord.BillingPostalCode == null) {
+                            ord.BillingPostalCode.addError('Billing Postal Code is required.');
+                        }
+                        // if (ord.BillingCountry == null) {
+                        //     ord.BillingCountry.addError('Billing Country is required.');
+                        // }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    
+    public static void paymentDueIsNotNull(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId) {
+                    if ((ord.Payment_Due_Date__c != null && oldOrderMap.get(ord.Id).Payment_Due_Date__c != ord.Payment_Due_Date__c) || ord.Payment_And_Allocation_Stage__c == true) {
+                        ord.Status = 'Payment and Allocation';
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void moveStatusToPreInvoiceIfFullPaymentIsDoneAndVehicleIsDone(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId) {
+                    if (ord.Status == 'Payment and Allocation' && ord.Assigned_Vehicle__c != null && oldOrderMap.get(ord.Id).Assigned_Vehicle__c == null && ord.Remaining_Amount__c != null && ord.Remaining_Amount__c == 0) {
+                            ord.Status = 'Pre Invoice';
+                            ord.Payment_status__c = 'Completed';
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void dontAllowUserToTagSameVehicleToMultipleOrders(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            Set<Id> vehicleIds = new Set<Id>();
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId && 
+                    ord.Assigned_Vehicle__c != null && 
+                    oldOrderMap.get(ord.Id).Assigned_Vehicle__c != ord.Assigned_Vehicle__c) {
+                    vehicleIds.add(ord.Assigned_Vehicle__c);
+                }
+            }
+
+            if (!vehicleIds.isEmpty()) {
+                Map<Id, Id> vehicleIdToOrderId = new Map<Id, Id>();
+                for (Order existingOrder : [SELECT Id, Assigned_Vehicle__c FROM Order WHERE Assigned_Vehicle__c IN :vehicleIds]) {
+                    vehicleIdToOrderId.put(existingOrder.Assigned_Vehicle__c, existingOrder.Id);
+                }
+
+                for (Order ord : newOrders) {
+                    if (ord.RecordTypeId == vehicleRecordTypeId && ord.Assigned_Vehicle__c != null && oldOrderMap.get(ord.Id).Assigned_Vehicle__c != ord.Assigned_Vehicle__c) {
+                        if (vehicleIdToOrderId.containsKey(ord.Assigned_Vehicle__c) &&
+                            vehicleIdToOrderId.get(ord.Assigned_Vehicle__c) != ord.Id) {
+                            ord.Assigned_Vehicle__c.addError('This vehicle is already assigned to another order. Please select a different vehicle.');
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void throwErrorIfCustomerApprovalIsNotThere(List<Order> newOrders, Map<Id, Order> oldOrderMap){
+        try{
+            for(Order ord : newOrders){
+                if(ord.RecordTypeId == vehicleRecordTypeId && (ord.Customer_Approval__c == null || ord.Customer_Approval__c == '' || ord.Customer_Approval__c == 'No') && oldOrderMap.get(ord.Id).Status != ord.Status && ord.Status != null && ord.Status == 'Invoice and Insurance'){
+                    ord.addError('Please obtain customer approval before proceeding to Invoice and Insurance.');
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void moveStageToRTOIfAllTheInsuranceDetailsIsFilled(List<Order> newOrders, Map<Id, Order> oldOrderMap){
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId && ord.Status == 'Invoice and Insurance') {
+                    if(ord.Insurance_Type__c == 'In House' && (ord.Insurance__c != null && ord.Insurance_Amount__c != null && ord.Policy_Number__c != null )){
+                        ord.Status = 'RTO Registration';
+                    }
+                    if (ord.Insurance_Type__c == 'Out House' && (ord.Other_Insurance_Provider_Name__c != null && ord.Insurance_Amount__c != null && ord.Policy_Number__c != null )) {
+                        ord.Status = 'RTO Registration';
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void throwErrorIfVRNisMissingWhenStageIsReadyForDelivery(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            Set<Id> vehicleIds = new Set<Id>();
+
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId && ord.Status == 'Ready For Delivery' && oldOrderMap.get(ord.Id).Status != ord.Status && ord.Assigned_Vehicle__c != null) {
+                    vehicleIds.add(ord.Assigned_Vehicle__c);
+                }
+            }
+
+            if (!vehicleIds.isEmpty()) {
+                Map<Id, Vehicle> vehicleMap = new Map<Id, Vehicle>([SELECT Id, VehicleRegistrationNumber FROM Vehicle WHERE Id IN :vehicleIds]);
+
+                for (Order ord : newOrders) {
+                    if (ord.RecordTypeId == vehicleRecordTypeId && ord.Status == 'Ready For Delivery' && oldOrderMap.get(ord.Id).Status != ord.Status && ord.Assigned_Vehicle__c != null) {
+                        Vehicle v = vehicleMap.get(ord.Assigned_Vehicle__c);
+                        if (v == null || String.isBlank(v.VehicleRegistrationNumber)) {
+                            ord.addError('Please fill the Vehicle Registration Number on the assigned Vehicle before moving to Ready For Delivery.');
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void throwErrorIfInsuranceDetailsNotFilled(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId && oldOrderMap.get(ord.Id).Status != ord.Status && ord.Status == 'RTO Registration') {
+                    if (ord.Insurance_Type__c == null || ord.Insurance_Type__c == '') {
+                        ord.Insurance_Type__c.addError('Please select Insurance Type.');
+                    }
+
+                    if (ord.Insurance_Type__c == 'In House') {
+                        if (ord.Policy_Number__c == null) {
+                            ord.Policy_Number__c.addError('Policy Number is required for In House type.');
+                        }
+                    }
+
+                    if (ord.Insurance_Type__c == 'Out House') {
+                        if (ord.Policy_Number__c == null) {
+                            ord.Policy_Number__c.addError('Policy Number is required for Out House type.');
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+
+    public static void createTaskForOrderOwnerIfDueDateIsNotNull(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            List<Task> taskList = new List<Task>();
+            Set<Id> orderIds = new Set<Id>();
+
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId) {
+                    if (ord.Status == 'Payment and Allocation' && oldOrderMap.get(ord.Id).Payment_Due_Date__c != ord.Payment_Due_Date__c && ord.Payment_Due_Date__c != null && ord.Remaining_Amount__c != null && ord.Remaining_Amount__c >= 0) {
+                            orderIds.add(ord.Id);
+                    }
+                }
+            }
+
+            if (!orderIds.isEmpty()) {
+                Map<Id, Task> latestTaskMap = new Map<Id, Task>();
+                for (Task t : [SELECT Id, WhatId, Status, CreatedDate FROM Task WHERE WhatId IN :orderIds AND Status != 'Completed' ORDER BY CreatedDate DESC]) {
+                    if (!latestTaskMap.containsKey(t.WhatId)) {
+                        latestTaskMap.put(t.WhatId, t);
+                    }
+                }
+
+                for (Order ord : newOrders) {
+                    if (orderIds.contains(ord.Id)) {
+                        Task latestTask = latestTaskMap.get(ord.Id);
+                        if (latestTask == null) {
+                            Task task = new Task();
+                            task.Subject = 'Call for Payment from Customer';
+                            task.WhatId = ord.Id;
+                            task.ActivityDate = ord.Payment_Due_Date__c;
+                            task.OwnerId = ord.OwnerId;
+                            task.Status = 'Not Started';
+                            task.Priority = 'High';
+                            taskList.add(task);
+                        }
+                    }
+                }
+            }
+
+            if (!taskList.isEmpty()) {
+                insert taskList;
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    
+    public static void throwErrorIfRemainingAmountIsMoreThanZero(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        System.debug('### 1');
+        try {
+            for (Order ord : newOrders) {
+                System.debug('### 2 Order Id: ' + ord.Id);
+                if (ord.RecordTypeId == vehicleRecordTypeId ) {
+                    System.debug('### 3 RecordType matched Vehicle');
+
+                    if (ord.Insurance_Type__c == null && ord.Status == 'Pre Invoice') {
+                        System.debug('### 4 Insurance_Type__c is null and Status = Pre Invoice');
+                        ord.Insurance_Type__c.addError('Please Select Insurance Type.');
+                    }
+
+                    if (ord.Insurance_Type__c != null && ord.Status == 'Pre Invoice') {
+                        System.debug('### 5 Insurance_Type__c not null and Status = Pre Invoice, Value: ' + ord.Insurance_Type__c);
+
+                        if (ord.Insurance_Type__c == 'In House') {
+                            System.debug('### 6 Inside In House');
+                            if (ord.Insurance__c == null) {
+                                System.debug('### 7 Insurance__c null');
+                                ord.Insurance__c.addError('Insurance is required for In House type.');
+                            }
+                            if (ord.Insurance_Amount__c == null) {
+                                System.debug('### 8 Insurance_Amount__c null');
+                                ord.Insurance_Amount__c.addError('Insurance Amount is required for In House type.');
+                            }
+                        }
+
+                        if (ord.Insurance_Type__c == 'Out House') {
+                            System.debug('### 9 Inside Out House');
+                            if (ord.Other_Insurance_Provider_Name__c == null) {
+                                System.debug('### 10 Other_Insurance_Provider_Name__c null');
+                                ord.Other_Insurance_Provider_Name__c.addError('Other Insurance Provider Name is required for Out House type.');
+                            }
+                            if (ord.Insurance_Amount__c == null) {
+                                System.debug('### 11 Insurance_Amount__c null');
+                                ord.Insurance_Amount__c.addError('Insurance Amount is required for Out House type.');
+                            }
+                        }
+                    }
+
+                    if (ord.Finance__c != null && ord.Status == 'Pre Invoice') {
+                        System.debug('### 12 Finance not null and Status = Pre Invoice');
+
+                        if (ord.EMI_Amount__c == null) {
+                            System.debug('### 13 EMI_Amount__c null');
+                            ord.EMI_Amount__c.addError('Please enter EMI Amount before moving to Pre Invoice.');
+                        }
+                        if (ord.Tenure__c == null) {
+                            System.debug('### 14 Tenure__c null');
+                            ord.Tenure__c.addError('Please enter Tenure before moving to Pre Invoice.');
+                        }
+                        if (ord.Tenure_Type__c == null) {
+                            System.debug('### 15 Tenure_Type__c null');
+                            ord.Tenure_Type__c.addError('Please select Tenure Type before moving to Pre Invoice.');
+                        }
+                        if (ord.Financed_Amount__c == null) {
+                            System.debug('### 16 Financed_Amount__c null');
+                            ord.Financed_Amount__c.addError('Please enter Financed Amount before moving to Pre Invoice.');
+                        }
+                        if (ord.Delivery_Order_Obtained__c == false) {
+                            System.debug('### 17 Delivery_Order_Obtained__c false');
+                            ord.Delivery_Order_Obtained__c.addError('Please Check Delivery Obtained before moving to Pre Invoice.');
+                        }
+                        if (ord.Loan_Start_Date__c == null) {
+                            System.debug('### 18 Loan_Start_Date__c null');
+                            ord.Loan_Start_Date__c.addError('Please enter Loan Start Date before moving to Pre Invoice.');
+                        }
+                    }
+
+                    if (ord.Remaining_Amount__c > 0 && ord.Vehicle_Assigned__c == false && ord.Assigned_Vehicle__c != null) {
+                        System.debug('### 19 Remaining_Amount__c > 0 and Vehicle_Assigned__c = false and Assigned_Vehicle__c not null');
+                        ord.addError('Cannot allot the vehicle until full payment is done.');
+                    }
+
+                    if (ord.Remaining_Amount__c == 0 && ord.Assigned_Vehicle__c == null && ord.Status == 'Pre Invoice') {
+                        System.debug('### 20 Remaining_Amount__c == 0, Assigned_Vehicle__c null, Status = Pre Invoice');
+                        ord.addError('Please assign the vehicle before marking status as Pre Invoice.');
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    
+    public static void NewRegistrationdate(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.Status == 'RTO Registration' && ord.Status != oldOrderMap.get(ord.Id).Status) {
+                    ord.Registration_Date__c = System.today();
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+    
+    public static void NewDeliverydate(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.Status == 'Vehicle Delivered' && ord.Status != oldOrderMap.get(ord.Id).Status) {
+                    ord.Delivery_Date__c = System.today();
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void updateOrderStatusAsOrderCancelledIfTheOrderRefundIfFilledAndRefundStatusIsCompleted(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId) {
+                    if (ord.Refund_Status__c != null && ord.Refund_Status__c == 'Completed' && (ord.Refunded_UTR_Details__c != null && ord.Refunded_UTR_Details__c != '' && ord.Refund_Amount__c != null 
+                        && ord.Refund_Amount__c != 0) && oldOrderMap.get(ord.Id).Refund_Status__c != ord.Refund_Status__c) {
+                            ord.Status = 'Order Cancelled';
+                            ord.Cancelled_Date__c = System.now();
+                        }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+
+    public static void throwErrorIfRefundStatusIsCompletedAndAmountAndUTRAreNull(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
+        try {
+            for (Order ord : newOrders) {
+                if (ord.RecordTypeId == vehicleRecordTypeId) {
+                    if (ord.Refund_Status__c != null && ord.Refund_Status__c == 'Completed' && (ord.Refunded_UTR_Details__c == null || ord.Refunded_UTR_Details__c == '' || ord.Refund_Amount__c == null 
+                        || ord.Refund_Amount__c == 0) && oldOrderMap.get(ord.Id).Refund_Status__c != ord.Refund_Status__c) {
+                            ord.addError('Please enter Refunded UTR Details before marking Refund Status as Completed And Refund Amount should be greater than 0');
+                        }
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error in ======>: ' + e.getMessage() + ' at line no ======> ' + e.getLineNumber());
+        }
+    }
+    
+    // ===========================================================================================================================================
     
     public static void handleOrderUpdate(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
         // Collect Orders where Status changed to 'Vehicle Delivered'
@@ -201,8 +575,7 @@ public without sharing class OrderTriggerHandler {
             }
         }
     }
-    
-    private static Boolean isExecuted = false; 
+     
     public static void maintainOrderCounter(List<Order> orderList) {
         if (isExecuted) {
             System.debug('Method already executed, skipping execution');
@@ -610,9 +983,6 @@ public without sharing class OrderTriggerHandler {
             System.debug('Error occured==>'+e.getMessage());
             System.debug('Eroor Line Number is =====>'+e.getLineNumber());
         }
-        
-        
-        
     }
     
     public static void processOrderMilestones(List<Order> newOrders, Map<Id, Order> oldOrderMap) {
@@ -713,21 +1083,6 @@ public without sharing class OrderTriggerHandler {
         if (!vehiclesToUpdate.isEmpty()) {
             System.debug('Updating Purchased Date for Vehicles: ' + vehiclesToUpdate);
             update vehiclesToUpdate;
-        }
-    }
-    
-    public static void NewRegistrationdate(List<Order> newOrders, Map<Id, Order> oldOrderMap){
-        for(Order ord : newOrders){
-            if(ord.Status == 'RTO Registration' && ord.Status != oldOrderMap.get(ord.id).Status){
-                ord.Registration_Date__c = system.today();
-            }
-        }
-    }
-    public static void NewDeliverydate(List<Order> newOrders, Map<Id, Order> oldOrderMap){
-        for(Order ord : newOrders){
-            if(ord.Status == 'Vehicle Delivered' && ord.Status != oldOrderMap.get(ord.id).Status){
-                ord.Delivery_Date__c = system.today();
-            }
         }
     }
     
@@ -853,7 +1208,6 @@ public without sharing class OrderTriggerHandler {
             System.debug('Error occured ===>'+e.getMessage());
             System.debug('Error Line Number Is ===>'+e.getLineNumber());
         }
-        
     } 
     
     public class wrapperForBooking{

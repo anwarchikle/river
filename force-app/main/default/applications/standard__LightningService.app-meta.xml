@@ -101,6 +101,7 @@
     <tabs>Salesforce_Support__c</tabs>
     <tabs>Duplicate_Record__c</tabs>
     <tabs>Comment__c</tabs>
+    <tabs>Opportunity_Line_Item__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LightningService_UtilityBar</utilityBar>
     <workspaceConfig>
@@ -118,6 +119,9 @@
         </mappings>
         <mappings>
             <tab>Home</tab>
+        </mappings>
+        <mappings>
+            <tab>Opportunity_Line_Item__c</tab>
         </mappings>
         <mappings>
             <tab>Payment_Split__c</tab>

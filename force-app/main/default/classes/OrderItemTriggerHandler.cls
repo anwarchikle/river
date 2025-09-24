@@ -94,50 +94,69 @@ public class OrderItemTriggerHandler {
         }
     } 
     
-    
-    
-   /* public static void calculateRollupValues(List<OrderItem> orderItems) {
-        if (orderItems == null || orderItems.isEmpty()) {
-            return;
-        }
-        
-        Set<Id> productIds = new Set<Id>();
-        for (OrderItem oi : orderItems) {
-            if (oi.Product2Id != null) {
-                productIds.add(oi.Product2Id);
+    public static void preventAddingOrderItemForInvoicedOrders(List<OrderItem> newOrderItems) {
+        try {
+            Set<Id> orderIdsToCheck = new Set<Id>();
+
+            for (OrderItem orderItem : newOrderItems) {
+                if (orderItem.OrderId != null) {
+                    orderIdsToCheck.add(orderItem.OrderId);
+                }
             }
-        }
-        
-        if (productIds.isEmpty()) {
-            return;
-        }
-        
-        Map<Id, Product2> productMap = new Map<Id, Product2>();
-        List<Product2> prodList = new List<Product2> ([SELECT Id, IGST_Percentage__c, Type__c FROM Product2 WHERE Id IN :productIds]);
-        for (Product2 p : prodList) {
-            productMap.put(p.Id, p);
-        }
-        
-        if (productMap.isEmpty()) {
-            return;
-        }
-        
-        for (OrderItem oi : orderItems) {
-            Product2 product = productMap.get(oi.Product2Id);
-            if (product == null || product.IGST_Percentage__c == null || oi.UnitPrice == null || oi.Quantity == null) {
-                continue;
+
+            if (!orderIdsToCheck.isEmpty()) {
+                List<Order> invoicedOrders = [SELECT Id, Status FROM Order WHERE Id IN :orderIdsToCheck AND Status IN ('Invoice and Insurance', 'Ready For Delivery', 'Vehicle Delivered')];
+
+                Set<Id> invoicedOrderIds = new Set<Id>();
+                for (Order ord : invoicedOrders) {
+                    invoicedOrderIds.add(ord.Id);
+                }
+
+                for (OrderItem orderItem : newOrderItems) {
+                    if (invoicedOrderIds.contains(orderItem.OrderId)) {
+                        orderItem.OrderId.addError(
+                            'Cannot add or Update an Order Product to an Order that is already Invoiced.'
+                        );
+                    }
+                }
             }
-            
-            Decimal igstMultiplier = 1 + (product.IGST_Percentage__c / 100);
-            Decimal igstRollupValue = oi.UnitPrice * igstMultiplier * oi.Quantity;
-            
-          /*  if (product.Type__c == 'Vehicle') {
-                oi.Vehicle_Roll_Up__c = igstRollupValue;
-            } else if (product.Type__c == 'Accessories' || product.Type__c == 'Parts') {
-                oi.Accessories_Roll_Up__c = igstRollupValue;
-            } */ /*else if (product.Type__c == 'Merchandise') {
-oi.Merchandise_Roll_Up__c = igstRollupValue;
-}*/
-    /*    }
-    } */
+        } catch (Exception e) {
+            System.debug('Error in ==========> ' + e.getMessage() +' at line  number ==========>' + e.getLineNumber());
+        }
+    }
+
+    public static void updateOrderStatusIfTheOrderProductIsAddedOrUpdated(List<OrderItem> newOrderItems){
+        try{    
+            set<Id> setOfOrderId = new Set<Id>();
+            for (OrderItem orderItem : newOrderItems) {
+                if (orderItem.OrderId != null) {
+                    setOfOrderId.add(orderItem.OrderId);
+                }
+            }
+
+            if (!setOfOrderId.isEmpty()) {
+                List<Order> ordersToUpdate = [SELECT Id, Status,Vehicle_Assigned__c FROM Order WHERE Id IN :setOfOrderId AND Status IN ('Pre Invoice')];
+                List<Order> listOfOrderToBeUpdate = new List<Order>();
+                for(Order ord : ordersToUpdate){
+                    order ordToUpdate = new order();
+                    ordToUpdate.Id = ord.Id;
+                    ordToUpdate.Status = 'Payment and Allocation';
+                    ordToUpdate.Vehicle_Assigned__c = true;
+                    ordToUpdate.IsOrderInvoicesGenerated__c = false;
+                    listOfOrderToBeUpdate.add(ordToUpdate);
+                }
+
+                List<Order_Invoice__c> orderInoviceList = [Select Id from Order_Invoice__c where Order__c IN :setOfOrderId];
+                if(!orderInoviceList.isEmpty()){
+                    delete orderInoviceList;
+                }
+                if(!listOfOrderToBeUpdate.isEmpty()){
+                    update listOfOrderToBeUpdate;
+                }
+            }
+        }catch (Exception e) {
+            System.debug('Error in ==========> ' + e.getMessage() +' at line  number ==========>' + e.getLineNumber());
+        }
+    }
+
 }

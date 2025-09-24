@@ -320,12 +320,15 @@ public class TestDriveTriggerHandler {
                 }
             }
 
-
             if (!setOfLeadId.isEmpty()) {
-                
                 List<Lead> leadRec = [SELECT Id, Name, Status, PostalCode FROM Lead WHERE Id IN :setOfLeadId AND Status != 'Converted'];
                 List<Follow_Up__c> listOfFollowUp = [SELECT Id, Name, Opportunity__c, Lead__c FROM Follow_Up__c WHERE Lead__c IN :setOfLeadId];
                 List<Test_Drive__c> listOfTestDrive = [SELECT Id, Name, Lead__c, Opportunity__c FROM Test_Drive__c WHERE Lead__c IN :setOfLeadId];
+
+                List<Account> accountsToUpdate = new List<Account>();
+                List<Opportunity> oppsToUpdate = new List<Opportunity>();
+                List<Follow_Up__c> followUpsToUpdate = new List<Follow_Up__c>();
+                List<Test_Drive__c> testDrivesToUpdate = new List<Test_Drive__c>();
 
                 for (Lead lead : leadRec) {
                     Id accountId = LeadTriggerHandler.getLeadOwnerByPincode(lead.PostalCode);
@@ -348,47 +351,54 @@ public class TestDriveTriggerHandler {
                         Id oppId = result.getOpportunityId();
 
                         if (accId != null) {
-                            Account acc = [SELECT Id, Name FROM Account WHERE Id = :accId];
-                            acc.Name = lead.Name;
-                            update acc;
+                            Account acc = new Account(Id = accId, Name = lead.Name);
+                            accountsToUpdate.add(acc);
                         }
 
                         if (oppId != null) {
-                            Opportunity opp = [SELECT Id, StageName FROM Opportunity WHERE Id = :oppId];
-                            opp.StageName = 'Test Ride Scheduled';
-                            opp.CloseDate = System.today().addDays(30);
-                            opp.OwnerId = ownerId;
-                            update opp;
+                            Opportunity opp = new Opportunity(
+                                Id = oppId,
+                                StageName = 'Test Ride Scheduled',
+                                CloseDate = System.today().addDays(30),
+                                OwnerId = ownerId
+                            );
+                            oppsToUpdate.add(opp);
 
-                            List<Follow_Up__c> followUpsToUpdate = new List<Follow_Up__c>();
                             for (Follow_Up__c f : listOfFollowUp) {
                                 if (f.Lead__c == lead.Id) {
                                     f.Opportunity__c = opp.Id;
                                     followUpsToUpdate.add(f);
                                 }
                             }
-                            if (!followUpsToUpdate.isEmpty()) {
-                                update followUpsToUpdate;
-                            }
-
-                            List<Test_Drive__c> testDrivesToUpdate = new List<Test_Drive__c>();
                             for (Test_Drive__c t : listOfTestDrive) {
                                 if (t.Lead__c == lead.Id) {
                                     t.Opportunity__c = opp.Id;
                                     testDrivesToUpdate.add(t);
                                 }
                             }
-                            if (!testDrivesToUpdate.isEmpty()) {
-                                update testDrivesToUpdate;
-                            }
                         }
                     }
                 }
+
+                if (!accountsToUpdate.isEmpty()) {
+                    update accountsToUpdate;
+                }
+                if (!oppsToUpdate.isEmpty()) {
+                    update oppsToUpdate;
+                    OpportunityTriggerHandler.assignOpportunityToSM(oppsToUpdate);
+                }
+                if (!followUpsToUpdate.isEmpty()) {
+                    update followUpsToUpdate;
+                }
+                if (!testDrivesToUpdate.isEmpty()) {
+                    update testDrivesToUpdate;
+                }
             }
         } catch (Exception e) {
-            System.debug('Error in convertLeadIfStatusIsScheduledMerged ===> ' + e.getMessage() + ' at line ===> ' + e.getLineNumber());
+            System.debug('Error in convertLeadIfStatusIsScheduled ===> ' + e.getMessage() + ' at line ===> ' + e.getLineNumber());
         }
     }
+
 
     public static void sendLeadToDealerOnTestRideScheduled(List<Test_Drive__c> newList,Map<Id, Test_Drive__c> oldMapTestDrive) {
         try {
@@ -558,30 +568,37 @@ public class TestDriveTriggerHandler {
     }
 
 
-    public static void convertLeadIfTheRideTypeIsStoreTestRideAndLeadInstoreTestdriveIsTrue(List<Test_Drive__c> newList){
+    public static void convertLeadIfTheRideTypeIsStoreTestRideAndLeadHomeTestdriveIsTrue(List<Test_Drive__c> newList){
         try {
             Set<Id> setOfLeadId = new Set<Id>();
-            set<Id> setOfLeadIdForConversion = new set<Id>();
+            Set<Id> setOfLeadIdForConversion = new Set<Id>();
+
             for (Test_Drive__c testDriveRec : newList) {
-                if (testDriveRec.Lead__c != null  && testDriveRec.Opportunity__c == null && testDriveRec.Ride_Type__c == 'STR' ) {
+                if (testDriveRec.Lead__c != null  && testDriveRec.Opportunity__c == null && testDriveRec.Ride_Type__c == 'HTR') {
                     setOfLeadId.add(testDriveRec.Lead__c);
                 }
             }
+
             List<Lead> leadList = new List<Lead>();
             if(!setOfLeadId.isEmpty()){
-                leadList = [Select Id,Instore_Test_drive__c,Secondary_Sources__c from Lead Where Id IN:setOfLeadId AND Instore_Test_drive__c = true AND Secondary_Sources__c = 'River Website'];
+                leadList = [SELECT Id, Instore_Test_drive__c, Secondary_Sources__c FROM Lead WHERE Id IN :setOfLeadId AND Home_Test_Ride__c = true AND Secondary_Sources__c = 'River Website'];
             }
-            
+
             if(!leadList.isEmpty()){
                 for(Lead ledRec : leadList){
                     setOfLeadIdForConversion.add(ledRec.Id);
                 }
             }   
-            
+
             if (!setOfLeadIdForConversion.isEmpty()) {
-                List<Lead> leadRec = [SELECT Id, Name, Status, PostalCode FROM Lead WHERE Id IN :setOfLeadId AND Status != 'Converted'];
-                List<Follow_Up__c> listOfFollowUp = [SELECT Id, Name, Opportunity__c, Lead__c FROM Follow_Up__c WHERE Lead__c IN :setOfLeadId];
-                List<Test_Drive__c> listOfTestDrive = [SELECT Id, Name, Lead__c, Opportunity__c FROM Test_Drive__c WHERE Lead__c IN :setOfLeadId];
+                List<Lead> leadRec = [SELECT Id, Name, Status, PostalCode FROM Lead WHERE Id IN :setOfLeadIdForConversion AND Status != 'Converted'];
+                List<Follow_Up__c> listOfFollowUp = [SELECT Id, Name, Opportunity__c, Lead__c FROM Follow_Up__c WHERE Lead__c IN :setOfLeadIdForConversion];
+                List<Test_Drive__c> listOfTestDrive = [SELECT Id, Name, Lead__c, Opportunity__c FROM Test_Drive__c WHERE Lead__c IN :setOfLeadIdForConversion];
+
+                List<Account> accountsToUpdate = new List<Account>();
+                List<Opportunity> oppsToUpdate = new List<Opportunity>();
+                List<Follow_Up__c> followUpsToUpdate = new List<Follow_Up__c>();
+                List<Test_Drive__c> testDrivesToUpdate = new List<Test_Drive__c>();
 
                 for (Lead lead : leadRec) {
                     Id accountId = LeadTriggerHandler.getLeadOwnerByPincode(lead.PostalCode);
@@ -604,47 +621,54 @@ public class TestDriveTriggerHandler {
                         Id oppId = result.getOpportunityId();
 
                         if (accId != null) {
-                            Account acc = [SELECT Id, Name FROM Account WHERE Id = :accId];
-                            acc.Name = lead.Name;
-                            update acc;
+                            Account acc = new Account(Id = accId, Name = lead.Name);
+                            accountsToUpdate.add(acc);
                         }
 
                         if (oppId != null) {
-                            Opportunity opp = [SELECT Id, StageName FROM Opportunity WHERE Id = :oppId];
-                            opp.StageName = 'Test Ride Scheduled';
-                            opp.CloseDate = System.today().addDays(30);
-                            opp.OwnerId = ownerId;
-                            update opp;
+                            Opportunity opp = new Opportunity(
+                                Id = oppId,
+                                StageName = 'Test Ride Scheduled',
+                                CloseDate = System.today().addDays(30),
+                                OwnerId = ownerId
+                            );
+                            oppsToUpdate.add(opp);
 
-                            List<Follow_Up__c> followUpsToUpdate = new List<Follow_Up__c>();
                             for (Follow_Up__c f : listOfFollowUp) {
                                 if (f.Lead__c == lead.Id) {
                                     f.Opportunity__c = opp.Id;
                                     followUpsToUpdate.add(f);
                                 }
                             }
-                            if (!followUpsToUpdate.isEmpty()) {
-                                update followUpsToUpdate;
-                            }
-
-                            List<Test_Drive__c> testDrivesToUpdate = new List<Test_Drive__c>();
                             for (Test_Drive__c t : listOfTestDrive) {
                                 if (t.Lead__c == lead.Id) {
                                     t.Opportunity__c = opp.Id;
                                     testDrivesToUpdate.add(t);
                                 }
                             }
-                            if (!testDrivesToUpdate.isEmpty()) {
-                                update testDrivesToUpdate;
-                            }
                         }
                     }
+                }
+
+                if (!accountsToUpdate.isEmpty()) {
+                    update accountsToUpdate;
+                }
+                if (!oppsToUpdate.isEmpty()) {
+                    update oppsToUpdate;
+                    OpportunityTriggerHandler.assignOpportunityToSM(oppsToUpdate);
+                }
+                if (!followUpsToUpdate.isEmpty()) {
+                    update followUpsToUpdate;
+                }
+                if (!testDrivesToUpdate.isEmpty()) {
+                    update testDrivesToUpdate;
                 }
             }
         } catch (Exception e) {
             System.debug('Error in convertLeadIfStatusIsScheduledMerged ===> ' + e.getMessage() + ' at line ===> ' + e.getLineNumber());
         }
     }
+
 
     public static void assignSameOwnerOfLeadAndOppToTestDriveOwner(List<Test_Drive__c> newList) {
         Set<Id> setOfLeadId = new Set<Id>();

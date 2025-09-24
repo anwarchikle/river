@@ -46,6 +46,22 @@
         <template>Order_Emails/Order_Approved_Email1_Warehouse</template>
     </alerts>
     <alerts>
+        <fullName>Order_Cancellation_Alert_Email</fullName>
+        <description>Order Cancellation Alert Email</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <field>Opp_s_Owner_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderAddress>support@rideriver.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Order_Cancellation_Emails/Order_Cancellation_Email</template>
+    </alerts>
+    <alerts>
         <fullName>Order_Check_UTR_Verify</fullName>
         <description>Order Check UTR Verify</description>
         <protected>false</protected>

@@ -27,6 +27,10 @@
         <translation><!-- Mobile App --></translation>
     </picklistValues>
     <picklistValues>
+        <masterLabel>Opportunity Creation</masterLabel>
+        <translation><!-- Opportunity Creation --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Order Creation</masterLabel>
         <translation><!-- Order Creation --></translation>
     </picklistValues>

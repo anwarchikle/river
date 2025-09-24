@@ -13,7 +13,7 @@ public class form22Controller {
         
         for (Order ord : newOrders) {
             Order oldOrder = oldOrderMap.get(ord.Id);
-            if (oldOrder != null && ord.Status == 'RTO Registration' && oldOrder.Status != 'RTO Registration') {
+            if (oldOrder != null && ord.Status == 'Invoice and Insurance' && oldOrder.Status != 'Invoice and Insurance') {
                 orderIds.add(ord.Id);
             }
         }

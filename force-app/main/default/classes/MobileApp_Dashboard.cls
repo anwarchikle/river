@@ -55,8 +55,8 @@ global class MobileApp_Dashboard {
             System.debug('totalOpenOpp ====>'+ totalOpenOpp);
 
             Integer totalClosedWon = Database.countQuery(
-                'SELECT COUNT() FROM Order WHERE OwnerId = \'' + userId + '\' AND Status IN (\'New\', \'Draft\', \'Activated\', \'Processing\', ' +
-                '\'Payment Pending\', \'Allotment in Process\', \'Pre Invoice\', \'RTO Registration\', \'Ready For Delivery\')' + addQuery
+                'SELECT COUNT() FROM Order WHERE OwnerId = \'' + userId + '\' AND Status IN (\'Booking\', \'Payment and Allocation\', \'Pre Invoice\', \'Invoice and Insurance\', ' +
+                '\'RTO Registration\', \'Ready For Delivery\')' + addQuery
             );
             System.debug('totalClosedWon ====> ' + totalClosedWon);
 
@@ -117,6 +117,7 @@ global class MobileApp_Dashboard {
         
         for (Follow_Up__c f : followUpList) {
             if (f.Opportunity__c != null) followUpLeadId.add(f.Opportunity__c);        }
+        System.debug('followUpLeadId=====>' + followUpLeadId.size());
         
         List<Follow_Up__c> followUpListOpp = [
             SELECT Id, Follow_Up_Date__c, Feedback__c, Opportunity__c, Lead__c, Status__c,
@@ -126,6 +127,7 @@ global class MobileApp_Dashboard {
             WHERE (Opportunity__c IN :followUpLeadId)
             AND Status__c = 'Completed'
         ];
+        System.debug('followUpListOpp ====>' + followUpListOpp.size());
         
         Map<Id, List<Follow_Up__c>> followUpMap = new Map<Id, List<Follow_Up__c>>();
         for (Follow_Up__c f : followUpListOpp) {

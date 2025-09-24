@@ -51,6 +51,7 @@ public without sharing class Check_pdi_item_screen_pdf_controller {
         }
         if(groupedPDIItemsMap != null && groupedPDIItemsMap.values().size() > 0){
             for (String key : groupedPDIItemsMap.keySet()) {
+                system.debug('key =====>' + key);
                 pdiItemWrapList.add(new PDIItemsWrapper(key, groupedPDIItemsMap.get(key)));                
             }
         }

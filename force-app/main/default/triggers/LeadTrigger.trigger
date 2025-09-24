@@ -6,7 +6,7 @@ trigger LeadTrigger on Lead (before Insert, after insert,after update,before upd
             LeadTriggerHandler.enqueueLeadProcessing(trigger.new); 
             LeadTriggerHandler.callFutureLeadConversion(trigger.new);
             //LeadTriggerHandler.callFutureLeadConversion(trigger.new);
-            LeadTriggerHandler.createTaskUnderLeadIfLeadIsNotConverted(trigger.new);
+            // LeadTriggerHandler.createTaskUnderLeadIfLeadIsNotConverted(trigger.new);
              GenericRecordSharer.shareRecordsWithHierarchy(Trigger.NewMap, 'Lead', 'Edit', 'Manual');
         }
     }

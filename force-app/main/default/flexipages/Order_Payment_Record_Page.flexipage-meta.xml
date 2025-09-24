@@ -96,6 +96,12 @@
                 <identifier>RecordPayment_reference_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Enquiry__c</fieldItem>
+                <identifier>RecordEnquiry__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-e6151012-f74f-4019-a45c-71cd68944d9d</name>
         <type>Facet</type>
     </flexiPageRegions>

@@ -110,7 +110,7 @@ public class LeadProcessingQueueable implements Queueable, Database.AllowsCallou
                     ));
                     continue;
                 }
-                if (isPartnerUser && ld.Instore_Test_drive__c == true) {
+                if (isPartnerUser && ld.Home_Test_Ride__c == true) {
                     dmsLeads.add(new Lead(
                         Id = ld.Id,
                         OwnerId = currentUser.Id,
@@ -155,6 +155,7 @@ public class LeadProcessingQueueable implements Queueable, Database.AllowsCallou
                                 roundRobinLeads.add(new Lead(
                                     Id = ld.Id,
                                     OwnerId = selectedMember.Group_Member__c,
+                                    Status = 'Follow Up',
                                     Dealer_Code__c = mapOfPincodeAndDealerCode.get(postalCode),
                                     Stores_Name__c = mapOfPincodeAndCenterName.get(postalCode),
                                     City = mapOfPincodeAndCityName.get(postalCode),
@@ -218,13 +219,19 @@ public class LeadProcessingQueueable implements Queueable, Database.AllowsCallou
             }
             
             List<Lead> allUpdates = new List<Lead>();
+            List<Lead> allUpdatesForLeads = new List<Lead>();
             allUpdates.addAll(notServiceableLeads);
             allUpdates.addAll(outOfHoursLeads);
             allUpdates.addAll(dmsLeads);
-            allUpdates.addAll(roundRobinLeads);
+            allUpdatesForLeads.addAll(roundRobinLeads);
             
             if (!allUpdates.isEmpty()) {
                 update allUpdates;
+            }
+
+            if(!allUpdatesForLeads.isEmpty()){
+                update allUpdatesForLeads;
+                LeadTriggerHandler.createTaskUnderLeadIfLeadIsNotConverted(allUpdatesForLeads);
             }
             
             if (!dmsLeads.isEmpty()) {

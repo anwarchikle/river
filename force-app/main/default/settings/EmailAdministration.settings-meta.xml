@@ -3,7 +3,7 @@
     <enableComplianceBcc>false</enableComplianceBcc>
     <enableEmailConsentManagement>false</enableEmailConsentManagement>
     <enableEmailSenderIdCompliance>false</enableEmailSenderIdCompliance>
-    <enableEmailSpfCompliance>true</enableEmailSpfCompliance>
+    <enableEmailSpfCompliance>false</enableEmailSpfCompliance>
     <enableEmailToSalesforce>false</enableEmailToSalesforce>
     <enableEmailTrackingIPBlocklist>false</enableEmailTrackingIPBlocklist>
     <enableEmailWorkflowApproval>false</enableEmailWorkflowApproval>

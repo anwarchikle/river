@@ -7,6 +7,9 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
+                            <value>Order.Upload_Subsidy_and_PDI_Documents</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Order.Generate_E_Invoice</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND 2 AND 3</booleanFilter>
@@ -36,6 +39,9 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
+                            <value>Order.Generate_Proforma</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Order.Accessories_Receipts</value>
                         </valueListItems>
                         <valueListItems>
@@ -56,6 +62,16 @@
                         </valueListItems>
                         <valueListItems>
                             <value>Order.Add_Shipment</value>
+                            <visibilityRule>
+                                <criteria>
+                                    <leftValue>{!Record.Record_Type_Name__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Purchase</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Order.Cancel_Order</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Edit</value>
@@ -335,18 +351,20 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Order_Id__c</fieldItem>
                 <identifier>RecordOrder_Id__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.PME_Drive__c</fieldItem>
-                <identifier>RecordPME_Drive__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Registration_Date__c</fieldItem>
                 <identifier>RecordRegistration_Date__cField</identifier>
             </fieldInstance>
@@ -367,8 +385,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Opportunity.Secondary_Source__c</fieldItem>
-                <identifier>RecordOpportunitySecondary_Source_cField</identifier>
+                <fieldItem>Record.Opportunity.Lead_Secondary_Source__c</fieldItem>
+                <identifier>RecordOpportunityLead_Secondary_Source_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -573,6 +591,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.UTM_Source__c</fieldItem>
                 <identifier>RecordUTM_Source__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PME_Drive__c</fieldItem>
+                <identifier>RecordPME_Drive__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-508183c7-37ee-4dd7-be8c-8b11de6cf570</name>
@@ -1393,6 +1421,16 @@
                 <identifier>RecordRefund_Status_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Refund_Payment_Reference__c</fieldItem>
+                <identifier>RecordRefund_Payment_Reference_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-0fe54d44-02ca-4f8f-80ca-79cdd562fde9</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1405,6 +1443,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Refund_Amount__c</fieldItem>
                 <identifier>RecordRefund_Amount_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Refunded_UTR_Details__c</fieldItem>
+                <identifier>RecordRefunded_UTR_Details_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-332486d3-5cee-4123-bd6f-473e05146936</name>
@@ -1432,6 +1480,170 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-d9075f25-975e-4251-8ff6-7f3c8739e4b5</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Cancellation_Reason__c</fieldItem>
+                <identifier>RecordCancellation_Reason_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Account_Name_Bank__c</fieldItem>
+                <identifier>RecordAccount_Name_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.IFSC__c</fieldItem>
+                <identifier>RecordIFSC_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-216e9ded-f0b0-4648-8936-7cd39b16588d</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Cancellation_Additional_Reason__c</fieldItem>
+                <identifier>RecordCancellation_Additional_Reason_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Account_Number__c</fieldItem>
+                <identifier>RecordAccount_Number_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-2bbb4ddc-1b2c-4140-b781-a8e31751d103</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-216e9ded-f0b0-4648-8936-7cd39b16588d</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column26</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-2bbb4ddc-1b2c-4140-b781-a8e31751d103</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column27</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-42997e22-9b11-4212-8dd6-089f6dfc15db</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Is_Gate_Pass_Generated__c</fieldItem>
+                <identifier>RecordIs_Gate_Pass_Generated__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Gate_Pass_Generated_Date_Time__c</fieldItem>
+                <identifier>RecordGate_Pass_Generated_Date_Time__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Gate_Pass_Issuer__c</fieldItem>
+                <identifier>RecordGate_Pass_Issuer_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-b7b95287-3a7d-43cf-a5f0-a277b73ed7f5</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Gate_Pass_Approved__c</fieldItem>
+                <identifier>RecordGate_Pass_Approved__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Gate_Pass_Rejected__c</fieldItem>
+                <identifier>RecordGate_Pass_Rejected__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-17a11575-e0e1-4750-b75c-0c04996c14ec</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-b7b95287-3a7d-43cf-a5f0-a277b73ed7f5</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column32</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-17a11575-e0e1-4750-b75c-0c04996c14ec</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column33</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-b8b6bcf1-c432-4ee2-8232-9d92f4383275</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -1787,6 +1999,42 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection11</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-42997e22-9b11-4212-8dd6-089f6dfc15db</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Cancellation Details</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection14</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-b8b6bcf1-c432-4ee2-8232-9d92f4383275</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Gate Pass Details</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection17</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

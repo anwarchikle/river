@@ -75,6 +75,23 @@
                 <default>false</default>
                 <label>Mobile App</label>
             </value>
+            <value>
+                <fullName>Opportunity Creation</fullName>
+                <default>false</default>
+                <label>Opportunity Creation</label>
+            </value>
+            <value>
+                <fullName>Opportunity Creation (No Existing)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Opportunity Creation (No Existing)</label>
+            </value>
+            <value>
+                <fullName>Opportunity Update</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Opportunity Update</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

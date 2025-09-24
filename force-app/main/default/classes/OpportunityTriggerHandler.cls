@@ -25,6 +25,67 @@ public without sharing class OpportunityTriggerHandler {
     //     }
     // }
     
+    public static void assignOpportunityToSM(List<Opportunity> oppList){
+        try {
+            Set<Id> setOfUserIds = new Set<Id>();
+            for(Opportunity opp : oppList){
+                setOfUserIds.add(opp.OwnerId);
+            }
+
+            Map<Id, User> mapUserIdToUser = new Map<Id, User>([
+                SELECT Id, IsActive, ContactId, Contact.AccountId 
+                FROM User 
+                WHERE Id IN :setOfUserIds
+            ]);
+
+            Set<Id> accountIds = new Set<Id>();
+            for(User usr : mapUserIdToUser.values()){
+                if(usr.ContactId != null && usr.Contact.AccountId != null){
+                    accountIds.add(usr.Contact.AccountId);
+                }
+            }
+
+            Map<Id, Id> mapAccountIdToSMUserId = new Map<Id, Id>();
+            if(!accountIds.isEmpty()){
+                List<Contact> smContacts = [
+                    SELECT Id, AccountId, Designation__c, 
+                           (SELECT Id, IsActive FROM Users WHERE IsActive = true) 
+                    FROM Contact 
+                    WHERE AccountId IN :accountIds 
+                      AND Designation__c = 'SM'
+                ];
+
+                for(Contact con : smContacts){
+                    if(con.Users != null && !con.Users.isEmpty()){
+                        for(User smUser : con.Users){
+                            if(smUser.IsActive){
+                                mapAccountIdToSMUserId.put(con.AccountId, smUser.Id);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            List<Opportunity> oppToUpdate = new List<Opportunity>();
+            for(Opportunity opp : oppList){
+                User currentOwner = mapUserIdToUser.get(opp.OwnerId);
+                if(currentOwner != null && currentOwner.ContactId != null && currentOwner.Contact.AccountId != null){
+                    Id smUserId = mapAccountIdToSMUserId.get(currentOwner.Contact.AccountId);
+                    if(smUserId != null && smUserId != opp.OwnerId){
+                        oppToUpdate.add(new Opportunity(Id = opp.Id, OwnerId = smUserId));
+                    }
+                }
+            }
+
+            if(!oppToUpdate.isEmpty()){
+                update oppToUpdate;
+            }
+        } catch (Exception e) {
+            System.debug('Error in assignOpportunityToSM =====> ' + e.getMessage() + ' at line ' + e.getLineNumber());
+        }
+    }
+
     public static void tagPricebookToOwner(List<Opportunity> newList, Map<Id, Opportunity> oldMap) {
         try {
             Set<Id> ownerIds = new Set<Id>();
@@ -101,7 +162,6 @@ public without sharing class OpportunityTriggerHandler {
             System.debug('Error =======>' + e.getMessage() + ' at line number =======> ' + e.getLineNumber());
         }
     }
-
     
     public static void createOrderIfOppIsClosedWon(List<Opportunity> listOfOpp, Map<Id, Opportunity> oldMap) { 
         try{
@@ -311,7 +371,7 @@ public without sharing class OpportunityTriggerHandler {
             List<Account> accList = [SELECT Id, Name, Center_Code__c, Store_Name__c,OwnerId FROM Account WHERE Phone = :cleanedPhone LIMIT 1];
             if (!accList.isEmpty()) {
                 System.debug('Account found with phone number: ' + phoneNumber);
-                List<Opportunity> oppList = [SELECT Id, Name, Phone__c,OwnerId FROM Opportunity WHERE AccountId = :accList[0].Id LIMIT 1];
+                List<Opportunity> oppList = [SELECT Id, Name, Phone__c,OwnerId FROM Opportunity WHERE AccountId = :accList[0].Id AND StageName != 'Closed Won' Order By CreatedDate DESC LIMIT 1];
                 if (!oppList.isEmpty()) {
                     System.debug(' 1=============>');
                     
@@ -487,12 +547,13 @@ public without sharing class OpportunityTriggerHandler {
         }
     }
     
-    public static void onClosedWonShowErrorIfOppLineItemsAreNotThere(List<Opportunity> newListOfOpp){
+    public static void onClosedWonShowErrorIfOppLineItemsAreNotThere(List<Opportunity> newListOfOpp,Map<Id, Opportunity> oldMap){
         try{
             Set<Id> setOfOppIdWhichAreClosedWon = new Set<Id>();
             Map<Id, List<OpportunityLineItem>> mapOfOppAndLineItems = new Map<Id, List<OpportunityLineItem>>();
             for (Opportunity opp : newListOfOpp) {
-                if (opp.StageName == 'Closed Won') {
+                Opportunity oldOpp = oldMap.get(opp.Id);
+                if (opp.StageName == 'Closed Won' && oldOpp.StageName != 'Closed Won') {
                     setOfOppIdWhichAreClosedWon.add(opp.Id);
                     mapOfOppAndLineItems.put(opp.Id, new List<OpportunityLineItem>());
                 }
@@ -529,7 +590,7 @@ public without sharing class OpportunityTriggerHandler {
                 
                 if (newOpp.StageName == 'Closed Won' && oldOpp.StageName != 'Closed Won') {
                     if (newOpp.Booking_Amount__c == null) {
-                        newOpp.addError('Please Add the Enquiry Booking Amount');   
+                        newOpp.addError('Please Add the Products And Then Create Payment');   
                     }
                 }
             }
@@ -556,6 +617,44 @@ public without sharing class OpportunityTriggerHandler {
             System.debug('Error ============> ' + e.getMessage() + ' at line numnber ============> ' + e.getLineNumber());
         }
     }
+
+    public static void getThePreferredSellerOfAccount(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap) {
+        try {
+            Set<Id> setOfOwnerId = new Set<Id>();
+
+            for (Opportunity opp : newListOfOpp) {
+                Opportunity oldOppo = oldMap.get(opp.Id);
+
+                if (oldOppo == null) {
+                    setOfOwnerId.add(opp.OwnerId);
+                } else if (oldOppo.OwnerId != opp.OwnerId) {
+                    setOfOwnerId.add(opp.OwnerId);
+                }
+            }
+
+            if (!setOfOwnerId.isEmpty()) {
+                Map<Id, User> mapOfUsers = new Map<Id, User>([SELECT Id, ContactId, Contact.AccountId FROM User WHERE Id IN :setOfOwnerId AND ContactId != null AND Contact.AccountId != null]);
+                List<Opportunity> oppsToUpdate = new List<Opportunity>();
+
+                for (Opportunity opp : newListOfOpp) {
+                    User usr = mapOfUsers.get(opp.OwnerId);
+                    if (usr != null && usr.ContactId != null && usr.Contact.AccountId != null) {
+                        Opportunity oppRecToUpdate = new Opportunity();
+                        oppRecToUpdate.PreferredSeller__c = usr.Contact.AccountId;
+                        oppRecToUpdate.Id = opp.Id;
+                        oppsToUpdate.add(oppRecToUpdate);
+                    }
+                }
+
+                if (!oppsToUpdate.isEmpty()) {
+                    update oppsToUpdate;
+                }
+            }
+        } catch (Exception e) {
+            System.debug('Error message ====>' + e.getMessage() + ' at line number ======> ' + e.getLineNumber());
+        }
+    }
+
     
     public static void changeOwnerOfTestDriveAndFollowUpIsOppOwnerIsChanged(List<Opportunity> newListOfOpp, Map<Id, Opportunity> oldMap){
         try{
@@ -627,4 +726,51 @@ public without sharing class OpportunityTriggerHandler {
             System.debug('Exception in validateJobCardStatus: ' + ex.getMessage() + 'Line Number : ' + ex.getLineNumber());
         }
     }
+
+    public static List<Opportunity> getOwnerFromPincodeAndAssignToOpp(List<Opportunity> oppToBeInserted,String postalcode){
+        try{
+            List<Pin_Code__c> listOfPinCode=[SELECT Id,Dealer_Service_Center__c FROM Pin_Code__c WHERE Area_Pincode__c=:postalcode AND Dealer_Service_Center__c!=null LIMIT 1];
+            System.debug('listOfPinCode==>'+listOfPinCode);
+            if(!listOfPinCode.isEmpty()){
+                Set<Id> setOfAccountId=new Set<Id>();
+                for(Pin_Code__c pinRec:listOfPinCode){
+                    if(pinRec.Dealer_Service_Center__c!=null){
+                        setOfAccountId.add(pinRec.Dealer_Service_Center__c);
+                    }
+                }
+                if(!setOfAccountId.isEmpty()){
+                    List<Contact> listOfContact=[SELECT Id,Designation__c,User__c FROM Contact WHERE AccountId IN:setOfAccountId];
+                    System.debug('listOfContact==>'+listOfContact);
+                    if(!listOfContact.isEmpty()){
+                        Id selectedUserId;
+                        for(Contact con:listOfContact){
+                            if(con.Designation__c=='SM'){
+                                selectedUserId=con.Id;
+                                break;
+                            }
+                        }
+                        if(selectedUserId==null){
+                            selectedUserId=listOfContact[0].Id;
+                        }
+                        System.debug('selectedUserId ======> '+selectedUserId);
+                        if(selectedUserId!=null){
+                            List<User> userList=[SELECT Id,Name,Contact.AccountId FROM User WHERE ContactId=:selectedUserId LIMIT 1];
+                            if(!userList.isEmpty()){
+                                for(Opportunity opp:oppToBeInserted){
+                                    opp.OwnerId=userList[0].Id;
+                                    opp.PreferredSeller__c=userList[0].Contact.AccountId;
+                                }
+                                return oppToBeInserted;
+                            }
+                        }
+                    }
+                }
+            }
+        }catch(Exception e){
+            System.debug('Error ============> '+e.getMessage()+' at line number ============> '+e.getLineNumber());
+        }
+        return oppToBeInserted;
+    }
+
+
 }

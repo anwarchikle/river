@@ -31,6 +31,7 @@
     <tabs>Salesforce_Support__c</tabs>
     <tabs>Duplicate_Record__c</tabs>
     <tabs>Comment__c</tabs>
+    <tabs>Opportunity_Line_Item__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
         <mappings>
@@ -41,6 +42,9 @@
         </mappings>
         <mappings>
             <tab>Duplicate_Record__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Opportunity_Line_Item__c</tab>
         </mappings>
         <mappings>
             <tab>Salesforce_Support__c</tab>

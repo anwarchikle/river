@@ -10,12 +10,24 @@ Trigger OrderTrigger on Order (before insert, after update, after insert, before
     if (Trigger.isBefore && (Trigger.isInsert || Trigger.isUpdate)) {
         System.debug('Inside Order Insert or Updadte Trigger');
         OrderTriggerHandler.maintainOrderCounter(Trigger.new);
-        EnquiryRecordLock.PreventUpdateForEnquiryStage(trigger.new);
+        //EnquiryRecordLock.PreventUpdateForEnquiryStage(trigger.new);
     }
     
     if (Trigger.isBefore && Trigger.isUpdate) {
+        OrderTriggerHandler.paymentDueIsNotNull(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.moveStatusToPreInvoiceIfFullPaymentIsDoneAndVehicleIsDone(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.dontAllowUserToTagSameVehicleToMultipleOrders(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.thorwErrorIfBasicDetailsAreNull(Trigger.new);
+        OrderTriggerHandler.throwErrorIfRemainingAmountIsMoreThanZero(Trigger.new,Trigger.oldMap);
         OrderTriggerHandler.NewRegistrationdate(Trigger.new,Trigger.oldMap);
         OrderTriggerHandler.NewDeliverydate(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.throwErrorIfRefundStatusIsCompletedAndAmountAndUTRAreNull(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.throwErrorIfCustomerApprovalIsNotThere(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.throwErrorIfInsuranceDetailsNotFilled(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.moveStageToRTOIfAllTheInsuranceDetailsIsFilled(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.updateOrderStatusAsOrderCancelledIfTheOrderRefundIfFilledAndRefundStatusIsCompleted(Trigger.new,Trigger.oldMap);
+        OrderTriggerHandler.throwErrorIfVRNisMissingWhenStageIsReadyForDelivery(Trigger.new,Trigger.oldMap);
+        GatePassQRController.checkAndGenerateQR(Trigger.new,Trigger.oldMap);
     }
 
     if(Trigger.isBefore && Trigger.isdelete){
@@ -24,6 +36,7 @@ Trigger OrderTrigger on Order (before insert, after update, after insert, before
     
     if (Trigger.isAfter && Trigger.isUpdate) {
         System.debug('Inside Orderrrrrrrrr Updadte Trigger');
+        OrderTriggerHandler.createTaskForOrderOwnerIfDueDateIsNotNull(Trigger.new, Trigger.oldMap);
         OrderTriggerHandler.handleOrderUpdate(Trigger.new, Trigger.oldMap);
         OrderTriggerHandler.createProductTransferForBackOrder(Trigger.oldMap, Trigger.newMap);
         OrderTriggerHandler.afterUpdate(Trigger.new,Trigger.oldMap);
@@ -35,7 +48,7 @@ Trigger OrderTrigger on Order (before insert, after update, after insert, before
         //added by Aniket on 05/03/2025 for Ew Integration
         //OrderTriggerHandler.afterUpdateForEWIntegration(Trigger.new, Trigger.oldMap);
         for (Order o : Trigger.new) {
-            if (o.Status == 'RTO Registration' && Trigger.oldMap.get(o.Id).Status != 'RTO Registration') {
+            if (o.Status == 'Invoice and Insurance' && Trigger.oldMap.get(o.Id).Status != 'Invoice and Insurance') {
                 OrderTriggerHandler.sendPDFAfterRTO(Trigger.new,Trigger.oldMap);
                 //  OrderTriggerHandler.afterUpdateForEWIntegration(Trigger.new, Trigger.oldMap);
                 OrderTriggerHandler.processOrderMilestones(Trigger.new, Trigger.oldMap);

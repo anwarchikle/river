@@ -57,6 +57,7 @@
     <tabs>Salesforce_Support__c</tabs>
     <tabs>Duplicate_Record__c</tabs>
     <tabs>Comment__c</tabs>
+    <tabs>Opportunity_Line_Item__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Inventory_Management_System_UtilityBar</utilityBar>
 </CustomApplication>

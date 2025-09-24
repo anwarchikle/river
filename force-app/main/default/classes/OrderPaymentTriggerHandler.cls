@@ -33,6 +33,35 @@ public class OrderPaymentTriggerHandler {
         }		
     }
     
+    public static void updateOrderStatus(List<Order_Payment__c> newRecords) {
+        Set<Id> orderIds = new Set<Id>();
+        for (Order_Payment__c ordPaymentRec : newRecords) {
+            if (ordPaymentRec.Order__c != null) {
+                orderIds.add(ordPaymentRec.Order__c);
+            }
+        }
+
+        if (!orderIds.isEmpty()) {
+            Datetime dt = Datetime.now().addMinutes(1);
+            String cron = String.format('{0} {1} {2} {3} {4} ? {5}',
+                new String[]{
+                    String.valueOf(dt.second()),
+                    String.valueOf(dt.minute()),
+                    String.valueOf(dt.hour()),
+                    String.valueOf(dt.day()),
+                    String.valueOf(dt.month()),
+                    String.valueOf(dt.year())
+                }
+            );
+
+            ScheduleOrderStatusUpdate job = (ScheduleOrderStatusUpdate) JSON.deserialize(
+                JSON.serialize(new ScheduleOrderStatusUpdate(orderIds)),
+                ScheduleOrderStatusUpdate.class
+            );
+            System.schedule('Schedule_OrderStatusUpdate_' + Datetime.now().getTime(), cron, job);
+        }
+    }
+
     
     public static void updateOrderOnInsert(List<Order_Payment__c> newRecords){
         
@@ -292,6 +321,34 @@ public class OrderPaymentTriggerHandler {
         catch(Exception e){
             System.debug('Error is ===>'+e.getMessage());
             System.debug('Error Line Number===>'+e.getLineNumber());
+        }
+    }
+
+    public static void dontAllowUserToAddOrderPaymentIfOrderIsInInvoice(List<Order_Payment__c> newpaymentList){
+        try{
+            Set<Id> orderIdsToFetchorder = new Set<Id>();
+            for(Order_Payment__c op : newpaymentList){
+                if(op.Order__c != null){
+                    orderIdsToFetchorder.add(op.Order__c);
+                }
+            }
+
+            if(!orderIdsToFetchorder.isEmpty()){
+                List<Order> orderList = [SELECT Id, Status FROM Order WHERE Id IN :orderIdsToFetchorder AND Status IN('Invoice and Insurance','RTO Registration','Ready For Delivery','Vehicle Delivered')];
+                Set<Id> orderIdsInInvoice = new Set<Id>();
+                for(Order o : orderList){
+                    orderIdsInInvoice.add(o.Id);
+                }
+
+                for(Order_Payment__c op : newpaymentList){
+                    if(orderIdsInInvoice.contains(op.Order__c)){
+                        op.Order__c.addError('Cannot add or Update Order Payment to an Order that is already Invoiced.');
+                    }
+                }
+            }
+        }
+        catch(Exception e){
+            System.debug('Error is ===>'+e.getMessage()+ 'Error Line Number===>'+e.getLineNumber());
         }
     }
 }

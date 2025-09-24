@@ -68,7 +68,7 @@
         </rules>
         <rules>
             <name>Check_if_event_is_created_home</name>
-            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
+            <conditionLogic>1 AND (2 OR 3 OR 4) AND 5</conditionLogic>
             <conditions>
                 <leftValueReference>Get_lead_with_event</leftValueReference>
                 <operator>IsNull</operator>
@@ -97,6 +97,13 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Home_Test_Ride__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Check_for_existing_test_ride</targetReference>
             </connector>
@@ -104,7 +111,7 @@
         </rules>
         <rules>
             <name>Check_if_event_is_created_instore</name>
-            <conditionLogic>1 AND (2 OR 3 OR 4)</conditionLogic>
+            <conditionLogic>1 AND (2 OR 3 OR 4) AND 5</conditionLogic>
             <conditions>
                 <leftValueReference>Get_lead_with_event</leftValueReference>
                 <operator>IsNull</operator>
@@ -129,6 +136,13 @@
             <conditions>
                 <leftValueReference>$Record.Test_ride_Start_date__c</leftValueReference>
                 <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Instore_Test_drive__c</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
@@ -191,15 +205,9 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Phone__c</field>
-            <value>
-                <elementReference>$Record.Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Ride_Type__c</field>
             <value>
-                <stringValue>Home Ride</stringValue>
+                <stringValue>HTR</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -235,15 +243,9 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Phone__c</field>
-            <value>
-                <elementReference>$Record.Phone</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Ride_Type__c</field>
             <value>
-                <stringValue>Store Ride</stringValue>
+                <stringValue>STR</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -338,7 +340,7 @@
         <inputAssignments>
             <field>Ride_Type__c</field>
             <value>
-                <stringValue>Store Ride</stringValue>
+                <stringValue>STR</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -348,9 +350,15 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Test_Drive_Date__c</field>
+            <value>
+                <elementReference>$Record.Test_ride_Start_date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Test_Drive_Status__c</field>
             <value>
-                <stringValue>Reschedule</stringValue>
+                <stringValue>Scheduled</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record.Test_Drives__r</inputReference>
@@ -375,7 +383,7 @@
         <inputAssignments>
             <field>Ride_Type__c</field>
             <value>
-                <stringValue>Home Ride</stringValue>
+                <stringValue>HTR</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -385,9 +393,15 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Test_Drive_Date__c</field>
+            <value>
+                <elementReference>$Record.Test_ride_Start_date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Test_Drive_Status__c</field>
             <value>
-                <stringValue>Reschedule</stringValue>
+                <stringValue>New</stringValue>
             </value>
         </inputAssignments>
         <inputReference>$Record.Test_Drives__r</inputReference>

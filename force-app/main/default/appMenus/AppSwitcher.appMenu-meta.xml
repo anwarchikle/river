@@ -93,6 +93,10 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
+        <name>standard__BranchManagementConsole</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>Chatter_Desktop</name>
         <type>ConnectedApp</type>
     </appMenuItems>
@@ -259,5 +263,9 @@
     <appMenuItems>
         <name>PsAPP</name>
         <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>CodeBuilder__CodeBuilder</name>
+        <type>CustomApplication</type>
     </appMenuItems>
 </AppMenu>

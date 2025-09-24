@@ -71,6 +71,7 @@
     <tabs>Salesforce_Support__c</tabs>
     <tabs>Duplicate_Record__c</tabs>
     <tabs>Comment__c</tabs>
+    <tabs>Opportunity_Line_Item__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Lead_Management_UtilityBar1</utilityBar>
     <workspaceConfig>
@@ -91,6 +92,9 @@
         </mappings>
         <mappings>
             <tab>Follow_Up__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Opportunity_Line_Item__c</tab>
         </mappings>
         <mappings>
             <tab>PO_Payments__c</tab>

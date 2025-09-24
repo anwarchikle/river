@@ -70,6 +70,32 @@
         <fields>OperatingHoursId</fields>
         <fields>ParentBranchUnitId</fields>
     </miniLayout>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>BranchUnit</fields>
+        <fields>Account</fields>
+        <fields>AssociationLevel</fields>
+        <fields>LastInteractionDate</fields>
+        <relatedList>BranchUnitCustomers</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>BranchUnit</fields>
+        <fields>RelatedRecord</fields>
+        <fields>Account</fields>
+        <fields>BusinessUnitMember</fields>
+        <fields>RelatedObjectName</fields>
+        <relatedList>BranchUnitRelatedRecords</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
+        <fields>BranchUnit</fields>
+        <fields>BusinessUnitMember</fields>
+        <fields>StartDate</fields>
+        <fields>EndDate</fields>
+        <fields>IsActive</fields>
+        <relatedList>BranchUnitBusinessMembers</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

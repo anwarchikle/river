@@ -88,6 +88,7 @@ public class UtilityTestClass {
         insert loc;
         Account acc = UtilityTestClass.createTestAccount('Partner Store', 'D001', 'Demo Partner Store','560076', 'Dealer');
         Contact con = new Contact(FirstName = firstName, LastName = lastName, Email = mail, Phone = phone, AccountId = accountId, Role_Type__c = roleType, Location__c =loc.Id);
+        con.Designation__c = 'WM';
         insert con; return con;
     }
 

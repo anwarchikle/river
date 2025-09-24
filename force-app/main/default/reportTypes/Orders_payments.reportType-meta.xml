@@ -735,6 +735,96 @@
             <field>Registration_Date__c</field>
             <table>Order</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Gender__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Occupation__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cancellation_Reason__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Cancellation_Additional_Reason__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_Name_Bank__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IFSC__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_Number__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Refund_Payment_Reference__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Opp_s_Owner_Email__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Gate_Pass_Rejected__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Gate_Pass_Approved__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Subsidy_Document_Collected__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PDI_Document_Collected__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Gate_Pass_QR_Link__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Gate_Pass_Generated__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Gate_Pass_Generated_Date_Time__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Gate_Pass_Issuer__c</field>
+            <table>Order</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Refunded_UTR_Details__c</field>
+            <table>Order</table>
+        </columns>
         <masterLabel>Orders</masterLabel>
     </sections>
     <sections>
@@ -821,6 +911,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Log_Payment__c</field>
+            <table>Order.Order_Payments__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Enquiry__c</field>
             <table>Order.Order_Payments__r</table>
         </columns>
         <masterLabel>Order Payments</masterLabel>

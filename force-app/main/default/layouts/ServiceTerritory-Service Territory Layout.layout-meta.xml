@@ -68,6 +68,13 @@
     </layoutSections>
     <relatedLists>
         <fields>Name</fields>
+        <fields>BranchManager</fields>
+        <fields>Type</fields>
+        <fields>IsActive</fields>
+        <relatedList>BranchUnits</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>Name</fields>
         <fields>ServiceResource</fields>
         <fields>TerritoryType</fields>
         <fields>EffectiveStartDate</fields>

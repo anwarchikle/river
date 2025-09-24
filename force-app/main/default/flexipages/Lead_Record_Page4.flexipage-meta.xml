@@ -350,16 +350,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Source__c</fieldItem>
-                <identifier>RecordSource__cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.OwnerId__c</fieldItem>
                 <identifier>RecordOwnerId__cField</identifier>
             </fieldInstance>
@@ -386,12 +376,20 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Lead_Secondary_DropOut_Reasons__c</fieldItem>
                 <identifier>RecordLead_Secondary_DropOut_Reasons__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Others__c</fieldItem>
                 <identifier>RecordOthers__cField</identifier>
             </fieldInstance>

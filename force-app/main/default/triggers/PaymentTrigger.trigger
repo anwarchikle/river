@@ -12,6 +12,10 @@ trigger PaymentTrigger on Payment__c (after insert, after update, after delete, 
         PaymentTriggerHandler.onCreationOfPaymentUnderOpportunityCreateOrderAndOrderPayment(trigger.newMap);
     }
 
+    if(trigger.isBefore && trigger.isInsert ){
+        PaymentTriggerHandler.throwErrorIfTheOppProductsAreNull(trigger.new);
+    }
+
     if(trigger.isBefore && (trigger.isInsert || trigger.isupdate) ){
         EnquiryRecordLock.PreventUpdateForEnquiryStage(trigger.new);
     }

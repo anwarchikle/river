@@ -152,28 +152,8 @@ global class MobileAPP_BookOrder {
                     system.debug('oli=================>' + oli);
                     system.debug('8=================>');
 
-                    Order OrderObj = new Order();
-                    OrderObj.RecordTypeId = OrderRecordTypeId;
-                    OrderObj.OpportunityId = opportunityId;
-                    OrderObj.AccountId = oppList[0].AccountId;
-                    OrderObj.Contact__c = contact.size() > 0 && contact[0].Id != null ? contact[0].Id : null;
-                    OrderObj.Booking_Amount__c = orderAmount;
-                    OrderObj.OwnerId = userId;
-                    OrderObj.Status = 'Draft';
-                    OrderObj.EffectiveDate = Date.today();
-                    OrderObj.Pricebook2Id = pb.Id;
-                    Insert OrderObj;
-                    system.debug('9=================>');
-
-                    OrderItem OrdItemRec = new OrderItem();
-                    OrdItemRec.OrderId = OrderObj.Id;
-                    OrdItemRec.PricebookEntryId = pbe.Id;
-                    OrdItemRec.Product2Id = prd.Id;
-                    OrdItemRec.Quantity = 1;
-                    OrdItemRec.UnitPrice = pbe.UnitPrice;
-                    Insert OrdItemRec;
-
                     Payment__c pay = new Payment__c();
+                    pay.Enquiry__c = opportunityId;
                     pay.Amount__c = orderAmount;
                     pay.Payment_Date__c = Date.today();
                     pay.Payment_Status__c = 'Success';
@@ -184,36 +164,25 @@ global class MobileAPP_BookOrder {
                     }else{
                         pay.Transaction_Id__c = transactionId;
                     }
-                    
                     Insert pay;
 
-                    Order_Payment__c ordPay = new Order_Payment__c();
-                    ordPay.Order__c = OrderObj.Id;
-                    ordPay.Payments__c = pay.Id;
-                    ordPay.Type__c = 'Down Payment';                    
-                    Insert ordPay;
-
-                    opp.StageName = 'Closed Won';
-                    opp.booking_Amount__c = orderAmount;
-                    opp.Order__c = OrderObj.Id;
-                    update opp;
-                    
-                    system.debug('Order Created: ' + OrderObj.Id);
+                    List<Order> orderList = [SELECT Id, Name FROM Order WHERE OpportunityId = :opportunityId LIMIT 1];
+                    system.debug('Order Created: ' + orderList[0].Id);
                     system.debug('10=================>');
 
-                    if(OrderObj.Id == null) {
+                    if(orderList[0].Id == null) {
                         MobileApp_Wrapper.setResponse(500, 'Order Creation Failed', null);
                     } else {
                         
                         Integration_Log__c logObj = new Integration_Log__c(
                             Integration_Type__c = 'Mobile App',
                             Request_Payload__c = JSON.serializePretty(body),
-                            Response_Payload__c = 'Order created successfully: ' + OrderObj.Id,
+                            Response_Payload__c = 'Order created successfully: ' + orderList[0].Id,
                             Status__c = 'Success'
                         );
                         insert logObj;
                         
-                        responseData.put('OrderId', OrderObj.Id);
+                        responseData.put('OrderId', orderList[0].Id);
                         MobileApp_Wrapper.setResponse(200, 'Order Created Successfully', responseData);
                     }
                 }else{

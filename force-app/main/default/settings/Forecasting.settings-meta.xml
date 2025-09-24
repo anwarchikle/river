@@ -231,8 +231,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -257,6 +269,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -291,8 +315,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -311,8 +343,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -380,13 +424,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -395,12 +445,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -554,8 +609,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -580,6 +647,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -614,8 +693,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -634,8 +721,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -703,13 +802,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -718,12 +823,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -881,8 +991,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -907,6 +1029,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -941,8 +1075,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -961,8 +1103,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -1031,13 +1185,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -1046,12 +1206,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1205,8 +1370,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -1231,6 +1408,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -1265,8 +1454,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -1285,8 +1482,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -1354,13 +1563,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -1369,12 +1584,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1532,8 +1752,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -1558,6 +1790,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -1592,8 +1836,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -1612,8 +1864,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -1682,13 +1946,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -1697,12 +1967,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -1856,8 +2131,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -1882,6 +2169,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -1916,8 +2215,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -1936,8 +2243,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -2005,13 +2324,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -2020,12 +2345,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -2183,8 +2513,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -2209,6 +2551,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -2243,8 +2597,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -2263,8 +2625,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -2333,13 +2707,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -2348,12 +2728,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
@@ -2507,8 +2892,20 @@
             <label>Last Modified Date</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Wha</field>
+            <label>Account</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000w0u5</field>
             <label>Booking Amount</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XIf</field>
+            <label>Company</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Vbp</field>
+            <label>Dealer Code</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000veok</field>
@@ -2533,6 +2930,18 @@
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000uayU</field>
             <label>Follow-Up Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VNJ</field>
+            <label>Home Test Ride</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WjB</field>
+            <label>Home Test Ride Given</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012Uaw</field>
+            <label>Instore Test drive</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF000000inLB</field>
@@ -2567,8 +2976,16 @@
             <label>Others</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012XLt</field>
+            <label>OwnerId</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000sIfz</field>
             <label>Phone</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012WzJ</field>
+            <label>PreferredSeller</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>00NHF00000107tl</field>
@@ -2587,8 +3004,20 @@
             <label>Sub Test Ride Stage</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VTm</field>
+            <label>Test ride end date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VaD</field>
+            <label>Test ride start date</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
             <field>00NHF000000inHx</field>
             <label>Threshold_Count</label>
+        </opportunityListFieldsLabelMappings>
+        <opportunityListFieldsLabelMappings>
+            <field>00NHF0000012VFF</field>
+            <label>Verified</label>
         </opportunityListFieldsLabelMappings>
         <opportunityListFieldsLabelMappings>
             <field>PARTNER.NAME</field>
@@ -2656,13 +3085,19 @@
             <field>OPPORTUNITY.LAST_ACTIVITY</field>
             <field>OPPORTUNITY.CREATED_DATE</field>
             <field>OPPORTUNITY.LAST_UPDATE</field>
+            <field>00NHF0000012Wha</field>
             <field>00NHF000000w0u5</field>
+            <field>00NHF0000012XIf</field>
+            <field>00NHF0000012Vbp</field>
             <field>00NHF000000veok</field>
             <field>00NHF000000viE1</field>
             <field>00NHF000000v29y</field>
             <field>00NHF000000uWu2</field>
             <field>00NHF000000uO2r</field>
             <field>00NHF000000uayU</field>
+            <field>00NHF0000012VNJ</field>
+            <field>00NHF0000012WjB</field>
+            <field>00NHF0000012Uaw</field>
             <field>00NHF000000inLB</field>
             <field>00NHF000000sIhV</field>
             <field>00NHF000000v2I1</field>
@@ -2671,12 +3106,17 @@
             <field>00NHF000000sI4n</field>
             <field>00NHF000000inOP</field>
             <field>00NHF000000viFd</field>
+            <field>00NHF0000012XLt</field>
             <field>00NHF000000sIfz</field>
+            <field>00NHF0000012WzJ</field>
             <field>00NHF00000107tl</field>
             <field>00NHF000000inD7</field>
             <field>00NHF000000sGuD</field>
             <field>00NHF000000viab</field>
+            <field>00NHF0000012VTm</field>
+            <field>00NHF0000012VaD</field>
             <field>00NHF000000inHx</field>
+            <field>00NHF0000012VFF</field>
             <field>PARTNER.NAME</field>
             <field>OPPORTUNITY.ISPRIORITYRECORD</field>
             <field>OPPORTUNITY.LAST_STG_CHG_DAYS</field>
